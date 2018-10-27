@@ -1,0 +1,43 @@
+name: ''
+navbar:
+  left:
+  - icon: fa-home
+    href: index.html
+  - text: введение в байесовскую статистику
+    menu:
+    - text: 1. Распределения
+      href: 1_distributions.html    
+    - text: 2. Биномиальные данные
+      href: 2_binomial.html
+    - text: 3. Binomial CI
+      href: 3_binomial_ci.html
+  - text: уменьшение размерности
+    menu:
+    - text: 4. PCA, LDA
+      href: 4_PCA.html
+    - text: 5. CA, DCA, MCA
+      href: 5_CA_MCA.html
+    - text: 6. Кластеризация
+      href: 6_Clustering.pdf
+  - text: регрессия
+    menu:
+    - text: 7. Еще о регрессионных моделях
+      href: 7_more_linear_regression.html
+    - text: 8. Логистическая и мультиномиальная регрессии
+      href: 8_logit_multinom.html
+output_dir: docs
+output:
+  html_document:
+    theme: spacelab
+    highlight: pygments
+    toc: yes
+    toc_position: right
+    toc_depth: 3
+    toc_float: yes
+    smooth_scroll: no
+    df_print: paged
+    include:
+      after_body: footer.html
+    lib_dir: site_libs
+    self_contained: no
+

@@ -1,0 +1,1425 @@
+s_id,sex,age_2017,w_id,stimulus,translation_en,translation_ru,stimulus_source,class
+1,f,15,1,milki,hous,дом,native,b
+1,f,15,2,vaɡon,train wagon,вагон,loan,b
+1,f,15,3,inɡur,window,окно,native,b
+1,f,15,4,ʁats'a,grasshopper,кузнечик,native,b
+1,f,15,5,iʃkapi,cabinet,шкаф,loan,b
+1,f,15,6,haq'u,room,комната,native,r
+1,f,15,7,tʃ'ami,cheese,сыр,native,r
+1,f,15,8,batarejka,battery,батарейка,loan,b
+1,f,15,10,kompjuter,computer,компьютер,loan,b
+1,f,15,12,riʒi,face,лицо,native,r
+1,f,15,13,ts'a,fire,огонь,native,r
+1,f,15,14,priʃepka,clothes-peg,прищепка,loan,r
+1,f,15,15,awʔal,nut,орех,native,r
+1,f,15,16,kirpitʃ,brick,кирпич,loan,b
+1,f,15,17,χur,"field, vegetable garden","поле, огород",native,r
+1,f,15,18,tʃ'itʃ'om,pebble,камешек,native,b
+1,f,15,19,polotsʲentse,towel,полотенце,loan,r
+1,f,15,20,odoruk'a,butterfly,бабочка,native,r
+1,f,15,21,simkarta,SIM,сим-карта,loan,r
+1,f,15,22,kots'i,besom,метла,native,b
+1,f,15,23,ala,lid,крышка,native,r
+1,f,15,24,zatʃetka,student's record-book,зачетка,loan,b
+1,f,15,26,k'azi,headscarf,головной платок,native,r
+1,f,15,27,ts'iq'u,hoar frost,иней,native,b
+1,f,15,29,hark'u,eye,глаз,native,b
+1,f,15,30,rekun,thread,нитка,native,r
+1,f,15,33,ɡurdo,shirt,рубашка,native,r
+1,f,15,34,ɬol,horseshoe,подкова,native,r
+1,f,15,35,tatʃka,wheelbarrow,тачка,loan,r
+1,f,15,36,pult,remote control,пульт,loan,b
+1,f,15,37,telefon,telephon,телефон,loan,r
+1,f,15,38,arkom,spoon,ложка,native,b
+1,f,15,39,kalendarʲ,calendar,календарь,loan,r
+1,f,15,40,zaʒiɡalka,lighter,зажигалка,loan,b
+1,f,15,41,sputnʲik,satellite,спутник,loan,b
+1,f,15,42,zar,ice,лед,native,r
+1,f,15,43,bil,mountain,гора,native,b
+1,f,15,44,provod,wire,провод,loan,b
+1,f,15,45,patʃka,bundle,пачка,loan,b
+1,f,15,47,salfʲetka,napkin,салфетка,loan,r
+1,f,15,48,awʔara,hat,шапка,native,b
+1,f,15,49,aptsʲeka,pharmacy,аптека,loan,b
+1,f,15,51,ts'umur,fork,вилка,native,b
+1,f,15,52,ħetʃ'ink'a,maize,кукуруза,native,r
+1,f,15,53,anzi,snow,снег,native,r
+1,f,15,54,raχasi,chain,цепь,native,r
+1,f,15,55,bint,bandage,бинт,loan,b
+1,f,15,57,rok'o,heart,сердце,native,r
+1,f,15,58,pasport,passport,пасспорт,loan,r
+1,f,15,61,planʲeta,planet,планета,loan,b
+1,f,15,62,romaʃka,camomile,ромашка,loan,r
+1,f,15,63,tarif,tariff,тариф,loan,b
+1,f,15,64,antena,antenna,антенна,loan,r
+1,f,15,65,maʃina,car,машина,loan,b
+1,f,15,66,inχi,river,река,native,b
+1,f,15,68,nitʃo,scythe,коса,native,b
+1,f,15,69,dʒinsɨ,jeans,джинсы,loan,r
+1,f,15,70,ɡol,goal,гол,loan,r
+1,f,15,72,lift,lift,лифт,loan,b
+1,f,15,73,mijar,head,голова,native,r
+1,f,15,75,plastɨrʲ,plaster,пластырь,loan,r
+1,f,15,77,banan,banana,банан,loan,b
+1,f,15,78,ts'ːa,star,звезда,native,r
+1,f,15,79,hunts'ːi,honey,мед,native,r
+1,f,15,81,intʃi,apple,яблоко,native,b
+1,f,15,82,sol,tooth,зуб,native,r
+1,f,15,83,sumka,bag,сумка,loan,b
+1,f,15,84,radio,radio,радио,loan,b
+1,f,15,85,reʃa,tree,дерево,native,r
+1,f,15,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+1,f,15,87,miq'i,road,дорога,native,b
+1,f,15,88,rʲukzak,rucksack,рюкзак,loan,b
+1,f,15,89,"ʔʷen, ʁʷen",horn,рог,native,b
+1,f,15,90,dunɡil,hole,яма,native,b
+1,f,15,91,ʃĩwũ,milk,молоко,native,r
+1,f,15,92,ɬen,water,вода,native,r
+1,f,15,93,ritɬ'i,meat,мясо,native,b
+1,f,15,94,ts'ul,staff,палка,native,r
+1,f,15,95,ʁan,flat cake,лепешка,native,b
+1,f,15,97,bilet,ticket,билет,loan,r
+1,f,15,98,raketa,rocket,ракета,loan,b
+1,f,15,99,ʃu,grave,могила,native,b
+1,f,15,100,za,fist,кулак,native,r
+1,f,15,101,paket,package,пакет,loan,r
+1,f,15,102,reɬo,sea,море,native,r
+1,f,15,103,qχota,hand palm,ладонь,native,r
+1,f,15,104,samolʲot,aeroplane,самолет,loan,b
+1,f,15,105,rozʲetka,socket,розетка,loan,b
+1,f,15,106,kolxoz,kolkhoz,колхоз,loan,b
+2,f,53,1,milki,hous,дом,native,b
+2,f,53,2,vaɡon,train wagon,вагон,loan,b
+2,f,53,3,inɡur,window,окно,native,b
+2,f,53,4,ʁats'a,grasshopper,кузнечик,native,b
+2,f,53,5,iʃkapi,cabinet,шкаф,loan,b
+2,f,53,6,haq'u,room,комната,native,r
+2,f,53,7,tʃ'ami,cheese,сыр,native,r
+2,f,53,8,batarejka,battery,батарейка,loan,b
+2,f,53,10,kompjuter,computer,компьютер,loan,b
+2,f,53,12,riʒi,face,лицо,native,r
+2,f,53,13,ts'a,fire,огонь,native,r
+2,f,53,14,priʃepka,clothes-peg,прищепка,loan,b
+2,f,53,15,awʔal,nut,орех,native,r
+2,f,53,16,kirpitʃ,brick,кирпич,loan,b
+2,f,53,17,χur,"field, vegetable garden","поле, огород",native,r
+2,f,53,18,tʃ'itʃ'om,pebble,камешек,native,b
+2,f,53,19,polotsʲentse,towel,полотенце,loan,r
+2,f,53,20,odoruk'a,butterfly,бабочка,native,b
+2,f,53,21,simkarta,SIM,сим-карта,loan,b
+2,f,53,22,kots'i,besom,метла,native,b
+2,f,53,23,ala,lid,крышка,native,r
+2,f,53,24,zatʃetka,student's record-book,зачетка,loan,b
+2,f,53,26,k'azi,headscarf,головной платок,native,r
+2,f,53,27,ts'iq'u,hoar frost,иней,native,b
+2,f,53,29,hark'u,eye,глаз,native,b
+2,f,53,30,rekun,thread,нитка,native,r
+2,f,53,33,ɡurdo,shirt,рубашка,native,r
+2,f,53,34,ɬol,horseshoe,подкова,native,r
+2,f,53,35,tatʃka,wheelbarrow,тачка,loan,r
+2,f,53,36,pult,remote control,пульт,loan,b
+2,f,53,37,telefon,telephon,телефон,loan,r
+2,f,53,38,arkom,spoon,ложка,native,b
+2,f,53,39,kalendarʲ,calendar,календарь,loan,b
+2,f,53,40,zaʒiɡalka,lighter,зажигалка,loan,b
+2,f,53,41,sputnʲik,satellite,спутник,loan,b
+2,f,53,42,zar,ice,лед,native,r
+2,f,53,43,bil,mountain,гора,native,b
+2,f,53,44,provod,wire,провод,loan,r
+2,f,53,45,patʃka,bundle,пачка,loan,r
+2,f,53,47,salfʲetka,napkin,салфетка,loan,r
+2,f,53,48,awʔara,hat,шапка,native,b
+2,f,53,49,aptsʲeka,pharmacy,аптека,loan,b
+2,f,53,51,ts'umur,fork,вилка,native,b
+2,f,53,52,ħetʃ'ink'a,maize,кукуруза,native,r
+2,f,53,53,anzi,snow,снег,native,r
+2,f,53,54,raχasi,chain,цепь,native,r
+2,f,53,55,bint,bandage,бинт,loan,b
+2,f,53,57,rok'o,heart,сердце,native,r
+2,f,53,58,pasport,passport,пасспорт,loan,r
+2,f,53,61,planʲeta,planet,планета,loan,b
+2,f,53,62,romaʃka,camomile,ромашка,loan,r
+2,f,53,63,tarif,tariff,тариф,loan,b
+2,f,53,64,antena,antenna,антенна,loan,b
+2,f,53,65,maʃina,car,машина,loan,b
+2,f,53,66,inχi,river,река,native,b
+2,f,53,68,nitʃo,scythe,коса,native,b
+2,f,53,69,dʒinsɨ,jeans,джинсы,loan,r
+2,f,53,70,ɡol,goal,гол,loan,b
+2,f,53,72,lift,lift,лифт,loan,b
+2,f,53,73,mijar,head,голова,native,r
+2,f,53,75,plastɨrʲ,plaster,пластырь,loan,b
+2,f,53,77,banan,banana,банан,loan,b
+2,f,53,78,ts'ːa,star,звезда,native,r
+2,f,53,79,hunts'ːi,honey,мед,native,r
+2,f,53,81,intʃi,apple,яблоко,native,b
+2,f,53,82,sol,tooth,зуб,native,r
+2,f,53,83,sumka,bag,сумка,loan,b
+2,f,53,84,radio,radio,радио,loan,b
+2,f,53,85,reʃa,tree,дерево,native,r
+2,f,53,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+2,f,53,87,miq'i,road,дорога,native,b
+2,f,53,88,rʲukzak,rucksack,рюкзак,loan,b
+2,f,53,89,"ʔʷen, ʁʷen",horn,рог,native,b
+2,f,53,90,dunɡil,hole,яма,native,b
+2,f,53,91,ʃĩwũ,milk,молоко,native,r
+2,f,53,92,ɬen,water,вода,native,r
+2,f,53,93,ritɬ'i,meat,мясо,native,b
+2,f,53,94,ts'ul,staff,палка,native,r
+2,f,53,95,ʁan,flat cake,лепешка,native,b
+2,f,53,97,bilet,ticket,билет,loan,r
+2,f,53,98,raketa,rocket,ракета,loan,b
+2,f,53,99,ʃu,grave,могила,native,b
+2,f,53,100,za,fist,кулак,native,b
+2,f,53,101,paket,package,пакет,loan,r
+2,f,53,102,reɬo,sea,море,native,r
+2,f,53,103,qχota,hand palm,ладонь,native,r
+2,f,53,104,samolʲot,aeroplane,самолет,loan,b
+2,f,53,105,rozʲetka,socket,розетка,loan,b
+2,f,53,106,kolxoz,kolkhoz,колхоз,loan,b
+3,f,39,1,milki,hous,дом,native,b
+3,f,39,2,vaɡon,train wagon,вагон,loan,b
+3,f,39,3,inɡur,window,окно,native,b
+3,f,39,4,ʁats'a,grasshopper,кузнечик,native,b
+3,f,39,5,iʃkapi,cabinet,шкаф,loan,b
+3,f,39,6,haq'u,room,комната,native,r
+3,f,39,7,tʃ'ami,cheese,сыр,native,r
+3,f,39,8,batarejka,battery,батарейка,loan,b
+3,f,39,10,kompjuter,computer,компьютер,loan,b
+3,f,39,12,riʒi,face,лицо,native,r
+3,f,39,13,ts'a,fire,огонь,native,r
+3,f,39,14,priʃepka,clothes-peg,прищепка,loan,b
+3,f,39,15,awʔal,nut,орех,native,r
+3,f,39,16,kirpitʃ,brick,кирпич,loan,b
+3,f,39,17,χur,"field, vegetable garden","поле, огород",native,r
+3,f,39,18,tʃ'itʃ'om,pebble,камешек,native,b
+3,f,39,19,polotsʲentse,towel,полотенце,loan,r
+3,f,39,20,odoruk'a,butterfly,бабочка,native,b
+3,f,39,21,simkarta,SIM,сим-карта,loan,r
+3,f,39,22,kots'i,besom,метла,native,b
+3,f,39,23,ala,lid,крышка,native,r
+3,f,39,24,zatʃetka,student's record-book,зачетка,loan,b
+3,f,39,26,k'azi,headscarf,головной платок,native,r
+3,f,39,27,ts'iq'u,hoar frost,иней,native,b
+3,f,39,29,hark'u,eye,глаз,native,b
+3,f,39,30,rekun,thread,нитка,native,r
+3,f,39,33,ɡurdo,shirt,рубашка,native,r
+3,f,39,34,ɬol,horseshoe,подкова,native,r
+3,f,39,35,tatʃka,wheelbarrow,тачка,loan,r
+3,f,39,36,pult,remote control,пульт,loan,b
+3,f,39,37,telefon,telephon,телефон,loan,r
+3,f,39,38,arkom,spoon,ложка,native,b
+3,f,39,39,kalendarʲ,calendar,календарь,loan,b
+3,f,39,40,zaʒiɡalka,lighter,зажигалка,loan,b
+3,f,39,41,sputnʲik,satellite,спутник,loan,b
+3,f,39,42,zar,ice,лед,native,r
+3,f,39,43,bil,mountain,гора,native,b
+3,f,39,44,provod,wire,провод,loan,r
+3,f,39,45,patʃka,bundle,пачка,loan,r
+3,f,39,47,salfʲetka,napkin,салфетка,loan,r
+3,f,39,48,awʔara,hat,шапка,native,b
+3,f,39,49,aptsʲeka,pharmacy,аптека,loan,b
+3,f,39,51,ts'umur,fork,вилка,native,b
+3,f,39,52,ħetʃ'ink'a,maize,кукуруза,native,r
+3,f,39,53,anzi,snow,снег,native,r
+3,f,39,54,raχasi,chain,цепь,native,r
+3,f,39,55,bint,bandage,бинт,loan,b
+3,f,39,57,rok'o,heart,сердце,native,r
+3,f,39,58,pasport,passport,пасспорт,loan,r
+3,f,39,61,planʲeta,planet,планета,loan,b
+3,f,39,62,romaʃka,camomile,ромашка,loan,r
+3,f,39,63,tarif,tariff,тариф,loan,b
+3,f,39,64,antena,antenna,антенна,loan,r
+3,f,39,65,maʃina,car,машина,loan,b
+3,f,39,66,inχi,river,река,native,b
+3,f,39,68,nitʃo,scythe,коса,native,b
+3,f,39,69,dʒinsɨ,jeans,джинсы,loan,r
+3,f,39,70,ɡol,goal,гол,loan,r
+3,f,39,72,lift,lift,лифт,loan,b
+3,f,39,73,mijar,head,голова,native,r
+3,f,39,75,plastɨrʲ,plaster,пластырь,loan,b
+3,f,39,77,banan,banana,банан,loan,b
+3,f,39,78,ts'ːa,star,звезда,native,r
+3,f,39,79,hunts'ːi,honey,мед,native,r
+3,f,39,81,intʃi,apple,яблоко,native,b
+3,f,39,82,sol,tooth,зуб,native,r
+3,f,39,83,sumka,bag,сумка,loan,b
+3,f,39,84,radio,radio,радио,loan,b
+3,f,39,85,reʃa,tree,дерево,native,r
+3,f,39,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+3,f,39,87,miq'i,road,дорога,native,b
+3,f,39,88,rʲukzak,rucksack,рюкзак,loan,b
+3,f,39,89,"ʔʷen, ʁʷen",horn,рог,native,b
+3,f,39,90,dunɡil,hole,яма,native,b
+3,f,39,91,ʃĩwũ,milk,молоко,native,r
+3,f,39,92,ɬen,water,вода,native,r
+3,f,39,93,ritɬ'i,meat,мясо,native,b
+3,f,39,94,ts'ul,staff,палка,native,r
+3,f,39,95,ʁan,flat cake,лепешка,native,b
+3,f,39,97,bilet,ticket,билет,loan,r
+3,f,39,98,raketa,rocket,ракета,loan,b
+3,f,39,99,ʃu,grave,могила,native,b
+3,f,39,100,za,fist,кулак,native,b
+3,f,39,101,paket,package,пакет,loan,r
+3,f,39,102,reɬo,sea,море,native,r
+3,f,39,103,qχota,hand palm,ладонь,native,r
+3,f,39,104,samolʲot,aeroplane,самолет,loan,b
+3,f,39,105,rozʲetka,socket,розетка,loan,b
+3,f,39,106,kolxoz,kolkhoz,колхоз,loan,b
+4,m,59,1,milki,hous,дом,native,b
+4,m,59,2,vaɡon,train wagon,вагон,loan,b
+4,m,59,3,inɡur,window,окно,native,b
+4,m,59,4,ʁats'a,grasshopper,кузнечик,native,b
+4,m,59,5,iʃkapi,cabinet,шкаф,loan,b
+4,m,59,6,haq'u,room,комната,native,r
+4,m,59,7,tʃ'ami,cheese,сыр,native,r
+4,m,59,8,batarejka,battery,батарейка,loan,b
+4,m,59,10,kompjuter,computer,компьютер,loan,b
+4,m,59,12,riʒi,face,лицо,native,r
+4,m,59,13,ts'a,fire,огонь,native,r
+4,m,59,14,priʃepka,clothes-peg,прищепка,loan,b
+4,m,59,15,awʔal,nut,орех,native,r
+4,m,59,16,kirpitʃ,brick,кирпич,loan,b
+4,m,59,17,χur,"field, vegetable garden","поле, огород",native,r
+4,m,59,18,tʃ'itʃ'om,pebble,камешек,native,b
+4,m,59,19,polotsʲentse,towel,полотенце,loan,r
+4,m,59,20,odoruk'a,butterfly,бабочка,native,r
+4,m,59,21,simkarta,SIM,сим-карта,loan,b
+4,m,59,22,kots'i,besom,метла,native,b
+4,m,59,23,ala,lid,крышка,native,r
+4,m,59,24,zatʃetka,student's record-book,зачетка,loan,r
+4,m,59,26,k'azi,headscarf,головной платок,native,r
+4,m,59,27,ts'iq'u,hoar frost,иней,native,b
+4,m,59,29,hark'u,eye,глаз,native,b
+4,m,59,30,rekun,thread,нитка,native,r
+4,m,59,33,ɡurdo,shirt,рубашка,native,r
+4,m,59,34,ɬol,horseshoe,подкова,native,r
+4,m,59,35,tatʃka,wheelbarrow,тачка,loan,r
+4,m,59,36,pult,remote control,пульт,loan,b
+4,m,59,37,telefon,telephon,телефон,loan,r
+4,m,59,38,arkom,spoon,ложка,native,b
+4,m,59,39,kalendarʲ,calendar,календарь,loan,b
+4,m,59,40,zaʒiɡalka,lighter,зажигалка,loan,b
+4,m,59,41,sputnʲik,satellite,спутник,loan,b
+4,m,59,42,zar,ice,лед,native,r
+4,m,59,43,bil,mountain,гора,native,b
+4,m,59,44,provod,wire,провод,loan,r
+4,m,59,45,patʃka,bundle,пачка,loan,b
+4,m,59,47,salfʲetka,napkin,салфетка,loan,r
+4,m,59,48,awʔara,hat,шапка,native,b
+4,m,59,49,aptsʲeka,pharmacy,аптека,loan,b
+4,m,59,51,ts'umur,fork,вилка,native,b
+4,m,59,52,ħetʃ'ink'a,maize,кукуруза,native,r
+4,m,59,53,anzi,snow,снег,native,r
+4,m,59,54,raχasi,chain,цепь,native,r
+4,m,59,55,bint,bandage,бинт,loan,b
+4,m,59,57,rok'o,heart,сердце,native,r
+4,m,59,58,pasport,passport,пасспорт,loan,r
+4,m,59,61,planʲeta,planet,планета,loan,b
+4,m,59,62,romaʃka,camomile,ромашка,loan,r
+4,m,59,63,tarif,tariff,тариф,loan,b
+4,m,59,64,antena,antenna,антенна,loan,r
+4,m,59,65,maʃina,car,машина,loan,b
+4,m,59,66,inχi,river,река,native,b
+4,m,59,68,nitʃo,scythe,коса,native,b
+4,m,59,69,dʒinsɨ,jeans,джинсы,loan,r
+4,m,59,70,ɡol,goal,гол,loan,b
+4,m,59,72,lift,lift,лифт,loan,b
+4,m,59,73,mijar,head,голова,native,r
+4,m,59,75,plastɨrʲ,plaster,пластырь,loan,r
+4,m,59,77,banan,banana,банан,loan,b
+4,m,59,78,ts'ːa,star,звезда,native,r
+4,m,59,79,hunts'ːi,honey,мед,native,r
+4,m,59,81,intʃi,apple,яблоко,native,b
+4,m,59,82,sol,tooth,зуб,native,r
+4,m,59,83,sumka,bag,сумка,loan,b
+4,m,59,84,radio,radio,радио,loan,b
+4,m,59,85,reʃa,tree,дерево,native,r
+4,m,59,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+4,m,59,87,miq'i,road,дорога,native,b
+4,m,59,88,rʲukzak,rucksack,рюкзак,loan,b
+4,m,59,89,"ʔʷen, ʁʷen",horn,рог,native,b
+4,m,59,90,dunɡil,hole,яма,native,b
+4,m,59,91,ʃĩwũ,milk,молоко,native,r
+4,m,59,92,ɬen,water,вода,native,r
+4,m,59,93,ritɬ'i,meat,мясо,native,b
+4,m,59,94,ts'ul,staff,палка,native,r
+4,m,59,95,ʁan,flat cake,лепешка,native,b
+4,m,59,97,bilet,ticket,билет,loan,r
+4,m,59,98,raketa,rocket,ракета,loan,b
+4,m,59,99,ʃu,grave,могила,native,b
+4,m,59,100,za,fist,кулак,native,b
+4,m,59,101,paket,package,пакет,loan,r
+4,m,59,102,reɬo,sea,море,native,r
+4,m,59,103,qχota,hand palm,ладонь,native,b
+4,m,59,104,samolʲot,aeroplane,самолет,loan,b
+4,m,59,105,rozʲetka,socket,розетка,loan,b
+4,m,59,106,kolxoz,kolkhoz,колхоз,loan,b
+5,m,48,1,milki,hous,дом,native,b
+5,m,48,2,vaɡon,train wagon,вагон,loan,b
+5,m,48,3,inɡur,window,окно,native,b
+5,m,48,4,ʁats'a,grasshopper,кузнечик,native,b
+5,m,48,5,iʃkapi,cabinet,шкаф,loan,b
+5,m,48,6,haq'u,room,комната,native,r
+5,m,48,7,tʃ'ami,cheese,сыр,native,r
+5,m,48,8,batarejka,battery,батарейка,loan,b
+5,m,48,10,kompjuter,computer,компьютер,loan,b
+5,m,48,12,riʒi,face,лицо,native,r
+5,m,48,13,ts'a,fire,огонь,native,r
+5,m,48,14,priʃepka,clothes-peg,прищепка,loan,b
+5,m,48,15,awʔal,nut,орех,native,r
+5,m,48,16,kirpitʃ,brick,кирпич,loan,b
+5,m,48,17,χur,"field, vegetable garden","поле, огород",native,b
+5,m,48,18,tʃ'itʃ'om,pebble,камешек,native,b
+5,m,48,19,polotsʲentse,towel,полотенце,loan,r
+5,m,48,20,odoruk'a,butterfly,бабочка,native,b
+5,m,48,21,simkarta,SIM,сим-карта,loan,r
+5,m,48,22,kots'i,besom,метла,native,b
+5,m,48,23,ala,lid,крышка,native,r
+5,m,48,24,zatʃetka,student's record-book,зачетка,loan,r
+5,m,48,26,k'azi,headscarf,головной платок,native,r
+5,m,48,27,ts'iq'u,hoar frost,иней,native,b
+5,m,48,29,hark'u,eye,глаз,native,b
+5,m,48,30,rekun,thread,нитка,native,r
+5,m,48,33,ɡurdo,shirt,рубашка,native,r
+5,m,48,34,ɬol,horseshoe,подкова,native,r
+5,m,48,35,tatʃka,wheelbarrow,тачка,loan,r
+5,m,48,36,pult,remote control,пульт,loan,b
+5,m,48,37,telefon,telephon,телефон,loan,r
+5,m,48,38,arkom,spoon,ложка,native,b
+5,m,48,39,kalendarʲ,calendar,календарь,loan,b
+5,m,48,40,zaʒiɡalka,lighter,зажигалка,loan,b
+5,m,48,41,sputnʲik,satellite,спутник,loan,b
+5,m,48,42,zar,ice,лед,native,r
+5,m,48,43,bil,mountain,гора,native,b
+5,m,48,44,provod,wire,провод,loan,r
+5,m,48,45,patʃka,bundle,пачка,loan,r
+5,m,48,47,salfʲetka,napkin,салфетка,loan,r
+5,m,48,48,awʔara,hat,шапка,native,b
+5,m,48,49,aptsʲeka,pharmacy,аптека,loan,b
+5,m,48,51,ts'umur,fork,вилка,native,b
+5,m,48,52,ħetʃ'ink'a,maize,кукуруза,native,r
+5,m,48,53,anzi,snow,снег,native,r
+5,m,48,54,raχasi,chain,цепь,native,r
+5,m,48,55,bint,bandage,бинт,loan,b
+5,m,48,57,rok'o,heart,сердце,native,r
+5,m,48,58,pasport,passport,пасспорт,loan,r
+5,m,48,61,planʲeta,planet,планета,loan,b
+5,m,48,62,romaʃka,camomile,ромашка,loan,r
+5,m,48,63,tarif,tariff,тариф,loan,b
+5,m,48,64,antena,antenna,антенна,loan,r
+5,m,48,65,maʃina,car,машина,loan,b
+5,m,48,66,inχi,river,река,native,b
+5,m,48,68,nitʃo,scythe,коса,native,b
+5,m,48,69,dʒinsɨ,jeans,джинсы,loan,r
+5,m,48,70,ɡol,goal,гол,loan,b
+5,m,48,72,lift,lift,лифт,loan,b
+5,m,48,73,mijar,head,голова,native,r
+5,m,48,75,plastɨrʲ,plaster,пластырь,loan,r
+5,m,48,77,banan,banana,банан,loan,b
+5,m,48,78,ts'ːa,star,звезда,native,r
+5,m,48,79,hunts'ːi,honey,мед,native,r
+5,m,48,81,intʃi,apple,яблоко,native,b
+5,m,48,82,sol,tooth,зуб,native,r
+5,m,48,83,sumka,bag,сумка,loan,b
+5,m,48,84,radio,radio,радио,loan,b
+5,m,48,85,reʃa,tree,дерево,native,r
+5,m,48,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+5,m,48,87,miq'i,road,дорога,native,b
+5,m,48,88,rʲukzak,rucksack,рюкзак,loan,b
+5,m,48,89,"ʔʷen, ʁʷen",horn,рог,native,b
+5,m,48,90,dunɡil,hole,яма,native,b
+5,m,48,91,ʃĩwũ,milk,молоко,native,r
+5,m,48,92,ɬen,water,вода,native,r
+5,m,48,93,ritɬ'i,meat,мясо,native,b
+5,m,48,94,ts'ul,staff,палка,native,r
+5,m,48,95,ʁan,flat cake,лепешка,native,b
+5,m,48,97,bilet,ticket,билет,loan,r
+5,m,48,98,raketa,rocket,ракета,loan,b
+5,m,48,99,ʃu,grave,могила,native,b
+5,m,48,100,za,fist,кулак,native,b
+5,m,48,101,paket,package,пакет,loan,r
+5,m,48,102,reɬo,sea,море,native,r
+5,m,48,103,qχota,hand palm,ладонь,native,r
+5,m,48,104,samolʲot,aeroplane,самолет,loan,b
+5,m,48,105,rozʲetka,socket,розетка,loan,b
+5,m,48,106,kolxoz,kolkhoz,колхоз,loan,b
+6,m,13,1,milki,hous,дом,native,b
+6,m,13,2,vaɡon,train wagon,вагон,loan,b
+6,m,13,3,inɡur,window,окно,native,b
+6,m,13,4,ʁats'a,grasshopper,кузнечик,native,b
+6,m,13,5,iʃkapi,cabinet,шкаф,loan,b
+6,m,13,6,haq'u,room,комната,native,r
+6,m,13,7,tʃ'ami,cheese,сыр,native,r
+6,m,13,8,batarejka,battery,батарейка,loan,b
+6,m,13,10,kompjuter,computer,компьютер,loan,b
+6,m,13,12,riʒi,face,лицо,native,r
+6,m,13,13,ts'a,fire,огонь,native,r
+6,m,13,14,priʃepka,clothes-peg,прищепка,loan,b
+6,m,13,15,awʔal,nut,орех,native,r
+6,m,13,16,kirpitʃ,brick,кирпич,loan,b
+6,m,13,17,χur,"field, vegetable garden","поле, огород",native,r
+6,m,13,18,tʃ'itʃ'om,pebble,камешек,native,b
+6,m,13,19,polotsʲentse,towel,полотенце,loan,r
+6,m,13,20,odoruk'a,butterfly,бабочка,native,r
+6,m,13,21,simkarta,SIM,сим-карта,loan,r
+6,m,13,22,kots'i,besom,метла,native,b
+6,m,13,23,ala,lid,крышка,native,r
+6,m,13,24,zatʃetka,student's record-book,зачетка,loan,r
+6,m,13,26,k'azi,headscarf,головной платок,native,r
+6,m,13,27,ts'iq'u,hoar frost,иней,native,b
+6,m,13,29,hark'u,eye,глаз,native,b
+6,m,13,30,rekun,thread,нитка,native,r
+6,m,13,33,ɡurdo,shirt,рубашка,native,r
+6,m,13,34,ɬol,horseshoe,подкова,native,r
+6,m,13,35,tatʃka,wheelbarrow,тачка,loan,r
+6,m,13,36,pult,remote control,пульт,loan,b
+6,m,13,37,telefon,telephon,телефон,loan,r
+6,m,13,38,arkom,spoon,ложка,native,b
+6,m,13,39,kalendarʲ,calendar,календарь,loan,r
+6,m,13,40,zaʒiɡalka,lighter,зажигалка,loan,b
+6,m,13,41,sputnʲik,satellite,спутник,loan,b
+6,m,13,42,zar,ice,лед,native,r
+6,m,13,43,bil,mountain,гора,native,b
+6,m,13,44,provod,wire,провод,loan,r
+6,m,13,45,patʃka,bundle,пачка,loan,r
+6,m,13,47,salfʲetka,napkin,салфетка,loan,r
+6,m,13,48,awʔara,hat,шапка,native,b
+6,m,13,49,aptsʲeka,pharmacy,аптека,loan,b
+6,m,13,51,ts'umur,fork,вилка,native,b
+6,m,13,52,ħetʃ'ink'a,maize,кукуруза,native,r
+6,m,13,53,anzi,snow,снег,native,r
+6,m,13,54,raχasi,chain,цепь,native,r
+6,m,13,55,bint,bandage,бинт,loan,b
+6,m,13,57,rok'o,heart,сердце,native,r
+6,m,13,58,pasport,passport,пасспорт,loan,r
+6,m,13,61,planʲeta,planet,планета,loan,b
+6,m,13,62,romaʃka,camomile,ромашка,loan,r
+6,m,13,63,tarif,tariff,тариф,loan,b
+6,m,13,64,antena,antenna,антенна,loan,b
+6,m,13,65,maʃina,car,машина,loan,b
+6,m,13,66,inχi,river,река,native,b
+6,m,13,68,nitʃo,scythe,коса,native,b
+6,m,13,69,dʒinsɨ,jeans,джинсы,loan,r
+6,m,13,70,ɡol,goal,гол,loan,r
+6,m,13,72,lift,lift,лифт,loan,r
+6,m,13,73,mijar,head,голова,native,r
+6,m,13,75,plastɨrʲ,plaster,пластырь,loan,b
+6,m,13,77,banan,banana,банан,loan,b
+6,m,13,78,ts'ːa,star,звезда,native,r
+6,m,13,79,hunts'ːi,honey,мед,native,r
+6,m,13,81,intʃi,apple,яблоко,native,b
+6,m,13,82,sol,tooth,зуб,native,r
+6,m,13,83,sumka,bag,сумка,loan,b
+6,m,13,84,radio,radio,радио,loan,b
+6,m,13,85,reʃa,tree,дерево,native,r
+6,m,13,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+6,m,13,87,miq'i,road,дорога,native,b
+6,m,13,88,rʲukzak,rucksack,рюкзак,loan,b
+6,m,13,89,"ʔʷen, ʁʷen",horn,рог,native,b
+6,m,13,90,dunɡil,hole,яма,native,b
+6,m,13,91,ʃĩwũ,milk,молоко,native,r
+6,m,13,92,ɬen,water,вода,native,r
+6,m,13,93,ritɬ'i,meat,мясо,native,b
+6,m,13,94,ts'ul,staff,палка,native,r
+6,m,13,95,ʁan,flat cake,лепешка,native,b
+6,m,13,97,bilet,ticket,билет,loan,b
+6,m,13,98,raketa,rocket,ракета,loan,r
+6,m,13,99,ʃu,grave,могила,native,b
+6,m,13,100,za,fist,кулак,native,b
+6,m,13,101,paket,package,пакет,loan,r
+6,m,13,102,reɬo,sea,море,native,r
+6,m,13,103,qχota,hand palm,ладонь,native,r
+6,m,13,104,samolʲot,aeroplane,самолет,loan,b
+6,m,13,105,rozʲetka,socket,розетка,loan,b
+6,m,13,106,kolxoz,kolkhoz,колхоз,loan,b
+7,m,19,1,milki,hous,дом,native,b
+7,m,19,2,vaɡon,train wagon,вагон,loan,r
+7,m,19,3,inɡur,window,окно,native,b
+7,m,19,4,ʁats'a,grasshopper,кузнечик,native,b
+7,m,19,5,iʃkapi,cabinet,шкаф,loan,b
+7,m,19,6,haq'u,room,комната,native,r
+7,m,19,7,tʃ'ami,cheese,сыр,native,r
+7,m,19,8,batarejka,battery,батарейка,loan,b
+7,m,19,10,kompjuter,computer,компьютер,loan,b
+7,m,19,12,riʒi,face,лицо,native,r
+7,m,19,13,ts'a,fire,огонь,native,r
+7,m,19,14,priʃepka,clothes-peg,прищепка,loan,b
+7,m,19,15,awʔal,nut,орех,native,r
+7,m,19,16,kirpitʃ,brick,кирпич,loan,b
+7,m,19,17,χur,"field, vegetable garden","поле, огород",native,r
+7,m,19,18,tʃ'itʃ'om,pebble,камешек,native,b
+7,m,19,19,polotsʲentse,towel,полотенце,loan,r
+7,m,19,20,odoruk'a,butterfly,бабочка,native,b
+7,m,19,21,simkarta,SIM,сим-карта,loan,r
+7,m,19,22,kots'i,besom,метла,native,b
+7,m,19,23,ala,lid,крышка,native,r
+7,m,19,24,zatʃetka,student's record-book,зачетка,loan,r
+7,m,19,26,k'azi,headscarf,головной платок,native,r
+7,m,19,27,ts'iq'u,hoar frost,иней,native,b
+7,m,19,29,hark'u,eye,глаз,native,b
+7,m,19,30,rekun,thread,нитка,native,r
+7,m,19,33,ɡurdo,shirt,рубашка,native,r
+7,m,19,34,ɬol,horseshoe,подкова,native,r
+7,m,19,35,tatʃka,wheelbarrow,тачка,loan,r
+7,m,19,36,pult,remote control,пульт,loan,b
+7,m,19,37,telefon,telephon,телефон,loan,r
+7,m,19,38,arkom,spoon,ложка,native,b
+7,m,19,39,kalendarʲ,calendar,календарь,loan,r
+7,m,19,40,zaʒiɡalka,lighter,зажигалка,loan,b
+7,m,19,41,sputnʲik,satellite,спутник,loan,b
+7,m,19,42,zar,ice,лед,native,r
+7,m,19,43,bil,mountain,гора,native,b
+7,m,19,44,provod,wire,провод,loan,r
+7,m,19,45,patʃka,bundle,пачка,loan,r
+7,m,19,47,salfʲetka,napkin,салфетка,loan,r
+7,m,19,48,awʔara,hat,шапка,native,b
+7,m,19,49,aptsʲeka,pharmacy,аптека,loan,b
+7,m,19,51,ts'umur,fork,вилка,native,b
+7,m,19,52,ħetʃ'ink'a,maize,кукуруза,native,r
+7,m,19,53,anzi,snow,снег,native,r
+7,m,19,54,raχasi,chain,цепь,native,r
+7,m,19,55,bint,bandage,бинт,loan,b
+7,m,19,57,rok'o,heart,сердце,native,r
+7,m,19,58,pasport,passport,пасспорт,loan,r
+7,m,19,61,planʲeta,planet,планета,loan,b
+7,m,19,62,romaʃka,camomile,ромашка,loan,r
+7,m,19,63,tarif,tariff,тариф,loan,b
+7,m,19,64,antena,antenna,антенна,loan,r
+7,m,19,65,maʃina,car,машина,loan,b
+7,m,19,66,inχi,river,река,native,b
+7,m,19,68,nitʃo,scythe,коса,native,b
+7,m,19,69,dʒinsɨ,jeans,джинсы,loan,r
+7,m,19,70,ɡol,goal,гол,loan,r
+7,m,19,72,lift,lift,лифт,loan,b
+7,m,19,73,mijar,head,голова,native,r
+7,m,19,75,plastɨrʲ,plaster,пластырь,loan,b
+7,m,19,77,banan,banana,банан,loan,b
+7,m,19,78,ts'ːa,star,звезда,native,r
+7,m,19,79,hunts'ːi,honey,мед,native,r
+7,m,19,81,intʃi,apple,яблоко,native,b
+7,m,19,82,sol,tooth,зуб,native,r
+7,m,19,83,sumka,bag,сумка,loan,b
+7,m,19,84,radio,radio,радио,loan,b
+7,m,19,85,reʃa,tree,дерево,native,r
+7,m,19,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+7,m,19,87,miq'i,road,дорога,native,b
+7,m,19,88,rʲukzak,rucksack,рюкзак,loan,b
+7,m,19,89,"ʔʷen, ʁʷen",horn,рог,native,b
+7,m,19,90,dunɡil,hole,яма,native,b
+7,m,19,91,ʃĩwũ,milk,молоко,native,r
+7,m,19,92,ɬen,water,вода,native,r
+7,m,19,93,ritɬ'i,meat,мясо,native,b
+7,m,19,94,ts'ul,staff,палка,native,r
+7,m,19,95,ʁan,flat cake,лепешка,native,b
+7,m,19,97,bilet,ticket,билет,loan,r
+7,m,19,98,raketa,rocket,ракета,loan,b
+7,m,19,99,ʃu,grave,могила,native,b
+7,m,19,100,za,fist,кулак,native,b
+7,m,19,101,paket,package,пакет,loan,r
+7,m,19,102,reɬo,sea,море,native,r
+7,m,19,103,qχota,hand palm,ладонь,native,r
+7,m,19,104,samolʲot,aeroplane,самолет,loan,b
+7,m,19,105,rozʲetka,socket,розетка,loan,b
+7,m,19,106,kolxoz,kolkhoz,колхоз,loan,b
+8,f,29,1,milki,hous,дом,native,b
+8,f,29,2,vaɡon,train wagon,вагон,loan,r
+8,f,29,3,inɡur,window,окно,native,b
+8,f,29,4,ʁats'a,grasshopper,кузнечик,native,b
+8,f,29,5,iʃkapi,cabinet,шкаф,loan,b
+8,f,29,6,haq'u,room,комната,native,r
+8,f,29,7,tʃ'ami,cheese,сыр,native,r
+8,f,29,8,batarejka,battery,батарейка,loan,b
+8,f,29,10,kompjuter,computer,компьютер,loan,b
+8,f,29,12,riʒi,face,лицо,native,r
+8,f,29,13,ts'a,fire,огонь,native,r
+8,f,29,14,priʃepka,clothes-peg,прищепка,loan,b
+8,f,29,15,awʔal,nut,орех,native,r
+8,f,29,16,kirpitʃ,brick,кирпич,loan,b
+8,f,29,17,χur,"field, vegetable garden","поле, огород",native,r
+8,f,29,18,tʃ'itʃ'om,pebble,камешек,native,b
+8,f,29,19,polotsʲentse,towel,полотенце,loan,r
+8,f,29,20,odoruk'a,butterfly,бабочка,native,b
+8,f,29,21,simkarta,SIM,сим-карта,loan,r
+8,f,29,22,kots'i,besom,метла,native,b
+8,f,29,23,ala,lid,крышка,native,r
+8,f,29,24,zatʃetka,student's record-book,зачетка,loan,b
+8,f,29,26,k'azi,headscarf,головной платок,native,r
+8,f,29,27,ts'iq'u,hoar frost,иней,native,b
+8,f,29,29,hark'u,eye,глаз,native,b
+8,f,29,30,rekun,thread,нитка,native,r
+8,f,29,33,ɡurdo,shirt,рубашка,native,r
+8,f,29,34,ɬol,horseshoe,подкова,native,r
+8,f,29,35,tatʃka,wheelbarrow,тачка,loan,r
+8,f,29,36,pult,remote control,пульт,loan,b
+8,f,29,37,telefon,telephon,телефон,loan,r
+8,f,29,38,arkom,spoon,ложка,native,b
+8,f,29,39,kalendarʲ,calendar,календарь,loan,b
+8,f,29,40,zaʒiɡalka,lighter,зажигалка,loan,b
+8,f,29,41,sputnʲik,satellite,спутник,loan,r
+8,f,29,42,zar,ice,лед,native,r
+8,f,29,43,bil,mountain,гора,native,b
+8,f,29,44,provod,wire,провод,loan,b
+8,f,29,45,patʃka,bundle,пачка,loan,r
+8,f,29,47,salfʲetka,napkin,салфетка,loan,r
+8,f,29,48,awʔara,hat,шапка,native,b
+8,f,29,49,aptsʲeka,pharmacy,аптека,loan,b
+8,f,29,51,ts'umur,fork,вилка,native,b
+8,f,29,52,ħetʃ'ink'a,maize,кукуруза,native,r
+8,f,29,53,anzi,snow,снег,native,r
+8,f,29,54,raχasi,chain,цепь,native,r
+8,f,29,55,bint,bandage,бинт,loan,b
+8,f,29,57,rok'o,heart,сердце,native,r
+8,f,29,58,pasport,passport,пасспорт,loan,r
+8,f,29,61,planʲeta,planet,планета,loan,b
+8,f,29,62,romaʃka,camomile,ромашка,loan,r
+8,f,29,63,tarif,tariff,тариф,loan,b
+8,f,29,64,antena,antenna,антенна,loan,b
+8,f,29,65,maʃina,car,машина,loan,b
+8,f,29,66,inχi,river,река,native,b
+8,f,29,68,nitʃo,scythe,коса,native,b
+8,f,29,69,dʒinsɨ,jeans,джинсы,loan,r
+8,f,29,70,ɡol,goal,гол,loan,r
+8,f,29,72,lift,lift,лифт,loan,b
+8,f,29,73,mijar,head,голова,native,r
+8,f,29,75,plastɨrʲ,plaster,пластырь,loan,b
+8,f,29,77,banan,banana,банан,loan,b
+8,f,29,78,ts'ːa,star,звезда,native,r
+8,f,29,79,hunts'ːi,honey,мед,native,r
+8,f,29,81,intʃi,apple,яблоко,native,b
+8,f,29,82,sol,tooth,зуб,native,r
+8,f,29,83,sumka,bag,сумка,loan,b
+8,f,29,84,radio,radio,радио,loan,b
+8,f,29,85,reʃa,tree,дерево,native,r
+8,f,29,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+8,f,29,87,miq'i,road,дорога,native,b
+8,f,29,88,rʲukzak,rucksack,рюкзак,loan,b
+8,f,29,89,"ʔʷen, ʁʷen",horn,рог,native,b
+8,f,29,90,dunɡil,hole,яма,native,b
+8,f,29,91,ʃĩwũ,milk,молоко,native,r
+8,f,29,92,ɬen,water,вода,native,r
+8,f,29,93,ritɬ'i,meat,мясо,native,b
+8,f,29,94,ts'ul,staff,палка,native,r
+8,f,29,95,ʁan,flat cake,лепешка,native,b
+8,f,29,97,bilet,ticket,билет,loan,r
+8,f,29,98,raketa,rocket,ракета,loan,b
+8,f,29,99,ʃu,grave,могила,native,b
+8,f,29,100,za,fist,кулак,native,b
+8,f,29,101,paket,package,пакет,loan,r
+8,f,29,102,reɬo,sea,море,native,r
+8,f,29,103,qχota,hand palm,ладонь,native,r
+8,f,29,104,samolʲot,aeroplane,самолет,loan,b
+8,f,29,105,rozʲetka,socket,розетка,loan,b
+8,f,29,106,kolxoz,kolkhoz,колхоз,loan,b
+9,f,23,1,milki,hous,дом,native,b
+9,f,23,2,vaɡon,train wagon,вагон,loan,b
+9,f,23,3,inɡur,window,окно,native,b
+9,f,23,4,ʁats'a,grasshopper,кузнечик,native,b
+9,f,23,5,iʃkapi,cabinet,шкаф,loan,b
+9,f,23,6,haq'u,room,комната,native,r
+9,f,23,7,tʃ'ami,cheese,сыр,native,r
+9,f,23,8,batarejka,battery,батарейка,loan,b
+9,f,23,10,kompjuter,computer,компьютер,loan,b
+9,f,23,12,riʒi,face,лицо,native,r
+9,f,23,13,ts'a,fire,огонь,native,r
+9,f,23,14,priʃepka,clothes-peg,прищепка,loan,b
+9,f,23,15,awʔal,nut,орех,native,r
+9,f,23,16,kirpitʃ,brick,кирпич,loan,b
+9,f,23,17,χur,"field, vegetable garden","поле, огород",native,r
+9,f,23,18,tʃ'itʃ'om,pebble,камешек,native,b
+9,f,23,19,polotsʲentse,towel,полотенце,loan,r
+9,f,23,20,odoruk'a,butterfly,бабочка,native,b
+9,f,23,21,simkarta,SIM,сим-карта,loan,r
+9,f,23,22,kots'i,besom,метла,native,b
+9,f,23,23,ala,lid,крышка,native,r
+9,f,23,24,zatʃetka,student's record-book,зачетка,loan,r
+9,f,23,26,k'azi,headscarf,головной платок,native,r
+9,f,23,27,ts'iq'u,hoar frost,иней,native,b
+9,f,23,29,hark'u,eye,глаз,native,b
+9,f,23,30,rekun,thread,нитка,native,r
+9,f,23,33,ɡurdo,shirt,рубашка,native,r
+9,f,23,34,ɬol,horseshoe,подкова,native,r
+9,f,23,35,tatʃka,wheelbarrow,тачка,loan,r
+9,f,23,36,pult,remote control,пульт,loan,b
+9,f,23,37,telefon,telephon,телефон,loan,r
+9,f,23,38,arkom,spoon,ложка,native,b
+9,f,23,39,kalendarʲ,calendar,календарь,loan,r
+9,f,23,40,zaʒiɡalka,lighter,зажигалка,loan,b
+9,f,23,41,sputnʲik,satellite,спутник,loan,r
+9,f,23,42,zar,ice,лед,native,r
+9,f,23,43,bil,mountain,гора,native,b
+9,f,23,44,provod,wire,провод,loan,b
+9,f,23,45,patʃka,bundle,пачка,loan,r
+9,f,23,47,salfʲetka,napkin,салфетка,loan,r
+9,f,23,48,awʔara,hat,шапка,native,b
+9,f,23,49,aptsʲeka,pharmacy,аптека,loan,b
+9,f,23,51,ts'umur,fork,вилка,native,b
+9,f,23,52,ħetʃ'ink'a,maize,кукуруза,native,r
+9,f,23,53,anzi,snow,снег,native,r
+9,f,23,54,raχasi,chain,цепь,native,r
+9,f,23,55,bint,bandage,бинт,loan,b
+9,f,23,57,rok'o,heart,сердце,native,r
+9,f,23,58,pasport,passport,пасспорт,loan,r
+9,f,23,61,planʲeta,planet,планета,loan,b
+9,f,23,62,romaʃka,camomile,ромашка,loan,r
+9,f,23,63,tarif,tariff,тариф,loan,b
+9,f,23,64,antena,antenna,антенна,loan,r
+9,f,23,65,maʃina,car,машина,loan,b
+9,f,23,66,inχi,river,река,native,b
+9,f,23,68,nitʃo,scythe,коса,native,b
+9,f,23,69,dʒinsɨ,jeans,джинсы,loan,r
+9,f,23,70,ɡol,goal,гол,loan,r
+9,f,23,72,lift,lift,лифт,loan,b
+9,f,23,73,mijar,head,голова,native,r
+9,f,23,75,plastɨrʲ,plaster,пластырь,loan,b
+9,f,23,77,banan,banana,банан,loan,b
+9,f,23,78,ts'ːa,star,звезда,native,r
+9,f,23,79,hunts'ːi,honey,мед,native,r
+9,f,23,81,intʃi,apple,яблоко,native,b
+9,f,23,82,sol,tooth,зуб,native,r
+9,f,23,83,sumka,bag,сумка,loan,b
+9,f,23,84,radio,radio,радио,loan,b
+9,f,23,85,reʃa,tree,дерево,native,r
+9,f,23,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+9,f,23,87,miq'i,road,дорога,native,b
+9,f,23,88,rʲukzak,rucksack,рюкзак,loan,b
+9,f,23,89,"ʔʷen, ʁʷen",horn,рог,native,b
+9,f,23,90,dunɡil,hole,яма,native,b
+9,f,23,91,ʃĩwũ,milk,молоко,native,r
+9,f,23,92,ɬen,water,вода,native,r
+9,f,23,93,ritɬ'i,meat,мясо,native,b
+9,f,23,94,ts'ul,staff,палка,native,r
+9,f,23,95,ʁan,flat cake,лепешка,native,b
+9,f,23,97,bilet,ticket,билет,loan,r
+9,f,23,98,raketa,rocket,ракета,loan,b
+9,f,23,99,ʃu,grave,могила,native,b
+9,f,23,100,za,fist,кулак,native,b
+9,f,23,101,paket,package,пакет,loan,r
+9,f,23,102,reɬo,sea,море,native,r
+9,f,23,103,qχota,hand palm,ладонь,native,r
+9,f,23,104,samolʲot,aeroplane,самолет,loan,b
+9,f,23,105,rozʲetka,socket,розетка,loan,b
+9,f,23,106,kolxoz,kolkhoz,колхоз,loan,b
+10,m,60,1,milki,hous,дом,native,b
+10,m,60,2,vaɡon,train wagon,вагон,loan,b
+10,m,60,3,inɡur,window,окно,native,b
+10,m,60,4,ʁats'a,grasshopper,кузнечик,native,b
+10,m,60,5,iʃkapi,cabinet,шкаф,loan,b
+10,m,60,6,haq'u,room,комната,native,r
+10,m,60,7,tʃ'ami,cheese,сыр,native,r
+10,m,60,8,batarejka,battery,батарейка,loan,b
+10,m,60,10,kompjuter,computer,компьютер,loan,b
+10,m,60,12,riʒi,face,лицо,native,r
+10,m,60,13,ts'a,fire,огонь,native,r
+10,m,60,14,priʃepka,clothes-peg,прищепка,loan,b
+10,m,60,15,awʔal,nut,орех,native,r
+10,m,60,16,kirpitʃ,brick,кирпич,loan,b
+10,m,60,17,χur,"field, vegetable garden","поле, огород",native,r
+10,m,60,18,tʃ'itʃ'om,pebble,камешек,native,b
+10,m,60,19,polotsʲentse,towel,полотенце,loan,r
+10,m,60,20,odoruk'a,butterfly,бабочка,native,r
+10,m,60,21,simkarta,SIM,сим-карта,loan,b
+10,m,60,22,kots'i,besom,метла,native,b
+10,m,60,23,ala,lid,крышка,native,r
+10,m,60,24,zatʃetka,student's record-book,зачетка,loan,r
+10,m,60,26,k'azi,headscarf,головной платок,native,r
+10,m,60,27,ts'iq'u,hoar frost,иней,native,b
+10,m,60,29,hark'u,eye,глаз,native,b
+10,m,60,30,rekun,thread,нитка,native,r
+10,m,60,33,ɡurdo,shirt,рубашка,native,r
+10,m,60,34,ɬol,horseshoe,подкова,native,r
+10,m,60,35,tatʃka,wheelbarrow,тачка,loan,r
+10,m,60,36,pult,remote control,пульт,loan,b
+10,m,60,37,telefon,telephon,телефон,loan,r
+10,m,60,38,arkom,spoon,ложка,native,b
+10,m,60,39,kalendarʲ,calendar,календарь,loan,b
+10,m,60,40,zaʒiɡalka,lighter,зажигалка,loan,b
+10,m,60,41,sputnʲik,satellite,спутник,loan,b
+10,m,60,42,zar,ice,лед,native,r
+10,m,60,43,bil,mountain,гора,native,b
+10,m,60,44,provod,wire,провод,loan,r
+10,m,60,45,patʃka,bundle,пачка,loan,r
+10,m,60,47,salfʲetka,napkin,салфетка,loan,r
+10,m,60,48,awʔara,hat,шапка,native,b
+10,m,60,49,aptsʲeka,pharmacy,аптека,loan,b
+10,m,60,51,ts'umur,fork,вилка,native,b
+10,m,60,52,ħetʃ'ink'a,maize,кукуруза,native,r
+10,m,60,53,anzi,snow,снег,native,r
+10,m,60,54,raχasi,chain,цепь,native,r
+10,m,60,55,bint,bandage,бинт,loan,b
+10,m,60,57,rok'o,heart,сердце,native,r
+10,m,60,58,pasport,passport,пасспорт,loan,r
+10,m,60,61,planʲeta,planet,планета,loan,b
+10,m,60,62,romaʃka,camomile,ромашка,loan,r
+10,m,60,63,tarif,tariff,тариф,loan,b
+10,m,60,64,antena,antenna,антенна,loan,r
+10,m,60,65,maʃina,car,машина,loan,b
+10,m,60,66,inχi,river,река,native,b
+10,m,60,68,nitʃo,scythe,коса,native,b
+10,m,60,69,dʒinsɨ,jeans,джинсы,loan,r
+10,m,60,70,ɡol,goal,гол,loan,r
+10,m,60,72,lift,lift,лифт,loan,b
+10,m,60,73,mijar,head,голова,native,r
+10,m,60,75,plastɨrʲ,plaster,пластырь,loan,r
+10,m,60,77,banan,banana,банан,loan,b
+10,m,60,78,ts'ːa,star,звезда,native,r
+10,m,60,79,hunts'ːi,honey,мед,native,r
+10,m,60,81,intʃi,apple,яблоко,native,b
+10,m,60,82,sol,tooth,зуб,native,r
+10,m,60,83,sumka,bag,сумка,loan,b
+10,m,60,84,radio,radio,радио,loan,b
+10,m,60,85,reʃa,tree,дерево,native,r
+10,m,60,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+10,m,60,87,miq'i,road,дорога,native,b
+10,m,60,88,rʲukzak,rucksack,рюкзак,loan,b
+10,m,60,89,"ʔʷen, ʁʷen",horn,рог,native,b
+10,m,60,90,dunɡil,hole,яма,native,b
+10,m,60,91,ʃĩwũ,milk,молоко,native,r
+10,m,60,92,ɬen,water,вода,native,r
+10,m,60,93,ritɬ'i,meat,мясо,native,b
+10,m,60,94,ts'ul,staff,палка,native,r
+10,m,60,95,ʁan,flat cake,лепешка,native,b
+10,m,60,97,bilet,ticket,билет,loan,r
+10,m,60,98,raketa,rocket,ракета,loan,b
+10,m,60,99,ʃu,grave,могила,native,b
+10,m,60,100,za,fist,кулак,native,b
+10,m,60,101,paket,package,пакет,loan,r
+10,m,60,102,reɬo,sea,море,native,r
+10,m,60,103,qχota,hand palm,ладонь,native,r
+10,m,60,104,samolʲot,aeroplane,самолет,loan,b
+10,m,60,105,rozʲetka,socket,розетка,loan,b
+10,m,60,106,kolxoz,kolkhoz,колхоз,loan,b
+11,m,16,1,milki,hous,дом,native,b
+11,m,16,2,vaɡon,train wagon,вагон,loan,r
+11,m,16,3,inɡur,window,окно,native,b
+11,m,16,4,ʁats'a,grasshopper,кузнечик,native,b
+11,m,16,5,iʃkapi,cabinet,шкаф,loan,b
+11,m,16,6,haq'u,room,комната,native,r
+11,m,16,7,tʃ'ami,cheese,сыр,native,r
+11,m,16,8,batarejka,battery,батарейка,loan,b
+11,m,16,10,kompjuter,computer,компьютер,loan,b
+11,m,16,12,riʒi,face,лицо,native,r
+11,m,16,13,ts'a,fire,огонь,native,r
+11,m,16,14,priʃepka,clothes-peg,прищепка,loan,b
+11,m,16,15,awʔal,nut,орех,native,r
+11,m,16,16,kirpitʃ,brick,кирпич,loan,b
+11,m,16,17,χur,"field, vegetable garden","поле, огород",native,r
+11,m,16,18,tʃ'itʃ'om,pebble,камешек,native,b
+11,m,16,19,polotsʲentse,towel,полотенце,loan,r
+11,m,16,20,odoruk'a,butterfly,бабочка,native,b
+11,m,16,21,simkarta,SIM,сим-карта,loan,r
+11,m,16,22,kots'i,besom,метла,native,b
+11,m,16,23,ala,lid,крышка,native,r
+11,m,16,24,zatʃetka,student's record-book,зачетка,loan,r
+11,m,16,26,k'azi,headscarf,головной платок,native,r
+11,m,16,27,ts'iq'u,hoar frost,иней,native,r
+11,m,16,29,hark'u,eye,глаз,native,b
+11,m,16,30,rekun,thread,нитка,native,r
+11,m,16,33,ɡurdo,shirt,рубашка,native,r
+11,m,16,34,ɬol,horseshoe,подкова,native,r
+11,m,16,35,tatʃka,wheelbarrow,тачка,loan,r
+11,m,16,36,pult,remote control,пульт,loan,b
+11,m,16,37,telefon,telephon,телефон,loan,r
+11,m,16,38,arkom,spoon,ложка,native,b
+11,m,16,39,kalendarʲ,calendar,календарь,loan,r
+11,m,16,40,zaʒiɡalka,lighter,зажигалка,loan,b
+11,m,16,41,sputnʲik,satellite,спутник,loan,r
+11,m,16,42,zar,ice,лед,native,r
+11,m,16,43,bil,mountain,гора,native,b
+11,m,16,44,provod,wire,провод,loan,r
+11,m,16,45,patʃka,bundle,пачка,loan,r
+11,m,16,47,salfʲetka,napkin,салфетка,loan,r
+11,m,16,48,awʔara,hat,шапка,native,b
+11,m,16,49,aptsʲeka,pharmacy,аптека,loan,b
+11,m,16,51,ts'umur,fork,вилка,native,b
+11,m,16,52,ħetʃ'ink'a,maize,кукуруза,native,r
+11,m,16,53,anzi,snow,снег,native,r
+11,m,16,54,raχasi,chain,цепь,native,r
+11,m,16,55,bint,bandage,бинт,loan,b
+11,m,16,57,rok'o,heart,сердце,native,r
+11,m,16,58,pasport,passport,пасспорт,loan,r
+11,m,16,61,planʲeta,planet,планета,loan,b
+11,m,16,62,romaʃka,camomile,ромашка,loan,r
+11,m,16,63,tarif,tariff,тариф,loan,b
+11,m,16,64,antena,antenna,антенна,loan,r
+11,m,16,65,maʃina,car,машина,loan,b
+11,m,16,66,inχi,river,река,native,b
+11,m,16,68,nitʃo,scythe,коса,native,b
+11,m,16,69,dʒinsɨ,jeans,джинсы,loan,r
+11,m,16,70,ɡol,goal,гол,loan,r
+11,m,16,72,lift,lift,лифт,loan,b
+11,m,16,73,mijar,head,голова,native,r
+11,m,16,75,plastɨrʲ,plaster,пластырь,loan,r
+11,m,16,77,banan,banana,банан,loan,b
+11,m,16,78,ts'ːa,star,звезда,native,r
+11,m,16,79,hunts'ːi,honey,мед,native,r
+11,m,16,81,intʃi,apple,яблоко,native,b
+11,m,16,82,sol,tooth,зуб,native,r
+11,m,16,83,sumka,bag,сумка,loan,b
+11,m,16,84,radio,radio,радио,loan,b
+11,m,16,85,reʃa,tree,дерево,native,r
+11,m,16,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+11,m,16,87,miq'i,road,дорога,native,b
+11,m,16,88,rʲukzak,rucksack,рюкзак,loan,b
+11,m,16,89,"ʔʷen, ʁʷen",horn,рог,native,b
+11,m,16,90,dunɡil,hole,яма,native,b
+11,m,16,91,ʃĩwũ,milk,молоко,native,r
+11,m,16,92,ɬen,water,вода,native,r
+11,m,16,93,ritɬ'i,meat,мясо,native,b
+11,m,16,94,ts'ul,staff,палка,native,r
+11,m,16,95,ʁan,flat cake,лепешка,native,b
+11,m,16,97,bilet,ticket,билет,loan,r
+11,m,16,98,raketa,rocket,ракета,loan,r
+11,m,16,99,ʃu,grave,могила,native,b
+11,m,16,100,za,fist,кулак,native,b
+11,m,16,101,paket,package,пакет,loan,b
+11,m,16,102,reɬo,sea,море,native,r
+11,m,16,103,qχota,hand palm,ладонь,native,r
+11,m,16,104,samolʲot,aeroplane,самолет,loan,b
+11,m,16,105,rozʲetka,socket,розетка,loan,b
+11,m,16,106,kolxoz,kolkhoz,колхоз,loan,b
+12,f,32,1,milki,hous,дом,native,b
+12,f,32,2,vaɡon,train wagon,вагон,loan,b
+12,f,32,3,inɡur,window,окно,native,r
+12,f,32,4,ʁats'a,grasshopper,кузнечик,native,b
+12,f,32,5,iʃkapi,cabinet,шкаф,loan,b
+12,f,32,6,haq'u,room,комната,native,r
+12,f,32,7,tʃ'ami,cheese,сыр,native,r
+12,f,32,8,batarejka,battery,батарейка,loan,b
+12,f,32,10,kompjuter,computer,компьютер,loan,b
+12,f,32,12,riʒi,face,лицо,native,r
+12,f,32,13,ts'a,fire,огонь,native,r
+12,f,32,14,priʃepka,clothes-peg,прищепка,loan,b
+12,f,32,15,awʔal,nut,орех,native,r
+12,f,32,16,kirpitʃ,brick,кирпич,loan,b
+12,f,32,17,χur,"field, vegetable garden","поле, огород",native,b
+12,f,32,18,tʃ'itʃ'om,pebble,камешек,native,b
+12,f,32,19,polotsʲentse,towel,полотенце,loan,r
+12,f,32,20,odoruk'a,butterfly,бабочка,native,b
+12,f,32,21,simkarta,SIM,сим-карта,loan,r
+12,f,32,22,kots'i,besom,метла,native,b
+12,f,32,23,ala,lid,крышка,native,r
+12,f,32,24,zatʃetka,student's record-book,зачетка,loan,r
+12,f,32,26,k'azi,headscarf,головной платок,native,r
+12,f,32,27,ts'iq'u,hoar frost,иней,native,b
+12,f,32,29,hark'u,eye,глаз,native,b
+12,f,32,30,rekun,thread,нитка,native,r
+12,f,32,33,ɡurdo,shirt,рубашка,native,r
+12,f,32,34,ɬol,horseshoe,подкова,native,r
+12,f,32,35,tatʃka,wheelbarrow,тачка,loan,r
+12,f,32,36,pult,remote control,пульт,loan,b
+12,f,32,37,telefon,telephon,телефон,loan,r
+12,f,32,38,arkom,spoon,ложка,native,b
+12,f,32,39,kalendarʲ,calendar,календарь,loan,r
+12,f,32,40,zaʒiɡalka,lighter,зажигалка,loan,b
+12,f,32,41,sputnʲik,satellite,спутник,loan,b
+12,f,32,42,zar,ice,лед,native,r
+12,f,32,43,bil,mountain,гора,native,b
+12,f,32,44,provod,wire,провод,loan,r
+12,f,32,45,patʃka,bundle,пачка,loan,r
+12,f,32,47,salfʲetka,napkin,салфетка,loan,r
+12,f,32,48,awʔara,hat,шапка,native,b
+12,f,32,49,aptsʲeka,pharmacy,аптека,loan,b
+12,f,32,51,ts'umur,fork,вилка,native,b
+12,f,32,52,ħetʃ'ink'a,maize,кукуруза,native,r
+12,f,32,53,anzi,snow,снег,native,r
+12,f,32,54,raχasi,chain,цепь,native,r
+12,f,32,55,bint,bandage,бинт,loan,b
+12,f,32,57,rok'o,heart,сердце,native,r
+12,f,32,58,pasport,passport,пасспорт,loan,r
+12,f,32,61,planʲeta,planet,планета,loan,b
+12,f,32,62,romaʃka,camomile,ромашка,loan,r
+12,f,32,63,tarif,tariff,тариф,loan,b
+12,f,32,64,antena,antenna,антенна,loan,r
+12,f,32,65,maʃina,car,машина,loan,b
+12,f,32,66,inχi,river,река,native,b
+12,f,32,68,nitʃo,scythe,коса,native,b
+12,f,32,69,dʒinsɨ,jeans,джинсы,loan,r
+12,f,32,70,ɡol,goal,гол,loan,r
+12,f,32,72,lift,lift,лифт,loan,b
+12,f,32,73,mijar,head,голова,native,r
+12,f,32,75,plastɨrʲ,plaster,пластырь,loan,b
+12,f,32,77,banan,banana,банан,loan,b
+12,f,32,78,ts'ːa,star,звезда,native,r
+12,f,32,79,hunts'ːi,honey,мед,native,r
+12,f,32,81,intʃi,apple,яблоко,native,b
+12,f,32,82,sol,tooth,зуб,native,r
+12,f,32,83,sumka,bag,сумка,loan,b
+12,f,32,84,radio,radio,радио,loan,b
+12,f,32,85,reʃa,tree,дерево,native,r
+12,f,32,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+12,f,32,87,miq'i,road,дорога,native,b
+12,f,32,88,rʲukzak,rucksack,рюкзак,loan,b
+12,f,32,89,"ʔʷen, ʁʷen",horn,рог,native,b
+12,f,32,90,dunɡil,hole,яма,native,b
+12,f,32,91,ʃĩwũ,milk,молоко,native,r
+12,f,32,92,ɬen,water,вода,native,r
+12,f,32,93,ritɬ'i,meat,мясо,native,b
+12,f,32,94,ts'ul,staff,палка,native,r
+12,f,32,95,ʁan,flat cake,лепешка,native,b
+12,f,32,97,bilet,ticket,билет,loan,r
+12,f,32,98,raketa,rocket,ракета,loan,b
+12,f,32,99,ʃu,grave,могила,native,b
+12,f,32,100,za,fist,кулак,native,b
+12,f,32,101,paket,package,пакет,loan,b
+12,f,32,102,reɬo,sea,море,native,r
+12,f,32,103,qχota,hand palm,ладонь,native,r
+12,f,32,104,samolʲot,aeroplane,самолет,loan,b
+12,f,32,105,rozʲetka,socket,розетка,loan,b
+12,f,32,106,kolxoz,kolkhoz,колхоз,loan,b
+13,f,34,1,milki,hous,дом,native,b
+13,f,34,2,vaɡon,train wagon,вагон,loan,r
+13,f,34,3,inɡur,window,окно,native,b
+13,f,34,4,ʁats'a,grasshopper,кузнечик,native,b
+13,f,34,5,iʃkapi,cabinet,шкаф,loan,b
+13,f,34,6,haq'u,room,комната,native,r
+13,f,34,7,tʃ'ami,cheese,сыр,native,r
+13,f,34,8,batarejka,battery,батарейка,loan,b
+13,f,34,10,kompjuter,computer,компьютер,loan,b
+13,f,34,12,riʒi,face,лицо,native,r
+13,f,34,13,ts'a,fire,огонь,native,r
+13,f,34,14,priʃepka,clothes-peg,прищепка,loan,b
+13,f,34,15,awʔal,nut,орех,native,r
+13,f,34,16,kirpitʃ,brick,кирпич,loan,b
+13,f,34,17,χur,"field, vegetable garden","поле, огород",native,b
+13,f,34,18,tʃ'itʃ'om,pebble,камешек,native,b
+13,f,34,19,polotsʲentse,towel,полотенце,loan,r
+13,f,34,20,odoruk'a,butterfly,бабочка,native,b
+13,f,34,21,simkarta,SIM,сим-карта,loan,b
+13,f,34,22,kots'i,besom,метла,native,b
+13,f,34,23,ala,lid,крышка,native,r
+13,f,34,24,zatʃetka,student's record-book,зачетка,loan,b
+13,f,34,26,k'azi,headscarf,головной платок,native,r
+13,f,34,27,ts'iq'u,hoar frost,иней,native,b
+13,f,34,29,hark'u,eye,глаз,native,b
+13,f,34,30,rekun,thread,нитка,native,r
+13,f,34,33,ɡurdo,shirt,рубашка,native,r
+13,f,34,34,ɬol,horseshoe,подкова,native,r
+13,f,34,35,tatʃka,wheelbarrow,тачка,loan,r
+13,f,34,36,pult,remote control,пульт,loan,b
+13,f,34,37,telefon,telephon,телефон,loan,r
+13,f,34,38,arkom,spoon,ложка,native,b
+13,f,34,39,kalendarʲ,calendar,календарь,loan,b
+13,f,34,40,zaʒiɡalka,lighter,зажигалка,loan,b
+13,f,34,41,sputnʲik,satellite,спутник,loan,b
+13,f,34,42,zar,ice,лед,native,r
+13,f,34,43,bil,mountain,гора,native,b
+13,f,34,44,provod,wire,провод,loan,r
+13,f,34,45,patʃka,bundle,пачка,loan,b
+13,f,34,47,salfʲetka,napkin,салфетка,loan,r
+13,f,34,48,awʔara,hat,шапка,native,b
+13,f,34,49,aptsʲeka,pharmacy,аптека,loan,b
+13,f,34,51,ts'umur,fork,вилка,native,b
+13,f,34,52,ħetʃ'ink'a,maize,кукуруза,native,r
+13,f,34,53,anzi,snow,снег,native,r
+13,f,34,54,raχasi,chain,цепь,native,r
+13,f,34,55,bint,bandage,бинт,loan,b
+13,f,34,57,rok'o,heart,сердце,native,r
+13,f,34,58,pasport,passport,пасспорт,loan,r
+13,f,34,61,planʲeta,planet,планета,loan,b
+13,f,34,62,romaʃka,camomile,ромашка,loan,r
+13,f,34,63,tarif,tariff,тариф,loan,b
+13,f,34,64,antena,antenna,антенна,loan,r
+13,f,34,65,maʃina,car,машина,loan,b
+13,f,34,66,inχi,river,река,native,b
+13,f,34,68,nitʃo,scythe,коса,native,b
+13,f,34,69,dʒinsɨ,jeans,джинсы,loan,r
+13,f,34,70,ɡol,goal,гол,loan,b
+13,f,34,72,lift,lift,лифт,loan,b
+13,f,34,73,mijar,head,голова,native,r
+13,f,34,75,plastɨrʲ,plaster,пластырь,loan,b
+13,f,34,77,banan,banana,банан,loan,b
+13,f,34,78,ts'ːa,star,звезда,native,r
+13,f,34,79,hunts'ːi,honey,мед,native,r
+13,f,34,81,intʃi,apple,яблоко,native,b
+13,f,34,82,sol,tooth,зуб,native,r
+13,f,34,83,sumka,bag,сумка,loan,b
+13,f,34,84,radio,radio,радио,loan,b
+13,f,34,85,reʃa,tree,дерево,native,r
+13,f,34,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+13,f,34,87,miq'i,road,дорога,native,b
+13,f,34,88,rʲukzak,rucksack,рюкзак,loan,b
+13,f,34,89,"ʔʷen, ʁʷen",horn,рог,native,b
+13,f,34,90,dunɡil,hole,яма,native,b
+13,f,34,91,ʃĩwũ,milk,молоко,native,r
+13,f,34,92,ɬen,water,вода,native,r
+13,f,34,93,ritɬ'i,meat,мясо,native,b
+13,f,34,94,ts'ul,staff,палка,native,r
+13,f,34,95,ʁan,flat cake,лепешка,native,b
+13,f,34,97,bilet,ticket,билет,loan,r
+13,f,34,98,raketa,rocket,ракета,loan,b
+13,f,34,99,ʃu,grave,могила,native,b
+13,f,34,100,za,fist,кулак,native,b
+13,f,34,101,paket,package,пакет,loan,r
+13,f,34,102,reɬo,sea,море,native,r
+13,f,34,103,qχota,hand palm,ладонь,native,r
+13,f,34,104,samolʲot,aeroplane,самолет,loan,b
+13,f,34,105,rozʲetka,socket,розетка,loan,b
+13,f,34,106,kolxoz,kolkhoz,колхоз,loan,b
+14,f,53,1,milki,hous,дом,native,b
+14,f,53,2,vaɡon,train wagon,вагон,loan,r
+14,f,53,3,inɡur,window,окно,native,b
+14,f,53,4,ʁats'a,grasshopper,кузнечик,native,b
+14,f,53,5,iʃkapi,cabinet,шкаф,loan,b
+14,f,53,6,haq'u,room,комната,native,r
+14,f,53,7,tʃ'ami,cheese,сыр,native,r
+14,f,53,8,batarejka,battery,батарейка,loan,b
+14,f,53,10,kompjuter,computer,компьютер,loan,b
+14,f,53,12,riʒi,face,лицо,native,r
+14,f,53,13,ts'a,fire,огонь,native,r
+14,f,53,14,priʃepka,clothes-peg,прищепка,loan,b
+14,f,53,15,awʔal,nut,орех,native,r
+14,f,53,16,kirpitʃ,brick,кирпич,loan,b
+14,f,53,17,χur,"field, vegetable garden","поле, огород",native,b
+14,f,53,18,tʃ'itʃ'om,pebble,камешек,native,b
+14,f,53,19,polotsʲentse,towel,полотенце,loan,r
+14,f,53,20,odoruk'a,butterfly,бабочка,native,r
+14,f,53,21,simkarta,SIM,сим-карта,loan,b
+14,f,53,22,kots'i,besom,метла,native,b
+14,f,53,23,ala,lid,крышка,native,r
+14,f,53,24,zatʃetka,student's record-book,зачетка,loan,r
+14,f,53,26,k'azi,headscarf,головной платок,native,r
+14,f,53,27,ts'iq'u,hoar frost,иней,native,b
+14,f,53,29,hark'u,eye,глаз,native,b
+14,f,53,30,rekun,thread,нитка,native,r
+14,f,53,33,ɡurdo,shirt,рубашка,native,r
+14,f,53,34,ɬol,horseshoe,подкова,native,r
+14,f,53,35,tatʃka,wheelbarrow,тачка,loan,r
+14,f,53,36,pult,remote control,пульт,loan,b
+14,f,53,37,telefon,telephon,телефон,loan,r
+14,f,53,38,arkom,spoon,ложка,native,b
+14,f,53,39,kalendarʲ,calendar,календарь,loan,b
+14,f,53,40,zaʒiɡalka,lighter,зажигалка,loan,b
+14,f,53,41,sputnʲik,satellite,спутник,loan,b
+14,f,53,42,zar,ice,лед,native,r
+14,f,53,43,bil,mountain,гора,native,b
+14,f,53,44,provod,wire,провод,loan,b
+14,f,53,45,patʃka,bundle,пачка,loan,r
+14,f,53,47,salfʲetka,napkin,салфетка,loan,r
+14,f,53,48,awʔara,hat,шапка,native,b
+14,f,53,49,aptsʲeka,pharmacy,аптека,loan,b
+14,f,53,51,ts'umur,fork,вилка,native,b
+14,f,53,52,ħetʃ'ink'a,maize,кукуруза,native,r
+14,f,53,53,anzi,snow,снег,native,r
+14,f,53,54,raχasi,chain,цепь,native,r
+14,f,53,55,bint,bandage,бинт,loan,b
+14,f,53,57,rok'o,heart,сердце,native,r
+14,f,53,58,pasport,passport,пасспорт,loan,r
+14,f,53,61,planʲeta,planet,планета,loan,b
+14,f,53,62,romaʃka,camomile,ромашка,loan,r
+14,f,53,63,tarif,tariff,тариф,loan,r
+14,f,53,64,antena,antenna,антенна,loan,r
+14,f,53,65,maʃina,car,машина,loan,b
+14,f,53,66,inχi,river,река,native,b
+14,f,53,68,nitʃo,scythe,коса,native,b
+14,f,53,69,dʒinsɨ,jeans,джинсы,loan,r
+14,f,53,70,ɡol,goal,гол,loan,r
+14,f,53,72,lift,lift,лифт,loan,b
+14,f,53,73,mijar,head,голова,native,r
+14,f,53,75,plastɨrʲ,plaster,пластырь,loan,b
+14,f,53,77,banan,banana,банан,loan,b
+14,f,53,78,ts'ːa,star,звезда,native,r
+14,f,53,79,hunts'ːi,honey,мед,native,r
+14,f,53,81,intʃi,apple,яблоко,native,b
+14,f,53,82,sol,tooth,зуб,native,r
+14,f,53,83,sumka,bag,сумка,loan,b
+14,f,53,84,radio,radio,радио,loan,b
+14,f,53,85,reʃa,tree,дерево,native,r
+14,f,53,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+14,f,53,87,miq'i,road,дорога,native,b
+14,f,53,88,rʲukzak,rucksack,рюкзак,loan,b
+14,f,53,89,"ʔʷen, ʁʷen",horn,рог,native,b
+14,f,53,90,dunɡil,hole,яма,native,b
+14,f,53,91,ʃĩwũ,milk,молоко,native,r
+14,f,53,92,ɬen,water,вода,native,r
+14,f,53,93,ritɬ'i,meat,мясо,native,b
+14,f,53,94,ts'ul,staff,палка,native,r
+14,f,53,95,ʁan,flat cake,лепешка,native,b
+14,f,53,97,bilet,ticket,билет,loan,r
+14,f,53,98,raketa,rocket,ракета,loan,r
+14,f,53,99,ʃu,grave,могила,native,b
+14,f,53,100,za,fist,кулак,native,b
+14,f,53,101,paket,package,пакет,loan,r
+14,f,53,102,reɬo,sea,море,native,r
+14,f,53,103,qχota,hand palm,ладонь,native,r
+14,f,53,104,samolʲot,aeroplane,самолет,loan,b
+14,f,53,105,rozʲetka,socket,розетка,loan,b
+14,f,53,106,kolxoz,kolkhoz,колхоз,loan,b
+15,m,17,1,milki,hous,дом,native,b
+15,m,17,2,vaɡon,train wagon,вагон,loan,r
+15,m,17,3,inɡur,window,окно,native,b
+15,m,17,4,ʁats'a,grasshopper,кузнечик,native,b
+15,m,17,5,iʃkapi,cabinet,шкаф,loan,b
+15,m,17,6,haq'u,room,комната,native,r
+15,m,17,7,tʃ'ami,cheese,сыр,native,r
+15,m,17,8,batarejka,battery,батарейка,loan,b
+15,m,17,10,kompjuter,computer,компьютер,loan,b
+15,m,17,12,riʒi,face,лицо,native,r
+15,m,17,13,ts'a,fire,огонь,native,r
+15,m,17,14,priʃepka,clothes-peg,прищепка,loan,b
+15,m,17,15,awʔal,nut,орех,native,r
+15,m,17,16,kirpitʃ,brick,кирпич,loan,b
+15,m,17,17,χur,"field, vegetable garden","поле, огород",native,r
+15,m,17,18,tʃ'itʃ'om,pebble,камешек,native,b
+15,m,17,19,polotsʲentse,towel,полотенце,loan,r
+15,m,17,20,odoruk'a,butterfly,бабочка,native,r
+15,m,17,21,simkarta,SIM,сим-карта,loan,r
+15,m,17,22,kots'i,besom,метла,native,b
+15,m,17,23,ala,lid,крышка,native,r
+15,m,17,24,zatʃetka,student's record-book,зачетка,loan,r
+15,m,17,26,k'azi,headscarf,головной платок,native,r
+15,m,17,27,ts'iq'u,hoar frost,иней,native,b
+15,m,17,29,hark'u,eye,глаз,native,b
+15,m,17,30,rekun,thread,нитка,native,r
+15,m,17,33,ɡurdo,shirt,рубашка,native,r
+15,m,17,34,ɬol,horseshoe,подкова,native,r
+15,m,17,35,tatʃka,wheelbarrow,тачка,loan,r
+15,m,17,36,pult,remote control,пульт,loan,b
+15,m,17,37,telefon,telephon,телефон,loan,r
+15,m,17,38,arkom,spoon,ложка,native,b
+15,m,17,39,kalendarʲ,calendar,календарь,loan,r
+15,m,17,40,zaʒiɡalka,lighter,зажигалка,loan,b
+15,m,17,41,sputnʲik,satellite,спутник,loan,r
+15,m,17,42,zar,ice,лед,native,r
+15,m,17,43,bil,mountain,гора,native,b
+15,m,17,44,provod,wire,провод,loan,r
+15,m,17,45,patʃka,bundle,пачка,loan,r
+15,m,17,47,salfʲetka,napkin,салфетка,loan,r
+15,m,17,48,awʔara,hat,шапка,native,b
+15,m,17,49,aptsʲeka,pharmacy,аптека,loan,b
+15,m,17,51,ts'umur,fork,вилка,native,b
+15,m,17,52,ħetʃ'ink'a,maize,кукуруза,native,r
+15,m,17,53,anzi,snow,снег,native,r
+15,m,17,54,raχasi,chain,цепь,native,r
+15,m,17,55,bint,bandage,бинт,loan,b
+15,m,17,57,rok'o,heart,сердце,native,r
+15,m,17,58,pasport,passport,пасспорт,loan,r
+15,m,17,61,planʲeta,planet,планета,loan,b
+15,m,17,62,romaʃka,camomile,ромашка,loan,r
+15,m,17,63,tarif,tariff,тариф,loan,b
+15,m,17,64,antena,antenna,антенна,loan,r
+15,m,17,65,maʃina,car,машина,loan,b
+15,m,17,66,inχi,river,река,native,b
+15,m,17,68,nitʃo,scythe,коса,native,b
+15,m,17,69,dʒinsɨ,jeans,джинсы,loan,r
+15,m,17,70,ɡol,goal,гол,loan,r
+15,m,17,72,lift,lift,лифт,loan,r
+15,m,17,73,mijar,head,голова,native,r
+15,m,17,75,plastɨrʲ,plaster,пластырь,loan,r
+15,m,17,77,banan,banana,банан,loan,b
+15,m,17,78,ts'ːa,star,звезда,native,r
+15,m,17,79,hunts'ːi,honey,мед,native,r
+15,m,17,81,intʃi,apple,яблоко,native,b
+15,m,17,82,sol,tooth,зуб,native,r
+15,m,17,83,sumka,bag,сумка,loan,b
+15,m,17,84,radio,radio,радио,loan,b
+15,m,17,85,reʃa,tree,дерево,native,r
+15,m,17,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+15,m,17,87,miq'i,road,дорога,native,b
+15,m,17,88,rʲukzak,rucksack,рюкзак,loan,b
+15,m,17,89,"ʔʷen, ʁʷen",horn,рог,native,b
+15,m,17,90,dunɡil,hole,яма,native,b
+15,m,17,91,ʃĩwũ,milk,молоко,native,r
+15,m,17,92,ɬen,water,вода,native,r
+15,m,17,93,ritɬ'i,meat,мясо,native,b
+15,m,17,94,ts'ul,staff,палка,native,r
+15,m,17,95,ʁan,flat cake,лепешка,native,b
+15,m,17,97,bilet,ticket,билет,loan,r
+15,m,17,98,raketa,rocket,ракета,loan,r
+15,m,17,99,ʃu,grave,могила,native,b
+15,m,17,100,za,fist,кулак,native,b
+15,m,17,101,paket,package,пакет,loan,r
+15,m,17,102,reɬo,sea,море,native,r
+15,m,17,103,qχota,hand palm,ладонь,native,r
+15,m,17,104,samolʲot,aeroplane,самолет,loan,b
+15,m,17,105,rozʲetka,socket,розетка,loan,b
+15,m,17,106,kolxoz,kolkhoz,колхоз,loan,b
+16,m,53,1,milki,hous,дом,native,b
+16,m,53,2,vaɡon,train wagon,вагон,loan,r
+16,m,53,3,inɡur,window,окно,native,b
+16,m,53,4,ʁats'a,grasshopper,кузнечик,native,b
+16,m,53,5,iʃkapi,cabinet,шкаф,loan,b
+16,m,53,6,haq'u,room,комната,native,r
+16,m,53,7,tʃ'ami,cheese,сыр,native,r
+16,m,53,8,batarejka,battery,батарейка,loan,b
+16,m,53,10,kompjuter,computer,компьютер,loan,b
+16,m,53,12,riʒi,face,лицо,native,r
+16,m,53,13,ts'a,fire,огонь,native,r
+16,m,53,14,priʃepka,clothes-peg,прищепка,loan,b
+16,m,53,15,awʔal,nut,орех,native,r
+16,m,53,16,kirpitʃ,brick,кирпич,loan,b
+16,m,53,17,χur,"field, vegetable garden","поле, огород",native,r
+16,m,53,18,tʃ'itʃ'om,pebble,камешек,native,b
+16,m,53,19,polotsʲentse,towel,полотенце,loan,r
+16,m,53,20,odoruk'a,butterfly,бабочка,native,r
+16,m,53,21,simkarta,SIM,сим-карта,loan,b
+16,m,53,22,kots'i,besom,метла,native,b
+16,m,53,23,ala,lid,крышка,native,r
+16,m,53,24,zatʃetka,student's record-book,зачетка,loan,b
+16,m,53,26,k'azi,headscarf,головной платок,native,r
+16,m,53,27,ts'iq'u,hoar frost,иней,native,b
+16,m,53,29,hark'u,eye,глаз,native,b
+16,m,53,30,rekun,thread,нитка,native,r
+16,m,53,33,ɡurdo,shirt,рубашка,native,r
+16,m,53,34,ɬol,horseshoe,подкова,native,r
+16,m,53,35,tatʃka,wheelbarrow,тачка,loan,r
+16,m,53,36,pult,remote control,пульт,loan,b
+16,m,53,37,telefon,telephon,телефон,loan,r
+16,m,53,38,arkom,spoon,ложка,native,b
+16,m,53,39,kalendarʲ,calendar,календарь,loan,b
+16,m,53,40,zaʒiɡalka,lighter,зажигалка,loan,b
+16,m,53,41,sputnʲik,satellite,спутник,loan,b
+16,m,53,42,zar,ice,лед,native,r
+16,m,53,43,bil,mountain,гора,native,b
+16,m,53,44,provod,wire,провод,loan,r
+16,m,53,45,patʃka,bundle,пачка,loan,r
+16,m,53,47,salfʲetka,napkin,салфетка,loan,r
+16,m,53,48,awʔara,hat,шапка,native,b
+16,m,53,49,aptsʲeka,pharmacy,аптека,loan,b
+16,m,53,51,ts'umur,fork,вилка,native,b
+16,m,53,52,ħetʃ'ink'a,maize,кукуруза,native,r
+16,m,53,53,anzi,snow,снег,native,r
+16,m,53,54,raχasi,chain,цепь,native,r
+16,m,53,55,bint,bandage,бинт,loan,b
+16,m,53,57,rok'o,heart,сердце,native,r
+16,m,53,58,pasport,passport,пасспорт,loan,r
+16,m,53,61,planʲeta,planet,планета,loan,b
+16,m,53,62,romaʃka,camomile,ромашка,loan,r
+16,m,53,63,tarif,tariff,тариф,loan,b
+16,m,53,64,antena,antenna,антенна,loan,r
+16,m,53,65,maʃina,car,машина,loan,b
+16,m,53,66,inχi,river,река,native,b
+16,m,53,68,nitʃo,scythe,коса,native,b
+16,m,53,69,dʒinsɨ,jeans,джинсы,loan,r
+16,m,53,70,ɡol,goal,гол,loan,b
+16,m,53,72,lift,lift,лифт,loan,b
+16,m,53,73,mijar,head,голова,native,r
+16,m,53,75,plastɨrʲ,plaster,пластырь,loan,b
+16,m,53,77,banan,banana,банан,loan,b
+16,m,53,78,ts'ːa,star,звезда,native,r
+16,m,53,79,hunts'ːi,honey,мед,native,r
+16,m,53,81,intʃi,apple,яблоко,native,b
+16,m,53,82,sol,tooth,зуб,native,r
+16,m,53,83,sumka,bag,сумка,loan,b
+16,m,53,84,radio,radio,радио,loan,b
+16,m,53,85,reʃa,tree,дерево,native,r
+16,m,53,86,tsʲelʲevʲizor,TV,телевизор,loan,b
+16,m,53,87,miq'i,road,дорога,native,b
+16,m,53,88,rʲukzak,rucksack,рюкзак,loan,b
+16,m,53,89,"ʔʷen, ʁʷen",horn,рог,native,b
+16,m,53,90,dunɡil,hole,яма,native,b
+16,m,53,91,ʃĩwũ,milk,молоко,native,r
+16,m,53,92,ɬen,water,вода,native,r
+16,m,53,93,ritɬ'i,meat,мясо,native,b
+16,m,53,94,ts'ul,staff,палка,native,r
+16,m,53,95,ʁan,flat cake,лепешка,native,b
+16,m,53,97,bilet,ticket,билет,loan,r
+16,m,53,98,raketa,rocket,ракета,loan,b
+16,m,53,99,ʃu,grave,могила,native,b
+16,m,53,100,za,fist,кулак,native,b
+16,m,53,101,paket,package,пакет,loan,b
+16,m,53,102,reɬo,sea,море,native,r
+16,m,53,103,qχota,hand palm,ладонь,native,r
+16,m,53,104,samolʲot,aeroplane,самолет,loan,b
+16,m,53,105,rozʲetka,socket,розетка,loan,b
+16,m,53,106,kolxoz,kolkhoz,колхоз,loan,b

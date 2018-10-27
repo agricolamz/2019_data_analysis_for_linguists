@@ -1,0 +1,330 @@
+---
+title: "1. Распределения"
+author: "Г. Мороз"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, comment = "")
+options(scipen=999)
+ggplot2::theme_set(ggplot2::theme_bw())
+```
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+## 1. Распределения в R
+
+В R встроено какое-то количество известных распределений. Все они представлены четырьмя функциями: 
+
+* `d...` (функция плотности, probability density function),
+* `p...` (функция распределения, cumulative distribution function) --- интеграл площади под кривой от начала до указанной квантили
+* `q...` (обратная функции распределения, inverse cumulative distribution function) --- значение *p*-той квантили распределения
+* и `r...` (рандомные числа из заданного распределения).
+
+Рассмотрим все это на примере нормального распределения.
+
+```{r}
+data_frame(x = 1:100,
+           PDF = dnorm(x = x, mean = 50, sd = 10)) %>% 
+  ggplot(aes(x, PDF))+
+  geom_point()+
+  labs(title = "PDF нормального распределения (μ = 50, sd = 10)")
+
+data_frame(x = 1:100,
+           CDF = pnorm(x, mean = 50, sd = 10)) %>% 
+  ggplot(aes(x, CDF))+
+  geom_point()+
+  labs(title = "CDF нормального распределения (μ = 50, sd = 10)")
+
+data_frame(quantiles = seq(0, 1, by = 0.01),
+           value = qnorm(quantiles, mean = 50, sd = 10)) %>% 
+  ggplot(aes(quantiles, value))+
+  geom_point()+
+  labs(title = "inverse CDF нормального распределения (μ = 50, sd = 10)")
+
+data_frame(sample = rnorm(100, mean = 50, sd = 10)) %>% 
+  ggplot(aes(sample))+
+  geom_histogram()+
+  labs(title = "выборка нормально распределенных чисел (μ = 50, sd = 10)")
+```
+
+Если не использовать `set.seed()`, то результат работы рандомизатора нельзя будет повторить.
+
+#### 1.1
+
+Какое значение имеет 25% квантиль нормального распределения со средним в 20 и стандартным отклонением 90.
+
+```{r, include=FALSE}
+qnorm(0.025, mean = 20, sd = 90)
+```
+
+<form name="FormOne" onsubmit="return validateFormOne()" method="post">
+<input type="text" name="answerOne">
+<input type="submit" value="check">
+</form>
+
+#### 1.2
+
+Посчитайте z-score для 97% квантили нормально распределенных данных.
+
+```{r, include=FALSE}
+qnorm(.97, 0, 1)
+```
+
+<form name="FormTwo" onsubmit="return validateFormTwo()" method="post">
+<input type="text" name="answerTwo">
+<input type="submit" value="check">
+</form>
+
+## 2. Дискретные распределения
+### 2.1  Биномиальное распределение
+
+Биномиальное распределение --- распределение количетсва успехов эксперементов Бернулли из *n* попыток с вероятностью успеха *p*.
+
+$$P(k | n, p) = \frac{n!}{k!(n-k)!} \times p^k \times (1-p)^{n-k} =  {n \choose k} \times p^k \times (1-p)^{n-k}$$ 
+$$ 0 \leq p \leq 1; n, k > 0$$
+
+```{r}
+data_frame(x = 0:50,
+           density = dbinom(x = x, size = 50, prob = 0.16)) %>% 
+  ggplot(aes(x, density))+
+  geom_point()+
+  geom_line()+
+  labs(title = "Биномиальное распределение p = 0.16, n = 50")
+```
+
+### 2.2 Геометрическое распределение
+
+Геометрическое распределение --- распределение количетсва эксперементов Бернулли с вероятностью успеха *p* до первого успеха.
+
+$$P(k | p) = (1-p)^k\times p$$
+$$k\in\{1, 2, \dots\}$$
+
+```{r}
+data_frame(x = 0:50,
+           density = dgeom(x = x, prob = 0.16)) %>% 
+  ggplot(aes(x, density))+
+  geom_point()+
+  geom_line()+
+  labs(title = "Геометрическое распределение p = 0.16, n = 50")
+```
+
+### 2.3 Мультиномиальное распределение
+
+Мультиномиальное распределение --- обобщение биноимального эксперимента на случай *n* независимых испытаний с *k* исходами с вероятностями каждого исхода $p_1, p_2, \dots p_k$.
+
+$$P(x_1, \dots, x_k | n, p_1, \dots p_k) = \frac{n!}{x_1!\times\dots\times x_k!} \times p_1^{x_1}\times\dots\times p_2^{x_k}$$
+$$ x_i \in \{0, n\}, i \in \{1, k\}, \sum_{i=1}^kx_i = n $$
+
+Если у нас есть три взаимисключающих исхода V1, V2 и V3 с верятностями $p_1 = 0.4, p_2 = 0.35$ и $p_3 = 0.25$, какова вероятность получить V1 7 раз, V2 3 раза и V3 2 раза?
+
+```{r}
+dmultinom(x = c(7, 3, 2), prob = c(0.4, 0.35, 0.25))
+```
+
+А как выглядит распределение?
+
+```{r}
+library(ggtern)
+rep(1:10, 3) %>% 
+  combn(., 3) %>% 
+  t() %>% 
+  as.data.frame() %>% 
+  rowwise() %>% 
+  mutate(multinomial = dmultinom(c(V1, V2, V3), prob = c(0.6, 0.3, 0.1))) %>%
+  ggplot(aes(x = V1, y = V2, z = V3, color = multinomial)) +
+  coord_tern()+
+  geom_point(size = 0.3)+
+  scale_color_continuous(low = "grey90", high = "black") +
+  scale_L_continuous(labels = c("", "2", "4", "6", "8", "10"))+
+  scale_R_continuous(labels = c("", "2", "4", "6", "8", "10"))+
+  scale_T_continuous(labels = c("", "2", "4", "6", "8", "10"))+
+  labs(title = "Мультиномиальное распределение для трех исходов (0.6, 0.3, 0.1)")+
+  theme_bw()
+```
+
+```{r, include=FALSE}
+theme_set(theme_bw())
+```
+
+
+## 3. Непрерывные распределения
+### 3.1 Нормальное распределение
+
+$$P(x) = \frac{1}{\sigma\sqrt{2\pi}}\times e^{-\frac{\left(x-\mu\right)^2}{2\sigma^2}}$$
+
+$$\mu \in \mathbb{R}; \sigma^2 > 0$$
+
+```{r}
+data_frame(x = 1:100,
+           PDF = dnorm(x = x, mean = 50, sd = 10)) %>% 
+  ggplot(aes(x, PDF))+
+  geom_point()+
+  geom_line()+
+  labs(title = "PDF нормального распределения (μ = 50, sd = 10)")
+```
+
+### 3.2 Логнормальное распределение
+
+$$P(x) = \frac{1}{\sqrt{x\sigma2\pi}}\times e^{-\frac{\left(\ln(x)-\mu\right)^2}{2\sigma^2}}$$
+
+$$\mu \in \mathbb{R}; \sigma^2 > 0$$
+
+```{r}
+data_frame(x = 1:100,
+           PDF = dlnorm(x = x, mean = 3, sd = 0.5)) %>% 
+  ggplot(aes(x, PDF))+
+  geom_point()+
+  geom_line()+
+  labs(title = "PDF логнормального распределения (μ = 4, sd = 0.5)")
+```
+
+### 3.3 Экспоненциальное распределение
+
+$$P(x)= \lambda \times e^{-\lambda x}$$
+
+```{r}
+data_frame(x = 1:20,
+           PDF = dexp(x = x, rate = 5)) %>% 
+  ggplot(aes(x, PDF))+
+  geom_point()+
+  geom_line()+
+  labs(title = "PDF экспоненциального распредления")
+```
+
+
+### 3.4 Унимодальное распределение
+
+```{r}
+data_frame(x = 1:20,
+           PDF = dunif(x = x, min = 5, max = 10)) %>% 
+  ggplot(aes(x, PDF))+
+  geom_point()+
+  geom_line()+
+  labs(title = "PDF унимодального распредления (min = 5, max = 10)")
+```
+
+
+## 4. Conjugate priors
+
+В байесовском подоходе статистический вывод описывается формулой Байеса
+
+$$P(θ|Data) = \frac{P(Data|θ)\times P(θ)}{P(Data)}$$
+
+* $P(Data|θ)$ --- функция правдоподобия (likelihood)
+* $P(θ)$ ---  априорная вероятность (prior)
+* $P(Data)$ --- данные
+* $P(θ|Data)$ --- апостериорная вероятность (posterior)
+
+Мы вернемся к формуле Байеса и байесовскому подходу в следующих лекциях, а сейчас важно обсудить распределения априорной и апостериорной вероятностей. Оба эти распределения --- распределения вероятностей. 
+
+```{r, echo=FALSE}
+data_frame(x = 0:80) %>% 
+  ggplot(aes(x)) +
+  stat_function(fun = function(x) dchisq(x, 22, 6))+
+  labs(title = "PDF P(θ)", x = "θ", y = "P(θ)")+
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
+
+Если у нас есть некоторые данные с функцией правдоподобия P(Data|θ), а априорное и апостериорное распределения θ относятся к одному семейству распределений, то данное семейство распредлений называется **сопряжённым априорным распределением** к функции правдоподобия P(Data|θ) (**conjugate prior**).
+
+### 4.1 Бета распределение
+
+```{r}
+data_frame(x = seq(0, 1, length.out = 51),
+           density = dbeta(x = x, shape1 = 8, shape2 = 42)) %>% 
+  ggplot(aes(x, density))+
+  geom_point()+
+  geom_line()+
+  labs(title = "Бета распределение α = 8, β = 42")
+```
+
+### 4.2 Нормальное распределение
+
+
+### 4.3 Что еще почитать про распределения?
+В интернете много ресурсов, но вот еще есть [вот этот](http://www.math.wm.edu/~leemis/chart/UDR/UDR.html). А [здесь](https://en.wikipedia.org/wiki/Conjugate_prior) можно найти соответсвия распределений и сопряжённым к ним априорных распределений.
+
+## 5. Вероятность vs. функция правдободобия
+
+Предположим что распределение количества согласных в языках мира можно описать нормальным распределением со средним 22, и стандартным отклонением 6:
+
+```{r, echo=FALSE}
+data_frame(x = 0:80) %>% 
+  ggplot(aes(x)) +
+  stat_function(fun = function(x) dnorm(x, 22, 6))+
+  labs(title = "Количество согласных в языках мира (фэйк)")
+```
+
+Тогда вероятность того, что в выбранных произвольно языках окажется от 23 до 32 согласных равна интегралу нормального распределения в указанном промежутке:
+
+```{r, echo = FALSE}
+data_frame(x = 0:80) %>% 
+  ggplot(aes(x)) +
+  stat_function(fun = function(x) dnorm(x, 22, 6))+
+  stat_function(fun = function(x) dnorm(x, 22, 6), 
+                xlim = c(23,32), 
+                geom = "area",
+                fill = "lightblue")+
+  labs(title = "Количество согласных в языках мира (фэйк)")
+```
+
+$$P\left(X \in (23,\, 32) | X \sim \mathcal{N}(\mu = 22,\, \sigma^{2}=6)\right) = ...$$
+
+```{r}
+pnorm(32, mean = 22, sd = 6) - pnorm(23, mean = 22, sd = 6)
+```
+
+Когда мы говорим про функцию правдоподобия, то мы уже нашли еще один язык в котором оказалось 33 согласных. Нас интересует, насколько правдоподобна функция нормального распределения со средним 22 и стандартным отклонением 6 при значении переменной 33. Это значение равно функции плотности:
+
+```{r, echo = FALSE}
+data_frame(x = 0:80) %>% 
+  ggplot(aes(x)) +
+  stat_function(fun = function(x) dnorm(x, 22, 6))+
+  geom_segment(aes(x = 33, xend = 33, y = 0, yend = dnorm(33, 22, 6)), color = "red")+
+  geom_segment(aes(x = 33, xend = 0, y = dnorm(33, 22, 6), yend = dnorm(33, 22, 6)), color = "red",
+               arrow = arrow(length = unit(0.03, "npc")))+
+  scale_x_continuous(breaks = c(0:4*20, 33))+
+  scale_y_continuous(breaks = c(0:3*0.02, round(dnorm(33, 22, 6), 3)))+
+  labs(title = "Количество согласных в языках мира (фэйк)")
+```
+
+$$L\left(X \sim \mathcal{N}(\mu = 22,\, \sigma^{2}=6)|x = 33\right) = ...$$
+
+```{r}
+dnorm(33, 22, 6)
+```
+
+В итоге:
+
+* вероятность --- P(data|distribution)
+* правдоподобие --- L(distribution|data)
+
+<script>
+function validateFormOne() {
+    var x = document.forms["FormOne"]["answerOne"].value;
+    if (x != "-156.3968") {
+        alert("У меня другой ответ...");
+        return false;
+    } else {
+        alert("Да, все правильно");
+        return false;
+    }
+}
+function validateFormTwo() {
+    var x = document.forms["FormTwo"]["answerTwo"].value;
+    if (x != "1.880794") {
+        alert("У меня другой ответ...");
+        return false;
+    } else {
+        alert("Да, все правильно");
+        return false;
+    }
+}
+</script>
