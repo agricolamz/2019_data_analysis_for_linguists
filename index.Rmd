@@ -24,24 +24,24 @@ packageVersion("nnet")
 ```
 
 ### Как выполнять домашние задания?
-Домашние задания у всех общие, однако для каждого студента каждый датасет несколько отличается. Все датасеты собраны в [этой папке](https://goo.gl/TJ3t8j), где содержатся подпапки для каждого студента (если, Вы не видете Вашей папки, заполните [эту форму](https://goo.gl/forms/IYnkfSPauEJPf9SG3) и напишите мне).
+Домашние задания у всех общие, однако для каждого студента каждый датасет несколько отличается. Все датасеты собраны в [этой папке](https://github.com/agricolamz/2019_data_analysis_for_linguists/tree/master/data/students), где содержатся подпапки для каждого студента (если, Вы не видете Вашей папки, заполните [эту форму](https://goo.gl/forms/ImsaSzpW1krTnRnJ3) и напишите мне).
 
 Домашние задания будут проверятся полуавтоматически, так что пожалуйста:
 
-* создайте репозиторий `2018_hse_data_analysis` (или переименуйте уже существующий);
+* создайте репозиторий `2019_hse_data_analysis` (или переименуйте уже существующий);
 * добавьте в соответствующую папку файл с решением в формате `hw`, номер домашнего задания, `.Rmd`;
-* следуйте паттерну называния подпапок повторяющему [схему в Вашей папке](https://github.com/agricolamz/2018_data_analysis_for_linguists/tree/master/data/students) в репозитории курса;
+* следуйте паттерну называния подпапок повторяющему [схему в Вашей папке](https://github.com/agricolamz/2019_data_analysis_for_linguists/tree/master/data/students) в репозитории курса;
 ```{bash, echo = FALSE, comment = ""}
-cd /home/agricolamz/work/materials/2018_I_HSE_Data_Analysis_for_linguists_II/data/answers/creaciond/
+cd /home/agricolamz/work/materials/2019_I_HSE_Data_Analysis_for_linguists_II/data/answers/creaciond/
 tree
 ```
-Потом я буду автоматически обкачивать файлы `2018_hse_data_analysis/hw2_agreement/hw2.Rmd` из ваших репозиториев.
+Потом я буду автоматически обкачивать файлы `2019_hse_data_analysis/hw1_distributions/hw1.Rmd` из ваших репозиториев.
 
 * фрагменты кода, посвященные отдельным заданиям разделяйте заголовками третьего уровня, пробелом и номером задания "### 1.1", "### 1.2", "### 2.1" и т. д. При этом, пожалуйста больше нигде в коде три и больше знака решётки подряд не используйте;
 * Не используйте точные пути, все данные закачиваете из интернет-ссылок (например, `read_csv("интернет_ссылка")`)
 * фрагменты кода, посвященные конкретным заданиям должны выводить ответ в консоль.
 
-Календарь можно скачать [в формате `.csv`](https://raw.githubusercontent.com/agricolamz/2018_data_analysis_for_linguists/master/data_analysis_calendar.csv) и импортировать в Google Calendar, MS Outlook и т. п.
+Календарь можно скачать [в формате `.csv`](https://raw.githubusercontent.com/agricolamz/2019_data_analysis_for_linguists/master/data_analysis_calendar.csv) и импортировать в Google Calendar, MS Outlook и т. п.
 
 ```{r, echo = FALSE, message=FALSE}
 library(tidyverse)
@@ -54,7 +54,7 @@ df %>%
          Subject = str_replace_all(Subject, "DA ", ""),
          Subject = str_replace_all(Subject, "class ", ""),
          link = str_replace_all(Subject, " deadline", ""),
-         Subject = paste0("<a href = 'https://agricolamz.github.io/2018_data_analysis_for_linguists/",
+         Subject = paste0("<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/",
            str_replace_all(link, " ", "_"),
            ".html'>",
            Subject,

@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Г. Мороз" />
+
+
+<title>Анализ данных для лингвистов</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="site_libs/vis-4.16.1/vis.min.css" rel="stylesheet" />
+<script src="site_libs/vis-4.16.1/vis.min.js"></script>
+<link href="site_libs/timeline-0.4/timevis.css" rel="stylesheet" />
+<script src="site_libs/timevis-binding-0.4/timevis.js"></script>
+<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+
+.section h2 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h3 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h4 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h5 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h6 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    введение в байесовскую статистику
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="1_distributions.html">1. Распределения</a>
+    </li>
+    <li>
+      <a href="2_binomial.html">2. Биномиальные данные</a>
+    </li>
+    <li>
+      <a href="3_binomial_ci.html">3. Binomial CI</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    уменьшение размерности
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="4_PCA.html">4. PCA, LDA</a>
+    </li>
+    <li>
+      <a href="5_CA_MCA.html">5. CA, DCA, MCA</a>
+    </li>
+    <li>
+      <a href="6_Clustering.pdf">6. Кластеризация</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    регрессия
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="7_more_linear_regression.html">7. Еще о регрессионных моделях</a>
+    </li>
+    <li>
+      <a href="8_logit_multinom.html">8. Логистическая и мультиномиальная регрессии</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Анализ данных для лингвистов</h1>
+<h4 class="author"><em>Г. Мороз</em></h4>
+
+</div>
+
+
+<div class="section level3">
+<h3>Библиотеки:</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">packageVersion</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &#39;1.2.1&#39;</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">packageVersion</span>(<span class="st">&quot;mosaic&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &#39;1.4.0&#39;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">packageVersion</span>(<span class="st">&quot;bootstrap&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &#39;2017.2&#39;</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">packageVersion</span>(<span class="st">&quot;irr&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &#39;0.84&#39;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">packageVersion</span>(<span class="st">&quot;ca&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &#39;0.71&#39;</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">packageVersion</span>(<span class="st">&quot;MASS&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &#39;7.3.51&#39;</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">packageVersion</span>(<span class="st">&quot;ggfortify&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &#39;0.4.5&#39;</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">packageVersion</span>(<span class="st">&quot;lme4&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &#39;1.1.18.1&#39;</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">packageVersion</span>(<span class="st">&quot;lmerTest&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &#39;3.0.1&#39;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">packageVersion</span>(<span class="st">&quot;pscl&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &#39;1.5.2&#39;</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">packageVersion</span>(<span class="st">&quot;nnet&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &#39;7.3.12&#39;</code></pre>
+</div>
+<div id="---" class="section level3">
+<h3>Как выполнять домашние задания?</h3>
+<p>Домашние задания у всех общие, однако для каждого студента каждый датасет несколько отличается. Все датасеты собраны в <a href="https://github.com/agricolamz/2019_data_analysis_for_linguists/tree/master/data/students">этой папке</a>, где содержатся подпапки для каждого студента (если, Вы не видете Вашей папки, заполните <a href="https://goo.gl/forms/ImsaSzpW1krTnRnJ3">эту форму</a> и напишите мне).</p>
+<p>Домашние задания будут проверятся полуавтоматически, так что пожалуйста:</p>
+<ul>
+<li>создайте репозиторий <code>2019_hse_data_analysis</code> (или переименуйте уже существующий);</li>
+<li>добавьте в соответствующую папку файл с решением в формате <code>hw</code>, номер домашнего задания, <code>.Rmd</code>;</li>
+<li>следуйте паттерну называния подпапок повторяющему <a href="https://github.com/agricolamz/2019_data_analysis_for_linguists/tree/master/data/students">схему в Вашей папке</a> в репозитории курса;</li>
+</ul>
+<pre><code>bash: line 0: cd: /home/agricolamz/work/materials/2019_I_HSE_Data_Analysis_for_linguists_II/data/answers/creaciond/: No such file or directory
+.
+├── 1_distributions.Rmd
+├── data
+│   ├── 57_sonet.csv
+│   ├── answers
+│   │   ├── answers.Rmd
+│   │   ├── creaciond
+│   │   │   ├── hw2_agreement
+│   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   ├── hw2_2_verbs.csv
+│   │   │   │   └── hw2.Rmd
+│   │   │   ├── hw3_binomial
+│   │   │   │   ├── hw3_binomial.csv
+│   │   │   │   └── hw3.Rmd
+│   │   │   ├── hw4_binomial_ci
+│   │   │   │   ├── hw4.Rmd
+│   │   │   │   └── hw4_wodehouse.csv
+│   │   │   └── hw5_CA_MCA
+│   │   │       ├── hw5_chairs.csv
+│   │   │       ├── hw5_colreg.csv
+│   │   │       └── hw5.Rmd
+│   │   ├── exam 2.R
+│   │   ├── exam.R
+│   │   ├── hw2.Rmd
+│   │   ├── hw3.Rmd
+│   │   └── hw5.Rmd
+│   ├── chairs.csv
+│   ├── colreg.csv
+│   ├── dutch_causatives.csv
+│   ├── ejec_n_cons.csv
+│   ├── ELP.csv
+│   ├── ewave.csv
+│   ├── ldt.csv
+│   ├── let_allow_permit.csv
+│   ├── marginal_change_of_state_verbs.csv
+│   ├── nanai_vowels.csv
+│   ├── register_variation_BNC.csv
+│   ├── students
+│   │   └── 2017-2018_Data_analysis_for_linguists - Arkusz1.tsv
+│   ├── tidy_chekhov.tsv
+│   ├── ustya_data.tsv
+│   ├── wodehouse_ca.csv
+│   ├── wodehouse_pca.csv
+│   ├── wodehouse.tsv
+│   └── zilo_class_experiment.csv
+├── data_analysis_calendar.csv
+├── docs
+│   ├── 1_distributions_files
+│   │   └── figure-html
+│   │       ├── unnamed-chunk-10-1.png
+│   │       ├── unnamed-chunk-11-1.png
+│   │       ├── unnamed-chunk-12-1.png
+│   │       ├── unnamed-chunk-13-1.png
+│   │       ├── unnamed-chunk-14-1.png
+│   │       ├── unnamed-chunk-15-1.png
+│   │       ├── unnamed-chunk-16-1.png
+│   │       ├── unnamed-chunk-17-1.png
+│   │       ├── unnamed-chunk-19-1.png
+│   │       ├── unnamed-chunk-2-1.png
+│   │       ├── unnamed-chunk-2-2.png
+│   │       ├── unnamed-chunk-2-3.png
+│   │       ├── unnamed-chunk-2-4.png
+│   │       ├── unnamed-chunk-5-1.png
+│   │       ├── unnamed-chunk-6-1.png
+│   │       └── unnamed-chunk-8-1.png
+│   ├── 1_distributions.html
+│   ├── data
+│   │   ├── 57_sonet.csv
+│   │   ├── answers
+│   │   │   ├── answers.Rmd
+│   │   │   ├── creaciond
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   ├── hw2_2_verbs.csv
+│   │   │   │   │   └── hw2.Rmd
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   ├── hw3_binomial.csv
+│   │   │   │   │   └── hw3.Rmd
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   ├── hw4.Rmd
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       ├── hw5_colreg.csv
+│   │   │   │       └── hw5.Rmd
+│   │   │   ├── exam 2.R
+│   │   │   ├── exam.R
+│   │   │   ├── hw2.Rmd
+│   │   │   ├── hw3.Rmd
+│   │   │   └── hw5.Rmd
+│   │   ├── chairs.csv
+│   │   ├── colreg.csv
+│   │   ├── dutch_causatives.csv
+│   │   ├── ejec_n_cons.csv
+│   │   ├── ELP.csv
+│   │   ├── ewave.csv
+│   │   ├── ldt.csv
+│   │   ├── let_allow_permit.csv
+│   │   ├── marginal_change_of_state_verbs.csv
+│   │   ├── nanai_vowels.csv
+│   │   ├── register_variation_BNC.csv
+│   │   ├── students
+│   │   │   ├── 2017-2018_Data_analysis_for_linguists - Arkusz1.tsv
+│   │   │   ├── akv17
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── creaciond
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── dariademk
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── dashaignatenko
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── dkbrz
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── eszakharova
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── euetova
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── headshoter13
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── janewheel
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── kartozia
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── kategerasimenko
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── katyaprotsenyuk
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── Lera-Z
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── levantic
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── maria-terekhina
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── mbibaeva
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── NastyaMelnik57
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── panteleeva48
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── phuuda
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── piskunova
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── Rezinka
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── sandrasimdi
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── sasha-pivovarov
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── s-klimenko
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── SoDipole
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── Soerty
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── Stoneberry
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── strategy155
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── sukalov
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── tozdo
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   ├── Tuylenen
+│   │   │   │   ├── hw2_agreement
+│   │   │   │   │   ├── hw2_1_zilo_class.csv
+│   │   │   │   │   └── hw2_2_verbs.csv
+│   │   │   │   ├── hw3_binomial
+│   │   │   │   │   └── hw3_binomial.csv
+│   │   │   │   ├── hw4_binomial_ci
+│   │   │   │   │   └── hw4_wodehouse.csv
+│   │   │   │   └── hw5_CA_MCA
+│   │   │   │       ├── hw5_chairs.csv
+│   │   │   │       └── hw5_colreg.csv
+│   │   │   └── ZalinaAtnagulova
+│   │   │       ├── hw2_agreement
+│   │   │       │   ├── hw2_1_zilo_class.csv
+│   │   │       │   └── hw2_2_verbs.csv
+│   │   │       ├── hw3_binomial
+│   │   │       │   └── hw3_binomial.csv
+│   │   │       ├── hw4_binomial_ci
+│   │   │       │   └── hw4_wodehouse.csv
+│   │   │       └── hw5_CA_MCA
+│   │   │           ├── hw5_chairs.csv
+│   │   │           └── hw5_colreg.csv
+│   │   ├── tidy_chekhov.tsv
+│   │   ├── ustya_data.tsv
+│   │   ├── wodehouse_ca.csv
+│   │   ├── wodehouse_pca.csv
+│   │   ├── wodehouse.tsv
+│   │   └── zilo_class_experiment.csv
+│   ├── data_analysis_calendar.csv
+│   ├── footer.html
+│   ├── index.html
+│   ├── README.html
+│   └── site_libs
+│       ├── bootstrap-3.3.5
+│       │   ├── css
+│       │   │   ├── bootstrap.css
+│       │   │   ├── bootstrap.css.map
+│       │   │   ├── bootstrap.min.css
+│       │   │   ├── bootstrap-theme.css
+│       │   │   ├── bootstrap-theme.css.map
+│       │   │   ├── bootstrap-theme.min.css
+│       │   │   ├── cerulean.min.css
+│       │   │   ├── cosmo.min.css
+│       │   │   ├── flatly.min.css
+│       │   │   ├── fonts
+│       │   │   │   ├── LatoBold.ttf
+│       │   │   │   ├── LatoItalic.ttf
+│       │   │   │   ├── Lato.ttf
+│       │   │   │   ├── NewsCycleBold.ttf
+│       │   │   │   ├── NewsCycle.ttf
+│       │   │   │   ├── OpenSansBoldItalic.ttf
+│       │   │   │   ├── OpenSansBold.ttf
+│       │   │   │   ├── OpenSansItalic.ttf
+│       │   │   │   ├── OpenSansLightItalic.ttf
+│       │   │   │   ├── OpenSansLight.ttf
+│       │   │   │   ├── OpenSans.ttf
+│       │   │   │   ├── RalewayBold.ttf
+│       │   │   │   ├── Raleway.ttf
+│       │   │   │   ├── RobotoBold.ttf
+│       │   │   │   ├── RobotoLight.ttf
+│       │   │   │   ├── RobotoMedium.ttf
+│       │   │   │   ├── Roboto.ttf
+│       │   │   │   ├── SourceSansProBold.ttf
+│       │   │   │   ├── SourceSansProItalic.ttf
+│       │   │   │   ├── SourceSansProLight.ttf
+│       │   │   │   ├── SourceSansPro.ttf
+│       │   │   │   └── Ubuntu.ttf
+│       │   │   ├── journal.min.css
+│       │   │   ├── lumen.min.css
+│       │   │   ├── paper.min.css
+│       │   │   ├── readable.min.css
+│       │   │   ├── sandstone.min.css
+│       │   │   ├── simplex.min.css
+│       │   │   ├── spacelab.min.css
+│       │   │   ├── united.min.css
+│       │   │   └── yeti.min.css
+│       │   ├── fonts
+│       │   │   ├── glyphicons-halflings-regular.eot
+│       │   │   ├── glyphicons-halflings-regular.svg
+│       │   │   ├── glyphicons-halflings-regular.ttf
+│       │   │   ├── glyphicons-halflings-regular.woff
+│       │   │   └── glyphicons-halflings-regular.woff2
+│       │   ├── js
+│       │   │   ├── bootstrap.js
+│       │   │   ├── bootstrap.min.js
+│       │   │   └── npm.js
+│       │   └── shim
+│       │       ├── html5shiv.min.js
+│       │       └── respond.min.js
+│       ├── font-awesome-5.0.13
+│       │   ├── css
+│       │   │   └── fa-svg-with-js.css
+│       │   ├── fonts
+│       │   │   ├── fa-brands-400.ttf
+│       │   │   ├── fa-regular-400.ttf
+│       │   │   └── fa-solid-900.ttf
+│       │   └── js
+│       │       ├── fa-v4-shims.min.js
+│       │       └── fontawesome-all.min.js
+│       ├── htmlwidgets-1.3
+│       │   └── htmlwidgets.js
+│       ├── jquery-1.11.3
+│       │   └── jquery.min.js
+│       ├── jqueryui-1.11.4
+│       │   ├── images
+│       │   │   ├── ui-icons_444444_256x240.png
+│       │   │   ├── ui-icons_555555_256x240.png
+│       │   │   ├── ui-icons_777620_256x240.png
+│       │   │   ├── ui-icons_777777_256x240.png
+│       │   │   ├── ui-icons_cc0000_256x240.png
+│       │   │   └── ui-icons_ffffff_256x240.png
+│       │   ├── index.html
+│       │   ├── jquery-ui.css
+│       │   ├── jquery-ui.js
+│       │   ├── jquery-ui.min.css
+│       │   ├── jquery-ui.min.js
+│       │   ├── jquery-ui.structure.css
+│       │   ├── jquery-ui.structure.min.css
+│       │   ├── jquery-ui.theme.css
+│       │   ├── jquery-ui.theme.min.css
+│       │   └── README
+│       ├── navigation-1.1
+│       │   ├── codefolding.js
+│       │   ├── sourceembed.js
+│       │   └── tabsets.js
+│       ├── pagedtable-1.1
+│       │   ├── css
+│       │   │   └── pagedtable.css
+│       │   └── js
+│       │       └── pagedtable.js
+│       ├── timeline-0.4
+│       │   ├── lib
+│       │   │   └── vis-4.16.1
+│       │   │       ├── img
+│       │   │       │   ├── network
+│       │   │       │   │   ├── acceptDeleteIcon.png
+│       │   │       │   │   ├── addNodeIcon.png
+│       │   │       │   │   ├── backIcon.png
+│       │   │       │   │   ├── connectIcon.png
+│       │   │       │   │   ├── cross2.png
+│       │   │       │   │   ├── cross.png
+│       │   │       │   │   ├── deleteIcon.png
+│       │   │       │   │   ├── downArrow.png
+│       │   │       │   │   ├── editIcon.png
+│       │   │       │   │   ├── leftArrow.png
+│       │   │       │   │   ├── minus.png
+│       │   │       │   │   ├── plus.png
+│       │   │       │   │   ├── rightArrow.png
+│       │   │       │   │   ├── upArrow.png
+│       │   │       │   │   └── zoomExtends.png
+│       │   │       │   └── timeline
+│       │   │       │       └── delete.png
+│       │   │       ├── vis.min.css
+│       │   │       └── vis.min.js
+│       │   ├── timevis.css
+│       │   ├── timevis.js
+│       │   └── timevis.yaml
+│       ├── timevis-binding-0.4
+│       │   └── timevis.js
+│       ├── tocify-1.9.1
+│       │   ├── jquery.tocify.css
+│       │   └── jquery.tocify.js
+│       └── vis-4.16.1
+│           ├── img
+│           │   ├── network
+│           │   │   ├── acceptDeleteIcon.png
+│           │   │   ├── addNodeIcon.png
+│           │   │   ├── backIcon.png
+│           │   │   ├── connectIcon.png
+│           │   │   ├── cross2.png
+│           │   │   ├── cross.png
+│           │   │   ├── deleteIcon.png
+│           │   │   ├── downArrow.png
+│           │   │   ├── editIcon.png
+│           │   │   ├── leftArrow.png
+│           │   │   ├── minus.png
+│           │   │   ├── plus.png
+│           │   │   ├── rightArrow.png
+│           │   │   ├── upArrow.png
+│           │   │   └── zoomExtends.png
+│           │   └── timeline
+│           │       └── delete.png
+│           ├── vis.min.css
+│           └── vis.min.js
+├── footer.html
+├── index.Rmd
+├── README.md
+└── _site.yml
+
+210 directories, 410 files</code></pre>
+<p>Потом я буду автоматически обкачивать файлы <code>2019_hse_data_analysis/hw1_distributions/hw1.Rmd</code> из ваших репозиториев.</p>
+<ul>
+<li>фрагменты кода, посвященные отдельным заданиям разделяйте заголовками третьего уровня, пробелом и номером задания “### 1.1”, “### 1.2”, “### 2.1” и т. д. При этом, пожалуйста больше нигде в коде три и больше знака решётки подряд не используйте;</li>
+<li>Не используйте точные пути, все данные закачиваете из интернет-ссылок (например, <code>read_csv(&quot;интернет_ссылка&quot;)</code>)</li>
+<li>фрагменты кода, посвященные конкретным заданиям должны выводить ответ в консоль.</li>
+</ul>
+<p>Календарь можно скачать <a href="https://raw.githubusercontent.com/agricolamz/2019_data_analysis_for_linguists/master/data_analysis_calendar.csv">в формате <code>.csv</code></a> и импортировать в Google Calendar, MS Outlook и т. п.</p>
+<div id="htmlwidget-f5f5f21ec8bb529119c3" class="timevis html-widget" style="width:672px;height:480px;">
+<div class="btn-group zoom-menu">
+<button type="button" class="btn btn-default btn-lg zoom-in" title="Zoom in">+</button>
+<button type="button" class="btn btn-default btn-lg zoom-out" title="Zoom out">-</button>
+</div>
+</div>
+<script type="application/json" data-for="htmlwidget-f5f5f21ec8bb529119c3">{"x":{"items":[{"start":"2018-01-30","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/1_tidyverse.html'>1 tidyverse<\/a> <br>Tue 30.1"},{"start":"2018-02-06","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/2_agreement.html'>2 agreement<\/a> <br>Tue 6.2"},{"start":"2018-02-13","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/3_binomial.html'>3 binomial<\/a> <br>Tue 13.2"},{"start":"2018-02-20","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/4_binomial_ci.html'>4 binomial ci<\/a> <br>Tue 20.2"},{"start":"2018-02-27","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/5_PCA.html'>5 PCA<\/a> <br>Tue 27.2"},{"start":"2018-03-06","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/6_CA_MCA.html'>6 CA MCA<\/a> <br>Tue 6.3"},{"start":"2018-03-13","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/8_more_linear_regression.html'>8 more linear regression<\/a> <br>Tue 13.3"},{"start":"2018-03-20","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/9_logit_multinom.html'>9 logit multinom<\/a> <br>Tue 20.3"},{"start":"2018-02-20","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/HW_2.html'>HW 2 deadline<\/a> <br>Tue 20.2"},{"start":"2018-02-27","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/HW_3.html'>HW 3 deadline<\/a> <br>Tue 27.2"},{"start":"2018-03-06","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/HW_4.html'>HW 4 deadline<\/a> <br>Tue 6.3"},{"start":"2018-03-20","content":"<a href = 'https://agricolamz.github.io/2019_data_analysis_for_linguists/HW_5.html'>HW 5 deadline<\/a> <br>Tue 20.3"}],"groups":null,"showZoom":true,"zoomFactor":0.5,"fit":true,"options":[],"height":null,"api":[]},"evals":[],"jsHooks":[]}</script>
+</div>
+
+<br><br><br>
+<p><center> &copy; Г. Мороз 2018 с помощью RMarkdown. Исходный код на 
+<a href="https://github.com/agricolamz/2019_data_analysis_for_linguists"> GitHub <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"  style="width:30px;height:30px;border:0"></a></center> </p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

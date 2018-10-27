@@ -346,40 +346,19 @@ div.tocify {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    tidyverse
+    введение в байесовскую статистику
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="1_tidyverse.html">1. tidyverse</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    меры согласия
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="2_agreement.html">2. Меры согласия</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    биномиальные данные
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="3_binomial.html">3. Биномиальные данные</a>
+      <a href="1_distributions.html">1. Распределения</a>
     </li>
     <li>
-      <a href="4_binomial_ci.html">4. Binomial CI</a>
+      <a href="2_binomial.html">2. Биномиальные данные</a>
+    </li>
+    <li>
+      <a href="3_binomial_ci.html">3. Binomial CI</a>
     </li>
   </ul>
 </li>
@@ -391,13 +370,13 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="5_PCA.html">5. PCA, LDA</a>
+      <a href="4_PCA.html">4. PCA, LDA</a>
     </li>
     <li>
-      <a href="6_CA_MCA.html">6. CA, DCA, MCA</a>
+      <a href="5_CA_MCA.html">5. CA, DCA, MCA</a>
     </li>
     <li>
-      <a href="7_Clustering.pdf">7. Кластеризация</a>
+      <a href="6_Clustering.pdf">6. Кластеризация</a>
     </li>
   </ul>
 </li>
@@ -409,10 +388,10 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="8_more_linear_regression.html">8. Еще о регрессионных моделях</a>
+      <a href="7_more_linear_regression.html">7. Еще о регрессионных моделях</a>
     </li>
     <li>
-      <a href="9_logit_multinom.html">9. Логистическая и мультиномиальная регрессии</a>
+      <a href="8_logit_multinom.html">8. Логистическая и мультиномиальная регрессии</a>
     </li>
   </ul>
 </li>
@@ -512,7 +491,7 @@ div.tocify {
 </div>
 <div id="-" class="section level3">
 <h3>2.3 Мультиномиальное распределение</h3>
-<p>Мультиномиальное распределение — обобщение биноимального эксперимента на случай <em>n</em> независимых испытаний с <em>k</em> исходами с вероятностями успеха <span class="math inline">\(p_1, p_2, \dots p_k\)</span>.</p>
+<p>Мультиномиальное распределение — обобщение биноимального эксперимента на случай <em>n</em> независимых испытаний с <em>k</em> исходами с вероятностями каждого исхода <span class="math inline">\(p_1, p_2, \dots p_k\)</span>.</p>
 <p><span class="math display">\[P(x_1, \dots, x_k | n, p_1, \dots p_k) = \frac{n!}{x_1!\times\dots\times x_k!} \times p_1^{x_1}\times\dots\times p_2^{x_k}\]</span> <span class="math display">\[ x_i \in \{0, n\}, i \in \{1, k\}, \sum_{i=1}^kx_i = n \]</span></p>
 <p>Если у нас есть три взаимисключающих исхода V1, V2 и V3 с верятностями <span class="math inline">\(p_1 = 0.4, p_2 = 0.35\)</span> и <span class="math inline">\(p_3 = 0.25\)</span>, какова вероятность получить V1 7 раз, V2 3 раза и V3 2 раза?</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">dmultinom</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">2</span>), <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.4</span>, <span class="fl">0.35</span>, <span class="fl">0.25</span>))</a></code></pre></div>
@@ -541,6 +520,8 @@ div.tocify {
 <h2>3. Непрерывные распределения</h2>
 <div id="-" class="section level3">
 <h3>3.1 Нормальное распределение</h3>
+<p><span class="math display">\[P(x) = \frac{1}{\sigma\sqrt{2\pi}}\times e^{-\frac{\left(x-\mu\right)^2}{2\sigma^2}}\]</span></p>
+<p><span class="math display">\[\mu \in \mathbb{R}; \sigma^2 &gt; 0\]</span></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">           <span class="dt">PDF =</span> <span class="kw">dnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">50</span>, <span class="dt">sd =</span> <span class="dv">10</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb11-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, PDF))<span class="op">+</span></a>
@@ -551,6 +532,8 @@ div.tocify {
 </div>
 <div id="-" class="section level3">
 <h3>3.2 Логнормальное распределение</h3>
+<p><span class="math display">\[P(x) = \frac{1}{\sqrt{x\sigma2\pi}}\times e^{-\frac{\left(\ln(x)-\mu\right)^2}{2\sigma^2}}\]</span></p>
+<p><span class="math display">\[\mu \in \mathbb{R}; \sigma^2 &gt; 0\]</span></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>,</a>
 <a class="sourceLine" id="cb12-2" data-line-number="2">           <span class="dt">PDF =</span> <span class="kw">dlnorm</span>(<span class="dt">x =</span> x, <span class="dt">mean =</span> <span class="dv">3</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, PDF))<span class="op">+</span></a>
@@ -561,8 +544,9 @@ div.tocify {
 </div>
 <div id="-" class="section level3">
 <h3>3.3 Экспоненциальное распределение</h3>
+<p><span class="math display">\[P(x)= \lambda \times e^{-\lambda x}\]</span></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>,</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">           <span class="dt">PDF =</span> <span class="kw">dexp</span>(<span class="dt">x =</span> x)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">           <span class="dt">PDF =</span> <span class="kw">dexp</span>(<span class="dt">x =</span> x, <span class="dt">rate =</span> <span class="dv">5</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, PDF))<span class="op">+</span></a>
 <a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb13-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
@@ -656,7 +640,7 @@ function validateFormTwo() {
 
 <br><br><br>
 <p><center> &copy; Г. Мороз 2018 с помощью RMarkdown. Исходный код на 
-<a href="https://github.com/agricolamz/2018_data_analysis_for_linguists"> GitHub <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"  style="width:30px;height:30px;border:0"></a></center> </p>
+<a href="https://github.com/agricolamz/2019_data_analysis_for_linguists"> GitHub <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"  style="width:30px;height:30px;border:0"></a></center> </p>
 
 
 </div>
