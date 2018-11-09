@@ -301,10 +301,24 @@ $$L\left(X \sim \mathcal{N}(\mu = 22,\, \sigma^{2}=6)|x = 33\right) = ...$$
 dnorm(33, 22, 6)
 ```
 
+
+
 В итоге:
 
 * вероятность --- P(data|distribution)
 * правдоподобие --- L(distribution|data)
+
+## Домашнее задание (до 12.12.2018)
+
+* Обязательно:
+    * Вспомнить, перемножение матриц и что такое [собственные векторы](https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80)
+    * [Introduction to attractor landscapes](https://ncase.me/attractors/) (занимает минут 5)
+* По желанию:
+    * [The evolution of trust](https://ncase.me/trust/) (занимает минут 30)
+    * [The wisdom and/or madness of crowds](https://ncase.me/crowds/) (занимает минут 30)
+
+## Домашнее задание (до 19.12.2018)
+
 
 <script>
 function validateFormOne() {

@@ -35,7 +35,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -48,13 +48,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -614,6 +612,24 @@ div.tocify {
 <li>вероятность — P(data|distribution)</li>
 <li>правдоподобие — L(distribution|data)</li>
 </ul>
+</div>
+<div id="---12.12.2018" class="section level2">
+<h2>Домашнее задание (до 12.12.2018)</h2>
+<ul>
+<li>Обязательно:
+<ul>
+<li>Вспомнить, перемножение матриц и что такое <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80">собственные векторы</a></li>
+<li><a href="https://ncase.me/attractors/">Introduction to attractor landscapes</a> (занимает минут 5)</li>
+</ul></li>
+<li>По желанию:
+<ul>
+<li><a href="https://ncase.me/trust/">The evolution of trust</a> (занимает минут 30)</li>
+<li><a href="https://ncase.me/crowds/">The wisdom and/or madness of crowds</a> (занимает минут 30)</li>
+</ul></li>
+</ul>
+</div>
+<div id="---19.12.2018" class="section level2">
+<h2>Домашнее задание (до 19.12.2018)</h2>
 <script>
 function validateFormOne() {
     var x = document.forms["FormOne"]["answerOne"].value;
