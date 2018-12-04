@@ -8,33 +8,31 @@ editor_options:
   chunk_output_type: console
 ---
 
+### Общее
+
+Финальная оценка = 0.6 $\times$ накопленная + 0.4 $\times$ экзамен
+
 ### Библиотеки:
 ```{r, message=FALSE}
 packageVersion("tidyverse")
-packageVersion("mosaic")
-packageVersion("bootstrap")
-packageVersion("irr")
-packageVersion("ca")
-packageVersion("MASS")
-packageVersion("ggfortify")
+packageVersion("brms")
 packageVersion("lme4")
-packageVersion("lmerTest")
-packageVersion("pscl")
-packageVersion("nnet")
 ```
 
 ### Как выполнять домашние задания?
-Домашние задания у всех общие, однако для каждого студента каждый датасет несколько отличается. Все датасеты собраны в [этой папке](https://github.com/agricolamz/2019_data_analysis_for_linguists/tree/master/data/students), где содержатся подпапки для каждого студента (если, Вы не видете Вашей папки, заполните [эту форму](https://goo.gl/forms/ImsaSzpW1krTnRnJ3) и напишите мне).
+На домашние задания, в которых нужно писать код, отводится 2 недели. Потом я автоматически выгружаю ответы из гитхаба. Ассистент курса --- [Мария Терехина](maria.myslina@gmail.com). Домашние задания у всех общие, однако часто у каждого студента будет свой датасет. Все датасеты будут собраны в [этой папке](https://github.com/agricolamz/2019_data_analysis_for_linguists/tree/master/data/students), где содержатся подпапки для каждого студента (если, Вы не видете Вашей папки, заполните [эту форму](https://goo.gl/forms/ImsaSzpW1krTnRnJ3) и напишите мне).
 
 Домашние задания будут проверятся полуавтоматически, так что пожалуйста:
 
 * создайте репозиторий `2019_hse_data_analysis` (или переименуйте уже существующий);
 * добавьте в соответствующую папку файл с решением в формате `hw`, номер домашнего задания, `.Rmd`;
 * следуйте паттерну называния подпапок повторяющему [схему в Вашей папке](https://github.com/agricolamz/2019_data_analysis_for_linguists/tree/master/data/students) в репозитории курса;
+
 ```{bash, echo = FALSE, comment = ""}
 cd /home/agricolamz/work/materials/2019_HSE_Data_Analysis_for_linguists/data/answers/creaciond
 tree
 ```
+
 Потом я буду автоматически обкачивать файлы `2019_hse_data_analysis/hw1_distributions/hw1.Rmd` из ваших репозиториев.
 
 * фрагменты кода, посвященные отдельным заданиям разделяйте заголовками третьего уровня, пробелом и номером задания "### 1.1", "### 1.2", "### 2.1" и т. д. При этом, пожалуйста больше нигде в коде три и больше знака решётки подряд не используйте;

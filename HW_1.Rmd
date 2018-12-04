@@ -1,0 +1,44 @@
+---
+output:
+  html_document:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+## Домашнее задание 1 (до 19.12.2018)
+Домашнее задание нужно выполнять в отдельном `rmarkdown` файле. Получившийся файл следует помещать в соответствующую папку в своем репозитории на гитхабе. Более подробные инструкции [см. на этой странице](https://agricolamz.github.io/2018_data_analysis_for_linguists/index.html).
+
+### 1.1
+Дан график логнормального распределения со средним 3 и стандартным отклонением 0.5. Использкйте функцию `integrate`, чтобы посчитать площадь под кривой.
+
+```{r, echo = FALSE}
+data <- data_frame(x = 1:100,
+                   PDF = dlnorm(x = x, mean = 3, sd = 0.5))
+shade <- data_frame(x = 25:50,
+                    PDF = dlnorm(x = x, mean = 3, sd = 0.5))
+data %>% 
+  ggplot(aes(x, PDF))+
+  geom_line()+
+  geom_area(data = shade, aes(x, PDF), fill = "lightblue")+
+  labs(title = "PDF логнормального распределения (μ = 3, sd = 0.5)")
+```
+
+### 1.2
+Дан график логнормального распределения со средним 3 и стандартным отклонением 0.5. Использкйте функцию `integrate`, чтобы посчитать площадь под кривой.
+
+```{r, echo = FALSE}
+data <- data_frame(x = 1:100,
+                   PDF = dlnorm(x = x, mean = 3, sd = 0.5))
+shade <- data_frame(x = qlnorm(10:90/100, mean = 3, sd = 0.5),
+                    PDF = dlnorm(x = x, mean = 3, sd = 0.5))
+
+data %>% 
+  ggplot(aes(x, PDF))+
+  geom_line()+
+  geom_area(data = shade, aes(x, PDF), fill = "lightblue")+
+  geom_vline(xintercept = qlnorm(0.1, mean = 3, sd = 0.5), linetype = 2)+
+  geom_vline(xintercept = qlnorm(0.9, mean = 3, sd = 0.5), linetype = 2)+
+  labs(title = "PDF логнормального распределения (μ = 3, sd = 0.5)")+
+  annotate(geom = "text", y = 0.04, x = c(3, 31), label = c("10%\n квантиль", "90%\n квантиль"), color = "red")
+```
