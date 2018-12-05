@@ -561,51 +561,24 @@ div.tocify {
 <a class="sourceLine" id="cb14-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;PDF унимодального распредления (min = 5, max = 10)&quot;</span>)</a></code></pre></div>
 <p><img src="1_distributions_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
-</div>
-<div id="conjugate-priors" class="section level2">
-<h2>4. Conjugate priors</h2>
-<p>В байесовском подоходе статистический вывод описывается формулой Байеса</p>
-<p><span class="math display">\[P(θ|Data) = \frac{P(Data|θ)\times P(θ)}{P(Data)}\]</span></p>
-<ul>
-<li><span class="math inline">\(P(Data|θ)\)</span> — функция правдоподобия (likelihood)</li>
-<li><span class="math inline">\(P(θ)\)</span> — априорная вероятность (prior)</li>
-<li><span class="math inline">\(P(Data)\)</span> — данные</li>
-<li><span class="math inline">\(P(θ|Data)\)</span> — апостериорная вероятность (posterior)</li>
-</ul>
-<p>Мы вернемся к формуле Байеса и байесовскому подходу в следующих лекциях, а сейчас важно обсудить распределения априорной и апостериорной вероятностей. Оба эти распределения — распределения вероятностей.</p>
-<p><img src="1_distributions_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<p>Если у нас есть некоторые данные с функцией правдоподобия P(Data|θ), а априорное и апостериорное распределения θ относятся к одному семейству распределений, то данное семейство распредлений называется <strong>сопряжённым априорным распределением</strong> к функции правдоподобия P(Data|θ) (<strong>conjugate prior</strong>).</p>
-<div id="-" class="section level3">
-<h3>4.1 Бета распределение</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">51</span>),</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">dbeta</span>(<span class="dt">x =</span> x, <span class="dt">shape1 =</span> <span class="dv">8</span>, <span class="dt">shape2 =</span> <span class="dv">42</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density))<span class="op">+</span></a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Бета распределение α = 8, β = 42&quot;</span>)</a></code></pre></div>
-<p><img src="1_distributions_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
-</div>
-<div id="--1" class="section level3">
-<h3>4.2 Нормальное распределение</h3>
-</div>
 <div id="----" class="section level3">
-<h3>4.3 Что еще почитать про распределения?</h3>
+<h3>3.5 Что еще почитать про распределения?</h3>
 <p>В интернете много ресурсов, но вот еще есть <a href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html">вот этот</a>. А <a href="https://en.wikipedia.org/wiki/Conjugate_prior">здесь</a> можно найти соответсвия распределений и сопряжённым к ним априорных распределений.</p>
 </div>
 </div>
 <div id="-vs.-" class="section level2">
-<h2>5. Вероятность vs. функция правдободобия</h2>
+<h2>4. Вероятность vs. функция правдободобия</h2>
 <p>Предположим что распределение количества согласных в языках мира можно описать нормальным распределением со средним 22, и стандартным отклонением 6:</p>
-<p><img src="1_distributions_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="1_distributions_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Тогда вероятность того, что в выбранных произвольно языках окажется от 23 до 32 согласных равна интегралу нормального распределения в указанном промежутке:</p>
-<p><img src="1_distributions_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="1_distributions_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p><span class="math display">\[P\left(X \in (23,\, 32) | X \sim \mathcal{N}(\mu = 22,\, \sigma^{2}=6)\right) = ...\]</span></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">pnorm</span>(<span class="dv">32</span>, <span class="dt">mean =</span> <span class="dv">22</span>, <span class="dt">sd =</span> <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">23</span>, <span class="dt">mean =</span> <span class="dv">22</span>, <span class="dt">sd =</span> <span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">pnorm</span>(<span class="dv">32</span>, <span class="dt">mean =</span> <span class="dv">22</span>, <span class="dt">sd =</span> <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">23</span>, <span class="dt">mean =</span> <span class="dv">22</span>, <span class="dt">sd =</span> <span class="dv">6</span>)</a></code></pre></div>
 <pre><code>[1] 0.3860258</code></pre>
 <p>Когда мы говорим про функцию правдоподобия, то мы уже нашли еще один язык в котором оказалось 33 согласных. Нас интересует, насколько правдоподобна функция нормального распределения со средним 22 и стандартным отклонением 6 при значении переменной 33. Это значение равно функции плотности:</p>
-<p><img src="1_distributions_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="1_distributions_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p><span class="math display">\[L\left(X \sim \mathcal{N}(\mu = 22,\, \sigma^{2}=6)|x = 33\right) = ...\]</span></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">dnorm</span>(<span class="dv">33</span>, <span class="dv">22</span>, <span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">dnorm</span>(<span class="dv">33</span>, <span class="dv">22</span>, <span class="dv">6</span>)</a></code></pre></div>
 <pre><code>[1] 0.01238519</code></pre>
 <p>В итоге:</p>
 <ul>
@@ -618,17 +591,17 @@ div.tocify {
 <p>Домашнее задание нужно выполнять в отдельном <code>rmarkdown</code> файле. Получившийся файл следует помещать в соответствующую папку в своем репозитории на гитхабе. Более подробные инструкции <a href="https://agricolamz.github.io/2018_data_analysis_for_linguists/index.html">см. на этой странице</a>.</p>
 <div id="section-2" class="section level3">
 <h3>1.1</h3>
-<p>Дан график логнормального распределения со средним 3 и стандартным отклонением 0.5. Использкйте функцию <code>integrate</code>, чтобы посчитать закрашенную площадь под кривой.</p>
-<p><img src="1_distributions_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>Дан график логнормального распределения со средним 3 и стандартным отклонением 0.5. Используйте функцию <code>integrate</code>, чтобы посчитать закрашенную площадь под кривой.</p>
+<p><img src="1_distributions_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
 <div id="section-3" class="section level3">
 <h3>1.2</h3>
-<p>Дан график логнормального распределения со средним 3 и стандартным отклонением 0.5. Использкйте функцию <code>integrate</code>, чтобы посчитать закрашенную площадь под кривой.</p>
-<p><img src="1_distributions_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>Дан график логнормального распределения со средним 3 и стандартным отклонением 0.5. Используйте функцию <code>integrate</code>, чтобы посчитать закрашенную площадь под кривой.</p>
+<p><img src="1_distributions_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <script>
 function validateFormOne() {
     var x = document.forms["FormOne"]["answerOne"].value;
-    if (x != "-156.3968") {
+    if (x != "-40.70408") {
         alert("У меня другой ответ...");
         return false;
     } else {
