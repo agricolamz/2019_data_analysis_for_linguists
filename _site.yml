@@ -7,10 +7,10 @@ navbar:
     menu:
     - text: 1. Распределения
       href: 1_distributions.html    
-    - text: 2. Биномиальные данные
-      href: 2_binomial.html
-    - text: 3. Binomial CI
-      href: 3_binomial_ci.html
+    - text: 2. Байесовский вывод
+      href: 2_Bayesian_inference.html
+    - text: 3. Продвинутая байесовская статистика
+      href: 3_Advanced_Bayesian.html
   - text: уменьшение размерности
     menu:
     - text: 4. PCA, LDA
