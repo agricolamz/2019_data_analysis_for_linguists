@@ -1,39 +1,114 @@
-## 2. Conjugate priors
+---
+title: "2. Байесовский статистический вывод"
+author: "Г. Мороз"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, comment = "")
+options(scipen=999)
+ggplot2::theme_set(ggplot2::theme_bw())
+```
+
+```{r}
+library(tidyverse)
+```
+
+## 1. Формула Байеса
+
+$$p(A|B) = \frac{p(A, B)}{p(B)}\Rightarrow p(A|B) \times p(B) = p(A, B)$$
+$$p(B|A) = \frac{p(B, A)}{p(A)}\Rightarrow p(B|A) \times p(A) = p(B, A)$$
+$$p(A|B) \times p(B) = p(B|A) \times p(A)$$
+$$p(A|B) = \frac{p(B|A)p(A)}{p(B)}$$
+
+* Discrete case:
+$$p(A|B) = \frac{p(B|A)p(A)}{\sum_{i=1}^{n} p(B, a_i) \times p(a_i)}$$
+
+* Continuouse case:
+$$p(A|B) = \frac{p(B|A)p(A)}{\int p(B, a) \times p(a)da}$$
+
+* Некоторым помогает вот такое объяснение: 
+![](images/02_1_bayes.jpg)
+
+## 2. Байесовский статистический вывод
 
 В байесовском подоходе статистический вывод описывается формулой Байеса
 
 $$P(θ|Data) = \frac{P(Data|θ)\times P(θ)}{P(Data)}$$
 
+* $P(θ|Data)$ --- апостериорная вероятность (posterior)
 * $P(Data|θ)$ --- функция правдоподобия (likelihood)
 * $P(θ)$ ---  априорная вероятность (prior)
-* $P(Data)$ --- данные
-* $P(θ|Data)$ --- апостериорная вероятность (posterior)
+* $P(Data)$ --- нормализующий делитель
 
-Мы вернемся к формуле Байеса и байесовскому подходу в следующих лекциях, а сейчас важно обсудить распределения априорной и апостериорной вероятностей. Оба эти распределения --- распределения вероятностей. 
+В литературе можно еще встретить такую нотацию:
 
-```{r, echo=FALSE}
-data_frame(x = 0:80) %>% 
-  ggplot(aes(x)) +
-  stat_function(fun = function(x) dchisq(x, 22, 6))+
-  labs(title = "PDF P(θ)", x = "θ", y = "P(θ)")+
-  theme(axis.text.x=element_blank(),
-        axis.ticks.x=element_blank(),
-        axis.text.y=element_blank(),
-        axis.ticks.y=element_blank())
-```
+$$P(θ|Data) \propto P(Data|θ)\times P(θ)$$
+
+
+## 3. Сопряженные распределения (сonjugate priors)
 
 Если у нас есть некоторые данные с функцией правдоподобия P(Data|θ), а априорное и апостериорное распределения θ относятся к одному семейству распределений, то данное семейство распредлений называется **сопряжённым априорным распределением** к функции правдоподобия P(Data|θ) (**conjugate prior**).
 
-### 2.1 Бета распределение
+### 3.1 Бета распределение
 
-```{r}
-data_frame(x = seq(0, 1, length.out = 51),
-           density = dbeta(x = x, shape1 = 8, shape2 = 42)) %>% 
-  ggplot(aes(x, density))+
-  geom_point()+
-  geom_line()+
-  labs(title = "Бета распределение α = 8, β = 42")
+$$P(x; α, β) = \frac{x^{α-1}\times (1-x)^{β-1}}{B(α, β)}; 0 \leq x \leq 1; α, β > 0$$
+
+Бета функция:
+
+$$Β(α, β) = \frac{Γ(α)\times Γ(β)}{Γ(α+β)} = \frac{(α-1)!(β-1)!}{(α+β-1)!} $$
+
+```{r, eval = FALSE}
+shiny::runGitHub("agricolamz/beta_distribution_shiny") 
 ```
 
-### 2.2 Нормальное распределение
+### 3.2 Нормальное распределение
 
+### 3.3 Другие сопряженные распределения...
+... перечислены [на этой страниц](https://en.wikipedia.org/wiki/Conjugate_prior#Table_of_conjugate_distributions).
+
+## 4. Байесовский вывод
+
+### 4.1 Биномиальные данные
+
+$$B(\alpha_{post}, \beta_{post}) = B(\alpha_{prior}+\alpha_{data}, \beta_{prior}+\beta_{data})$$
+
+```{r, eval = FALSE}
+shiny::runGitHub("agricolamz/bayes_for_binomial_app") 
+```
+
+Подробнее см.:
+
+* 2 главу Robinson D. (2017) Introduction To Empirical Bayes
+* раздел 2.5 в Gelman A. et. al (2014) Bayesian Data Analysis
+
+### 4.2 Нормально распределенные данные с известной дисперсией
+
+Начнем с апостериорных параметров для наблюдений $x_1, ... x_n$ со средним $\mu_{data}$ известной дисперсией $\sigma_{known}^2$
+
+$$\sigma_{post}^2=(\frac{1}{\sigma_{prior}^2}+\frac{n}{\sigma_{known}^2})^{-1}$$
+
+$$\mu_{post} = \sigma^2_{post}\times\left(\frac{\mu_{prior}}{\sigma_{prior}}+\frac{n\times\mu_{data}}{\sigma_{known}}\right)$$
+
+
+$\frac{1}{\sigma}$ часто называют точностью (precision) и обозначают $\tau$, тогда полученные показатели имеют форму
+
+$$\tau_{post}^2=\tau_{prior}^2+n\times\tau_{known}^2$$
+
+$$\mu_{post} = \frac{\mu_{prior}\times\tau_{prior}^2+n\times\bar x\times\tau_{known}^2}{\tau_{post}^2} $$
+
+```{r, eval = FALSE}
+shiny::runGitHub("agricolamz/bayes_for_normal_app") 
+```
+
+Подробнее см.:
+
+* [Murphy K. P. (2007) Conjugate Bayesian analysis of the Gaussian distribution](https://www.cs.ubc.ca/~murphyk/Papers/bayesGauss.pdf)
+* [Jordan M. I. (2010) The Conjugate Prior for the Normal Distribution](https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/lectures/lecture5.pdf)
+* раздел 2.5 в Gelman A. et. al (2014) Bayesian Data Analysis
+
+## 5. Empirical Bayes Estimation
+
+```{r child = 'HW_2.Rmd'}
+```

@@ -26,18 +26,19 @@ navbar:
     - text: 8. Логистическая и мультиномиальная регрессии
       href: 8_logit_multinom.html
 output_dir: docs
-output:
-  html_document:
-    theme: spacelab
-    highlight: pygments
-    toc: yes
-    toc_position: right
-    toc_depth: 3
-    toc_float: yes
-    smooth_scroll: no
-    df_print: paged
-    include:
-      after_body: footer.html
-    lib_dir: site_libs
-    self_contained: no
+output: 
+    html_document:
+      theme: spacelab
+      highlight: pygments
+      toc: yes
+      toc_position: right
+      toc_depth: 3
+      toc_float: yes
+      smooth_scroll: no
+      df_print: paged
+      include:
+        after_body: footer.html
+        before_body: style.css
+      lib_dir: site_libs
+      self_contained: no
 

@@ -26,6 +26,7 @@ library(tidyverse)
 
 Рассмотрим все это на примере нормального распределения.
 
+
 ```{r}
 data_frame(x = 1:100,
            PDF = dnorm(x = x, mean = 50, sd = 10)) %>% 
@@ -127,7 +128,7 @@ dmultinom(x = c(7, 3, 2), prob = c(0.4, 0.35, 0.25))
 
 А как выглядит распределение?
 
-```{r}
+```{r, echo=FALSE}
 library(ggtern)
 rep(1:10, 3) %>% 
   combn(., 3) %>% 
