@@ -568,6 +568,8 @@ div.tocify {
 <p>Бета функция:</p>
 <p><span class="math display">\[Β(α, β) = \frac{Γ(α)\times Γ(β)}{Γ(α+β)} = \frac{(α-1)!(β-1)!}{(α+β-1)!} \]</span></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">shiny<span class="op">::</span><span class="kw">runGitHub</span>(<span class="st">&quot;agricolamz/beta_distribution_shiny&quot;</span>) </a></code></pre></div>
+<p><span class="math display">\[\mu = \frac{\alpha}{\alpha+\beta}\]</span></p>
+<p><span class="math display">\[\sigma = \frac{\alpha\times\beta}{(\alpha+\beta)^2\times(\alpha+\beta+1)}\]</span></p>
 </div>
 <div id="-" class="section level3">
 <h3>3.2 Нормальное распределение</h3>
@@ -608,6 +610,11 @@ div.tocify {
 </div>
 <div id="empirical-bayes-estimation" class="section level2">
 <h2>5. Empirical Bayes Estimation</h2>
+<p>Метод Empirical Bayes estimation — один из байесовских методов, в рамках которого:</p>
+<ul>
+<li>произвести оценку априорного распределения вероятностей на основании имеющихся данных</li>
+<li>использовать полученное априорное распределение для получение апостериорной оценки для каждого наблюдения</li>
+</ul>
 </div>
 <div id="---19.12.2018" class="section level2">
 <h2>Домашнее задание (до 19.12.2018)</h2>

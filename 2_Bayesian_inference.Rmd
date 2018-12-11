@@ -63,6 +63,10 @@ $$Β(α, β) = \frac{Γ(α)\times Γ(β)}{Γ(α+β)} = \frac{(α-1)!(β-1)!}{(α
 shiny::runGitHub("agricolamz/beta_distribution_shiny") 
 ```
 
+$$\mu = \frac{\alpha}{\alpha+\beta}$$
+
+$$\sigma = \frac{\alpha\times\beta}{(\alpha+\beta)^2\times(\alpha+\beta+1)}$$
+
 ### 3.2 Нормальное распределение
 
 ### 3.3 Другие сопряженные распределения...
@@ -109,6 +113,11 @@ shiny::runGitHub("agricolamz/bayes_for_normal_app")
 * раздел 2.5 в Gelman A. et. al (2014) Bayesian Data Analysis
 
 ## 5. Empirical Bayes Estimation
+
+Метод Empirical Bayes estimation --- один из байесовских методов, в рамках которого:
+
+* произвести оценку априорного распределения вероятностей на основании имеющихся данных
+* использовать полученное априорное распределение для получение апостериорной оценки для каждого наблюдения
 
 ```{r child = 'HW_2.Rmd'}
 ```
