@@ -93,7 +93,7 @@ shiny::runGitHub("agricolamz/bayes_for_binomial_app")
 
 $$\sigma_{post}^2=(\frac{1}{\sigma_{prior}^2}+\frac{n}{\sigma_{known}^2})^{-1}$$
 
-$$\mu_{post} = \sigma^2_{post}\times\left(\frac{\mu_{prior}}{\sigma_{prior}}+\frac{n\times\mu_{data}}{\sigma_{known}}\right)$$
+$$\mu_{post} = \sigma^2_{post}\times\left(\frac{\mu_{prior}}{\sigma_{prior}^2}+\frac{n\times\mu_{data}}{\sigma_{known}^2}\right)$$
 
 
 $\frac{1}{\sigma}$ часто называют точностью (precision) и обозначают $\tau$, тогда полученные показатели имеют форму

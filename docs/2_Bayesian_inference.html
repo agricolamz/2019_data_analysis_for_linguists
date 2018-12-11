@@ -595,7 +595,7 @@ div.tocify {
 <h3>4.2 Нормально распределенные данные с известной дисперсией</h3>
 <p>Начнем с апостериорных параметров для наблюдений <span class="math inline">\(x_1, ... x_n\)</span> со средним <span class="math inline">\(\mu_{data}\)</span> известной дисперсией <span class="math inline">\(\sigma_{known}^2\)</span></p>
 <p><span class="math display">\[\sigma_{post}^2=(\frac{1}{\sigma_{prior}^2}+\frac{n}{\sigma_{known}^2})^{-1}\]</span></p>
-<p><span class="math display">\[\mu_{post} = \sigma^2_{post}\times\left(\frac{\mu_{prior}}{\sigma_{prior}}+\frac{n\times\mu_{data}}{\sigma_{known}}\right)\]</span></p>
+<p><span class="math display">\[\mu_{post} = \sigma^2_{post}\times\left(\frac{\mu_{prior}}{\sigma_{prior}^2}+\frac{n\times\mu_{data}}{\sigma_{known}^2}\right)\]</span></p>
 <p><span class="math inline">\(\frac{1}{\sigma}\)</span> часто называют точностью (precision) и обозначают <span class="math inline">\(\tau\)</span>, тогда полученные показатели имеют форму</p>
 <p><span class="math display">\[\tau_{post}^2=\tau_{prior}^2+n\times\tau_{known}^2\]</span></p>
 <p><span class="math display">\[\mu_{post} = \frac{\mu_{prior}\times\tau_{prior}^2+n\times\bar x\times\tau_{known}^2}{\tau_{post}^2} \]</span></p>
