@@ -1,0 +1,2148 @@
+language,consonants,phonemes
+Korean,22,40
+Ket,18,32
+Lak,60,69
+Kabardian,49,56
+Georgian,29,35
+Burushaski,38,53
+Kurukh,46,68
+Telugu,47,68
+Kota (India),23,34
+Mundari,32,37
+Kharia,31,41
+Khasi,19,28
+Sedang,39,53
+Central Khmer,21,42
+Vietnamese,21,39
+Mandarin Chinese,27,43
+Wu Chinese,29,41
+Hakka Chinese,21,31
+Yue Chinese,22,32
+Iu Mien,35,49
+Dafla,16,27
+Burmese,34,50
+Lahu,26,40
+Garo,21,26
+S'gaw Karen,27,39
+Lakkia,31,59
+Thai,21,45
+Bouyei,24,38
+Western Cham,24,35
+Atayal,19,27
+Plateau Malagasy,31,36
+Standard Malay,21,27
+Batak Karo,16,21
+Sa'ban,38,46
+Sundanese,19,26
+Javanese,22,30
+Tagalog,18,28
+Chamorro,30,36
+Iaai,33,52
+Lusi,18,28
+Adzera,18,25
+Maori,10,20
+Hawaiian,9,19
+Antakarinya,17,23
+Nyangumarta,20,27
+Kunjen,23,28
+Maranunggu,19,24
+Maung,19,24
+Wubuy,19,24
+Alawa,23,28
+Wik-Mungkan,13,23
+Sentani,10,17
+Kwoma,24,31
+Tamnim Citak,14,19
+Telefol,17,27
+Gadsup,9,19
+Awiyaana,11,20
+Kunimaipa,15,20
+Selepet,15,21
+Naasioi,8,18
+Aleut,30,36
+Kalaallisut,32,38
+Chipewyan,39,61
+Tolowa-Chetco,29,44
+Hupa,35,42
+Navajo,36,54
+Northern Haida,47,50
+Squamish,30,37
+Straits Salish,36,43
+Nootka,37,47
+Kwak'wala,46,55
+Eastern Ojibwa,16,27
+Unami,22,39
+Wichita,21,29
+Lakota,27,36
+Seneca,11,27
+Oneida,10,22
+Yuchi,38,64
+Alabama,15,21
+Tunica,18,25
+Nez Perce,26,36
+Northeast Maidu,18,24
+Copainala Zoque,26,32
+Papantla Totonac,20,26
+Tabasco Chontal,25,37
+Tzeltal,25,30
+Purepecha,26,32
+Karok,27,41
+Southeastern Pomo,27,38
+Tipai,25,34
+Zuni,44,54
+Southern Tiwa,26,41
+Rio Grande Tewa,34,57
+Luiseno,23,34
+Hopi,31,49
+Tohono O'odham,19,29
+Mezquital Otomi,42,58
+Central Mazahua,45,63
+Chiquihuitlan Mazatec,26,38
+San Miguel El Grande Mixtec,19,32
+Cha'palaa,24,28
+Paez,29,39
+Itonama,19,25
+South Bolivian Quechua,32,37
+Central Aymara,36,42
+Mapudungun,20,26
+Island Carib,17,29
+Wapishana,17,29
+Wayuu,28,46
+Ashaninka,17,21
+Ignaciano,21,25
+Yanesha',23,29
+Shuar,16,24
+Waimaha,11,25
+Ticuna,18,38
+Galibi Carib,16,28
+Ocaina,27,38
+Siriono,18,28
+Paraguayan Guarani,24,36
+Amahuaca,14,22
+Chacobo,17,21
+Apinaye,14,49
+Tarifiyt-Beni-Iznasen-Eastern Middle Atlas Berber,45,49
+Hausa,32,45
+Ngas,30,44
+Marghi Central,36,44
+Somali,30,52
+Awngi,28,39
+Iraqw,33,48
+Tigre,47,54
+Amharic,52,59
+Egyptian Arabic,58,67
+Moroccan Arabic,74,78
+Maltese,45,55
+Modern Hebrew,24,30
+Katcha-Kadugli-Miri,23,32
+Liberia Kpelle,32,49
+Wolof,26,40
+Dagbani,24,37
+Akan,22,40
+Ga,32,47
+Ewe,28,45
+Igbo,46,65
+Beembe,19,41
+Swahili,31,36
+Luvale,22,36
+Zulu,35,43
+Gbaya-Bossangoa,31,45
+Koyraboro Senni Songhai,33,48
+Central Kanuri,25,35
+Lugbara,27,42
+Nobiin,33,45
+Luo (Kenya and Tanzania),23,35
+Masai,21,43
+Nama (Namibia),19,33
+Irish,44,68
+Breton,25,42
+Icelandic,23,39
+Norwegian Bokmal,27,48
+English,27,40
+German,23,39
+French,23,40
+Portuguese,23,38
+Spanish,20,25
+Romanian,22,31
+Russian,33,38
+Bulgarian,37,49
+Lithuanian,36,47
+Northern Tosk Albanian,28,35
+Modern Greek,21,26
+Armenian,30,37
+Western Farsi,24,30
+Central Pashto,31,38
+Kashmiri,27,56
+Eastern Panjabi,50,73
+Hindi,71,94
+Bengali,36,53
+Sinhala,37,53
+Basque,23,28
+Finnish,25,42
+Eastern Mari,25,34
+Komi-Zyrian,29,36
+Hungarian,50,65
+Kazym-Berezover-Suryskarer Khanty,19,32
+Tundra Nenets,26,34
+Turkish,24,40
+South Azerbaijani,25,34
+Kirghiz,20,36
+Chuvash,30,39
+Sakha,33,49
+Halh Mongolian,21,35
+Even,18,36
+Southern Yukaghir,20,32
+Nivkh,34,44
+Chukchi,15,22
+Hokkaido Ainu,12,17
+Japanese,27,40
+Afade,27,36
+Achumawi,17,23
+Adzera,18,25
+Eastern Arrernte,27,30
+Amele,15,20
+Angaataha,12,21
+Aghem,25,35
+Aproumu Aizi,24,33
+Ahtena,30,35
+Hokkaido Ainu,11,16
+Akan,21,35
+Akawaio,13,23
+Alabama,14,17
+Qawasqar,16,19
+Alladian,25,36
+Aleut,24,27
+Alawa,22,26
+Northern Tosk Albanian,28,35
+Amahuaca,14,22
+Yanesha',23,26
+Hamer-Banna,25,35
+Amharic,30,37
+Amo,25,35
+Alamblak,18,25
+Guerrero Amuzgo,25,37
+Ngas,32,43
+Andoque,11,26
+Antakarinya,17,20
+Apinaye,13,30
+A-Pucikwar,16,24
+Archi,81,91
+Arabela,11,18
+Mapudungun,20,26
+Egyptian Arabic,27,35
+Waorani,11,21
+Avar,44,49
+Awngi,28,35
+Abipon,15,20
+North Azerbaijani,24,33
+Bashkir,27,38
+Bambara,21,35
+Waimaha,11,23
+Baatonum,18,30
+Batak Toba,16,21
+Bats,35,45
+Northern Bobo Madare,21,33
+Central Bai,18,29
+Bardi,17,24
+Kohumono,28,38
+Indonesian Bajau,26,32
+Yugambeh-Bandjalang,12,16
+Beja,21,26
+Bengali,29,43
+Beembe,16,26
+Daloa Bete,24,37
+Bissa,18,24
+Bakairi,17,29
+Bella Coola,28,31
+Muinane,22,28
+Berom,22,29
+Bororo,13,20
+Brao,22,31
+Breton,25,45
+Brahui,24,33
+Western Bru,20,42
+Bodo (India),15,21
+Burushaski,38,43
+Bulgarian,36,42
+Burarra,16,21
+Qaqet,14,22
+Bribri,18,27
+Caddo,20,23
+Nivacle,22,28
+Car Nicobarese,16,25
+Galibi Carib,16,22
+Cha'palaa,24,28
+Nyahkur,26,50
+Kakua,12,22
+Min Dong Chinese,14,21
+Chamorro,20,26
+Chipewyan,38,52
+Quiotepec Chinantec,26,41
+Cherokee,11,17
+Chuvash,21,30
+Western Cham,21,32
+Upper Chehalis,30,34
+Chuave,12,17
+Chukchi,15,22
+Mandarin Chinese,25,32
+Haka Chin,45,52
+Ashaninka,15,19
+Cofan,30,35
+Wamey,39,46
+Chuanqiandian Cluster Miao,46,56
+Island Carib,16,27
+Tedim Chin,21,26
+Western Highland Chatino,16,25
+Cubeo,11,23
+Cayubaba,17,33
+Dangaleat,21,28
+Dan,19,39
+Dagbani,23,29
+Dar Fur Daju,24,30
+Dahalo,54,59
+Dafla,15,24
+Dyirbal,13,16
+German,22,41
+Dieri,22,25
+Tipai,25,34
+Northeastern Dinka,19,32
+Lower Grand Valley Dani,12,24
+Northern Dong,20,27
+Doyayo,22,34
+Rukai,23,27
+Dagur,22,29
+Toro So Dogon,16,28
+Dhuwal,20,23
+Jola-Fonyi,19,29
+Efik,13,20
+Ekari,10,15
+Modern Greek,21,26
+Central Siberian Yupik,32,36
+Ejagham,20,27
+Basque,23,28
+Even,17,27
+Ewe,26,40
+Ewondo,26,34
+Eyak,32,45
+Fasu,11,21
+Nobiin,16,21
+Fijian,19,30
+Finnish,17,25
+Fe'fe',17,25
+French,21,37
+Fulnio,18,30
+Fur,19,30
+Fwai,19,35
+Ga,29,41
+Gadsup,9,15
+Garrwan,19,22
+Gbaya-Bossangoa,31,43
+Gbagyi,20,26
+Gelao,31,43
+Nanai,18,24
+Irish,45,69
+Gamo-Gofa-Dawro,24,29
+Wayuu,14,26
+Paraguayan Guarani,24,36
+Guahibo,17,29
+Guambiano,18,24
+Ache (Tupian),11,21
+Kuku-Yalanji,13,16
+Hakka Chinese,16,22
+Hausa,31,38
+Hawaiian,8,13
+Northern Haida,46,49
+Hindi,40,61
+Hixkaryana,18,23
+Hopi,22,28
+Hadza,57,62
+Hungarian,26,40
+Hupa,28,35
+Huastec,21,26
+San Mateo del Mar Huave,23,29
+Armenian,30,36
+Iaai,36,52
+Iban,19,25
+Igbo,43,59
+Ignaciano,21,25
+Izon,19,37
+Ik,31,44
+Irarutu,12,19
+Iraqw,33,45
+Irantxe-Munku,21,39
+Isoko,28,37
+Itelmen,27,32
+Itonama,19,25
+Iu Mien,33,41
+Itbayat,19,23
+Iwam,11,17
+Popti',27,32
+Yanyuwa,29,32
+Javanese,21,29
+Jebero,19,23
+Tol,22,28
+Shuar,15,23
+Japanese,15,20
+Jaqaru,36,39
+Japreria,12,24
+Jinghpaw,25,30
+Kalaallisut,19,22
+Kashmiri,27,55
+Georgian,28,34
+Kabardian,49,56
+Camsa,22,28
+Grass Koiari,11,16
+Kafa,22,27
+Dera (Indonesia),11,17
+Kazym-Berezover-Suryskarer Khanty,19,32
+Kekchi,21,26
+Kera,24,30
+Ket,18,25
+Kota (India),23,28
+Koya,19,24
+Kaingang,13,27
+Khasi,21,29
+Lu,22,31
+Halh Mongolian,21,33
+Lusi,16,21
+Central Khmer,21,42
+Kharia,31,36
+Kiowa,22,42
+Kirghiz,22,30
+Southern Kiwai,12,19
+Khmu,23,41
+Western Keres,39,51
+East Kewa,15,20
+Teke-Kukuya,21,28
+Klamath-Modoc,33,37
+Klao,11,27
+Kwoma,24,31
+Northern Kurdish,30,47
+Dera (Nigeria),24,35
+Central Kanuri,23,29
+Konkani,19,37
+Korean,21,32
+Kpan,24,34
+Koho,27,37
+Komi-Zyrian,26,33
+Koryak,16,21
+Kupsabiny,14,26
+Kurukh,21,32
+S'gaw Karen,27,36
+Kalkutung,20,23
+South-Eastern Ju,95,141
+Kunama,19,26
+Kunimaipa,15,20
+Border Kuna,16,21
+Kwaio,16,21
+Kwak'wala,42,48
+Karok,16,27
+Lakkia,33,55
+Lak,60,69
+Lelemi,22,34
+Lugbara,26,36
+Lahu,26,35
+Lithuanian,36,52
+Lakota,28,36
+Peve,30,38
+Luiseno,21,26
+Luo (Kenya and Tanzania),23,32
+Northern Lushootseed,33,37
+Chiquihuitlan Mazatec,25,33
+Masai,19,28
+Central Mazahua,45,60
+Maxakali,10,20
+Cameroon Mambila,19,25
+Mbum,30,38
+Maba (Chad),22,29
+Dizin,24,30
+Mba,24,31
+Mogholi,24,29
+Eastern Mari,25,33
+San Miguel El Grande Mixtec,15,25
+Tu,23,28
+Manchu,18,25
+Mor (Bomberai Peninsula),14,19
+Moro,22,29
+Mullukmulluk,14,19
+Maung,17,22
+Dadibi,13,23
+West Makian,17,23
+Marghi Central,30,34
+Maranao,13,17
+Totontepec Mixe,14,23
+Murle,21,26
+Murrinh-Patha,21,25
+Kala Lagaw Ya,18,24
+Burmese,33,46
+Piraha,8,11
+Mumuye,23,34
+Movima,18,23
+Southern Nambikuara,25,43
+Min Nan Chinese,19,25
+Nama (Namibia),32,41
+Naasioi,8,13
+Navajo,31,47
+Naxi (Retired),38,49
+Northern Puebla Nahuatl,16,20
+Ndut,27,34
+Eastern Pahari,27,39
+Kathmandu Valley Newari,24,32
+Nez Perce,25,30
+Ngizim,34,40
+Noone,19,33
+Niellim,23,36
+Nganasan,20,29
+Nimboran,12,18
+Nivkh,28,35
+Ao Naga,14,20
+Northeast Maidu,17,23
+Norwegian Bokmal,22,46
+Nootka,37,42
+Nara,17,22
+Nung (Viet Nam),21,32
+Wubuy,19,23
+Ama (Sudan),18,25
+Nyang'i,18,25
+Ocaina,25,34
+Ogbia,24,34
+Eastern Ojibwa,16,27
+Tohono O'odham,19,24
+Ormuri,25,31
+Pacoh,18,33
+Pech,18,28
+Paez,29,37
+Panare,12,25
+Bouyei,23,34
+Western Farsi,24,30
+Plateau Malagasy,21,25
+Southeastern Pomo,27,32
+Pohnpeian,14,20
+South Wa,34,77
+Central Pashto,31,38
+Paiwan,22,26
+Pwo Northern Karen,25,37
+South Bolivian Quechua,31,36
+Quileute,33,37
+Resigaro,30,35
+Romanian,22,32
+Rotokas,6,11
+Waima,9,14
+Russian,33,38
+Rutul,59,64
+Sandawe,47,54
+Sango,26,37
+Sakha,22,34
+Sedang,41,55
+Seneca,11,19
+Cebaara Senoufo,24,36
+Selkup,18,34
+Koyraboro Senni Songhai,15,24
+Sentani,10,17
+Ninam,13,25
+Tachelhit,28,31
+Shuswap,37,44
+Shasta,17,21
+Sinhala,22,36
+Epena,17,31
+Southern Sierra Miwok,15,21
+Saliba (S\'alivan),22,32
+Southern Sami,39,45
+Siona-Tetete,18,30
+Sa'ban,19,26
+Somali,22,32
+Spanish,20,25
+Selepet,15,21
+Soqotri,28,34
+Siriono,16,28
+Natugu (Retired),30,47
+Suena,13,18
+Savosavo,17,22
+Sui,47,54
+Eastern Tamang,19,29
+Atayal,19,26
+Aikana,22,32
+Gaam,24,33
+Ticuna,18,29
+Tulu,24,37
+Tehuelche,28,35
+Telugu,32,43
+Timne,17,25
+Temein,18,25
+Tetum,14,19
+Tigak,12,17
+Tagalog,18,23
+Thai,21,30
+Tahaggart Tamahaq,25,37
+Tigre,26,33
+Tiwi,22,26
+Tiruray,16,22
+Tlingit,43,48
+Tasomi-Tata,14,21
+Tama (Chad),21,30
+Tamnim Citak,11,17
+Tacana,18,22
+Lenakel,15,21
+Papantla Totonac,16,22
+Tampulma,24,33
+Acatepec Me'phaa,20,30
+Trumai,18,24
+Toaripi,8,14
+Tonkawa,15,25
+Lishan Didan,24,40
+Southern-Coastal Tsimshian,38,41
+Tsou,15,21
+Purepecha,33,39
+Tera,42,48
+Tunica,17,24
+Turkish,25,33
+Taos Northern Tiwa,26,38
+Tuvinian,20,29
+Tzeltal,22,28
+Ngarinyin,18,24
+Mundari,32,37
+Northern Uzbek,24,30
+Vanimo,12,28
+Vietnamese,22,36
+Mbabaram,20,24
+Wappo,30,35
+Wapishana,17,25
+Warao,11,21
+Wahgi,17,23
+Wichita,21,29
+Wik-Mungkan,13,18
+Wintu,30,35
+Wiyot,24,29
+Wantoat,14,21
+Usan,14,20
+Kamang,16,28
+Wolof,26,40
+Waris,13,22
+Warray,16,21
+Berta,24,29
+Wu Chinese,25,34
+Wangaaybuwan-Ngiyambaa,15,18
+Kawaiisu,25,31
+Komo (Sudan),23,31
+Liberia Kpelle,22,34
+Katcha-Kadugli-Miri,22,27
+Yagua,11,23
+Yaqui,17,22
+Yucuna,16,21
+Tarok,26,32
+Yagaria,14,23
+Yidiny,13,16
+Northern Yukaghir,20,26
+Yana,22,30
+Yoruba,18,29
+Yareba,13,18
+Tundra Nenets,27,35
+Yessan-Mayo,16,20
+Yucatec Maya,20,30
+Yuchi,38,46
+Yue Chinese,20,25
+Yulu,35,42
+Yawa,14,19
+Zande,19,35
+Copainala Zoque,16,22
+Zulu,32,37
+Zuni,20,25
+Abidji,21,39
+Adioukrou,21,31
+Aja (Benin),28,45
+Aja (Benin),23,37
+Anyin Morofo,21,37
+Igo,23,33
+Akan,18,31
+Akoose,22,44
+Ngas,24,36
+Anufo,22,43
+Sudanese Arabic,54,62
+Avokaya,37,55
+Vengo,56,82
+Bafut,21,49
+Baka (Cameroon),25,38
+Bambara,20,43
+Banda-Ndele,32,45
+Banda-Ndele,33,46
+Bandi,23,48
+Baoule,21,37
+Baatonum,17,31
+Basa (Cameroon),29,41
+Bassa,22,36
+Ntcham,21,30
+Gagnoa Bete,23,51
+Bekwarra,23,36
+Berom,24,31
+Beng,24,49
+Bhele,19,28
+Biali,14,27
+Bimoba,22,44
+Bissa,23,41
+Northern Bobo Madare,20,40
+Boko (Benin),19,34
+Hainyaxo Bozo,20,34
+Bulu (Cameroon),24,36
+Cerma,21,46
+Chumburung,21,30
+Daba,36,47
+Central Dagaare,24,54
+Northern Dagara,29,41
+Dagbani,23,31
+Dan,20,48
+Adangme,23,39
+Dazaga,21,32
+Luo (Kenya and Tanzania),26,38
+Lakota Dida,27,57
+Dyula,23,39
+Ditammari,17,32
+Doyayo,22,48
+Toro So Dogon,21,42
+Duala,21,33
+Duruma,42,49
+Ebira,19,31
+Ewe,27,42
+Bini,25,48
+Izi-Ezaa-Ikwo-Mgbo,27,38
+Ejagham,21,32
+Emai-Iuleha-Ora,27,48
+Engenni,20,33
+Ewondo,15,25
+Fe'fe',23,44
+Fon,24,42
+Adamawa Fulfulde,24,34
+Central-Eastern Niger Fulfulde,27,37
+Maasina Fulfulde,27,37
+Western Niger Fulfulde,27,32
+Fuliiru,25,35
+Ga,24,38
+Ngangam,22,39
+Northwest Gbaya,30,53
+Gbaya-Bossangoa,29,45
+Gen,27,44
+Gen,25,40
+Godie,26,42
+Gonja,23,39
+Northern Grebo,19,36
+Gude,30,36
+Gourmanchema,20,33
+Hanga,23,29
+Hausa,33,43
+Hausa,25,31
+Ife,19,34
+Igbo,28,36
+Igede,24,38
+Southeast Ijo,24,44
+Izi-Ezaa-Ikwo-Mgbo,29,40
+Izi-Ezaa-Ikwo-Mgbo,40,51
+Jola-Fonyi,19,29
+Jur Modo,31,49
+Kabiye,24,47
+Kako,33,50
+Baangi,28,56
+Central Kanuri,18,25
+Western Karaboro,20,45
+Karang,30,40
+Kasem,19,40
+Kasem,21,45
+Koonzime,22,52
+Kikuyu,18,32
+Northern Kissi,22,42
+Kom (Cameroon),59,75
+Komo (Democratic Republic of Congo),24,35
+Konkomba,22,42
+Liberia Kpelle,21,45
+Guinea Kpelle,27,35
+Gbaya (Sudan),41,56
+Krio,22,32
+Tepo Krumen,17,39
+Kuria,15,22
+Kusaal,22,44
+Lama (Togo),17,53
+Lele (Chad),23,36
+Lendu,43,55
+Loma (Liberia),28,42
+Loko,18,25
+Ligbi,22,38
+West-Central Limba,17,24
+Limbum,22,35
+Lingala,15,22
+Lukpa,17,37
+Ganda,19,33
+Lugbara,26,39
+Lyele,24,44
+Cameroon Mambila,24,40
+Nigeria Mambila,25,43
+Mampruli,22,32
+Western Maninkakan,20,27
+Eastern Maninkakan,20,36
+Mangbetu,36,47
+Kita Maninkakan,19,33
+Mundu,29,41
+Cross River Mbembe,28,37
+Mbo (Cameroon),20,31
+Makaa,30,55
+Mende (Sierra Leone),23,34
+Meta',20,33
+Mamara Senoufo,29,50
+Deg,22,52
+Mofu-Gudur,35,44
+Mossi,17,43
+Mwan,21,39
+Mundani,23,41
+Kituba (Congo),17,22
+Murle,20,34
+Mwaghavul,25,37
+Nafaanra,25,44
+Nawdm,21,35
+Northern Nuni,21,54
+Nomaande,14,30
+Ngambay,18,34
+Ngbaka Minagende,22,34
+Northern Ngbandi,19,31
+Ngiemboon,17,28
+Nyabwa,24,44
+Lamnso',26,45
+Nugunu (Cameroon),15,26
+Nupe-Nupe-Tako,25,38
+Ma'di,24,38
+Parkwa,31,35
+Pulaar,28,38
+Pular,28,38
+Rendille,21,33
+Sabaot,13,31
+Sango,26,44
+Sango,26,42
+Senara Senoufo,19,51
+Sereer,33,43
+Sissala of Burkina Faso,22,51
+Sissala of Burkina Faso,24,42
+Koyra Chiini Songhay,21,36
+Soninke,24,39
+Soninke,34,52
+Susu,21,35
+Swahili,32,37
+Tawallammat Tamajaq,23,37
+Tamasheq,22,43
+Tarok,27,37
+Teen,28,38
+Tedaga,24,35
+Tem,25,36
+Tofin Gbe,23,41
+Timne,17,30
+Tikar,27,46
+Toposa,17,27
+Toura (Cote d'Ivoire),19,50
+Northern Toussian,16,35
+Vagla,24,54
+Vute,30,59
+Waama,13,41
+Wan,21,36
+Wobe-We Northern,15,48
+Wolof,38,54
+Yamba,26,38
+Yambeta,18,28
+Yaoure,23,45
+Yemba,21,35
+Yom,25,38
+Yoruba,19,31
+Yoruba,18,32
+Zande,24,32
+Zarma-Kaado,20,40
+Zulgo-Gemzek,29,34
+Fwe,49,59
+Yeyi,77,90
+Cavinena,20,24
+Chamicuro,19,29
+Chechen,32,44
+Chepang,18,24
+Eastern Mari,19,27
+Lealao Chinantec,28,35
+Chol,20,26
+Chrau,20,33
+Barbareno,34,40
+Coeur d'Alene,40,48
+Comanche,12,18
+Cupeno,27,38
+Cuvok,27,29
+Denya,22,30
+Nepali Kurux,34,39
+Mufian,17,22
+Usarufa,17,22
+Korafe-Yegha,19,24
+Binumarien,11,16
+Eggon,30,42
+Ekpeye,24,37
+Markweeta,13,36
+Esimbi,29,37
+Fang (Equatorial Guinea),25,41
+Furu,31,41
+Karadjeri,17,20
+Gbari,24,31
+Golin,13,23
+Guajajara,14,21
+Gunwinggu,19,24
+Haya,19,29
+Wyandot,11,17
+Huichol,15,25
+Huaylas Ancash Quechua,20,30
+San Mateo del Mar Huave,18,24
+Jauja Wanca Quechua,22,27
+Luyi,17,22
+Ibani,25,38
+Imonda,13,23
+Ingush,35,48
+I'saka,9,18
+Yalunka,19,33
+Jarawa (Nigeria),28,39
+Jamamadi,11,15
+Towa,39,61
+Lijili,29,48
+Kabyle,27,30
+Gidar,28,38
+Kayabi,14,24
+Kamasau,23,29
+Kanoe,12,26
+Kenswei Nsei,55,65
+Eastern Karaboro,16,26
+Karipuna Creole French,22,32
+Kenyang,21,41
+Kharia,37,47
+Chong of Chanthaburi,21,40
+Kinyarwanda,39,49
+Kirike,24,36
+Kokota,22,27
+Bakole,27,34
+Konni,31,49
+Kuy,22,47
+Kulung (Nepal),22,43
+Kuot,13,19
+Kusunda,32,38
+Kuvi,22,37
+Kwaza,29,45
+Leh-Kenhat,33,38
+Langi,32,52
+Lao,28,40
+Lavukaleve,15,20
+Bafaw-Balong,27,47
+Lunda,22,32
+Luchazi,32,42
+Oroko,22,29
+Macedonian,26,32
+Mada (Cameroon),22,40
+Madi,45,54
+Manam,13,18
+Bamenyam,39,50
+Manange,30,45
+Ngemba,29,40
+Mara,19,24
+Maybrat-Karon,11,16
+Gbaya-Mbodomo,28,37
+Medumba,16,25
+Mingrelian,30,35
+Mmen,27,41
+Moken,22,32
+Moseten-Chimane,26,38
+Mpongmpong,29,38
+Mungaka,21,33
+Kwasio,46,54
+Mwotlap,15,22
+Namia,9,15
+Ndemli,30,53
+Mescalero-Chiricahua Apache,31,51
+Quechan,28,38
+Nankina,14,20
+Nandi,13,23
+Kimaama,20,44
+Naki,36,44
+Michoacan Nahuatl,20,25
+Naga Pidgin,30,47
+Ngoshie,26,34
+Ngalakan,17,26
+Nangikurrunggurr,20,28
+Isebe,9,23
+Ngombale,37,59
+Nootka,37,47
+Northern Khmer,24,43
+Northern Paiute,14,24
+Nubi,30,35
+Nuer,20,48
+Elip,19,30
+Nyamwezi,36,53
+Nyeu,20,40
+Obolo,22,37
+Mian,13,25
+Faiwol,12,20
+Oku,18,29
+Ossetian,30,39
+Palauan,10,22
+Orokaiva,12,17
+Yil,12,23
+Ningil,14,21
+Dobu,19,24
+Samo,12,18
+Uri,16,24
+Boikin,17,25
+Prai,17,35
+Mal,17,41
+Rama,19,28
+Matbat,15,20
+Rundi,22,29
+Nyankole,20,28
+Marwari (India),36,46
+Samba Leko,22,34
+Southern Samo,18,26
+Samre or Siem Reap,20,41
+Sabane,13,18
+Straits Salish,35,40
+Sasak,19,30
+Savara,19,30
+Sayula Popoluca,19,25
+Secoya,12,18
+Taroko,33,43
+Seimat,11,28
+Semelai,32,50
+Serrano,33,42
+Shabo,28,43
+Yawanawa,14,18
+Makonde,18,28
+Shona,37,42
+Bamun,28,38
+Siar-Lak,15,22
+Saraiki,48,83
+Shawnee,13,19
+Skou,13,23
+Thavung,22,72
+South Efate,15,20
+Spokane,38,43
+Sissano,37,46
+Satawalese,29,42
+Ulwa,22,28
+Hupda,20,29
+Copainala Zoque,20,26
+Loxicha Zapotec,23,30
+Yuki,24,30
+Yapese,28,44
+Yurok,23,35
+Yuracare,18,25
+Southern Yukaghir,21,33
+Zhenkang Wa,27,49
+Wambon,16,26
+Washo,26,32
+Wayana,9,16
+Wogeo,15,20
+Huarijio,12,26
+Vai,28,43
+Ukrainian,24,30
+Phalura,30,40
+East Makian,19,24
+Tok Pisin,15,27
+Baruga,14,24
+Tatuyo,11,17
+Tagwana Senoufo,23,45
+Mazanderani,22,29
+Pa'o Karen,20,34
+Ternate,20,25
+Toba,21,28
+Polish,31,37
+Mandarin Chinese,24,49
+Kalabari,22,43
+Eastern Yiddish,38,47
+Dutch,24,39
+Tamambo,16,21
+Gayo,19,27
+Jamaican Creole English,21,33
+Mambai,26,54
+Aragonese,33,45
+Tilquiapan Zapotec,22,30
+Ibibio,17,32
+Tamil,21,33
+Zoogocho Zapotec,28,65
+Baga Koga,17,25
+South Nuaulu,12,17
+Selaru,14,19
+Tsuvadi,38,52
+Hanga Hundi,16,23
+Blang,24,40
+Tatana,17,21
+Tibetan,24,38
+Che,30,57
+Tolowa-Chetco,26,31
+Pagibete,42,51
+Choctaw,15,21
+Michif,25,41
+Pilaga,18,22
+Yuchi,38,49
+Baniwa do Icana,25,37
+Karitiana,11,25
+North Alaskan Inupiatun,24,27
+San Juan Guelavia Zapotec,29,47
+Tzotzil,21,26
+Sidamo,25,35
+West Coast Bajau,17,23
+Chimariko,33,42
+Huehuetla Tepehua,26,36
+Ute-Southern Paiute,19,37
+Dupaninan Agta,15,20
+Tonga (Tonga Islands),12,17
+Lake Miwok,29,39
+Laz,27,32
+Juang,19,29
+Adang,18,40
+Ambele,38,51
+Apurina,14,40
+Achinese,21,55
+Antigua and Barbuda Creole English,24,37
+Aklanon,17,20
+Arhuaco,16,32
+Karo (Brazil),14,27
+Libyan Arabic,34,50
+Batak Toba,18,27
+Baoule,16,23
+Bondo,21,27
+Kol (Cameroon),28,55
+Siksika,13,25
+Biloxi,12,20
+Belize Kriol English,22,35
+Koasati,15,25
+Comox,37,42
+Sochiapam Chinantec,18,39
+Dimli,30,44
+Yekhee,26,36
+Northern Frisian,23,42
+Gujari,32,50
+Kotiria,16,24
+Hungana-Saamba,20,33
+Halkomelem,32,47
+Huastec,26,36
+Iloko,17,21
+Kadiweu,23,31
+Kutep,28,46
+Awa-Cuaiquer,14,21
+Lisu,25,39
+Loniu,16,23
+Molale,23,30
+Matses,15,21
+Manipuri,25,33
+Mandinka,19,34
+Mocovi,23,31
+Mam,33,43
+Munduruku,17,39
+Nisga'a,32,42
+Eastern Low German,23,37
+Northern Pame,40,54
+Panamint,23,36
+Nigerian Pidgin,23,32
+Northern Pomo,29,39
+Texistepec Popoluca,19,29
+Kazym-Berezover-Suryskarer Khanty,18,31
+Catalan,27,39
+Croatian,25,36
+Czech,25,38
+Galician,21,28
+Kabiye,22,47
+Mono (Democratic Republic of Congo),33,44
+Indonesian,22,31
+Italian,23,30
+Salasaca Highland Quichua,24,29
+Seri,17,25
+Sindhi,44,54
+Slovenian,21,37
+Swedish,18,35
+East Makian,32,37
+Tukang Besi North,24,29
+Yine,16,26
+K'iche',22,32
+Huamalies-Dos de Mayo Huanuco Quechua,21,31
+Sipacapense,22,32
+Chimborazo Highland Quichua,31,36
+Tlachichilco Tepehua,24,34
+Ambulas,17,24
+Abau,9,14
+Qimant,28,39
+Akha,28,41
+Alyawarr,25,32
+Amanab,14,19
+Anuak,19,47
+Arandai,13,18
+Bumbita Arapesh,15,22
+Tanacross,35,54
+Au,10,17
+Tinputz,12,26
+Petats,15,30
+Patep,30,44
+Kela (Papua New Guinea),16,30
+Sursurunga,15,21
+Awara,19,25
+Awing,39,56
+Awtuw,11,18
+Baba,23,30
+Babanki,26,33
+Bakoko,26,33
+Nyong,23,42
+Bamunka,23,32
+Bangolan,27,40
+Batanga,20,31
+Bariai,12,17
+Befang,43,59
+Ida'an,17,23
+Bemba (Zambia),15,25
+Berbice Creole Dutch,20,26
+Betta Kurumba,22,37
+Biak,14,24
+Ngarinman,17,23
+Binandere,11,35
+Southern Bobo Madare,19,38
+Bole,28,38
+Bongo,18,29
+Boro (Ethiopia),16,25
+Brokskat,31,41
+Baga Sitemu,18,26
+Bubia,25,39
+Bukusu,20,30
+Subiya,46,51
+Totela,44,54
+Bambalang,34,57
+North Marquesan,12,22
+Önge,16,24
+Oluta Popoluca,20,32
+Northern Gyalrong,49,57
+Tirma-Chai,22,31
+Bilua,16,41
+Hoava,16,21
+Filipino,17,27
+Ngad'a,21,27
+Muna,28,33
+Ke'o,24,30
+Thavung,20,47
+Mekens,15,35
+Tiwi,14,18
+Torwali,38,51
+Thulung,30,38
+Tshangla,32,37
+Tsafiki,16,25
+Tz'utujil,25,35
+Pwo Northern Karen,23,52
+Tuvinian,21,37
+Kinnauri,31,46
+Mewati,30,50
+Aneityum,21,26
+Zaiwa,21,32
+Chickasaw,16,25
+Friulian,25,39
+Jicarilla Apache,34,56
+Ega,27,39
+Adamawa Fulfulde,27,36
+Western Arrarnta,26,29
+Sanuma,11,24
+Wari',14,20
+Crow,10,23
+Barbareno,38,44
+Lyele,21,34
+Adamawa Fulfulde,37,47
+Anyin,19,40
+Anyin,17,36
+Anyin Morofo,31,49
+Akan,28,60
+Anufo,45,59
+Dibole,21,31
+Bana,37,44
+Baka (Sudan),36,46
+Aja (Sudan),38,48
+Bila,19,33
+Busa,16,31
+Adamawa Fulfulde,29,39
+Nigerian Fulfulde,47,57
+Herero,19,26
+Cebaara Senoufo,22,38
+Koyra Chiini Songhay,23,43
+Bafia,25,48
+Lega-Shabunda,18,38
+Limbum,37,52
+Limbum,23,41
+Limbum,23,33
+Myene,29,36
+Ntcham,21,43
+Tunen (Retired),17,26
+Matumbi,15,23
+Yao,18,29
+Umbundu,20,30
+Ndonga,25,30
+Mbukushu,22,29
+Diriku,23,28
+Kwangali,22,27
+Soninke,28,50
+Koyraboro Senni Songhai,23,37
+Lele (Chad),23,36
+Kalanga,62,71
+Mongo,45,56
+Longto-Voko,20,31
+Xwela Gbe,29,45
+Western Xwla Gbe,29,45
+Kotafon Gbe,29,45
+Gbesi Gbe,31,47
+Machame,33,46
+Mada (Nigeria),23,41
+Mbe,26,37
+Ngwe,24,38
+Jowulu,20,45
+Yala,28,38
+Mambwe-Lungu,19,36
+Kete,16,25
+Kwese,16,25
+Southern Ma'di,47,59
+Moru,26,38
+Logo,27,39
+Afitti,17,26
+Avatime,28,50
+Abua,27,40
+Anyin,21,39
+Dghwede,33,38
+Eloyi,41,51
+Nigerian Fulfulde,28,38
+Gikyode,29,51
+Ginyanga,31,53
+Huba,24,31
+Kofyar,23,36
+Krache,17,44
+Krim,22,38
+West Central Banda,31,46
+South Central Dinka,20,60
+Foodo,23,44
+Jola-Esulalu,31,51
+Jumjum,20,39
+Burun,19,38
+Olu'bo,34,46
+Maay,22,32
+Mabaan,19,45
+Nizaa,58,90
+Chopi,61,68
+Xhosa,75,84
+Siwu,20,37
+Sherbro,24,31
+Bullom So,22,36
+Cherepon,26,38
+Palor,26,43
+Farefare,20,30
+Sekpele,21,33
+Mampruli,24,36
+Tonga (Zambia),33,41
+Jaad-Badyara,25,43
+Selee,18,33
+Tiv,31,40
+Bilin,31,38
+Xamtanga,23,30
+Liko,33,45
+Yansi,17,42
+Budu,31,43
+Kele-Foma,21,30
+Lengola,24,32
+Keliko,36,45
+Wongo,15,24
+Mwali Comorian,19,24
+Afar,17,27
+Mundang,37,67
+Mono (Cameroon),35,62
+Tupuri,28,56
+Kuo,29,56
+Kare (Central African Republic),30,57
+Ndai,32,57
+Bambassi,23,36
+Tigrinya,32,39
+Karamojong,21,66
+Gwandara,28,46
+Gwandara,32,52
+Gwandara,28,48
+Gwandara,35,64
+Gwandara,28,48
+Gwandara,43,65
+Avikam,25,34
+Shilluk,25,54
+Hai//om,24,29
+Pero,18,30
+Borana-Arsi-Guji Oromo,26,36
+Hadiyya,46,56
+Wolaytta,38,48
+Kunyi,44,55
+Otuho,33,56
+Masaaba,51,63
+Kamwe,26,35
+Manya,18,27
+Saya,39,54
+Njebi,24,34
+Tadaksahak,59,70
+Kambaata,49,59
+Otoro,30,44
+Tira,26,42
+Nyam,39,56
+Fali,39,50
+Mawa (Chad),24,33
+East Taa,130,161
+Koalib-Rere,29,45
+Kagulu,26,31
+Oko-Eni-Osayen,18,30
+Kxoe,95,120
+Ghomala',36,59
+Defaka,18,42
+Tee,23,38
+Kipsigis,14,37
+Pangwa,23,35
+Holoholo,17,26
+Buli (Ghana),23,46
+Balanta-Ganja,33,50
+Nyambo,20,33
+Dan,44,92
+Pokoot,17,39
+Afrikaans,16,39
+Argobba,30,38
+Harari,25,34
+Nzima,24,40
+Ahanta,24,40
+Mina (Cameroon),39,50
+Buwal,38,43
+Hdi,37,41
+Lamang,37,41
+Ikwere,23,46
+Lagwan,34,41
+Gbaya-Mbodomo,28,38
+Mbuko,34,45
+Moloko,31,47
+Muyang,27,46
+Ngomba,19,27
+Kemezung,20,34
+Nateni,13,40
+Silt'e,46,56
+Weh,37,47
+Tulishi,37,59
+Keiga,37,59
+Krongo,40,62
+Kanga,54,76
+Kanga,53,75
+Katcha-Kadugli-Miri,39,62
+Katcha-Kadugli-Miri,41,63
+Katcha-Kadugli-Miri,39,61
+Morokodo,42,54
+Aringa,35,49
+Tese,24,47
+Lumun,17,35
+Acheron,18,38
+Tocho,15,27
+Dagik,16,26
+Didinga,36,58
+Luwo,19,32
+Acoli,17,29
+Belanda Bor,25,38
+Belanda Viri,28,43
+Ndogo,29,38
+Bade,33,46
+Pichi,21,30
+Jita,17,29
+Dime,53,73
+Tsotso,19,31
+Jamsay Dogon,37,60
+Kamba (Kenya),13,31
+Bafia,27,51
+Lango (Uganda),18,40
+Kisa,24,38
+Nyole,24,36
+Mwani,21,26
+Kgalagadi,43,53
+Tieyaxo Bozo,19,36
+Alaba-K'abeena,52,62
+Degema,24,36
+Bassari-Tanda,21,30
+Principense,22,31
+Nkonya-Nkami,20,34
+Kistane,34,41
+Kistane,34,41
+Mesqan,34,41
+Sebat Bet Gurage,34,42
+Sebat Bet Gurage,33,39
+Sebat Bet Gurage,36,44
+Sebat Bet Gurage,35,42
+Sebat Bet Gurage,36,42
+Sebat Bet Gurage,39,45
+Inor,40,47
+Inor,39,45
+Inor,39,45
+Dzuungoo,26,55
+Bagirmi,29,48
+Ngiti,44,56
+Ndali,17,31
+Me'en,26,40
+Ngasa,22,31
+Mbay,22,44
+Northern Gumuz,34,44
+Soo,18,28
+Bench,46,56
+Bench,29,40
+Yemsa,25,40
+Zayse-Zergulla,27,32
+Gamo-Gofa-Dawro,26,36
+Koorete,51,61
+Aari,26,36
+Komo (Sudan),23,28
+Uduk,23,28
+T'apo,20,25
+Kwama,20,25
+Mayogo,33,46
+Saamia,20,34
+Southern Nuni,38,60
+Zimbabwean Ndebele,61,68
+Saxwe Gbe,24,38
+Narim,22,34
+Kangaki-Kagbaaga-Kajoko Bidyogo,18,25
+Dompo,22,31
+Bambara,32,58
+Ebang,27,34
+Koyaga,29,43
+Shwai,25,38
+Gaa,22,34
+Kuanyama,26,33
+Mbalanhu,23,31
+Kwambi,29,37
+Ngandyera,30,37
+Ndonga,29,36
+Ndonga,29,36
+Ndonga,29,36
+Konkomba,21,38
+Beria,21,33
+Zay,23,37
+Bomitaba,16,28
+Northern Bobo Madare,21,37
+Bena (Tanzania),22,34
+Guinea Kpelle,24,39
+Kakabe,22,38
+Lele (Guinea),19,28
+Loma (Liberia),21,51
+Mann,22,39
+Kyenga,22,37
+Shanga,22,37
+Abure,20,36
+Bankon,26,37
+Awutu,30,50
+Aghem,28,49
+Arbore,49,59
+Abidji,21,38
+Adioukrou,21,32
+Tiagbamrin Aizi,24,32
+Alladian,23,36
+Ashe,24,36
+Ngazidja Comorian,41,48
+Akpes,21,34
+Eten,63,74
+Nuer,20,48
+Ut-Main,36,56
+Idoma,47,75
+Irigwe,79,95
+Izere,27,39
+Jere,24,44
+Legbo,38,53
+Logba,25,35
+Awngi,30,39
+Glavda,34,43
+Àhan,26,43
+Ayere,26,43
+Ronga,64,69
+Ndzwani Comorian,32,39
+Southern Birifor,25,52
+Kuwaataay,20,34
+Attie,24,47
+Angolar,22,36
+Eastern Oromo,48,60
+Upper Guinea Crioulo,23,28
+Akoose,18,32
+Bakaka,19,34
+Bakaka,15,31
+Bakaka,16,32
+Mbo (Cameroon),19,35
+Bassossi,20,34
+Mbo (Cameroon),21,36
+Kru Pidgin English,24,36
+Gban,20,36
+Eton-Mengisa,21,38
+Reunion Creole French,30,42
+Masalit,31,45
+Saotomense,19,32
+Tangale,40,60
+Sukuma,38,57
+Morisyen,21,30
+Krio,25,35
+Kituba (Democratic Republic of Congo),15,22
+Akaselem,20,52
+Tuki,25,39
+Baka (Cameroon),25,35
+Bum,37,47
+Daba,36,46
+Gavar,47,55
+Gude,30,36
+Lango (Sudan),16,32
+Igo,23,33
+Kako,33,47
+Kwanja,21,43
+Cameroon Mambila,20,35
+Merey,33,44
+Wandala,45,52
+Chonyi-Dzihana-Kauma,40,47
+Digo,41,48
+Duruma,40,47
+Giryama,40,47
+Giryama,40,47
+Giryama,40,47
+Giryama,40,47
+Giryama,40,47
+Giryama,40,47
+Vame,38,46
+Mmaala,23,34
+Mpade,30,40
+Mofu-Gudur,35,40
+Mbe',48,57
+Ncane,17,41
+Southern Mfumte,74,89
+Njyem,20,42
+Buamu,17,28
+Kwami,28,40
+Guro,26,57
+Kabuverdianu,21,28
+Bouna Kulango,27,46
+Tsamai,56,68
+Central Moroccan Berber,36,39
+Siwi,26,38
+Ndamba,19,24
+Barain,28,41
+Barain,16,29
+Barain,31,44
+Barain,32,44
+Gaam,34,49
+Mungbam,24,36
+Mundabli,22,38
+Ajumbu,26,39
+Koshin,23,37
+Fang (Cameroon),23,36
+Kuranko,26,54
+Niellim,26,59
+North Giziga,29,37
+Meta',33,50
+Mokpwe,22,31
+Siamou,22,41
+Ngiemboon,19,30
+Nugunu (Cameroon),24,35
+Tigon Mbembe,99,116
+Orma,23,33
+Pinyin,42,66
+Pana (Central African Republic),34,66
+Reel,20,63
+Wuzlam,34,42
+Lese,29,42
+Toura (Cote d'Ivoire),21,39
+Gweno,24,29
+Sumbwa,20,32
+Zinza,20,30
+Meru,17,27
+Kahe,22,32
+Hangaza,23,35
+Mochi,20,25
+Suba-Simbiti,23,39
+Kwaya,17,29
+Wawa,30,49
+Tachelhit,33,37
+Tunia,24,40
+Cebaara Senoufo,24,43
+Fuliiru,24,36
+Sandawe,44,64
+Tsuvadi,28,55
+Ejagham,19,29
+Yemba,17,27
+Bafanji,26,59
+Burji,26,36
+Anii,23,36
+Fipa,20,35
+Nawuri,29,40
+Anfillo,38,48
+Ntomba,23,30
+Tumtum,39,55
+Iyive,53,64
+Batak Karo,16,24
+Tagalog,19,24
+Southern Sama,17,23
+Kimaragang,18,23
+Lemeting,19,25
+Iloko,17,23
+Eastern Cham,21,30
+Moklen,19,46
+Moken,20,38
+Nias,19,25
+Javanese,24,33
+Buol,17,23
+Makasar,18,23
+Mori Bawah,22,27
+Kambera,19,29
+Tetum,13,18
+Leti (Indonesia),10,22
+East Makian,18,23
+Biak,14,19
+Ambonese Malay,18,23
+Banda Malay,18,23
+Manado Malay,19,25
+Kupang Malay,19,25
+Larantuka Malay,19,25
+North Moluccan Malay,21,27
+Indonesian,23,31
+Madurese,27,35
+Cebuano,18,21
+Balinese,18,24
+Buginese,19,25
+Coastal-Naga Bikol,23,28
+Hiligaynon,20,25
+Pampanga,17,22
+Minangkabau,23,33
+Pangasinan,16,21
+Tengger,20,42
+Maria (India),22,39
+A-Pucikwar,25,35
+Angami Naga,37,43
+Ao Naga,24,32
+Apatani,24,37
+Assamese,22,37
+Awadhi,37,45
+Badaga,25,38
+Balti,35,53
+Lambadi,24,34
+Bengali,34,48
+Bhili,35,62
+Mundari,33,54
+Boro (Ethiopia),22,30
+Brokskat,41,56
+Bundeli,38,55
+Chaudangsi,34,42
+Chokri Naga,34,39
+Darma,34,42
+Gata',24,38
+Gade Lohar,31,50
+Galo,17,29
+Garo,16,21
+Gujari,35,54
+Gujarati,35,60
+Bodo Gadaba,21,40
+Halbi,29,42
+Hindi,37,58
+Ho,24,43
+Irula,31,52
+Jaunsari,34,51
+Juang,24,36
+Kangri,29,41
+Kannada,36,47
+Saurashtra,32,42
+Hills Karbi,28,39
+Irula,23,30
+Kashmiri,28,56
+Jennu Kurumba,26,33
+Kharia,31,45
+Khasi,27,40
+Khezha Naga,42,50
+Kodava,27,52
+Northwestern Kolami,21,34
+Konda-Dora,23,43
+Mudhili Gadaba,19,31
+Konkani,35,45
+Korra Koraga,21,34
+Korku,26,37
+Kota (India),26,41
+Koya,21,31
+Kui (India),20,39
+Kumaoni,31,42
+Kurukh,31,56
+Kuvi,28,47
+Leh-Kenhat,37,45
+Lambadi,30,48
+Lepcha,26,36
+Lotha Naga,35,43
+Mizo,33,39
+Maithili,34,42
+Malayalam,30,43
+Sauria Paharia,24,34
+Manipuri,27,35
+Mao Naga,20,26
+Marathi,42,55
+Kman,34,50
+Mising-Padam-Miri-Minyong,34,43
+Moyon,24,37
+Mundari,21,39
+Southeastern Kolami,36,46
+Eastern Pahari,35,47
+Central Nicobarese,16,35
+Pottangi Ollar Gadaba,22,34
+Paite Chin,19,25
+Duruwa,21,31
+Pattani,38,44
+Pengo,22,32
+Eastern Panjabi,32,51
+Bondo,27,40
+Sanskrit,37,45
+Santali,35,46
+Sumi Naga,35,46
+Shina,35,48
+Sindhi,41,61
+Sora,21,31
+Tamil,32,43
+Tangkhul Naga,27,40
+Pangwa Naga,23,29
+Telugu,40,51
+Thado Chin,23,31
+Toda,38,53
+Kok Borok,25,34
+Tulu,23,35
+Urali,26,46
+Urdu,35,54
+Vaagri Booli,23,37
+Ravula,23,39
+Yerukula,20,38
+Qawasqar,18,24
+Mapudungun,22,28
+Achagua,19,29
+Apurina,14,34
+Lokono,16,21
+Ashaninka,14,22
+Ajyininka Apurucayali,20,26
+Asheninka Perene,18,28
+Pichis Asheninka,22,30
+Ucayali-Yurua Asheninka,24,32
+Baniwa do Icana,16,24
+Baniwa do Icana,18,26
+Bare,19,23
+Cabiyari,12,17
+Caquinte,19,27
+Chamicuro,19,29
+Curripaco,25,29
+Enawene-Nawe,13,25
+Inapari,13,31
+Machinere,13,18
+Machiguenga,18,27
+Mehinaku,13,23
+Nanti,18,27
+Nomatsiguenga,16,25
+Palikur,14,24
+Paraujano,13,25
+Parecis,15,19
+Piapoco,15,19
+Resigaro,32,37
+Tariana,23,38
+Terena-Kinikinao-Chane,13,23
+Wapishana,18,22
+Baniva de Maroa,17,25
+Waura,16,26
+Wayuu,14,20
+Xiriana,19,24
+Yanesha',24,33
+Yavitero,17,21
+Yawalapiti,17,21
+Yine,16,26
+Yucuna,16,21
+Baure,14,18
+Ignaciano,15,19
+Deni,18,22
+Jamamadi,12,16
+Jamamadi,11,19
+Culina,17,21
+Paumari,22,28
+Suruaha,18,23
+Central Aymara,26,32
+Jaqaru,36,42
+Awa-Cuaiquer,16,26
+Cha'palaa,23,27
+Guambiano,20,25
+Tsafiki,16,26
+Bora,29,41
+Bora,17,31
+Muinane,22,28
+Jebero,17,21
+Shawi,14,18
+Akurio,10,24
+Apalai,12,24
+Para Arara,11,17
+Bakairi,16,30
+Bakairi,16,28
+Galibi Carib,11,17
+Galibi Carib,9,15
+Galibi Carib,9,15
+Carijona,14,21
+Hixkaryana,18,23
+Ikpeng,12,18
+Akawaio,10,21
+Japreria,14,20
+Kaxuiana,12,18
+Kuikuro-Kalapalo,14,26
+Macushi,10,22
+Mapoyo,12,19
+Maquiritari,12,26
+Panare,13,20
+Pemon,10,21
+Pemon,10,17
+Pemono,12,19
+Trio,10,24
+Waimiri-Atroari,16,27
+Waiwai,14,20
+Wayana,9,16
+Yabarana,11,18
+Oro Win,12,18
+Wari',15,21
+Arhuaco,15,21
+Bari (Chibchan),10,22
+Chibcha,16,22
+Chimila,16,36
+Cofan,27,37
+Cogui,24,36
+Border Kuna,19,24
+Malayo,20,27
+Central Tunebo,14,19
+Woun Meu,19,33
+Embera-Baudo,21,33
+Embera-Catio,19,31
+Embera-Chami,16,28
+Northern Embera,20,32
+Epena,17,38
+Selk'nam,21,29
+Tehuelche,25,31
+Cocama-Cocamilla,11,16
+Cuiba,17,25
+Guahibo,17,35
+Guayabero,16,22
+Macaguan,16,22
+Abipon,13,23
+Kadiweu,23,31
+Mocovi,21,29
+Pilaga,18,22
+Toba,18,26
+Toba,20,28
+Amarakaeri,15,33
+Cholon,15,20
+Andoque,11,35
+Aewa,17,27
+Camsa,21,27
+Candoshi-Shapra,21,27
+Cayubaba,17,33
+Irantxe-Munku,21,43
+Itonama,19,25
+Leco,24,30
+Olu'bo,16,21
+Mochica,20,32
+Movima,19,29
+Muniche,22,27
+Paez,33,49
+Puinave,8,19
+Taushiro,12,17
+Ticuna,15,33
+Tinigua,22,40
+Trumai,23,29
+Urarina,16,21
+Vilela,24,29
+Waorani,12,32
+Warao,11,16
+Yamana,15,20
+Yuracare,18,25
+Achuar-Shiwiar,15,27
+Aguaruna,12,20
+Huambisa,15,23
+Shuar,13,21
+Kakua,21,26
+Nukak Maku,12,24
+Katukina,12,20
+Apinaye,17,34
+Arikapu,11,25
+Bororo,15,22
+Canela-Kraho,13,29
+Chiquitano,14,26
+Para Gaviao,11,21
+Guato,17,25
+Djeoromitxi,14,24
+Kaingang,11,16
+Karaja,9,24
+Kayapo,16,33
+Kraho,12,46
+Krenak,22,35
+Krikati-Timbira,11,26
+Maxakali,10,20
+Ofaye,14,24
+Panara,11,26
+Puri,12,18
+Rikbaktsa,14,28
+Suya,13,28
+Suya,15,31
+Umotina,12,20
+Xavante,11,24
+Xerente,13,27
+Xokleng,19,37
+Fulnio,21,33
+Sao Paulo Kaingang,13,27
+Iyo'wujwa Chorote,16,21
+Maca,22,32
+Nivacle,22,28
+Wichi Lhamtes Nocten,23,28
+Callawalla,26,32
+Moseten-Chimane,23,39
+Moseten-Chimane,23,41
+Moseten-Chimane,23,41
+Piraha,8,11
+Daw,24,39
+Hupda,19,34
+Nadab,17,34
+Yuhup,20,35
+Southern Nambikuara,13,31
+Latunde,12,28
+Mamainde,14,34
+Sabane,11,16
+Amahuaca,15,23
+Capanahua,16,24
+Cashibo-Cacataibo,15,21
+Chacobo,16,20
+Cashinahua,15,23
+Panoan Katukina,15,19
+Kaxarari,15,20
+Korubo,14,20
+Matis,15,21
+Matses,15,21
+Nukuini,14,20
+Panobo,14,18
+Poyanawa,14,21
+Siang,13,17
+Shall-Zwall,14,18
+Sharanahua,15,23
+Shipibo-Conibo,16,24
+Yaminahua,14,22
+Yawanawa,15,19
+Yora,14,22
+Yagua,11,23
+Yameo,10,18
+Corongo Ancash Quechua,18,24
+Cajamarca Quechua,19,22
+Chachapoyas Quechua,15,18
+Cusco Quechua,26,31
+Lambayeque Quechua,16,19
+Imbabura Highland Quichua,17,20
+Inga,19,22
+Jungle Inga,13,16
+Jauja Wanca Quechua,16,22
+North Junin Quechua,19,25
+North Junin Quechua,19,25
+Ayacucho Quechua,14,17
+North Bolivian Quechua,25,28
+Huallaga Huanuco Quechua,16,22
+Northern Conchucos Ancash Quechua,17,23
+San Martin Quechua,15,18
+North Junin Quechua,19,22
+Santiago del Estero Quichua,20,25
+Napo Lowland Quechua,20,23
+Salasaca Highland Quichua,23,26
+Tena Lowland Quichua,21,24
+Piaroa,23,30
+Saliba (S\'alivan),20,30
+Araona,19,23
+Cavinena,20,24
+Ese Ejja,17,21
+Ese Ejja,18,22
+Reyesano,18,22
+Tacana,18,22
+Barasana-Eduria,11,17
+Cubeo,11,17
+Desano,12,18
+Kotiria,16,28
+Carapana,11,23
+Koreguaje,18,30
+Macuna,10,22
+Maijiki,14,20
+Wa'ikhana,12,24
+Secoya,14,26
+Siona-Tetete,18,30
+Siriano,11,23
+Tanimuca-Retuara,11,21
+Tatuyo,11,17
+Tucano,15,27
+Tuyuca,11,23
+Waimaha,10,22
+Yuruti,11,17
+Ache (Tupian),22,34
+Akuntsu,11,22
+Amundava,14,26
+Apiaka,12,22
+Arawete,12,21
+Xingu Asurini,16,27
+Tocantins Asurini,11,16
+Ava-Canoeiro,12,24
+Aweti,14,26
+Eastern Bolivian Guarani,12,24
+Eastern Bolivian Guarani,12,24
+Emerillon,16,30
+Gaviao Do Jiparana,19,29
+Guaja,12,24
+Guajajara,15,22
+Mbya Guarani,14,26
+Paraguayan Guarani,18,30
+Guarayu,14,26
+Juma,12,24
+Juruna,18,28
+Urubu-Kaapor,15,26
+Kaiwa,14,26
+Kamayura,14,26
+Karitiana,11,31
+Karo (Brazil),14,25
+Kayabi,14,26
+Kuruaya,18,28
+Makurap,10,20
+Munduruku,17,37
+Nhengatu,19,23
+Omagua,13,18
+Pai Tavytera,15,27
+Parakana,12,17
+Mekens,16,26
+Satere-Mawe,12,27
+Surui,19,29
+Tapiete,15,27
+Tapirape,13,23
+Tenetehara,14,21
+Tenharim,14,26
+Tupari,14,29
+Tupinamba,13,25
+Uru-Eu-Wau-Wau,14,26
+Wayampi,14,25
+Wayampi,14,26
+Xeta,13,24
+Xipaya,14,23
+Zo'e,14,26
+Siriono,18,30
+Yuqui,20,40
+Aikana,15,25
+Mato Grosso Arara,19,33
+Hoti,21,35
+Kanoe,12,26
+Kariri-Xoco,14,21
+Kunza,23,33
+Kwaza,19,35
+Pume,23,38
+Chipaya,41,51
+Uru,23,33
+Minica Huitoto,18,24
+Murui Huitoto,14,20
+Nonuya,20,26
+Ocaina,26,35
+Ninam,12,18
+Sanuma,11,24
+Yanomami,13,20
+Yanomamo,12,19
+Chamacoco,21,37
+Ayoreo,20,30
+Andoa,15,25
+Arabela,19,29
+Iquito,11,19
+Zaparo,14,22
+Chiripa,17,29
+Qawasqar,18,24
+Central Aymara,28,31
+Yanomami,12,33
+Yanomami,13,34
+Sanuma,10,31
+Yanomamo,11,32
+Yanomamo,12,33
+Pacahuara,16,20
+Yukpa,15,21
+Yukpa,12,18
+Trinitario,18,30
