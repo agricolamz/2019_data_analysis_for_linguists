@@ -67,6 +67,17 @@ $$\mu = \frac{\alpha}{\alpha+\beta}$$
 
 $$\sigma = \frac{\alpha\times\beta}{(\alpha+\beta)^2\times(\alpha+\beta+1)}$$
 
+Если кому-то захочется построить бета распределение самостоятельно:
+
+```{r}
+data_frame(x = seq(0, 1, length = 100),
+           density = dbeta(x, shape1 = 5, shape2 = 10)) %>% 
+  ggplot(aes(x, density))+
+  geom_line()+
+  ggtitle("Бета распределение с параметрами α - 5 и β - 10")
+```
+
+
 ### 3.2 Нормальное распределение
 
 ### 3.3 Другие сопряженные распределения...
