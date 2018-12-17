@@ -76,7 +76,8 @@ $$\sigma = \frac{\alpha\times\beta}{(\alpha+\beta)^2\times(\alpha+\beta+1)}$$
 
 ### 4.1 Биномиальные данные
 
-$$B(\alpha_{post}, \beta_{post}) = B(\alpha_{prior}+\alpha_{data}, \beta_{prior}+\beta_{data})$$
+$$Beta_{post}(\alpha_{post}, \beta_{post}) = Beta(\alpha_{prior}+\alpha_{data}, \beta_{prior}+\beta_{data}),$$
+где $Beta$ --- это бета распределение
 
 ```{r, eval = FALSE}
 shiny::runGitHub("agricolamz/bayes_for_binomial_app") 
