@@ -7,7 +7,13 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
 
 ## 1. Empirical Bayes Estimation
 
@@ -80,5 +86,130 @@ chekhov %>%
 
 Полученное распределение можно использовать как априорное распределение для апдейта значений из каждого рассказа. Этот трюк и называется Empirical Bayes estimation.
 
-```{r child = 'HW_2.Rmd'}
+## 2. Фриквентисткий доверительный интервал
+Основная соль фриквинтистского доверительного интервала (по-английски confidence interval) основано на правиле трех сигм нормального распределения:
+
+```{r, echo = FALSE, fig.height= 2.5}
+ggplot(data.frame(x = 0:1), aes(x)) + 
+        stat_function(fun = dnorm, args = c(0, 1), geom = 'area', xlim = c(-3, 3), fill = 'deepskyblue4') + 
+      stat_function(fun = dnorm, args = c(0, 1), geom = 'area', xlim = c(-2, 2), fill = 'cadetblue') + 
+    stat_function(fun = dnorm, args = c(0, 1), geom = 'area', xlim = c(-1, 1), fill = 'lightblue') + 
+    stat_function(fun = dnorm, args = c(0, 1), xlim = c(-3, 3))+
+  theme_bw()+
+  geom_line(aes(y = c(0.15), x = c(-1, 1)), arrow = arrow(length=unit(0.2,"cm"), ends="both", type = "closed"))+
+  geom_line(aes(y = c(0.03), x = c(-2, 2)), arrow = arrow(length=unit(0.2,"cm"), ends="both", type = "closed"))+
+  annotate(geom = "text", x = 0, y = 0.17, label = "68.26%")+
+  annotate(geom = "text", x = 0, y = 0.05, label = "95.44%")+
+  scale_x_continuous(breaks = c(-3:3))+
+  labs(y = "",
+       x = "σ")
+```
+
+**z-score**:
+
+* 95% данных находится в 1.96 стандартных отклонений
+* 99% данных находится в 2.58 стандартных отклонений
+
+Доверительный интервал:
+
+* предположим что данные генеральной совокупности нормально распределены
+* тогда доверительные интервалы выборок взятых из генеральной совокупности будут [покрывать среднее генеральной совокупности](https://rpsychologist.com/d3/CI/)
+
+$$\bar{x} \pm z \times \frac{\sigma}{\sqrt{n}}\text{, где } z \text{ — это центральная } 1 - \frac{\alpha}{2} \text{ часть данных}$$
+
+Распространение этой логики на биномиальные данные называется интервал Вальда:
+
+$$\bar{x} = \theta; \sigma = \sqrt{\frac{\theta\times(1-\theta)}{n}}$$
+
+Тогда интервал Вальда:
+
+$$\theta \pm  z\times\sqrt{\frac{\theta\times(1-\theta)} {n}}$$
+
+Есть только одна проблема: работает он плохо. Его аналоги перечислены в других работ:
+
+* assymptotic method with continuity correction
+* Wilson score
+* Wilson Score method with continuity correction
+* Jeffreys interval
+* Clopper–Pearson interval (default in R `binom.test()`)
+* Agresti–Coull interval
+* ... см. пакет `binom`
+
+```{r, fig.height= 7}
+chekhov %>% 
+  filter(word == "не") %>%
+  slice(1:30) %>% 
+  group_by(titles) %>% 
+  mutate(low_ci = binom.test(x = n, n = n_words)$conf.int[1],
+         up_ci = binom.test(x = n, n = n_words)$conf.int[2]) %>%
+  ggplot(aes(trunc_titles, average))+
+  geom_point()+
+  geom_pointrange(aes(ymin = low_ci, ymax = up_ci))+
+  theme_bw()+
+  coord_flip()+
+  labs(title = 'Среднее и 95% CI употребления "не" в рассказах А. Чехова',
+       x = "", y = "")
+```
+
+В базовом пакете функция `binom.test()` не позволяет выбирать тип доверительного интервала. `ci.method = "Clopper-Pearson"` возможна, если включить библиотеку `mosaic`. 
+
+## 3. Байесовский доверительный интервал
+Байесовский доверительный $k$-% интервал (по-английски credible interval) --- это интервал $[\frac{k}{2}, 1-\frac{k}{2}]$ от апостериорного распределения. Давайте используем распределение, полученное в предыдущем разделе в качестве априорного для тридцети рассказов Чехова:
+
+```{r, fig.height=7}
+chekhov %>% 
+  filter(word == "не") %>%
+  slice(1:30) %>% 
+  group_by(titles) %>% 
+  mutate(alpha_post = n+alpha0,
+         beta_post = n_words-n+beta0,
+         average_post = alpha_post/(alpha_post+beta_post),
+         cred_int_l = qbeta(.025, alpha_post, beta_post),
+         cred_int_h = qbeta(.975, alpha_post, beta_post)) ->
+  posterior
+
+posterior %>% 
+  select(titles, n_words, average, average_post) %>% 
+  arrange(n_words)
+
+posterior %>% 
+  ggplot(aes(trunc_titles, average_post, ymin = cred_int_l, ymax = cred_int_h))+
+  geom_pointrange()+
+  coord_flip()+
+  theme_bw()
+```
+
+```{r, echo= FALSE, fig.height=7}
+chekhov %>% 
+  filter(word == "не") %>%
+  slice(1:30) %>% 
+  group_by(titles) %>% 
+  mutate(low_ci = binom.test(x = n, n = n_words)$conf.int[1],
+         up_ci = binom.test(x = n, n = n_words)$conf.int[2],
+         interval = "confidence") %>% 
+  ungroup() %>% 
+  select(trunc_titles, low_ci, up_ci, interval, average)->
+  df_1
+
+chekhov %>% 
+  filter(word == "не") %>%
+  slice(1:30) %>% 
+  group_by(titles) %>% 
+  mutate(alpha_post = n+alpha0,
+         beta_post = n_words-n+beta0,
+         average = alpha_post/(alpha_post+beta_post),
+         low_ci = qbeta(.025, alpha_post, beta_post),
+         up_ci = qbeta(.975, alpha_post, beta_post),
+         interval = "credible") %>% 
+  ungroup() %>% 
+  select(trunc_titles, low_ci, up_ci, interval, average)->
+  df_2
+
+rbind(df_1, df_2) %>% 
+  ggplot(aes(trunc_titles, y = average, ymin = low_ci, ymax = up_ci, color = interval)) +
+  geom_errorbar()+
+  geom_point()+
+  coord_flip()+
+  theme_bw()+
+  xlab("")
 ```

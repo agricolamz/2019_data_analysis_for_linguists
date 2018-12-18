@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Г. Мороз" />
+
+
+<title>3. Empirical Bayes Estimation. Байесовский доверительный интервал</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h2 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h3 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h4 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h5 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h6 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    введение в байесовскую статистику
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="1_distributions.html">1. Распределения</a>
+    </li>
+    <li>
+      <a href="2_Bayesian_inference.html">2. Байесовский вывод</a>
+    </li>
+    <li>
+      <a href="3_Advanced_Bayesian.html">3. Продвинутая байесовская статистика</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    уменьшение размерности
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="4_PCA.html">4. PCA, LDA</a>
+    </li>
+    <li>
+      <a href="5_CA_MCA.html">5. CA, DCA, MCA</a>
+    </li>
+    <li>
+      <a href="6_Clustering.pdf">6. Кластеризация</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    регрессия
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="7_more_linear_regression.html">7. Еще о регрессионных моделях</a>
+    </li>
+    <li>
+      <a href="8_logit_multinom.html">8. Логистическая и мультиномиальная регрессии</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<style>
+.main-container {
+  margin-left: 0;
+  margin-right: 0;
+}
+</style>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">3. Empirical Bayes Estimation. Байесовский доверительный интервал</h1>
+<h4 class="author"><em>Г. Мороз</em></h4>
+
+</div>
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div id="empirical-bayes-estimation" class="section level2">
+<h2>1. Empirical Bayes Estimation</h2>
+<p>Метод Empirical Bayes estimation — один из байесовских методов, в рамках которого:</p>
+<ul>
+<li>произвести оценку априорного распределения вероятностей на основании имеющихся данных</li>
+<li>использовать полученное априорное распределение для получение апостериорной оценки для каждого наблюдения</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">chekhov &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;https://raw.githubusercontent.com/agricolamz/2019_data_analysis_for_linguists/master/data/tidy_chekhov.tsv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   titles = col_character(),
+##   word = col_character(),
+##   n = col_double(),
+##   n_words = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">chekhov <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trunc_titles =</span> <span class="kw">str_trunc</span>(titles, <span class="dv">25</span>, <span class="dt">side =</span> <span class="st">&quot;right&quot;</span>),</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">         <span class="dt">average =</span> n<span class="op">/</span>n_words) -&gt;</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span>chekhov</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw">head</span>(chekhov)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["titles"],"name":[1],"type":["chr"],"align":["left"]},{"label":["word"],"name":[2],"type":["chr"],"align":["left"]},{"label":["n"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["n_words"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["trunc_titles"],"name":[5],"type":["chr"],"align":["left"]},{"label":["average"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"Письмо к ученому соседу","2":"письмо","3":"2","4":"1327","5":"Письмо к ученому соседу","6":"0.0015071590"},{"1":"Письмо к ученому соседу","2":"к","3":"4","4":"1327","5":"Письмо к ученому соседу","6":"0.0030143180"},{"1":"Письмо к ученому соседу","2":"ученому","3":"1","4":"1327","5":"Письмо к ученому соседу","6":"0.0007535795"},{"1":"Письмо к ученому соседу","2":"соседу","3":"1","4":"1327","5":"Письмо к ученому соседу","6":"0.0007535795"},{"1":"Письмо к ученому соседу","2":"село","3":"1","4":"1327","5":"Письмо к ученому соседу","6":"0.0007535795"},{"1":"Письмо к ученому соседу","2":"блины","3":"1","4":"1327","5":"Письмо к ученому соседу","6":"0.0007535795"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<ul>
+<li>311 рассказов А. Чехова</li>
+<li>число слов в каждом рассказе</li>
+<li>46610 уникальных слов в каждом рассказе</li>
+</ul>
+<p>Наши данные:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">chekhov <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(word <span class="op">==</span><span class="st"> &quot;не&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(trunc_titles, word, average) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(average)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Частотность слова &quot;не&quot; на основе 305 рассказов А. Чехова&#39;</span>)</a></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="3_Advanced_Bayesian_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>В данном случае, данные можно подогнать под бета распределение <span class="math inline">\(Χ \sim Beta(α_0, β_0)\)</span> (это далеко не всегда так). Подгонку можно осуществлять множеством разных функций, но я воспользуюсь следующей системой уравнений:</p>
+<p><span class="math display">\[\mu = \frac{\alpha}{\alpha+\beta}\]</span> <span class="math display">\[\sigma = \frac{\alpha\times\beta}{(\alpha+\beta)^2\times(\alpha+\beta+1)}\]</span></p>
+<p>Из этой системы можно выразить <span class="math inline">\(\alpha\)</span> и <span class="math inline">\(\beta\)</span>:</p>
+<p><span class="math display">\[\alpha = \left(\frac{1-\mu}{\sigma^2} - \frac{1}{\mu}\right)\times \mu^2\]</span> <span class="math display">\[\beta = \alpha\times\left(\frac{1}{\mu} - 1\right)\]</span></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">mu &lt;-<span class="st"> </span><span class="kw">mean</span>(chekhov<span class="op">$</span>average[chekhov<span class="op">$</span>word <span class="op">==</span><span class="st"> &quot;не&quot;</span>])</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">var &lt;-<span class="st"> </span><span class="kw">var</span>(chekhov<span class="op">$</span>average[chekhov<span class="op">$</span>word <span class="op">==</span><span class="st"> &quot;не&quot;</span>])</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">alpha0 &lt;-<span class="st"> </span>((<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>mu) <span class="op">/</span><span class="st"> </span>var <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="op">/</span><span class="st"> </span>mu) <span class="op">*</span><span class="st"> </span>mu <span class="op">^</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">beta0 &lt;-<span class="st"> </span>alpha0 <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span>mu <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">alpha0</a></code></pre></div>
+<pre><code>## [1] 5.283022</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">beta0</a></code></pre></div>
+<pre><code>## [1] 231.6328</code></pre>
+<p>Посмотрим, насколько хорошо, получившееся распределение подходит к нашим данным:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="dt">length =</span> <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">estimation &lt;-<span class="st"> </span><span class="kw">data_frame</span>(</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">  <span class="dt">x =</span> x,</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">  <span class="dt">density =</span> <span class="kw">c</span>(<span class="kw">dbeta</span>(x, <span class="dt">shape1 =</span> alpha0, <span class="dt">shape2 =</span> beta0)))</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">chekhov <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(word <span class="op">==</span><span class="st"> &quot;не&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="st">  </span><span class="kw">select</span>(trunc_titles, word, average) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(average)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> estimation, <span class="kw">aes</span>(x, density))<span class="op">+</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Частотность слова &quot;не&quot; на основе 305 рассказов А. Чехова&#39;</span>,</a>
+<a class="sourceLine" id="cb11-14" data-line-number="14">       <span class="dt">subtitle =</span> <span class="st">&quot;черной линией показано бета распределение с α = 5.283022 и β = 231.6328&quot;</span>)</a></code></pre></div>
+<p><img src="3_Advanced_Bayesian_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Полученное распределение можно использовать как априорное распределение для апдейта значений из каждого рассказа. Этот трюк и называется Empirical Bayes estimation.</p>
+</div>
+<div id="--" class="section level2">
+<h2>2. Фриквентисткий доверительный интервал</h2>
+<p>Основная соль фриквинтистского доверительного интервала (по-английски confidence interval) основано на правиле трех сигм нормального распределения:</p>
+<p><img src="3_Advanced_Bayesian_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><strong>z-score</strong>:</p>
+<ul>
+<li>95% данных находится в 1.96 стандартных отклонений</li>
+<li>99% данных находится в 2.58 стандартных отклонений</li>
+</ul>
+<p>Доверительный интервал:</p>
+<ul>
+<li>предположим что данные генеральной совокупности нормально распределены</li>
+<li>тогда доверительные интервалы выборок взятых из генеральной совокупности будут <a href="https://rpsychologist.com/d3/CI/">покрывать среднее генеральной совокупности</a></li>
+</ul>
+<p><span class="math display">\[\bar{x} \pm z \times \frac{\sigma}{\sqrt{n}}\text{, где } z \text{ — это центральная } 1 - \frac{\alpha}{2} \text{ часть данных}\]</span></p>
+<p>Распространение этой логики на биномиальные данные называется интервал Вальда:</p>
+<p><span class="math display">\[\bar{x} = \theta; \sigma = \sqrt{\frac{\theta\times(1-\theta)}{n}}\]</span></p>
+<p>Тогда интервал Вальда:</p>
+<p><span class="math display">\[\theta \pm  z\times\sqrt{\frac{\theta\times(1-\theta)} {n}}\]</span></p>
+<p>Есть только одна проблема: работает он плохо. Его аналоги перечислены в других работ:</p>
+<ul>
+<li>assymptotic method with continuity correction</li>
+<li>Wilson score</li>
+<li>Wilson Score method with continuity correction</li>
+<li>Jeffreys interval</li>
+<li>Clopper–Pearson interval (default in R <code>binom.test()</code>)</li>
+<li>Agresti–Coull interval</li>
+<li>… см. пакет <code>binom</code></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">chekhov <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(word <span class="op">==</span><span class="st"> &quot;не&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(titles) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">low_ci =</span> <span class="kw">binom.test</span>(<span class="dt">x =</span> n, <span class="dt">n =</span> n_words)<span class="op">$</span>conf.int[<span class="dv">1</span>],</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">         <span class="dt">up_ci =</span> <span class="kw">binom.test</span>(<span class="dt">x =</span> n, <span class="dt">n =</span> n_words)<span class="op">$</span>conf.int[<span class="dv">2</span>]) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(trunc_titles, average))<span class="op">+</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_pointrange</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> low_ci, <span class="dt">ymax =</span> up_ci))<span class="op">+</span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Среднее и 95% CI употребления &quot;не&quot; в рассказах А. Чехова&#39;</span>,</a>
+<a class="sourceLine" id="cb12-13" data-line-number="13">       <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>)</a></code></pre></div>
+<p><img src="3_Advanced_Bayesian_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>В базовом пакете функция <code>binom.test()</code> не позволяет выбирать тип доверительного интервала. <code>ci.method = &quot;Clopper-Pearson&quot;</code> возможна, если включить библиотеку <code>mosaic</code>.</p>
+</div>
+<div id="--" class="section level2">
+<h2>3. Байесовский доверительный интервал</h2>
+<p>Байесовский доверительный <span class="math inline">\(k\)</span>-% интервал (по-английски credible interval) — это интервал <span class="math inline">\([\frac{k}{2}, 1-\frac{k}{2}]\)</span> от апостериорного распределения. Давайте используем распределение, полученное в предыдущем разделе в качестве априорного для тридцети рассказов Чехова:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">chekhov <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(word <span class="op">==</span><span class="st"> &quot;не&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(titles) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">alpha_post =</span> n<span class="op">+</span>alpha0,</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">         <span class="dt">beta_post =</span> n_words<span class="op">-</span>n<span class="op">+</span>beta0,</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">         <span class="dt">average_post =</span> alpha_post<span class="op">/</span>(alpha_post<span class="op">+</span>beta_post),</a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">         <span class="dt">cred_int_l =</span> <span class="kw">qbeta</span>(.<span class="dv">025</span>, alpha_post, beta_post),</a>
+<a class="sourceLine" id="cb13-9" data-line-number="9">         <span class="dt">cred_int_h =</span> <span class="kw">qbeta</span>(.<span class="dv">975</span>, alpha_post, beta_post)) -&gt;</a>
+<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="st">  </span>posterior</a>
+<a class="sourceLine" id="cb13-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">posterior <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="st">  </span><span class="kw">select</span>(titles, n_words, average, average_post) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-14" data-line-number="14"><span class="st">  </span><span class="kw">arrange</span>(n_words)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["titles"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n_words"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["average"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["average_post"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Темною ночью","2":"298","3":"0.020134228","4":"0.02109308"},{"1":"На гвозде","2":"425","3":"0.011764706","4":"0.01553524"},{"1":"Патриот своего отечества","2":"428","3":"0.009345794","4":"0.01396120"},{"1":"Добродетельный кабатчик","2":"473","3":"0.016913319","4":"0.01871070"},{"1":"Размазня","2":"481","3":"0.027027027","4":"0.02546681"},{"1":"Загадочная натура","2":"595","3":"0.015126050","4":"0.01716883"},{"1":"Случай из судебной практики","2":"660","3":"0.013636364","4":"0.01592460"},{"1":"Смерть чиновника","2":"691","3":"0.039073806","4":"0.03479090"},{"1":"Тысяча одна страсть, или Страшная ночь","2":"954","3":"0.008385744","4":"0.01115362"},{"1":"Раз в год","2":"1002","3":"0.022954092","4":"0.02282885"},{"1":"Вор","2":"1040","3":"0.020192308","4":"0.02058321"},{"1":"Темпераменты","2":"1041","3":"0.027857829","4":"0.02682729"},{"1":"Трагик","2":"1050","3":"0.022857143","4":"0.02275442"},{"1":"Герой-барыня","2":"1075","3":"0.013953488","4":"0.01546061"},{"1":"Верба","2":"1091","3":"0.015582035","4":"0.01678045"},{"1":"За двумя зайцами погонишься, ни одного не поймаешь","2":"1311","3":"0.032036613","4":"0.03054625"},{"1":"Письмо к ученому соседу","2":"1327","3":"0.024114544","4":"0.02383953"},{"1":"В вагоне","2":"1442","3":"0.022884882","4":"0.02280223"},{"1":"Перед свадьбой","2":"1459","3":"0.041124058","4":"0.03849426"},{"1":"Грешник из Толедо","2":"1683","3":"0.021984551","4":"0.02202337"},{"1":"Папаша","2":"1686","3":"0.041518387","4":"0.03915045"},{"1":"Месть","2":"1764","3":"0.023809524","4":"0.02363069"},{"1":"Летающие острова","2":"1778","3":"0.016310461","4":"0.01701462"},{"1":"Исповедь, или Оля, Женя, Зоя","2":"1942","3":"0.021627188","4":"0.02170025"},{"1":"Барон","2":"1965","3":"0.029516539","4":"0.02873998"},{"1":"Сказки Мельпомены","2":"2404","3":"0.027038270","4":"0.02661312"},{"1":"Он понял!","2":"2837","3":"0.022206556","4":"0.02221369"},{"1":"Два скандала","2":"3130","3":"0.021725240","4":"0.02176562"},{"1":"Петров день","2":"3312","3":"0.026268116","4":"0.02600316"},{"1":"Жены артистов","2":"3686","3":"0.024688009","4":"0.02454374"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">posterior <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(trunc_titles, average_post, <span class="dt">ymin =</span> cred_int_l, <span class="dt">ymax =</span> cred_int_h))<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_pointrange</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<p><img src="3_Advanced_Bayesian_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="3_Advanced_Bayesian_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+
+<br><br><br>
+<p><center> &copy; Г. Мороз 2018 с помощью RMarkdown. Исходный код на 
+<a href="https://github.com/agricolamz/2019_data_analysis_for_linguists"> GitHub <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"  style="width:30px;height:30px;border:0"></a></center> </p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
