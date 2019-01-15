@@ -32,8 +32,88 @@ $$P(θ|Data) = \frac{P(Data|θ)\times P(θ)}{P(Data)}$$
 
 $$P(θ|Data) \propto P(Data|θ)\times P(θ)$$
 
+## 2. Вероятность vs. функция правдободобия
 
-## 2. Категориальные данные 
+Предположим что распределение количества согласных в языках мира можно описать нормальным распределением со средним 22 и стандартным отклонением 6:
+
+```{r, echo=FALSE}
+data_frame(x = 0:80) %>% 
+  ggplot(aes(x)) +
+  stat_function(fun = function(x) dnorm(x, 22, 6))+
+  labs(title = "Количество согласных в языках мира (фэйк)")
+```
+
+Тогда вероятность того, что в выбранных произвольно языках окажется от 23 до 32 согласных, равна интегралу нормального распределения в указанном промежутке:
+
+```{r, echo = FALSE}
+data_frame(x = 0:80) %>% 
+  ggplot(aes(x)) +
+  stat_function(fun = function(x) dnorm(x, 22, 6))+
+  stat_function(fun = function(x) dnorm(x, 22, 6), 
+                xlim = c(23,32), 
+                geom = "area",
+                fill = "lightblue")+
+  labs(title = "Количество согласных в языках мира (фэйк)")
+```
+
+$$P\left(X \in (23,\, 32) | X \sim \mathcal{N}(\mu = 22,\, \sigma^{2}=6)\right) = ...$$
+
+```{r}
+pnorm(32, mean = 22, sd = 6) - pnorm(23, mean = 22, sd = 6)
+```
+
+Когда мы говорим про функцию правдоподобия, мы нашли еще один язык в котором оказалось 33 согласных, и нас интересует, насколько правдоподобна функция нормального распределения со средним 22 и стандартным отклонением 6 при значении переменной 33. Это значение равно функции плотности:
+
+```{r, echo = FALSE}
+data_frame(x = 0:80) %>% 
+  ggplot(aes(x)) +
+  stat_function(fun = function(x) dnorm(x, 22, 6))+
+  geom_segment(aes(x = 33, xend = 33, y = 0, yend = dnorm(33, 22, 6)), color = "red")+
+  geom_segment(aes(x = 33, xend = 0, y = dnorm(33, 22, 6), yend = dnorm(33, 22, 6)), color = "red",
+               arrow = arrow(length = unit(0.03, "npc")))+
+  scale_x_continuous(breaks = c(0:4*20, 33))+
+  scale_y_continuous(breaks = c(0:3*0.02, round(dnorm(33, 22, 6), 3)))+
+  labs(title = "Количество согласных в языках мира (фэйк)")
+```
+
+$$L\left(X \sim \mathcal{N}(\mu = 22,\, \sigma^{2}=6)|x = 33\right) = ...$$
+
+```{r}
+dnorm(33, 22, 6)
+```
+
+В результате мы можем пострить график, на котором будет правдоподобие моделей с разными средними и фиксированным стандартным отклонением.
+
+```{r}
+data_frame(x = 0:80) %>% 
+  ggplot(aes(x)) +
+  stat_function(fun = function(x) dnorm(33, x, 6))+
+  scale_x_continuous(breaks = c(0:4*20, 33))+
+  labs(x = TeX("$\\mu$"),
+       y = TeX("$L(N(\\mu,\\, \\sigma^{2}=6)|x = 33))$"),
+       title = "Насколько правдоподобны модели с разными μ, если мы наблюдаем значение 33?")
+```
+
+А что если у нас не одно наблюдение, а несколько? Например, мы наблюдаем языки с 33 и 26 согласными? События независимы друг от друга, значит, мы можем перемножить получаемые вероятности.
+
+```{r}
+data_frame(x = 0:80) %>% 
+  ggplot(aes(x)) +
+  stat_function(fun = function(x) dnorm(33, x, 6)*dnorm(26, x, 6))+
+  scale_x_continuous(breaks = c(0:4*20, 33, 26))+
+  labs(x = TeX("$\\mu$"),
+       y = TeX("$L(N(\\mu,\\, \\sigma^{2}=6)|x = 33))$"),
+       title = "Насколько правдоподобны модели с разными μ, если мы наблюдаем значения 26 и 33?")
+```
+
+**Самое важное:**
+
+* вероятность --- P(data|distribution)
+* правдоподобие --- L(distribution|data)
+
+Интеграл распределения вероятностей равен 1. [Интеграл правдоподобия может быть не равен 1](https://stats.stackexchange.com/a/31241/225843).
+
+## 3. Категориальные данные 
 
 [В датасете c грибами](https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/mushrooms.csv) (взят c [kaggle](https://www.kaggle.com/uciml/mushroom-classification)) представлено следующее распределение по месту обитания:
 
@@ -68,39 +148,11 @@ data_frame(model = c("edible", "poisonous"),
            posterior_2 = product_2/sum(product_2))
 ```
 
-### 2.1
-Вашего друга похитили а на почту отправили [датасет](https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/weather.csv), в котором записаны данные о погоде из пяти городов. Ваш телефон зазвонил, и друг сказал, что не знает куда его похитили, но за окном легкий дождь (`Rain`). А на следующий день --- сильный дождь (`Rain, Thunderstorm`). Сделайте байесовский апдейт и предположите, в какой город вероятнее всего похитили друга (форма принимает латиницу).
-
-```{r, include=FALSE}
-df <- read.csv("https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/weather.csv")
-df %>%
-  count(city, events) %>% 
-  group_by(city) %>% 
-  mutate(prop = n/sum(n)) %>% 
-  ggplot(aes(city, prop, fill = events, label = round(prop, 3)))+
-  geom_col()+
-  geom_text(position = position_stack(vjust = 0.5), color = "white")
-
-data_frame(model = c("Auckland", "Beijing", "Chicago", "Mumbai", "San Diego"),
-           prior_1 = 0.2,
-           likelihood_1 = c(0.484, 0, 0.161, 0, 0.29),
-           product_1 = prior_1*likelihood_1,
-           posterior_1 = product_1/sum(product_1),
-           likelihood_2 = c(0.032, 0, 0, 0, 0.065),
-           product_2 = posterior_1*likelihood_2,
-           posterior_2 = product_2/sum(product_2))
-```
-
-<form name="FormOne" onsubmit="return validateFormOne()" method="post">
-<input type="text" name="answerOne">
-<input type="submit" value="check">
-</form><br>
-
-## 3. Биномиальные данные
+## 4. Биномиальные данные
 
 Биномиальные данные возникают, когда нас интересует доля успехов в какой-то серии эксперементов Бернулли.
 
-### 3.1  Биномиальное распределение
+### 4.1  Биномиальное распределение
 
 Биномиальное распределение --- распределение количества успехов эксперементов Бернулли из *n* попыток с вероятностью успеха *p*.
 
@@ -145,7 +197,7 @@ $$\mu = \frac{\alpha}{\alpha+\beta}$$
 $$\sigma^2 = \frac{\alpha\times\beta}{(\alpha+\beta)^2\times(\alpha+\beta+1)}$$
 
 
-### 3.3 Байесовский апдейт биномиальных данных
+### 4.3 Байесовский апдейт биномиальных данных
 
 $$Beta_{post}(\alpha_{post}, \beta_{post}) = Beta(\alpha_{prior}+\alpha_{data}, \beta_{prior}+\beta_{data}),$$
 где $Beta$ --- это бета распределение
@@ -155,7 +207,7 @@ shiny::runGitHub("agricolamz/bayes_for_binomial_app")
 ```
 
 
-### 3.3 Байесовский апдейт биномиальных данных: несколько моделей
+### 4.3 Байесовский апдейт биномиальных данных: несколько моделей
 
 
 ```{r}
@@ -174,52 +226,6 @@ data_frame(x = rep(seq(0, 1, length.out = 100), 6),
   facet_wrap(~dataset)+
   labs(title = "data = 4, 16")
 ```
-
-
-### 3.4
-В базе данных [Phoible](http://phoible.org/), в которой собраны фонологические инвентари в языках мира. В [датасет](https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/phoible_n_consonants.csv) записано три переменных:
-
-* language --- язык;
-* consonants --- количество согласных;
-* phonemes --- количество фонем.
-
-Посчитайте долю, которую составляет согласные от всего фонологического набора каждого языка и укажите название языка, в котором эта доля максимальна.
-
-```{r, include=FALSE}
-df <- read_csv("https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/phoible_n_consonants.csv")
-df %>% 
-  mutate(ratio = consonants/phonemes) ->
-  df
-
-df %>% 
-  filter(ratio == max(ratio)) %>% 
-  select(language)
-```
-
-<form name="FormTwo" onsubmit="return validateFormTwo()" method="post">
-<input type="text" name="answerTwo">
-<input type="submit" value="check">
-</form><br>
-
-Проведите байесовский апдейт наблюдений каждого языка, используя в качестве априорного распределения бета распределение с параметрами α = 9.300246, и β = 4.4545. Посчитайте модуль разницы между апостериорной и изначальной долями согласных,  представленных в данных. В ответе укажите язык с наибольшей разницей.
-
-```{r, include=FALSE}
-alpha0 <- 9.300246
-beta0 <- 4.4545
-
-df %>% 
-  mutate(alpha = consonants + alpha0,
-         beta = phonemes - consonants + beta0,
-         posterior_mean = alpha/(alpha+beta),
-         diff = abs(posterior_mean - ratio)) %>% 
-  arrange(desc(diff)) %>% 
-  select(language)
-```
-
-<form name="FormThree" onsubmit="return validateFormThree()" method="post">
-<input type="text" name="answerThree">
-<input type="submit" value="check">
-</form><br>
 
 ## 4. Нормальное распределение
 
@@ -279,8 +285,6 @@ results %>%
        x = "μ")
 ```
 
-
-
 ### 4.2 Байесовский апдейт нормального распределения: непрерывный вариант
 
 Во первых, нам понадобиться некоторая мера, которая называется *точность* (precision):
@@ -315,94 +319,5 @@ data_frame(x = rep(1:400, 3),
 shiny::runGitHub("agricolamz/bayes_for_normal_app") 
 ```
 
-### 4.3
-
-В [датасет](https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/urine.csv) записаны данные по исследованию мочи [Andrews, Herzberg 1985]. В переменной `pH` записано значение уровня кислотности. Сделайте байесовский апдейт наблюдаемых данных, используя априорное распределение $\mathcal{N}(\mu = 9, \sigma^2 = 2)$.
-
-Укажите апостериорное стандартное отклонение:
-
-<form name="FormFour" onsubmit="return validateFormFour()" method="post">
-<input type="text" name="answerFour">
-<input type="submit" value="check">
-</form><br>
-
-Укажите апостериорное среднее:
-
-<form name="FormFive" onsubmit="return validateFormFive()" method="post">
-<input type="text" name="answerFive">
-<input type="submit" value="check">
-</form><br>
-
-Попробуйте визуализировать:
-
-```{r, echo = FALSE}
-urine <- read_csv("https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/urine.csv")
-
-sd_prior <- 2 
-sd_data <- sd(urine$ph)
-sd_post <- (1/sd_prior+1/sd_data)^(-1)
-mean_prior <- 9
-mean_data <- mean(urine$ph)
-mean_post <- weighted.mean(c(mean_prior, mean_data), c(1/sd_prior, 1/sd_data))
-
-data_frame(x = rep(seq(0, 17, by = 0.1), 3),
-           density = c(dnorm(unique(x), mean = mean_prior, sd = sd_prior),
-                       dnorm(unique(x), mean = mean_data, sd = sd_data),
-                       dnorm(unique(x), mean = mean_post, sd = sd_post)),
-           dataset = rep(c("prior", "data", "posterior"), each = 171)) %>% 
-  ggplot(aes(x, density, color = dataset))+
-  geom_line()
+```{r child = 'HW_3.Rmd'}
 ```
-
-<script>
-function validateFormOne() {
-    var x = document.forms["FormOne"]["answerOne"].value;
-    if (x != "San Diego") {
-        alert("У меня другой ответ...");
-        return false;
-    } else {
-        alert("Да, все правильно");
-        return false;
-    }
-}
-function validateFormTwo() {
-    var x = document.forms["FormTwo"]["answerTwo"].value;
-    if (x != "Moroccan Arabic") {
-        alert("У меня другой ответ...");
-        return false;
-    } else {
-        alert("Да, все правильно");
-        return false;
-    }
-}
-function validateFormThree() {
-    var x = document.forms["FormThree"]["answerThree"].value;
-    if (x != "Karaja") {
-        alert("У меня другой ответ...");
-        return false;
-    } else {
-        alert("Да, все правильно");
-        return false;
-    }
-}
-function validateFormFour() {
-    var x = document.forms["FormFour"]["answerFour"].value;
-    if (x != "0.5317367") {
-        alert("У меня другой ответ... в нем 7 знаков после запятой");
-        return false;
-    } else {
-        alert("Да, все правильно");
-        return false;
-    }
-}
-function validateFormFive() {
-    var x = document.forms["FormFive"]["answerFive"].value;
-    if (x != "6.818514") {
-        alert("У меня другой ответ... в нем 6 знаков после запятой");
-        return false;
-    } else {
-        alert("Да, все правильно");
-        return false;
-    }
-}
-</script>

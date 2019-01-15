@@ -556,176 +556,188 @@ div.tocify {
 <p><span class="math display">\[P(θ|Data) \propto P(Data|θ)\times P(θ)\]</span></p>
 </div>
 </div>
-<div id="-" class="section level2">
-<h2>2. Категориальные данные</h2>
-<p><a href="https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/mushrooms.csv">В датасете c грибами</a> (взят c <a href="https://www.kaggle.com/uciml/mushroom-classification">kaggle</a>) представлено следующее распределение по месту обитания:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://github.com/agricolamz/2019_BayesDan_winter/blob/master/datasets/mushrooms.csv?raw=true&quot;</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">df <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(class, habitat) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(class) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n<span class="op">/</span><span class="kw">sum</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(class, prop, <span class="dt">fill =</span> habitat, <span class="dt">label =</span> <span class="kw">round</span>(prop, <span class="dv">3</span>)))<span class="op">+</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.5</span>), <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>)</a></code></pre></div>
+<div id="-vs.-" class="section level2">
+<h2>2. Вероятность vs. функция правдободобия</h2>
+<p>Предположим что распределение количества согласных в языках мира можно описать нормальным распределением со средним 22 и стандартным отклонением 6:</p>
 <p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-2-1.png" width="864" /></p>
+<p>Тогда вероятность того, что в выбранных произвольно языках окажется от 23 до 32 согласных, равна интегралу нормального распределения в указанном промежутке:</p>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-3-1.png" width="864" /></p>
+<p><span class="math display">\[P\left(X \in (23,\, 32) | X \sim \mathcal{N}(\mu = 22,\, \sigma^{2}=6)\right) = ...\]</span></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">pnorm</span>(<span class="dv">32</span>, <span class="dt">mean =</span> <span class="dv">22</span>, <span class="dt">sd =</span> <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">23</span>, <span class="dt">mean =</span> <span class="dv">22</span>, <span class="dt">sd =</span> <span class="dv">6</span>)</a></code></pre></div>
+<pre><code>[1] 0.3860258</code></pre>
+<p>Когда мы говорим про функцию правдоподобия, мы нашли еще один язык в котором оказалось 33 согласных, и нас интересует, насколько правдоподобна функция нормального распределения со средним 22 и стандартным отклонением 6 при значении переменной 33. Это значение равно функции плотности:</p>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-5-1.png" width="864" /></p>
+<p><span class="math display">\[L\left(X \sim \mathcal{N}(\mu = 22,\, \sigma^{2}=6)|x = 33\right) = ...\]</span></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">dnorm</span>(<span class="dv">33</span>, <span class="dv">22</span>, <span class="dv">6</span>)</a></code></pre></div>
+<pre><code>[1] 0.01238519</code></pre>
+<p>В результате мы можем пострить график, на котором будет правдоподобие моделей с разными средними и фиксированным стандартным отклонением.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">80</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x) <span class="kw">dnorm</span>(<span class="dv">33</span>, x, <span class="dv">6</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">4</span><span class="op">*</span><span class="dv">20</span>, <span class="dv">33</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">TeX</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">mu$&quot;</span>),</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">       <span class="dt">y =</span> <span class="kw">TeX</span>(<span class="st">&quot;$L(N(</span><span class="ch">\\</span><span class="st">mu,</span><span class="ch">\\</span><span class="st">, </span><span class="ch">\\</span><span class="st">sigma^{2}=6)|x = 33))$&quot;</span>),</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">       <span class="dt">title =</span> <span class="st">&quot;Насколько правдоподобны модели с разными μ, если мы наблюдаем значение 33?&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-7-1.png" width="864" /></p>
+<p>А что если у нас не одно наблюдение, а несколько? Например, мы наблюдаем языки с 33 и 26 согласными? События независимы друг от друга, значит, мы можем перемножить получаемые вероятности.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">80</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x) <span class="kw">dnorm</span>(<span class="dv">33</span>, x, <span class="dv">6</span>)<span class="op">*</span><span class="kw">dnorm</span>(<span class="dv">26</span>, x, <span class="dv">6</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">4</span><span class="op">*</span><span class="dv">20</span>, <span class="dv">33</span>, <span class="dv">26</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="kw">TeX</span>(<span class="st">&quot;$</span><span class="ch">\\</span><span class="st">mu$&quot;</span>),</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">       <span class="dt">y =</span> <span class="kw">TeX</span>(<span class="st">&quot;$L(N(</span><span class="ch">\\</span><span class="st">mu,</span><span class="ch">\\</span><span class="st">, </span><span class="ch">\\</span><span class="st">sigma^{2}=6)|x = 33))$&quot;</span>),</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">       <span class="dt">title =</span> <span class="st">&quot;Насколько правдоподобны модели с разными μ, если мы наблюдаем значения 26 и 33?&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-8-1.png" width="864" /></p>
+<p><strong>Самое важное:</strong></p>
+<ul>
+<li>вероятность — P(data|distribution)</li>
+<li>правдоподобие — L(distribution|data)</li>
+</ul>
+<p>Интеграл распределения вероятностей равен 1. <a href="https://stats.stackexchange.com/a/31241/225843">Интеграл правдоподобия может быть не равен 1</a>.</p>
+</div>
+<div id="-" class="section level2">
+<h2>3. Категориальные данные</h2>
+<p><a href="https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/mushrooms.csv">В датасете c грибами</a> (взят c <a href="https://www.kaggle.com/uciml/mushroom-classification">kaggle</a>) представлено следующее распределение по месту обитания:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://github.com/agricolamz/2019_BayesDan_winter/blob/master/datasets/mushrooms.csv?raw=true&quot;</span>)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(class, habitat) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(class) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n<span class="op">/</span><span class="kw">sum</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(class, prop, <span class="dt">fill =</span> habitat, <span class="dt">label =</span> <span class="kw">round</span>(prop, <span class="dv">3</span>)))<span class="op">+</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.5</span>), <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-9-1.png" width="864" /></p>
 <p>Мы нашли некоторый новый вид грибов на лужайке (<code>grasses</code>). Какой это может быть гриб: съедобный или ядовитый? У нас нет никаких идей, почему бы нам отдать предпочтения той или иной гипотезе, так что будем использовать неинформативное априорное распределение:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">model =</span> <span class="kw">c</span>(<span class="st">&quot;edible&quot;</span>, <span class="st">&quot;poisonous&quot;</span>),</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">           <span class="dt">prior =</span> <span class="fl">0.5</span>,</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">           <span class="dt">likelihood =</span> <span class="kw">c</span>(<span class="fl">0.335</span>, <span class="fl">0.189</span>),</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">           <span class="dt">product =</span> prior<span class="op">*</span>likelihood,</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">           <span class="dt">posterior =</span> product<span class="op">/</span><span class="kw">sum</span>(product))</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">model =</span> <span class="kw">c</span>(<span class="st">&quot;edible&quot;</span>, <span class="st">&quot;poisonous&quot;</span>),</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">           <span class="dt">prior =</span> <span class="fl">0.5</span>,</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">           <span class="dt">likelihood =</span> <span class="kw">c</span>(<span class="fl">0.335</span>, <span class="fl">0.189</span>),</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">           <span class="dt">product =</span> prior<span class="op">*</span>likelihood,</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">           <span class="dt">posterior =</span> product<span class="op">/</span><span class="kw">sum</span>(product))</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prior"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["product"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["posterior"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"edible","2":"0.5","3":"0.335","4":"0.1675","5":"0.639313"},{"1":"poisonous","2":"0.5","3":"0.189","4":"0.0945","5":"0.360687"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Вот мы и сделали байесовский апдейт. Теперь апостериорное распределение, которые мы получили на предыдущем шаге, мы можем использовать в новом апдейте. Допустим, мы опять нашли этот же вид гриба, но в этот раз в лесу (<code>woods</code>).</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">model =</span> <span class="kw">c</span>(<span class="st">&quot;edible&quot;</span>, <span class="st">&quot;poisonous&quot;</span>),</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">           <span class="dt">prior_2 =</span> <span class="kw">c</span>(<span class="fl">0.639</span>, <span class="fl">0.361</span>),</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">           <span class="dt">likelihood_2 =</span> <span class="kw">c</span>(<span class="fl">0.447</span>, <span class="fl">0.324</span>),</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">           <span class="dt">product_2 =</span> prior_<span class="dv">2</span><span class="op">*</span>likelihood_<span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">           <span class="dt">posterior_2 =</span> product_<span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(product_<span class="dv">2</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">model =</span> <span class="kw">c</span>(<span class="st">&quot;edible&quot;</span>, <span class="st">&quot;poisonous&quot;</span>),</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">           <span class="dt">prior_2 =</span> <span class="kw">c</span>(<span class="fl">0.639</span>, <span class="fl">0.361</span>),</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">           <span class="dt">likelihood_2 =</span> <span class="kw">c</span>(<span class="fl">0.447</span>, <span class="fl">0.324</span>),</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">           <span class="dt">product_2 =</span> prior_<span class="dv">2</span><span class="op">*</span>likelihood_<span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">           <span class="dt">posterior_2 =</span> product_<span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(product_<span class="dv">2</span>))</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prior_2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood_2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["product_2"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["posterior_2"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"edible","2":"0.639","3":"0.447","4":"0.285633","5":"0.7094762"},{"1":"poisonous","2":"0.361","3":"0.324","4":"0.116964","5":"0.2905238"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div id="section" class="section level3">
-<h3>2.1</h3>
-<p>Вашего друга похитили а на почту отправили <a href="https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/weather.csv">датасет</a>, в котором записаны данные о погоде из пяти городов. Ваш телефон зазвонил, и друг сказал, что не знает куда его похитили, но за окном легкий дождь (<code>Rain</code>). А на следующий день — сильный дождь (<code>Rain, Thunderstorm</code>). Сделайте байесовский апдейт и предположите, в какой город вероятнее всего похитили друга (форма принимает латиницу).</p>
-<form name="FormOne" onsubmit="return validateFormOne()" method="post">
-<input type="text" name="answerOne"> <input type="submit" value="check">
-</form>
-<p><br></p>
-</div>
 </div>
 <div id="-" class="section level2">
-<h2>3. Биномиальные данные</h2>
+<h2>4. Биномиальные данные</h2>
 <p>Биномиальные данные возникают, когда нас интересует доля успехов в какой-то серии эксперементов Бернулли.</p>
 <div id="-" class="section level3">
-<h3>3.1 Биномиальное распределение</h3>
+<h3>4.1 Биномиальное распределение</h3>
 <p>Биномиальное распределение — распределение количества успехов эксперементов Бернулли из <em>n</em> попыток с вероятностью успеха <em>p</em>.</p>
 <p><span class="math display">\[P(k | n, p) = \frac{n!}{k!(n-k)!} \times p^k \times (1-p)^{n-k} =  {n \choose k} \times p^k \times (1-p)^{n-k}\]</span> <span class="math display">\[ 0 \leq p \leq 1; n, k &gt; 0\]</span></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">50</span>,</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">dbinom</span>(<span class="dt">x =</span> x, <span class="dt">size =</span> <span class="dv">50</span>, <span class="dt">prob =</span> <span class="fl">0.16</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density))<span class="op">+</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Биномиальное распределение p = 0.16, n = 50&quot;</span>)</a></code></pre></div>
-<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-6-1.png" width="864" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">dbinom</span>(<span class="dt">x =</span> x, <span class="dt">size =</span> <span class="dv">50</span>, <span class="dt">prob =</span> <span class="fl">0.16</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density))<span class="op">+</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Биномиальное распределение p = 0.16, n = 50&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-12-1.png" width="864" /></p>
 </div>
 <div id="-" class="section level3">
 <h3>3.2 Бета распределение</h3>
 <p><span class="math display">\[P(x; α, β) = \frac{x^{α-1}\times (1-x)^{β-1}}{B(α, β)}; 0 \leq x \leq 1; α, β &gt; 0\]</span></p>
 <p>Бета функция:</p>
 <p><span class="math display">\[Β(α, β) = \frac{Γ(α)\times Γ(β)}{Γ(α+β)} = \frac{(α-1)!(β-1)!}{(α+β-1)!} \]</span></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">100</span>),</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">dbeta</span>(<span class="dt">x =</span> x, <span class="dt">shape1 =</span> <span class="dv">8</span>, <span class="dt">shape2 =</span> <span class="dv">42</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density))<span class="op">+</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Бета распределение α = 8, β = 42&quot;</span>)</a></code></pre></div>
-<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-7-1.png" width="864" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">dbeta</span>(<span class="dt">x =</span> x, <span class="dt">shape1 =</span> <span class="dv">8</span>, <span class="dt">shape2 =</span> <span class="dv">42</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density))<span class="op">+</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Бета распределение α = 8, β = 42&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-13-1.png" width="864" /></p>
 <p>Можно поиграть с разными параметрами:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">shiny<span class="op">::</span><span class="kw">runGitHub</span>(<span class="st">&quot;agricolamz/beta_distribution_shiny&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">shiny<span class="op">::</span><span class="kw">runGitHub</span>(<span class="st">&quot;agricolamz/beta_distribution_shiny&quot;</span>) </a></code></pre></div>
 <p><span class="math display">\[\mu = \frac{\alpha}{\alpha+\beta}\]</span></p>
 <p><span class="math display">\[\sigma^2 = \frac{\alpha\times\beta}{(\alpha+\beta)^2\times(\alpha+\beta+1)}\]</span></p>
 </div>
 <div id="---" class="section level3">
-<h3>3.3 Байесовский апдейт биномиальных данных</h3>
+<h3>4.3 Байесовский апдейт биномиальных данных</h3>
 <p><span class="math display">\[Beta_{post}(\alpha_{post}, \beta_{post}) = Beta(\alpha_{prior}+\alpha_{data}, \beta_{prior}+\beta_{data}),\]</span> где <span class="math inline">\(Beta\)</span> — это бета распределение</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">shiny<span class="op">::</span><span class="kw">runGitHub</span>(<span class="st">&quot;agricolamz/bayes_for_binomial_app&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">shiny<span class="op">::</span><span class="kw">runGitHub</span>(<span class="st">&quot;agricolamz/bayes_for_binomial_app&quot;</span>) </a></code></pre></div>
 </div>
 <div id="-----" class="section level3">
-<h3>3.3 Байесовский апдейт биномиальных данных: несколько моделей</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">100</span>), <span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">c</span>(<span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">8</span>, <span class="dt">shape2 =</span> <span class="dv">42</span>),</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">16</span>, <span class="dt">shape2 =</span> <span class="dv">34</span>),</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">24</span>, <span class="dt">shape2 =</span> <span class="dv">26</span>),</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">8</span><span class="op">+</span><span class="dv">4</span>, <span class="dt">shape2 =</span> <span class="dv">42</span><span class="op">+</span><span class="dv">16</span>),</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">16</span><span class="op">+</span><span class="dv">4</span>, <span class="dt">shape2 =</span> <span class="dv">34</span><span class="op">+</span><span class="dv">16</span>),</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">24</span><span class="op">+</span><span class="dv">4</span>, <span class="dt">shape2 =</span> <span class="dv">26</span><span class="op">+</span><span class="dv">16</span>)),</a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">           <span class="dt">type =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;prior&quot;</span>, <span class="st">&quot;prior&quot;</span>, <span class="st">&quot;prior&quot;</span>, <span class="st">&quot;posterior&quot;</span>, <span class="st">&quot;posterior&quot;</span>, <span class="st">&quot;posterior&quot;</span>), <span class="dt">each =</span> <span class="dv">100</span>),</a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">           <span class="dt">dataset =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;prior: 8, 42&quot;</span>, <span class="st">&quot;prior: 16, 34&quot;</span>, <span class="st">&quot;prior: 24, 26&quot;</span>,</a>
-<a class="sourceLine" id="cb9-10" data-line-number="10">                           <span class="st">&quot;prior: 8, 42&quot;</span>, <span class="st">&quot;prior: 16, 34&quot;</span>, <span class="st">&quot;prior: 24, 26&quot;</span>), <span class="dt">each =</span> <span class="dv">100</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density, <span class="dt">color =</span> type))<span class="op">+</span></a>
-<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>dataset)<span class="op">+</span></a>
-<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;data = 4, 16&quot;</span>)</a></code></pre></div>
-<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-10-1.png" width="864" /></p>
-</div>
-<div id="section-1" class="section level3">
-<h3>3.4</h3>
-<p>В базе данных <a href="http://phoible.org/">Phoible</a>, в которой собраны фонологические инвентари в языках мира. В <a href="https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/phoible_n_consonants.csv">датасет</a> записано три переменных:</p>
-<ul>
-<li>language — язык;</li>
-<li>consonants — количество согласных;</li>
-<li>phonemes — количество фонем.</li>
-</ul>
-<p>Посчитайте долю, которую составляет согласные от всего фонологического набора каждого языка и укажите название языка, в котором эта доля максимальна.</p>
-<form name="FormTwo" onsubmit="return validateFormTwo()" method="post">
-<input type="text" name="answerTwo"> <input type="submit" value="check">
-</form>
-<p><br></p>
-<p>Проведите байесовский апдейт наблюдений каждого языка, используя в качестве априорного распределения бета распределение с параметрами α = 9.300246, и β = 4.4545. Посчитайте модуль разницы между апостериорной и изначальной долями согласных, представленных в данных. В ответе укажите язык с наибольшей разницей.</p>
-<form name="FormThree" onsubmit="return validateFormThree()" method="post">
-<input type="text" name="answerThree"> <input type="submit" value="check">
-</form>
-<p><br></p>
+<h3>4.3 Байесовский апдейт биномиальных данных: несколько моделей</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">100</span>), <span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">c</span>(<span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">8</span>, <span class="dt">shape2 =</span> <span class="dv">42</span>),</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">16</span>, <span class="dt">shape2 =</span> <span class="dv">34</span>),</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">24</span>, <span class="dt">shape2 =</span> <span class="dv">26</span>),</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">8</span><span class="op">+</span><span class="dv">4</span>, <span class="dt">shape2 =</span> <span class="dv">42</span><span class="op">+</span><span class="dv">16</span>),</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">16</span><span class="op">+</span><span class="dv">4</span>, <span class="dt">shape2 =</span> <span class="dv">34</span><span class="op">+</span><span class="dv">16</span>),</a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">24</span><span class="op">+</span><span class="dv">4</span>, <span class="dt">shape2 =</span> <span class="dv">26</span><span class="op">+</span><span class="dv">16</span>)),</a>
+<a class="sourceLine" id="cb15-8" data-line-number="8">           <span class="dt">type =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;prior&quot;</span>, <span class="st">&quot;prior&quot;</span>, <span class="st">&quot;prior&quot;</span>, <span class="st">&quot;posterior&quot;</span>, <span class="st">&quot;posterior&quot;</span>, <span class="st">&quot;posterior&quot;</span>), <span class="dt">each =</span> <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb15-9" data-line-number="9">           <span class="dt">dataset =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;prior: 8, 42&quot;</span>, <span class="st">&quot;prior: 16, 34&quot;</span>, <span class="st">&quot;prior: 24, 26&quot;</span>,</a>
+<a class="sourceLine" id="cb15-10" data-line-number="10">                           <span class="st">&quot;prior: 8, 42&quot;</span>, <span class="st">&quot;prior: 16, 34&quot;</span>, <span class="st">&quot;prior: 24, 26&quot;</span>), <span class="dt">each =</span> <span class="dv">100</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density, <span class="dt">color =</span> type))<span class="op">+</span></a>
+<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb15-13" data-line-number="13"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>dataset)<span class="op">+</span></a>
+<a class="sourceLine" id="cb15-14" data-line-number="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;data = 4, 16&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-16-1.png" width="864" /></p>
 </div>
 </div>
 <div id="-" class="section level2">
 <h2>4. Нормальное распределение</h2>
 <p>Встроенный датасет <code>ChickWeight</code> содержит вес цыплят (<code>weight</code>) в зависимости от типа диеты (<code>Diet</code>). Мы будем анализировать 20-дневных птенцов.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">ChickWeight <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Time <span class="op">==</span><span class="st"> </span><span class="dv">20</span>) -&gt;</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span>chicks</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">chicks <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(weight))<span class="op">+</span></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_density</span>()</a></code></pre></div>
-<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-13-1.png" width="864" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">ChickWeight <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Time <span class="op">==</span><span class="st"> </span><span class="dv">20</span>) -&gt;</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span>chicks</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">chicks <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(weight))<span class="op">+</span></a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-17-1.png" width="864" /></p>
 <p>Начнем с апостериорных параметров для наблюдений <span class="math inline">\(x_1, ... x_n\)</span> со средним <span class="math inline">\(\mu_{data}\)</span> известной дисперсией <span class="math inline">\(\sigma_{known}^2\)</span></p>
 <div id="-----" class="section level3">
 <h3>4.1 Байесовский апдейт нормального распределения: дискретный вариант</h3>
 <p>Мы можем рассматривать эту задачу как выбор между несколькими моделями с разными средними:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>, <span class="dv">6</span>),</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">c</span>(<span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">125</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">150</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">175</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">200</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">225</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">250</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
-<a class="sourceLine" id="cb11-8" data-line-number="8">           <span class="dt">dataset =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">each =</span> <span class="dv">400</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density, <span class="dt">color =</span> <span class="kw">factor</span>(dataset)))<span class="op">+</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
-<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-14-1.png" width="864" /></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>, <span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">c</span>(<span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">125</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">150</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
+<a class="sourceLine" id="cb17-4" data-line-number="4">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">175</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
+<a class="sourceLine" id="cb17-5" data-line-number="5">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">200</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
+<a class="sourceLine" id="cb17-6" data-line-number="6">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">225</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
+<a class="sourceLine" id="cb17-7" data-line-number="7">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">250</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb17-8" data-line-number="8">           <span class="dt">dataset =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">each =</span> <span class="dv">400</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb17-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density, <span class="dt">color =</span> <span class="kw">factor</span>(dataset)))<span class="op">+</span></a>
+<a class="sourceLine" id="cb17-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-18-1.png" width="864" /></p>
 <p>Дальше мы можем точно так же апдейтить, как мы делали раньше:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">mu =</span> <span class="kw">seq</span>(<span class="dv">125</span>, <span class="dv">250</span>, <span class="dt">by =</span> <span class="dv">25</span>),</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">           <span class="dt">prior =</span> <span class="fl">0.2</span>,</a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">           <span class="dt">likelihood =</span> <span class="kw">c</span>(<span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">125</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">150</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">175</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
-<a class="sourceLine" id="cb12-6" data-line-number="6">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">200</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
-<a class="sourceLine" id="cb12-7" data-line-number="7">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">225</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
-<a class="sourceLine" id="cb12-8" data-line-number="8">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">250</span>, <span class="dt">sd =</span> <span class="dv">70</span>))),</a>
-<a class="sourceLine" id="cb12-9" data-line-number="9">           <span class="dt">product =</span> prior<span class="op">*</span>likelihood,</a>
-<a class="sourceLine" id="cb12-10" data-line-number="10">           <span class="dt">posterior =</span> product<span class="op">/</span><span class="kw">sum</span>(product)) -&gt;</a>
-<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="st">  </span>results</a>
-<a class="sourceLine" id="cb12-12" data-line-number="12">results</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">mu =</span> <span class="kw">seq</span>(<span class="dv">125</span>, <span class="dv">250</span>, <span class="dt">by =</span> <span class="dv">25</span>),</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">           <span class="dt">prior =</span> <span class="fl">0.2</span>,</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">           <span class="dt">likelihood =</span> <span class="kw">c</span>(<span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">125</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">150</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb18-5" data-line-number="5">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">175</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb18-6" data-line-number="6">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">200</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb18-7" data-line-number="7">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">225</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb18-8" data-line-number="8">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">250</span>, <span class="dt">sd =</span> <span class="dv">70</span>))),</a>
+<a class="sourceLine" id="cb18-9" data-line-number="9">           <span class="dt">product =</span> prior<span class="op">*</span>likelihood,</a>
+<a class="sourceLine" id="cb18-10" data-line-number="10">           <span class="dt">posterior =</span> product<span class="op">/</span><span class="kw">sum</span>(product)) -&gt;</a>
+<a class="sourceLine" id="cb18-11" data-line-number="11"><span class="st">  </span>results</a>
+<a class="sourceLine" id="cb18-12" data-line-number="12">results</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["mu"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["prior"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["product"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["posterior"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"125","2":"0.2","3":"2.064365e-127","4":"4.128729e-128","5":"2.388819e-15"},{"1":"150","2":"0.2","3":"4.738433e-120","4":"9.476866e-121","5":"5.483169e-08"},{"1":"175","2":"0.2","3":"3.078411e-115","4":"6.156823e-116","5":"3.562243e-03"},{"1":"200","2":"0.2","3":"5.660596e-113","4":"1.132119e-113","5":"6.550268e-01"},{"1":"225","2":"0.2","3":"2.946058e-113","4":"5.892116e-114","5":"3.409088e-01"},{"1":"250","2":"0.2","3":"4.339743e-116","4":"8.679486e-117","5":"5.021817e-04"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">results <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(mu, prior, posterior) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw">gather</span>(type, probability, prior<span class="op">:</span>posterior) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(mu, probability, <span class="dt">color =</span> type))<span class="op">+</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;изменение вероятностей для каждой из моделей&quot;</span>,</a>
-<a class="sourceLine" id="cb13-7" data-line-number="7">       <span class="dt">x =</span> <span class="st">&quot;μ&quot;</span>)</a></code></pre></div>
-<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-15-1.png" width="864" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">results <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(mu, prior, posterior) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="st">  </span><span class="kw">gather</span>(type, probability, prior<span class="op">:</span>posterior) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(mu, probability, <span class="dt">color =</span> type))<span class="op">+</span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb19-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;изменение вероятностей для каждой из моделей&quot;</span>,</a>
+<a class="sourceLine" id="cb19-7" data-line-number="7">       <span class="dt">x =</span> <span class="st">&quot;μ&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-19-1.png" width="864" /></p>
 </div>
 <div id="-----" class="section level3">
 <h3>4.2 Байесовский апдейт нормального распределения: непрерывный вариант</h3>
@@ -734,90 +746,57 @@ div.tocify {
 <p><span class="math display">\[\tau_{post} = \tau_{prior} + \tau_{data} \Rightarrow \sigma^2_{post} = \frac{1}{\tau_{post}}\]</span></p>
 <p><span class="math display">\[\mu_{post} = \frac{\mu_{prior} \times \tau_{prior} + \mu_{data} \times \tau_{data}}{\tau_{post}}\]</span></p>
 <p>Так что если нашим априорным распределением мы назовем нормальное распределение со средним около 180 и стандартным отклонением 90, то процесс байсовского апдейта будет выглядеть вот так:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">sd_prior &lt;-<span class="st"> </span><span class="dv">90</span> </a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">sd_data &lt;-<span class="st"> </span><span class="kw">sd</span>(chicks<span class="op">$</span>weight)</a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">sd_post &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>sd_prior<span class="op">+</span><span class="dv">1</span><span class="op">/</span>sd_data)<span class="op">^</span>(<span class="op">-</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">mean_prior &lt;-<span class="st"> </span><span class="dv">180</span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">mean_data &lt;-<span class="st"> </span><span class="kw">mean</span>(chicks<span class="op">$</span>weight)</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">mean_post &lt;-<span class="st"> </span><span class="kw">weighted.mean</span>(<span class="kw">c</span>(mean_prior, mean_data), <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span>sd_prior, <span class="dv">1</span><span class="op">/</span>sd_data))</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>, <span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb14-9" data-line-number="9">           <span class="dt">density =</span> <span class="kw">c</span>(<span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> mean_prior, <span class="dt">sd =</span> sd_prior),</a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> mean_data, <span class="dt">sd =</span> sd_data),</a>
-<a class="sourceLine" id="cb14-11" data-line-number="11">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> mean_post, <span class="dt">sd =</span> sd_post)),</a>
-<a class="sourceLine" id="cb14-12" data-line-number="12">           <span class="dt">dataset =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;prior&quot;</span>, <span class="st">&quot;data&quot;</span>, <span class="st">&quot;posterior&quot;</span>), <span class="dt">each =</span> <span class="dv">400</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density, <span class="dt">color =</span> dataset))<span class="op">+</span></a>
-<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
-<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-16-1.png" width="864" /></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">shiny<span class="op">::</span><span class="kw">runGitHub</span>(<span class="st">&quot;agricolamz/bayes_for_normal_app&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">sd_prior &lt;-<span class="st"> </span><span class="dv">90</span> </a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">sd_data &lt;-<span class="st"> </span><span class="kw">sd</span>(chicks<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">sd_post &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>sd_prior<span class="op">+</span><span class="dv">1</span><span class="op">/</span>sd_data)<span class="op">^</span>(<span class="op">-</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4">mean_prior &lt;-<span class="st"> </span><span class="dv">180</span></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5">mean_data &lt;-<span class="st"> </span><span class="kw">mean</span>(chicks<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb20-6" data-line-number="6">mean_post &lt;-<span class="st"> </span><span class="kw">weighted.mean</span>(<span class="kw">c</span>(mean_prior, mean_data), <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span>sd_prior, <span class="dv">1</span><span class="op">/</span>sd_data))</a>
+<a class="sourceLine" id="cb20-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb20-8" data-line-number="8"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb20-9" data-line-number="9">           <span class="dt">density =</span> <span class="kw">c</span>(<span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> mean_prior, <span class="dt">sd =</span> sd_prior),</a>
+<a class="sourceLine" id="cb20-10" data-line-number="10">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> mean_data, <span class="dt">sd =</span> sd_data),</a>
+<a class="sourceLine" id="cb20-11" data-line-number="11">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> mean_post, <span class="dt">sd =</span> sd_post)),</a>
+<a class="sourceLine" id="cb20-12" data-line-number="12">           <span class="dt">dataset =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;prior&quot;</span>, <span class="st">&quot;data&quot;</span>, <span class="st">&quot;posterior&quot;</span>), <span class="dt">each =</span> <span class="dv">400</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-13" data-line-number="13"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density, <span class="dt">color =</span> dataset))<span class="op">+</span></a>
+<a class="sourceLine" id="cb20-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-20-1.png" width="864" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">shiny<span class="op">::</span><span class="kw">runGitHub</span>(<span class="st">&quot;agricolamz/bayes_for_normal_app&quot;</span>) </a></code></pre></div>
+</div>
+</div>
+<div id="----" class="section level2">
+<h2>Домашнее задание (до следующего занятия)</h2>
+<ul>
+<li>Обязательно:
+<ul>
+<li><a href="https://ncase.me/attractors/">Introduction to attractor landscapes</a> (занимает минут 5)</li>
+<li>Вспомнить, перемножение матриц и что такое <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80">собственные векторы</a></li>
+</ul></li>
+<li>По желанию:
+<ul>
+<li><a href="https://ncase.me/trust/">The evolution of trust</a> (занимает минут 30)</li>
+<li><a href="https://ncase.me/crowds/">The wisdom and/or madness of crowds</a> (занимает минут 30)</li>
+<li>я открыл в этом году издание <a href="https://pudding.cool/">Pudding</a>, там выходят статьи с красивой интерактивной визуализацией, основанной на реальных данных. Будет настроение — взгляните.</li>
+</ul></li>
+</ul>
+</div>
+<div id="---29.01.2019" class="section level2">
+<h2>Домашнее задание (до 29.01.2019)</h2>
+<div id="section" class="section level3">
+<h3>3.1</h3>
+<p>Выведите в консоль значение правдоподобия для нормального распределения <span class="math inline">\(\mathcal{N}(\mu = 22,\, \sigma^{2}=6)\)</span> при значениях, записанных в данном датасете.</p>
+</div>
+<div id="section-1" class="section level3">
+<h3>3.2</h3>
+<p>В датасет записаны частотности встречаемости букв английского и польского языка. Проведите байесовский апдейт, используя в качестве данных слово “most” и считая, что оба языка равновероятны. Выведите в консоль наибольшее апостериорную вероятность.</p>
 </div>
 <div id="section-2" class="section level3">
-<h3>4.3</h3>
-<p>В <a href="https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/urine.csv">датасет</a> записаны данные по исследованию мочи [Andrews, Herzberg 1985]. В переменной <code>pH</code> записано значение уровня кислотности. Сделайте байесовский апдейт наблюдаемых данных, используя априорное распределение <span class="math inline">\(\mathcal{N}(\mu = 9, \sigma^2 = 2)\)</span>.</p>
-<p>Укажите апостериорное стандартное отклонение:</p>
-<form name="FormFour" onsubmit="return validateFormFour()" method="post">
-<input type="text" name="answerFour"> <input type="submit" value="check">
-</form>
-<p><br></p>
-<p>Укажите апостериорное среднее:</p>
-<form name="FormFive" onsubmit="return validateFormFive()" method="post">
-<input type="text" name="answerFive"> <input type="submit" value="check">
-</form>
-<p><br></p>
-<p>Попробуйте визуализировать:</p>
-<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-18-1.png" width="864" /></p>
-<script>
-function validateFormOne() {
-    var x = document.forms["FormOne"]["answerOne"].value;
-    if (x != "San Diego") {
-        alert("У меня другой ответ...");
-        return false;
-    } else {
-        alert("Да, все правильно");
-        return false;
-    }
-}
-function validateFormTwo() {
-    var x = document.forms["FormTwo"]["answerTwo"].value;
-    if (x != "Moroccan Arabic") {
-        alert("У меня другой ответ...");
-        return false;
-    } else {
-        alert("Да, все правильно");
-        return false;
-    }
-}
-function validateFormThree() {
-    var x = document.forms["FormThree"]["answerThree"].value;
-    if (x != "Karaja") {
-        alert("У меня другой ответ...");
-        return false;
-    } else {
-        alert("Да, все правильно");
-        return false;
-    }
-}
-function validateFormFour() {
-    var x = document.forms["FormFour"]["answerFour"].value;
-    if (x != "0.5317367") {
-        alert("У меня другой ответ... в нем 7 знаков после запятой");
-        return false;
-    } else {
-        alert("Да, все правильно");
-        return false;
-    }
-}
-function validateFormFive() {
-    var x = document.forms["FormFive"]["answerFive"].value;
-    if (x != "6.818514") {
-        alert("У меня другой ответ... в нем 6 знаков после запятой");
-        return false;
-    } else {
-        alert("Да, все правильно");
-        return false;
-    }
-}
-</script>
+<h3>3.3</h3>
+<p>Здесь будет задача на биномиальные данные</p>
+</div>
+<div id="section-3" class="section level3">
+<h3>3.4</h3>
+<p>Здесь будет задача на нормальные данные</p>
 </div>
 </div>
 
