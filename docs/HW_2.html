@@ -11,7 +11,7 @@
 
 
 
-<title>useful.utf8.md</title>
+<title>HW_2.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
@@ -254,101 +251,6 @@ $(document).ready(function () {
 
 
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
-
-
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -445,13 +347,28 @@ div.tocify {
 </div>
 
 
-<div id="uceful-recources" class="section level2">
-<h2>Uceful recources:</h2>
+<div id="---19.12.2018" class="section level2">
+<h2>Домашнее задание (до 19.12.2018)</h2>
+<p>Вспомнить про доверительные интервалы.</p>
+</div>
+<div id="---26.12.2018" class="section level2">
+<h2>Домашнее задание (до 26.12.2018)</h2>
+<p>Домашнее задание нужно выполнять в отдельном <code>rmarkdown</code> файле. Получившийся файл следует помещать в соответствующую папку в своем репозитории на гитхабе. Более подробные инструкции <a href="https://agricolamz.github.io/2019_data_analysis_for_linguists/index.html">см. на этой странице</a>.</p>
+<p>В этой домашней работе я предлагаю поработать с поддатасетом данных из базы данных <a href="https://phoible.org/">Phoible</a>, в которой собраны фонологические инвентари в языках мира. В каждый набор данных записано всего три переменных:</p>
 <ul>
-<li>Robinson D. (2017) Introduction To Empirical Bayes</li>
-<li><p>Gelman A. et. al (2014) Bayesian Data Analysis</p></li>
-<li><p><a href="https://www.datacamp.com/enterprise/data-analysis-for-linguists">DataCamp class</a></p></li>
+<li><code>language</code> — язык;</li>
+<li><code>consonants</code> — количество согласных;</li>
+<li><code>phonemes</code> — количество фонем.</li>
 </ul>
+<p>Я предлагаю исследовать долю, которую согласные составляют от всего фонологического набора.</p>
+<div id="section" class="section level3">
+<h3>2.1</h3>
+<p>Посчитайте долю, которую составляет согласные от всего фонологического набора каждого языка и выведите в консоль название языка, в котором эта доля максимальна</p>
+</div>
+<div id="section-1" class="section level3">
+<h3>2.2</h3>
+<p>Проведите байесовский апдейт наблюдений каждого языка, используя в качестве априорного распределения бета распределение с параметрами α = 9.300246, и β = 4.4545. Посчитайте модуль разницы между апостериорной долей и изначальной долей представленной в данных. В консоль выведите 6 языков с наибольшей разницей.</p>
+</div>
 </div>
 
 <br><br><br>
@@ -459,8 +376,6 @@ div.tocify {
 <a href="https://github.com/agricolamz/2019_data_analysis_for_linguists"> GitHub <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"  style="width:30px;height:30px;border:0"></a></center> </p>
 
 
-</div>
-</div>
 
 </div>
 

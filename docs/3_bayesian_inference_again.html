@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Г. Мороз" />
+
+
+<title>3. Байесовский вывод</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h2 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h3 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h4 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h5 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h6 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    введение в байесовскую статистику
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="1_distributions.html">1. Распределения</a>
+    </li>
+    <li>
+      <a href="2_Bayesian_inference.html">2. Байесовский вывод</a>
+    </li>
+    <li>
+      <a href="3_bayesian_inference_again.html">3. Опять байесовский вывод</a>
+    </li>
+    <li>
+      <a href="4_Advanced_Bayesian.html">4. Продвинутая байесовская статистика</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    уменьшение размерности
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="4_PCA.html">4. PCA, LDA</a>
+    </li>
+    <li>
+      <a href="5_CA_MCA.html">5. CA, DCA, MCA</a>
+    </li>
+    <li>
+      <a href="6_Clustering.pdf">6. Кластеризация</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    регрессия
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="7_more_linear_regression.html">7. Еще о регрессионных моделях</a>
+    </li>
+    <li>
+      <a href="8_logit_multinom.html">8. Логистическая и мультиномиальная регрессии</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<style>
+.main-container {
+  margin-left: 0;
+  margin-right: 0;
+}
+</style>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">3. Байесовский вывод</h1>
+<h4 class="author"><em>Г. Мороз</em></h4>
+
+</div>
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div id="-" class="section level2">
+<h2>1. Байесовский вывод</h2>
+<div class="section level3">
+<h3>1.1 Нотация</h3>
+<p>В байесовском подоходе статистический вывод описывается формулой Байеса</p>
+<p><span class="math display">\[P(θ|Data) = \frac{P(Data|θ)\times P(θ)}{P(Data)}\]</span></p>
+<ul>
+<li><span class="math inline">\(P(θ|Data)\)</span> — апостериорная вероятность (posterior)</li>
+<li><span class="math inline">\(P(Data|θ)\)</span> — функция правдоподобия (likelihood)</li>
+<li><span class="math inline">\(P(θ)\)</span> — априорная вероятность (prior)</li>
+<li><span class="math inline">\(P(Data)\)</span> — нормализующий делитель</li>
+</ul>
+<p>В литературе можно еще встретить такую запись:</p>
+<p><span class="math display">\[P(θ|Data) \propto P(Data|θ)\times P(θ)\]</span></p>
+</div>
+</div>
+<div id="-" class="section level2">
+<h2>2. Категориальные данные</h2>
+<p><a href="https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/mushrooms.csv">В датасете c грибами</a> (взят c <a href="https://www.kaggle.com/uciml/mushroom-classification">kaggle</a>) представлено следующее распределение по месту обитания:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://github.com/agricolamz/2019_BayesDan_winter/blob/master/datasets/mushrooms.csv?raw=true&quot;</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(class, habitat) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw">group_by</span>(class) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prop =</span> n<span class="op">/</span><span class="kw">sum</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(class, prop, <span class="dt">fill =</span> habitat, <span class="dt">label =</span> <span class="kw">round</span>(prop, <span class="dv">3</span>)))<span class="op">+</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">position =</span> <span class="kw">position_stack</span>(<span class="dt">vjust =</span> <span class="fl">0.5</span>), <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-2-1.png" width="864" /></p>
+<p>Мы нашли некоторый новый вид грибов на лужайке (<code>grasses</code>). Какой это может быть гриб: съедобный или ядовитый? У нас нет никаких идей, почему бы нам отдать предпочтения той или иной гипотезе, так что будем использовать неинформативное априорное распределение:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">model =</span> <span class="kw">c</span>(<span class="st">&quot;edible&quot;</span>, <span class="st">&quot;poisonous&quot;</span>),</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">           <span class="dt">prior =</span> <span class="fl">0.5</span>,</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">           <span class="dt">likelihood =</span> <span class="kw">c</span>(<span class="fl">0.335</span>, <span class="fl">0.189</span>),</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">           <span class="dt">product =</span> prior<span class="op">*</span>likelihood,</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">           <span class="dt">posterior =</span> product<span class="op">/</span><span class="kw">sum</span>(product))</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prior"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["product"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["posterior"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"edible","2":"0.5","3":"0.335","4":"0.1675","5":"0.639313"},{"1":"poisonous","2":"0.5","3":"0.189","4":"0.0945","5":"0.360687"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Вот мы и сделали байесовский апдейт. Теперь апостериорное распределение, которые мы получили на предыдущем шаге, мы можем использовать в новом апдейте. Допустим, мы опять нашли этот же вид гриба, но в этот раз в лесу (<code>woods</code>).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">model =</span> <span class="kw">c</span>(<span class="st">&quot;edible&quot;</span>, <span class="st">&quot;poisonous&quot;</span>),</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">           <span class="dt">prior_2 =</span> <span class="kw">c</span>(<span class="fl">0.639</span>, <span class="fl">0.361</span>),</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">           <span class="dt">likelihood_2 =</span> <span class="kw">c</span>(<span class="fl">0.447</span>, <span class="fl">0.324</span>),</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">           <span class="dt">product_2 =</span> prior_<span class="dv">2</span><span class="op">*</span>likelihood_<span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">           <span class="dt">posterior_2 =</span> product_<span class="dv">2</span><span class="op">/</span><span class="kw">sum</span>(product_<span class="dv">2</span>))</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["prior_2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood_2"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["product_2"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["posterior_2"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"edible","2":"0.639","3":"0.447","4":"0.285633","5":"0.7094762"},{"1":"poisonous","2":"0.361","3":"0.324","4":"0.116964","5":"0.2905238"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div id="section" class="section level3">
+<h3>2.1</h3>
+<p>Вашего друга похитили а на почту отправили <a href="https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/weather.csv">датасет</a>, в котором записаны данные о погоде из пяти городов. Ваш телефон зазвонил, и друг сказал, что не знает куда его похитили, но за окном легкий дождь (<code>Rain</code>). А на следующий день — сильный дождь (<code>Rain, Thunderstorm</code>). Сделайте байесовский апдейт и предположите, в какой город вероятнее всего похитили друга (форма принимает латиницу).</p>
+<form name="FormOne" onsubmit="return validateFormOne()" method="post">
+<input type="text" name="answerOne"> <input type="submit" value="check">
+</form>
+<p><br></p>
+</div>
+</div>
+<div id="-" class="section level2">
+<h2>3. Биномиальные данные</h2>
+<p>Биномиальные данные возникают, когда нас интересует доля успехов в какой-то серии эксперементов Бернулли.</p>
+<div id="-" class="section level3">
+<h3>3.1 Биномиальное распределение</h3>
+<p>Биномиальное распределение — распределение количества успехов эксперементов Бернулли из <em>n</em> попыток с вероятностью успеха <em>p</em>.</p>
+<p><span class="math display">\[P(k | n, p) = \frac{n!}{k!(n-k)!} \times p^k \times (1-p)^{n-k} =  {n \choose k} \times p^k \times (1-p)^{n-k}\]</span> <span class="math display">\[ 0 \leq p \leq 1; n, k &gt; 0\]</span></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">50</span>,</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">dbinom</span>(<span class="dt">x =</span> x, <span class="dt">size =</span> <span class="dv">50</span>, <span class="dt">prob =</span> <span class="fl">0.16</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density))<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Биномиальное распределение p = 0.16, n = 50&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-6-1.png" width="864" /></p>
+</div>
+<div id="-" class="section level3">
+<h3>3.2 Бета распределение</h3>
+<p><span class="math display">\[P(x; α, β) = \frac{x^{α-1}\times (1-x)^{β-1}}{B(α, β)}; 0 \leq x \leq 1; α, β &gt; 0\]</span></p>
+<p>Бета функция:</p>
+<p><span class="math display">\[Β(α, β) = \frac{Γ(α)\times Γ(β)}{Γ(α+β)} = \frac{(α-1)!(β-1)!}{(α+β-1)!} \]</span></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">dbeta</span>(<span class="dt">x =</span> x, <span class="dt">shape1 =</span> <span class="dv">8</span>, <span class="dt">shape2 =</span> <span class="dv">42</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density))<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Бета распределение α = 8, β = 42&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-7-1.png" width="864" /></p>
+<p>Можно поиграть с разными параметрами:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">shiny<span class="op">::</span><span class="kw">runGitHub</span>(<span class="st">&quot;agricolamz/beta_distribution_shiny&quot;</span>) </a></code></pre></div>
+<p><span class="math display">\[\mu = \frac{\alpha}{\alpha+\beta}\]</span></p>
+<p><span class="math display">\[\sigma^2 = \frac{\alpha\times\beta}{(\alpha+\beta)^2\times(\alpha+\beta+1)}\]</span></p>
+</div>
+<div id="---" class="section level3">
+<h3>3.3 Байесовский апдейт биномиальных данных</h3>
+<p><span class="math display">\[Beta_{post}(\alpha_{post}, \beta_{post}) = Beta(\alpha_{prior}+\alpha_{data}, \beta_{prior}+\beta_{data}),\]</span> где <span class="math inline">\(Beta\)</span> — это бета распределение</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">shiny<span class="op">::</span><span class="kw">runGitHub</span>(<span class="st">&quot;agricolamz/bayes_for_binomial_app&quot;</span>) </a></code></pre></div>
+</div>
+<div id="-----" class="section level3">
+<h3>3.3 Байесовский апдейт биномиальных данных: несколько моделей</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">100</span>), <span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">c</span>(<span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">8</span>, <span class="dt">shape2 =</span> <span class="dv">42</span>),</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">16</span>, <span class="dt">shape2 =</span> <span class="dv">34</span>),</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">24</span>, <span class="dt">shape2 =</span> <span class="dv">26</span>),</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">8</span><span class="op">+</span><span class="dv">4</span>, <span class="dt">shape2 =</span> <span class="dv">42</span><span class="op">+</span><span class="dv">16</span>),</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">16</span><span class="op">+</span><span class="dv">4</span>, <span class="dt">shape2 =</span> <span class="dv">34</span><span class="op">+</span><span class="dv">16</span>),</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">                       <span class="kw">dbeta</span>(<span class="kw">unique</span>(x), <span class="dt">shape1 =</span> <span class="dv">24</span><span class="op">+</span><span class="dv">4</span>, <span class="dt">shape2 =</span> <span class="dv">26</span><span class="op">+</span><span class="dv">16</span>)),</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">           <span class="dt">type =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;prior&quot;</span>, <span class="st">&quot;prior&quot;</span>, <span class="st">&quot;prior&quot;</span>, <span class="st">&quot;posterior&quot;</span>, <span class="st">&quot;posterior&quot;</span>, <span class="st">&quot;posterior&quot;</span>), <span class="dt">each =</span> <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">           <span class="dt">dataset =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;prior: 8, 42&quot;</span>, <span class="st">&quot;prior: 16, 34&quot;</span>, <span class="st">&quot;prior: 24, 26&quot;</span>,</a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">                           <span class="st">&quot;prior: 8, 42&quot;</span>, <span class="st">&quot;prior: 16, 34&quot;</span>, <span class="st">&quot;prior: 24, 26&quot;</span>), <span class="dt">each =</span> <span class="dv">100</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density, <span class="dt">color =</span> type))<span class="op">+</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>dataset)<span class="op">+</span></a>
+<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;data = 4, 16&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-10-1.png" width="864" /></p>
+</div>
+<div id="section-1" class="section level3">
+<h3>3.4</h3>
+<p>В базе данных <a href="http://phoible.org/">Phoible</a>, в которой собраны фонологические инвентари в языках мира. В <a href="https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/phoible_n_consonants.csv">датасет</a> записано три переменных:</p>
+<ul>
+<li>language — язык;</li>
+<li>consonants — количество согласных;</li>
+<li>phonemes — количество фонем.</li>
+</ul>
+<p>Посчитайте долю, которую составляет согласные от всего фонологического набора каждого языка и укажите название языка, в котором эта доля максимальна.</p>
+<form name="FormTwo" onsubmit="return validateFormTwo()" method="post">
+<input type="text" name="answerTwo"> <input type="submit" value="check">
+</form>
+<p><br></p>
+<p>Проведите байесовский апдейт наблюдений каждого языка, используя в качестве априорного распределения бета распределение с параметрами α = 9.300246, и β = 4.4545. Посчитайте модуль разницы между апостериорной и изначальной долями согласных, представленных в данных. В ответе укажите язык с наибольшей разницей.</p>
+<form name="FormThree" onsubmit="return validateFormThree()" method="post">
+<input type="text" name="answerThree"> <input type="submit" value="check">
+</form>
+<p><br></p>
+</div>
+</div>
+<div id="-" class="section level2">
+<h2>4. Нормальное распределение</h2>
+<p>Встроенный датасет <code>ChickWeight</code> содержит вес цыплят (<code>weight</code>) в зависимости от типа диеты (<code>Diet</code>). Мы будем анализировать 20-дневных птенцов.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">ChickWeight <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(Time <span class="op">==</span><span class="st"> </span><span class="dv">20</span>) -&gt;</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span>chicks</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">chicks <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(weight))<span class="op">+</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="st">  </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-13-1.png" width="864" /></p>
+<p>Начнем с апостериорных параметров для наблюдений <span class="math inline">\(x_1, ... x_n\)</span> со средним <span class="math inline">\(\mu_{data}\)</span> известной дисперсией <span class="math inline">\(\sigma_{known}^2\)</span></p>
+<div id="-----" class="section level3">
+<h3>4.1 Байесовский апдейт нормального распределения: дискретный вариант</h3>
+<p>Мы можем рассматривать эту задачу как выбор между несколькими моделями с разными средними:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>, <span class="dv">6</span>),</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">           <span class="dt">density =</span> <span class="kw">c</span>(<span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">125</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">150</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">175</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">200</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">225</span>, <span class="dt">sd =</span> <span class="dv">70</span>),</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> <span class="dv">250</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">           <span class="dt">dataset =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">each =</span> <span class="dv">400</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density, <span class="dt">color =</span> <span class="kw">factor</span>(dataset)))<span class="op">+</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-14-1.png" width="864" /></p>
+<p>Дальше мы можем точно так же апдейтить, как мы делали раньше:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">mu =</span> <span class="kw">seq</span>(<span class="dv">125</span>, <span class="dv">250</span>, <span class="dt">by =</span> <span class="dv">25</span>),</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">           <span class="dt">prior =</span> <span class="fl">0.2</span>,</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">           <span class="dt">likelihood =</span> <span class="kw">c</span>(<span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">125</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">150</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">175</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">200</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">225</span>, <span class="dt">sd =</span> <span class="dv">70</span>)),</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">                          <span class="kw">prod</span>(<span class="kw">dnorm</span>(chicks<span class="op">$</span>weight, <span class="dt">mean =</span> <span class="dv">250</span>, <span class="dt">sd =</span> <span class="dv">70</span>))),</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">           <span class="dt">product =</span> prior<span class="op">*</span>likelihood,</a>
+<a class="sourceLine" id="cb12-10" data-line-number="10">           <span class="dt">posterior =</span> product<span class="op">/</span><span class="kw">sum</span>(product)) -&gt;</a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="st">  </span>results</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12">results</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["mu"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["prior"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["likelihood"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["product"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["posterior"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"125","2":"0.2","3":"2.064365e-127","4":"4.128729e-128","5":"2.388819e-15"},{"1":"150","2":"0.2","3":"4.738433e-120","4":"9.476866e-121","5":"5.483169e-08"},{"1":"175","2":"0.2","3":"3.078411e-115","4":"6.156823e-116","5":"3.562243e-03"},{"1":"200","2":"0.2","3":"5.660596e-113","4":"1.132119e-113","5":"6.550268e-01"},{"1":"225","2":"0.2","3":"2.946058e-113","4":"5.892116e-114","5":"3.409088e-01"},{"1":"250","2":"0.2","3":"4.339743e-116","4":"8.679486e-117","5":"5.021817e-04"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">results <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(mu, prior, posterior) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span><span class="kw">gather</span>(type, probability, prior<span class="op">:</span>posterior) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(mu, probability, <span class="dt">color =</span> type))<span class="op">+</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;изменение вероятностей для каждой из моделей&quot;</span>,</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">       <span class="dt">x =</span> <span class="st">&quot;μ&quot;</span>)</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-15-1.png" width="864" /></p>
+</div>
+<div id="-----" class="section level3">
+<h3>4.2 Байесовский апдейт нормального распределения: непрерывный вариант</h3>
+<p>Во первых, нам понадобиться некоторая мера, которая называется <em>точность</em> (precision):</p>
+<p><span class="math display">\[\tau = \frac{1}{\sigma^2}\]</span></p>
+<p><span class="math display">\[\tau_{post} = \tau_{prior} + \tau_{data} \Rightarrow \sigma^2_{post} = \frac{1}{\tau_{post}}\]</span></p>
+<p><span class="math display">\[\mu_{post} = \frac{\mu_{prior} \times \tau_{prior} + \mu_{data} \times \tau_{data}}{\tau_{post}}\]</span></p>
+<p>Так что если нашим априорным распределением мы назовем нормальное распределение со средним около 180 и стандартным отклонением 90, то процесс байсовского апдейта будет выглядеть вот так:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">sd_prior &lt;-<span class="st"> </span><span class="dv">90</span> </a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">sd_data &lt;-<span class="st"> </span><span class="kw">sd</span>(chicks<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">sd_post &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>sd_prior<span class="op">+</span><span class="dv">1</span><span class="op">/</span>sd_data)<span class="op">^</span>(<span class="op">-</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">mean_prior &lt;-<span class="st"> </span><span class="dv">180</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">mean_data &lt;-<span class="st"> </span><span class="kw">mean</span>(chicks<span class="op">$</span>weight)</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">mean_post &lt;-<span class="st"> </span><span class="kw">weighted.mean</span>(<span class="kw">c</span>(mean_prior, mean_data), <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span>sd_prior, <span class="dv">1</span><span class="op">/</span>sd_data))</a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="kw">data_frame</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">400</span>, <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">           <span class="dt">density =</span> <span class="kw">c</span>(<span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> mean_prior, <span class="dt">sd =</span> sd_prior),</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> mean_data, <span class="dt">sd =</span> sd_data),</a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">                       <span class="kw">dnorm</span>(<span class="kw">unique</span>(x), <span class="dt">mean =</span> mean_post, <span class="dt">sd =</span> sd_post)),</a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">           <span class="dt">dataset =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;prior&quot;</span>, <span class="st">&quot;data&quot;</span>, <span class="st">&quot;posterior&quot;</span>), <span class="dt">each =</span> <span class="dv">400</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(x, density, <span class="dt">color =</span> dataset))<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_line</span>()</a></code></pre></div>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-16-1.png" width="864" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">shiny<span class="op">::</span><span class="kw">runGitHub</span>(<span class="st">&quot;agricolamz/bayes_for_normal_app&quot;</span>) </a></code></pre></div>
+</div>
+<div id="section-2" class="section level3">
+<h3>4.3</h3>
+<p>В <a href="https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/urine.csv">датасет</a> записаны данные по исследованию мочи [Andrews, Herzberg 1985]. В переменной <code>pH</code> записано значение уровня кислотности. Сделайте байесовский апдейт наблюдаемых данных, используя априорное распределение <span class="math inline">\(\mathcal{N}(\mu = 9, \sigma^2 = 2)\)</span>.</p>
+<p>Укажите апостериорное стандартное отклонение:</p>
+<form name="FormFour" onsubmit="return validateFormFour()" method="post">
+<input type="text" name="answerFour"> <input type="submit" value="check">
+</form>
+<p><br></p>
+<p>Укажите апостериорное среднее:</p>
+<form name="FormFive" onsubmit="return validateFormFive()" method="post">
+<input type="text" name="answerFive"> <input type="submit" value="check">
+</form>
+<p><br></p>
+<p>Попробуйте визуализировать:</p>
+<p><img src="3_bayesian_inference_again_files/figure-html/unnamed-chunk-18-1.png" width="864" /></p>
+<script>
+function validateFormOne() {
+    var x = document.forms["FormOne"]["answerOne"].value;
+    if (x != "San Diego") {
+        alert("У меня другой ответ...");
+        return false;
+    } else {
+        alert("Да, все правильно");
+        return false;
+    }
+}
+function validateFormTwo() {
+    var x = document.forms["FormTwo"]["answerTwo"].value;
+    if (x != "Moroccan Arabic") {
+        alert("У меня другой ответ...");
+        return false;
+    } else {
+        alert("Да, все правильно");
+        return false;
+    }
+}
+function validateFormThree() {
+    var x = document.forms["FormThree"]["answerThree"].value;
+    if (x != "Karaja") {
+        alert("У меня другой ответ...");
+        return false;
+    } else {
+        alert("Да, все правильно");
+        return false;
+    }
+}
+function validateFormFour() {
+    var x = document.forms["FormFour"]["answerFour"].value;
+    if (x != "0.5317367") {
+        alert("У меня другой ответ... в нем 7 знаков после запятой");
+        return false;
+    } else {
+        alert("Да, все правильно");
+        return false;
+    }
+}
+function validateFormFive() {
+    var x = document.forms["FormFive"]["answerFive"].value;
+    if (x != "6.818514") {
+        alert("У меня другой ответ... в нем 6 знаков после запятой");
+        return false;
+    } else {
+        alert("Да, все правильно");
+        return false;
+    }
+}
+</script>
+</div>
+</div>
+
+<br><br><br>
+<p><center> &copy; Г. Мороз 2018 с помощью RMarkdown. Исходный код на 
+<a href="https://github.com/agricolamz/2019_data_analysis_for_linguists"> GitHub <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"  style="width:30px;height:30px;border:0"></a></center> </p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -11,7 +11,7 @@
 
 
 
-<title>useful.utf8.md</title>
+<title>HW_3.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
@@ -254,101 +251,6 @@ $(document).ready(function () {
 
 
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
-
-
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -445,13 +347,24 @@ div.tocify {
 </div>
 
 
-<div id="uceful-recources" class="section level2">
-<h2>Uceful recources:</h2>
+<div id="----" class="section level2">
+<h2>Домашнее задание (до следующего занятия)</h2>
 <ul>
-<li>Robinson D. (2017) Introduction To Empirical Bayes</li>
-<li><p>Gelman A. et. al (2014) Bayesian Data Analysis</p></li>
-<li><p><a href="https://www.datacamp.com/enterprise/data-analysis-for-linguists">DataCamp class</a></p></li>
+<li>Обязательно:
+<ul>
+<li><a href="https://ncase.me/attractors/">Introduction to attractor landscapes</a> (занимает минут 5)</li>
+<li>Вспомнить, перемножение матриц и что такое <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80">собственные векторы</a></li>
+</ul></li>
+<li>По желанию:
+<ul>
+<li><a href="https://ncase.me/trust/">The evolution of trust</a> (занимает минут 30)</li>
+<li><a href="https://ncase.me/crowds/">The wisdom and/or madness of crowds</a> (занимает минут 30)</li>
+<li>я открыл в этом году издание <a href="https://pudding.cool/">Pudding</a>, там выходят статьи с красивой интерактивной визуализацией, основанной на реальных данных. Будет настроение — взгляните.</li>
+</ul></li>
 </ul>
+</div>
+<div id="---15.01.2019" class="section level2">
+<h2>Домашнее задание (до 15.01.2019)</h2>
 </div>
 
 <br><br><br>
@@ -459,8 +372,6 @@ div.tocify {
 <a href="https://github.com/agricolamz/2019_data_analysis_for_linguists"> GitHub <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"  style="width:30px;height:30px;border:0"></a></center> </p>
 
 
-</div>
-</div>
 
 </div>
 
