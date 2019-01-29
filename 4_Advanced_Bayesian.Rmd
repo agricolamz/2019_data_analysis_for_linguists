@@ -1,5 +1,5 @@
 ---
-title: "3. Empirical Bayes Estimation. Байесовский доверительный интервал"
+title: "4. Empirical Bayes Estimation. Байесовский доверительный интервал. Bayes Factor"
 author: "Г. Мороз"
 editor_options: 
   chunk_output_type: console
@@ -154,7 +154,7 @@ chekhov %>%
 В базовом пакете функция `binom.test()` не позволяет выбирать тип доверительного интервала. `ci.method = "Clopper-Pearson"` возможна, если включить библиотеку `mosaic`. 
 
 ## 3. Байесовский доверительный интервал
-Байесовский доверительный $k$-% интервал (по-английски credible interval) --- это интервал $[\frac{k}{2}, 1-\frac{k}{2}]$ от апостериорного распределения. Давайте используем распределение, полученное в предыдущем разделе в качестве априорного для тридцети рассказов Чехова:
+Байесовский доверительный $k$-% интервал (по-английски credible interval) --- это интервал $[\frac{k}{2}, 1-\frac{k}{2}]$ от апостериорного распределения. Давайте используем распределение, полученное в предыдущем разделе в качестве априорного для тридцати рассказов Чехова:
 
 ```{r, fig.height=7}
 chekhov %>% 
@@ -213,3 +213,86 @@ rbind(df_1, df_2) %>%
   theme_bw()+
   xlab("")
 ```
+
+## 4. Bayes Factor
+
+### 4.1 Формула Байеса опять
+
+$$P(θ|Data) = \frac{P(Data|θ)\times P(θ)}{P(Data)}$$
+
+$$\frac{P(θ|Data)}{P(θ)} = \frac{P(Data|θ)}{P(Data)}$$
+
+Левая часть этого уравнения описывает вероятности относительно параметров, и эти вероятности представляют собой наши представления. Доля описывает, как наши представления относительно параметра θ обновляются в свете данных.
+
+Байесовский фактор берется из этой же формулы:
+
+$$\frac{\frac{P(M_A|Data)}{P(M_A)}}{\frac{P(M_B|Data)}{P(M_B)}} = \frac{\frac{P(Data|M_A)}{P(Data)}}{\frac{P(Data|M_B)}{P(Data)}} = \frac{P(Data|M_A)}{P(Data|M_B)} = BF_{AB}$$
+
+Т. е. байесовский фактор по сути это всего лишь пропорция составленная из двух функций правдоподобия.
+
+[В датасете c грибами](https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/mushrooms.csv) (взят c [kaggle](https://www.kaggle.com/uciml/mushroom-classification)) представлено следующее распределение по месту обитания:
+
+```{r}
+df <- read_csv("https://github.com/agricolamz/2019_BayesDan_winter/blob/master/datasets/mushrooms.csv?raw=true")
+df %>% 
+  count(class, habitat) %>% 
+  group_by(class) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  ggplot(aes(class, prop, fill = habitat, label = round(prop, 3)))+
+  geom_col()+
+  geom_text(position = position_stack(vjust = 0.5), color = "white")
+```
+
+Мы нашли некоторый новый вид грибов на лужайке (`grasses`), а потом в лесу (`woods`). Давайте посчитаем $BF_{edible\ poisonous}$:
+
+
+$$L(grasses,\ wood|edible) = 0.335 \times 0.447 = 0.149745$$
+
+$$L(grasses,\ wood|poisonous) = 0.189 \times 0.324 = 0.061236$$
+
+$$BF_{edible\ poisonous} = \frac{L(grasses,\ wood|edible)}{L(grasses,\ wood|poisonous)} = \frac{0.149745}{0.061236} = 2.445375$$
+
+### 4.2 
+Вашего друга похитили а на почту отправили [датасет](https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/weather.csv), в котором записаны данные о погоде из пяти городов. Ваш телефон зазвонил, и друг сказал, что не знает куда его похитили, но за окном легкий дождь (`Rain`). А на следующий день --- сильный дождь (`Rain Thunderstorm`). Посчитайте $BH_{San\_Diego\ Auckland}$ с точностью до 1 знака после запятой.
+
+```{r, include=FALSE}
+df <- read.csv("https://raw.githubusercontent.com/agricolamz/2019_BayesDan_winter/master/datasets/weather.csv")
+df %>%
+  count(city, events) %>% 
+  group_by(city) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  ggplot(aes(city, prop, fill = events, label = round(prop, 3)))+
+  geom_col()+
+  geom_text(position = position_stack(vjust = 0.5), color = "white")
+
+df %>%
+  count(city, events) %>% 
+  group_by(city) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  select(-n) %>% 
+  spread(events, prop, fill = 0) %>% 
+  mutate(likelihood_r_rt = `Rain , Thunderstorm` * Rain) ->
+  results
+
+BF <- round(results$likelihood_r_rt[5]/results$likelihood_r_rt[1], 3)
+```
+
+<form name="FormOne" onsubmit="return validateFormOne()" method="post">
+<input type="text" name="answerOne">
+<input type="submit" value="check">
+</form><br>
+
+### 4.3 [Интерпретация байесовского фактора](https://en.wikipedia.org/wiki/Bayes_factor#Interpretation)
+
+<script>
+function validateFormOne() {
+    var x = document.forms["FormOne"]["answerOne"].value;
+    if (x != "1.2") {
+        alert("У меня другой ответ...");
+        return false;
+    } else {
+        alert("Да, все правильно");
+        return false;
+    }
+}
+</script>
