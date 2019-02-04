@@ -284,6 +284,10 @@ BF <- round(results$likelihood_r_rt[5]/results$likelihood_r_rt[1], 3)
 
 ### 4.3 [Интерпретация байесовского фактора](https://en.wikipedia.org/wiki/Bayes_factor#Interpretation)
 
+```{r child = 'HW_4.Rmd'}
+```
+
+
 <script>
 function validateFormOne() {
     var x = document.forms["FormOne"]["answerOne"].value;
