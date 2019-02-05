@@ -15,18 +15,18 @@ navbar:
       href: 4_Advanced_Bayesian.html
   - text: уменьшение размерности
     menu:
-    - text: 4. PCA, LDA
-      href: 4_PCA.html
-    - text: 5. CA, DCA, MCA
-      href: 5_CA_MCA.html
-    - text: 6. Кластеризация
-      href: 6_Clustering.pdf
+    - text: 5. PCA, LDA
+      href: 5_PCA.html
+    - text: 6. CA, DCA, MCA
+      href: 6_CA_MCA.html
+    - text: 7. Кластеризация
+      href: 7_Clustering.pdf
   - text: регрессия
     menu:
-    - text: 7. Еще о регрессионных моделях
-      href: 7_more_linear_regression.html
-    - text: 8. Логистическая и мультиномиальная регрессии
-      href: 8_logit_multinom.html
+    - text: 8. Еще о регрессионных моделях
+      href: 8_more_linear_regression.html
+    - text: 9. Логистическая и мультиномиальная регрессии
+      href: 9_logit_multinom.html
 output_dir: docs
 output: 
     html_document:
