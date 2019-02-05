@@ -763,8 +763,7 @@ div.tocify {
 <a class="sourceLine" id="cb32-3" data-line-number="3">         <span class="dt">shape =</span> <span class="ot">FALSE</span>,</a>
 <a class="sourceLine" id="cb32-4" data-line-number="4">         <span class="dt">loadings =</span> <span class="ot">TRUE</span>,</a>
 <a class="sourceLine" id="cb32-5" data-line-number="5">         <span class="dt">label =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb32-6" data-line-number="6">         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb32-7" data-line-number="7"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb32-6" data-line-number="6">         <span class="dt">loadings.label =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p><img src="5_PCA_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Числа на этом графике — номера глав романа, красные линии — оси старых осей координат. Сам график называется биплот. Чем ближе друг к другустарые оси координат, тем больше скоррелированы переменные (вообще, косинус угла между ними равен коэфициенту корреляции между соответствующими переменными).</p>
 </div>
@@ -781,12 +780,13 @@ div.tocify {
 </div>
 <div class="section level3">
 <h3>7. Евангелия</h3>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">gospels &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://goo.gl/mdBVVe&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">gospels &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://tinyurl.com/y8tcf3uw&quot;</span>)</a></code></pre></div>
+<p>Постройте PCA и нарисуйте биплот. Чем вызвано такое расхождение евангелистов?</p>
 </div>
 <div id="--" class="section level3">
 <h3>8. Линейный дискриминантный анализ</h3>
 <p>Линейный дискриминантный анализ (Linear Discriminant Analysis, LDA) очень близок к PCA, но его основная цель — максимизировать разделяемость известных категорий. Так что если PCA пытается перейти к новым осям координат, беря за основу наибольшую дисперсию в многомерном пространстве, LDA переходит к новым координатам, стараясь оптимизировать разницу между средними и дисперсией известных групп.</p>
-<p><img src="LDA.png" /></p>
+<p><img src="images/LDA.png" /></p>
 </div>
 <div id="-pca--lda" class="section level3">
 <h3>9. Сравнение PCA и LDA</h3>
@@ -805,9 +805,8 @@ div.tocify {
 <a class="sourceLine" id="cb34-6" data-line-number="6"><span class="st">  </span><span class="kw">scale_y_reverse</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb34-7" data-line-number="7"><span class="st">  </span><span class="kw">scale_x_reverse</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb34-8" data-line-number="8"><span class="st">  </span><span class="kw">stat_ellipse</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb34-9" data-line-number="9"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb34-10" data-line-number="10"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb34-11" data-line-number="11"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Нанайские гласные в произнесении мужчины из селения Джуен&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb34-9" data-line-number="9"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb34-10" data-line-number="10"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Нанайские гласные в произнесении мужчины из селения Джуен&quot;</span>)</a></code></pre></div>
 <p><img src="5_PCA_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Применим PCA. Обязательно нормировать переменные:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(nanai[, <span class="dv">-1</span>], <span class="dt">center =</span> <span class="ot">TRUE</span>, <span class="dt">scale. =</span> <span class="ot">TRUE</span>)</a>
@@ -873,29 +872,26 @@ div.tocify {
 <a class="sourceLine" id="cb46-4" data-line-number="4"><span class="st">  </span><span class="kw">scale_y_reverse</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb46-5" data-line-number="5"><span class="st">  </span><span class="kw">scale_x_reverse</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb46-6" data-line-number="6"><span class="st">  </span><span class="kw">stat_ellipse</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-7" data-line-number="7"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-8" data-line-number="8"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) -&gt;</a>
-<a class="sourceLine" id="cb46-9" data-line-number="9"><span class="st">  </span>p1</a>
-<a class="sourceLine" id="cb46-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb46-11" data-line-number="11">dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb46-12" data-line-number="12"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(pca.PC1, pca.PC2, <span class="dt">colour =</span> sound, <span class="dt">label =</span> sound)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb46-13" data-line-number="13"><span class="st">  </span><span class="kw">geom_text</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb46-14" data-line-number="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> prop.pca[<span class="dv">1</span>], <span class="dt">y =</span> prop.pca[<span class="dv">2</span>])<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-15" data-line-number="15"><span class="st">  </span><span class="kw">stat_ellipse</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-16" data-line-number="16"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-17" data-line-number="17"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) -&gt;</a>
-<a class="sourceLine" id="cb46-18" data-line-number="18"><span class="st">  </span>p2</a>
-<a class="sourceLine" id="cb46-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb46-20" data-line-number="20">dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb46-21" data-line-number="21"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(lda.LD1, lda.LD2, <span class="dt">colour =</span> sound, <span class="dt">label =</span> sound)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb46-22" data-line-number="22"><span class="st">  </span><span class="kw">geom_text</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb46-23" data-line-number="23"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> prop.lda[<span class="dv">1</span>], <span class="dt">y =</span> prop.lda[<span class="dv">2</span>])<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-24" data-line-number="24"><span class="st">  </span><span class="kw">stat_ellipse</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb46-25" data-line-number="25"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb46-26" data-line-number="26"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) -&gt;</a>
-<a class="sourceLine" id="cb46-27" data-line-number="27"><span class="st">  </span>p3</a>
-<a class="sourceLine" id="cb46-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb46-29" data-line-number="29">gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, p3)</a></code></pre></div>
+<a class="sourceLine" id="cb46-7" data-line-number="7"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) -&gt;</a>
+<a class="sourceLine" id="cb46-8" data-line-number="8"><span class="st">  </span>p1</a>
+<a class="sourceLine" id="cb46-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb46-10" data-line-number="10">dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-11" data-line-number="11"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(pca.PC1, pca.PC2, <span class="dt">colour =</span> sound, <span class="dt">label =</span> sound)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-12" data-line-number="12"><span class="st">  </span><span class="kw">geom_text</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-13" data-line-number="13"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> prop.pca[<span class="dv">1</span>], <span class="dt">y =</span> prop.pca[<span class="dv">2</span>])<span class="op">+</span></a>
+<a class="sourceLine" id="cb46-14" data-line-number="14"><span class="st">  </span><span class="kw">stat_ellipse</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb46-15" data-line-number="15"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) -&gt;</a>
+<a class="sourceLine" id="cb46-16" data-line-number="16"><span class="st">  </span>p2</a>
+<a class="sourceLine" id="cb46-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb46-18" data-line-number="18">dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-19" data-line-number="19"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(lda.LD1, lda.LD2, <span class="dt">colour =</span> sound, <span class="dt">label =</span> sound)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-20" data-line-number="20"><span class="st">  </span><span class="kw">geom_text</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-21" data-line-number="21"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> prop.lda[<span class="dv">1</span>], <span class="dt">y =</span> prop.lda[<span class="dv">2</span>])<span class="op">+</span></a>
+<a class="sourceLine" id="cb46-22" data-line-number="22"><span class="st">  </span><span class="kw">stat_ellipse</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb46-23" data-line-number="23"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) -&gt;</a>
+<a class="sourceLine" id="cb46-24" data-line-number="24"><span class="st">  </span>p3</a>
+<a class="sourceLine" id="cb46-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb46-26" data-line-number="26">gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2, p3)</a></code></pre></div>
 <p><img src="5_PCA_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
 <div id="register-variation-in-the-british-national-corpus" class="section level4">
@@ -1002,19 +998,17 @@ div.tocify {
 <a class="sourceLine" id="cb58-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(pca.PC1, pca.PC2, <span class="dt">colour =</span> Reg)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb58-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb58-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> prop.pca[<span class="dv">1</span>], <span class="dt">y =</span> prop.pca[<span class="dv">2</span>])<span class="op">+</span></a>
-<a class="sourceLine" id="cb58-5" data-line-number="5"><span class="st">  </span><span class="kw">stat_ellipse</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-6" data-line-number="6"><span class="st">  </span><span class="kw">theme_bw</span>() -&gt;</a>
-<a class="sourceLine" id="cb58-7" data-line-number="7"><span class="st">  </span>p1</a>
-<a class="sourceLine" id="cb58-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb58-9" data-line-number="9">dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb58-10" data-line-number="10"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(lda.LD1, lda.LD2, <span class="dt">colour =</span> Reg)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb58-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb58-12" data-line-number="12"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> prop.lda[<span class="dv">1</span>], <span class="dt">y =</span> prop.lda[<span class="dv">2</span>])<span class="op">+</span></a>
-<a class="sourceLine" id="cb58-13" data-line-number="13"><span class="st">  </span><span class="kw">stat_ellipse</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb58-14" data-line-number="14"><span class="st">  </span><span class="kw">theme_bw</span>() -&gt;</a>
-<a class="sourceLine" id="cb58-15" data-line-number="15"><span class="st">  </span>p2</a>
-<a class="sourceLine" id="cb58-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb58-17" data-line-number="17">gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2)</a></code></pre></div>
+<a class="sourceLine" id="cb58-5" data-line-number="5"><span class="st">  </span><span class="kw">stat_ellipse</span>() -&gt;</a>
+<a class="sourceLine" id="cb58-6" data-line-number="6"><span class="st">  </span>p1</a>
+<a class="sourceLine" id="cb58-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb58-8" data-line-number="8">dataset <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb58-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(lda.LD1, lda.LD2, <span class="dt">colour =</span> Reg)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb58-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb58-11" data-line-number="11"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> prop.lda[<span class="dv">1</span>], <span class="dt">y =</span> prop.lda[<span class="dv">2</span>])<span class="op">+</span></a>
+<a class="sourceLine" id="cb58-12" data-line-number="12"><span class="st">  </span><span class="kw">stat_ellipse</span>() -&gt;</a>
+<a class="sourceLine" id="cb58-13" data-line-number="13"><span class="st">  </span>p2</a>
+<a class="sourceLine" id="cb58-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb58-15" data-line-number="15">gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(p1, p2)</a></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_path).
 
 ## Warning: Removed 1 rows containing missing values (geom_path).</code></pre>

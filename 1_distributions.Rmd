@@ -143,12 +143,7 @@ rep(1:10, 3) %>%
   scale_L_continuous(labels = c("", "2", "4", "6", "8", "10"))+
   scale_R_continuous(labels = c("", "2", "4", "6", "8", "10"))+
   scale_T_continuous(labels = c("", "2", "4", "6", "8", "10"))+
-  labs(title = "Мультиномиальное распределение для трех исходов (0.6, 0.3, 0.1)")+
-  theme_bw()
-```
-
-```{r, include=FALSE}
-theme_set(theme_bw())
+  labs(title = "Мультиномиальное распределение для трех исходов (0.6, 0.3, 0.1)")
 ```
 
 

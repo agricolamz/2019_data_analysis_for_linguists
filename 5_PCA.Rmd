@@ -7,6 +7,8 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message = FALSE)
+library(tidyverse)
+theme_set(theme_bw())
 ```
 
 ### 1. Введение
@@ -140,8 +142,7 @@ autoplot(PCA,
          shape = FALSE,
          loadings = TRUE,
          label = TRUE,
-         loadings.label = TRUE)+
-  theme_bw()
+         loadings.label = TRUE)
 ```
 
 Числа на этом графике --- номера глав романа, красные линии --- оси старых осей координат. Сам график называется биплот. Чем ближе друг к другустарые оси координат, тем больше скоррелированы переменные (вообще, косинус угла между ними равен коэфициенту корреляции между соответствующими переменными).
@@ -158,20 +159,18 @@ autoplot(PCA,
 ### 6. 3d пример от Ильи Щурова
 [ссылка](http://math-info.hse.ru/f/2015-16/ling-mag-quant/lecture-pca.html#%D0%A2%D1%80%D1%91%D1%85%D0%BC%D0%B5%D1%80%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80)
 
-
-
 ### 7. Евангелия
-```{r}
-gospels <- read.csv("https://goo.gl/mdBVVe")
+```{r, eval = FALSE}
+gospels <- read.csv("https://tinyurl.com/y8tcf3uw")
 ```
 
-
+Постройте PCA и нарисуйте биплот. Чем вызвано такое расхождение евангелистов?
 
 ### 8. Линейный дискриминантный анализ
 
 Линейный дискриминантный анализ (Linear Discriminant Analysis, LDA) очень близок к PCA, но его основная цель --- максимизировать разделяемость известных категорий. Так что если PCA пытается перейти к новым осям координат, беря за основу наибольшую дисперсию в многомерном пространстве, LDA переходит к новым координатам, стараясь оптимизировать разницу между средними и дисперсией известных групп.
 
-![](LDA.png)
+![](images/LDA.png)
 
 
 
@@ -192,7 +191,6 @@ nanai %>%
   scale_y_reverse()+
   scale_x_reverse()+
   stat_ellipse()+
-  theme_bw()+
   theme(legend.position = "none")+
   labs(title = "Нанайские гласные в произнесении мужчины из селения Джуен")
 ```
@@ -236,7 +234,6 @@ nanai %>%
   scale_y_reverse()+
   scale_x_reverse()+
   stat_ellipse()+
-  theme_bw()+
   theme(legend.position = "none") ->
   p1
 
@@ -245,7 +242,6 @@ dataset %>%
   geom_text() + 
   labs(x = prop.pca[1], y = prop.pca[2])+
   stat_ellipse() +
-  theme_bw()+
   theme(legend.position = "none") ->
   p2
 
@@ -254,7 +250,6 @@ dataset %>%
   geom_text() + 
   labs(x = prop.lda[1], y = prop.lda[2])+
   stat_ellipse() +
-  theme_bw()+
   theme(legend.position = "none") ->
   p3
 
@@ -319,16 +314,14 @@ dataset %>%
   ggplot(aes(pca.PC1, pca.PC2, colour = Reg)) + 
   geom_point() + 
   labs(x = prop.pca[1], y = prop.pca[2])+
-  stat_ellipse() +
-  theme_bw() ->
+  stat_ellipse() ->
   p1
 
 dataset %>% 
   ggplot(aes(lda.LD1, lda.LD2, colour = Reg)) + 
   geom_point() + 
   labs(x = prop.lda[1], y = prop.lda[2])+
-  stat_ellipse() +
-  theme_bw() ->
+  stat_ellipse() ->
   p2
 
 gridExtra::grid.arrange(p1, p2)

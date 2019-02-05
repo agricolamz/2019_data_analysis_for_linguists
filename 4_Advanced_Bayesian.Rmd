@@ -7,7 +7,8 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
+library(tidyverse)
+theme_set(theme_bw())
 ```
 
 ```{r, message=FALSE}
@@ -43,7 +44,6 @@ chekhov %>%
   ggplot(aes(average)) +
   geom_histogram(fill = "lightblue")+
   geom_density(color = "red")+
-  theme_bw()+
   labs(title = 'Частотность слова "не" на основе 305 рассказов А. Чехова')
 ```
 
@@ -79,7 +79,6 @@ chekhov %>%
   ggplot(aes(average)) +
   geom_density(fill = "lightblue")+
   geom_line(data = estimation, aes(x, density))+
-  theme_bw()+
   labs(title = 'Частотность слова "не" на основе 305 рассказов А. Чехова',
        subtitle = "черной линией показано бета распределение с α = 5.283022 и β = 231.6328")
 ```
@@ -95,7 +94,6 @@ ggplot(data.frame(x = 0:1), aes(x)) +
       stat_function(fun = dnorm, args = c(0, 1), geom = 'area', xlim = c(-2, 2), fill = 'cadetblue') + 
     stat_function(fun = dnorm, args = c(0, 1), geom = 'area', xlim = c(-1, 1), fill = 'lightblue') + 
     stat_function(fun = dnorm, args = c(0, 1), xlim = c(-3, 3))+
-  theme_bw()+
   geom_line(aes(y = c(0.15), x = c(-1, 1)), arrow = arrow(length=unit(0.2,"cm"), ends="both", type = "closed"))+
   geom_line(aes(y = c(0.03), x = c(-2, 2)), arrow = arrow(length=unit(0.2,"cm"), ends="both", type = "closed"))+
   annotate(geom = "text", x = 0, y = 0.17, label = "68.26%")+
@@ -145,7 +143,6 @@ chekhov %>%
   ggplot(aes(trunc_titles, average))+
   geom_point()+
   geom_pointrange(aes(ymin = low_ci, ymax = up_ci))+
-  theme_bw()+
   coord_flip()+
   labs(title = 'Среднее и 95% CI употребления "не" в рассказах А. Чехова',
        x = "", y = "")
@@ -175,8 +172,7 @@ posterior %>%
 posterior %>% 
   ggplot(aes(trunc_titles, average_post, ymin = cred_int_l, ymax = cred_int_h))+
   geom_pointrange()+
-  coord_flip()+
-  theme_bw()
+  coord_flip()
 ```
 
 ```{r, echo= FALSE, fig.height=7}
@@ -210,7 +206,6 @@ rbind(df_1, df_2) %>%
   geom_errorbar()+
   geom_point()+
   coord_flip()+
-  theme_bw()+
   xlab("")
 ```
 

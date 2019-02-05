@@ -577,8 +577,7 @@ div.tocify {
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(average)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)<span class="op">+</span></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Частотность слова &quot;не&quot; на основе 305 рассказов А. Чехова&#39;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Частотность слова &quot;не&quot; на основе 305 рассказов А. Чехова&#39;</span>)</a></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="4_Advanced_Bayesian_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>В данном случае, данные можно подогнать под бета распределение <span class="math inline">\(Χ \sim Beta(α_0, β_0)\)</span> (это далеко не всегда так). Подгонку можно осуществлять множеством разных функций, но я воспользуюсь следующей системой уравнений:</p>
@@ -605,9 +604,8 @@ div.tocify {
 <a class="sourceLine" id="cb11-9" data-line-number="9"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(average)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb11-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>)<span class="op">+</span></a>
 <a class="sourceLine" id="cb11-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">data =</span> estimation, <span class="kw">aes</span>(x, density))<span class="op">+</span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Частотность слова &quot;не&quot; на основе 305 рассказов А. Чехова&#39;</span>,</a>
-<a class="sourceLine" id="cb11-14" data-line-number="14">       <span class="dt">subtitle =</span> <span class="st">&quot;черной линией показано бета распределение с α = 5.283022 и β = 231.6328&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Частотность слова &quot;не&quot; на основе 305 рассказов А. Чехова&#39;</span>,</a>
+<a class="sourceLine" id="cb11-13" data-line-number="13">       <span class="dt">subtitle =</span> <span class="st">&quot;черной линией показано бета распределение с α = 5.283022 и β = 231.6328&quot;</span>)</a></code></pre></div>
 <p><img src="4_Advanced_Bayesian_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Полученное распределение можно использовать как априорное распределение для апдейта значений из каждого рассказа. Этот трюк и называется Empirical Bayes estimation.</p>
 </div>
@@ -649,10 +647,9 @@ div.tocify {
 <a class="sourceLine" id="cb12-7" data-line-number="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(trunc_titles, average))<span class="op">+</span></a>
 <a class="sourceLine" id="cb12-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb12-9" data-line-number="9"><span class="st">  </span><span class="kw">geom_pointrange</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> low_ci, <span class="dt">ymax =</span> up_ci))<span class="op">+</span></a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Среднее и 95% CI употребления &quot;не&quot; в рассказах А. Чехова&#39;</span>,</a>
-<a class="sourceLine" id="cb12-13" data-line-number="13">       <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&#39;Среднее и 95% CI употребления &quot;не&quot; в рассказах А. Чехова&#39;</span>,</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12">       <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>)</a></code></pre></div>
 <p><img src="4_Advanced_Bayesian_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>В базовом пакете функция <code>binom.test()</code> не позволяет выбирать тип доверительного интервала. <code>ci.method = &quot;Clopper-Pearson&quot;</code> возможна, если включить библиотеку <code>mosaic</code>.</p>
 </div>
@@ -681,8 +678,7 @@ div.tocify {
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">posterior <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(trunc_titles, average_post, <span class="dt">ymin =</span> cred_int_l, <span class="dt">ymax =</span> cred_int_h))<span class="op">+</span></a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_pointrange</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
 <p><img src="4_Advanced_Bayesian_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p><img src="4_Advanced_Bayesian_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
