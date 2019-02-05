@@ -29,7 +29,7 @@ packageVersion("lme4")
 * следуйте паттерну называния подпапок повторяющему [схему в Вашей папке](https://github.com/agricolamz/2019_data_analysis_for_linguists/tree/master/data/students) в репозитории курса;
 
 ```{bash, echo = FALSE, comment = ""}
-cd /home/agricolamz/work/materials/2019_HSE_Data_Analysis_for_linguists/data/answers/creaciond
+cd /home/agricolamz/work/materials/2019_HSE_b_Data_Analysis_for_linguists/data/answers/creaciond
 tree
 ```
 
