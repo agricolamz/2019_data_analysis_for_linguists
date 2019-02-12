@@ -1,0 +1,113 @@
+---
+title: "6. Уменьшение размерности: CA и MCA"
+author: "Г. Мороз"
+editor_options: 
+  chunk_output_type: console
+---
+
+### 1. Введение
+
+#### 1.1 Библиотеки
+```{r, message=FALSE}
+library(tidyverse)
+library(ca)
+```
+
+#### 1.2 Фамильная честь Вустеров
+В данной лекции я буду использовать данные из романа П. Г. Вудхауза [“Фамильная честь Вустеров”](https://en.wikipedia.org/wiki/The_Code_of_the_Woosters). В датасете собраны несколько переменных:
+
+* chapter --- номер главы
+* гарольд --- количество появлений имени в каждой из глав
+* гасси --- количество появлений имени в каждой из глав
+* далия --- количество появлений имени в каждой из глав
+* дживс --- количество появлений имени в каждой из глав
+* мадлен --- количество появлений имени в каждой из глав
+* оутс --- количество появлений имени в каждой из глав
+* спод --- количество появлений имени в каждой из глав
+* стиффи --- количество появлений имени в каждой из глав
+* сэр --- количество появлений имени в каждой из глав
+
+```{r}
+wodehouse <- read.csv("https://goo.gl/bSxdMZ")
+GGally::ggpairs(wodehouse[,-1])
+```
+
+
+#### 1.3 Нидерланлские каузативы
+Dataset and description from [paper by Natalia Levshina](https://goo.gl/v6AmVj). Modern standard Dutch has two periphrastic causatives with the infinitive: the constructions with doen ‘do’ and laten ‘let’. The study is based on an 8-million token corpus of Netherlandic and Belgian Dutch. After the manual cleaning, there were left with 6,808 observations, which were then coded for seven semantic, syntactic, geographical and thematic variables.
+
+* Aux --- a factor that specifies the causative auxiliary with levels laten and doen.
+* Country --- a factor with levels NL (the Netherlands) and BE (Belgium).
+* Causation --- a factor that describes the type of causation with levels Affective, Inducive, Physical and Volitional
+* EPTrans --- a factor that specifies the transitivity of the Effected Predicate with levels Intr (intransitive) and Tr (transitive).
+* EPTrans1 --- a factor with levels Intr and Tr. It is very similar to the previous one, except for a few observations.
+
+```{r}
+dutch_caus <- read.csv("https://goo.gl/2yAR3T")
+```
+
+### 2. CA
+
+```{r}
+rownames(wodehouse) <- wodehouse$chapter
+ca <- ca(wodehouse[-1])
+ca
+summary(ca) # extended results
+wodehouse_col <- data.frame(ca$colcoord)
+wodehouse_col$rows <- rownames(ca$colcoord)
+
+wodehouse_row <- data.frame(ca$rowcoord)
+wodehouse_row$rows <- rownames(ca$rowcoord)
+
+wodehouse_col %>% 
+  ggplot(aes(Dim1, Dim2, label = rows))+
+  geom_text(color = "blue")+
+  geom_text(data = wodehouse_row, color = "red")+
+  theme_bw()+
+  labs(x = "Dim1 (42.1%)",
+       y = "Dim2 (32.6%)")
+```
+
+Сравните с соответствующими данными PCA:
+
+```{r, echo=FALSE}
+wodehouse2 <- read.csv("https://goo.gl/8RJDwK")
+rownames(wodehouse2) <- wodehouse2$chapter
+wodehouse2 <- wodehouse2[,-1]
+PCA <- prcomp(wodehouse2)
+library(ggfortify)
+autoplot(PCA,
+         shape = FALSE,
+         loadings = TRUE,
+         label = TRUE,
+         loadings.label = TRUE)+
+  theme_bw()
+```
+
+
+
+### 3. MCA
+```{r}
+MCA <- MASS::mca(dutch_caus[,-1])
+MCA
+dutch_caus <- cbind(dutch_caus, MCA$rs)
+variables <- as_data_frame(MCA$cs)
+variables$var_names <- rownames(MCA$cs)
+dutch_caus %>% 
+  ggplot(aes(`1`, `2`))+
+  geom_point(aes(color = Aux))+
+  stat_ellipse(aes(color = Aux))+
+  geom_text(data = variables, aes(`1`, `2`, label = var_names))+
+  theme_bw()+
+  scale_x_continuous(limits = c(-0.015, 0.02))
+```
+
+
+
+### 4. DCA
+Комбинация CA и  дискрименантного анализа называется Discriminant Correspondence Analysis.
+
+
+```{r child = 'HW_5.Rmd'}
+```
+

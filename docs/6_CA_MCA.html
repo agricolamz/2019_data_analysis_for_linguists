@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Г. Мороз" />
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h2 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h3 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h4 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h5 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h6 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    введение в байесовскую статистику
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="1_distributions.html">1. Распределения</a>
+    </li>
+    <li>
+      <a href="2_Bayesian_inference.html">2. Байесовский вывод</a>
+    </li>
+    <li>
+      <a href="3_bayesian_inference_again.html">3. Опять байесовский вывод</a>
+    </li>
+    <li>
+      <a href="4_Advanced_Bayesian.html">4. Продвинутая байесовская статистика</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    уменьшение размерности
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="5_PCA.html">5. PCA, LDA</a>
+    </li>
+    <li>
+      <a href="6_CA_MCA.html">6. CA, DCA, MCA</a>
+    </li>
+    <li>
+      <a href="7_Clustering.pdf">7. Кластеризация</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    регрессия
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="8_more_linear_regression.html">8. Еще о регрессионных моделях</a>
+    </li>
+    <li>
+      <a href="9_logit_multinom.html">9. Логистическая и мультиномиальная регрессии</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<style>
+.main-container {
+  margin-left: 0;
+  margin-right: 0;
+}
+</style>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore"><ol start="6" style="list-style-type: decimal">
+<li>Уменьшение размерности: CA и MCA</li>
+</ol></h1>
+<h4 class="author"><em>Г. Мороз</em></h4>
+
+</div>
+
+
+<div class="section level3">
+<h3>1. Введение</h3>
+<div class="section level4">
+<h4>1.1 Библиотеки</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(ca)</code></pre></div>
+</div>
+<div id="--" class="section level4">
+<h4>1.2 Фамильная честь Вустеров</h4>
+<p>В данной лекции я буду использовать данные из романа П. Г. Вудхауза <a href="https://en.wikipedia.org/wiki/The_Code_of_the_Woosters">“Фамильная честь Вустеров”</a>. В датасете собраны несколько переменных:</p>
+<ul>
+<li>chapter — номер главы</li>
+<li>гарольд — количество появлений имени в каждой из глав</li>
+<li>гасси — количество появлений имени в каждой из глав</li>
+<li>далия — количество появлений имени в каждой из глав</li>
+<li>дживс — количество появлений имени в каждой из глав</li>
+<li>мадлен — количество появлений имени в каждой из глав</li>
+<li>оутс — количество появлений имени в каждой из глав</li>
+<li>спод — количество появлений имени в каждой из глав</li>
+<li>стиффи — количество появлений имени в каждой из глав</li>
+<li>сэр — количество появлений имени в каждой из глав</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wodehouse &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://goo.gl/bSxdMZ&quot;</span>)
+GGally<span class="op">::</span><span class="kw">ggpairs</span>(wodehouse[,<span class="op">-</span><span class="dv">1</span>])</code></pre></div>
+<p><img src="6_CA_MCA_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="-" class="section level4">
+<h4>1.3 Нидерланлские каузативы</h4>
+<p>Dataset and description from <a href="https://goo.gl/v6AmVj">paper by Natalia Levshina</a>. Modern standard Dutch has two periphrastic causatives with the infinitive: the constructions with doen ‘do’ and laten ‘let’. The study is based on an 8-million token corpus of Netherlandic and Belgian Dutch. After the manual cleaning, there were left with 6,808 observations, which were then coded for seven semantic, syntactic, geographical and thematic variables.</p>
+<ul>
+<li>Aux — a factor that specifies the causative auxiliary with levels laten and doen.</li>
+<li>Country — a factor with levels NL (the Netherlands) and BE (Belgium).</li>
+<li>Causation — a factor that describes the type of causation with levels Affective, Inducive, Physical and Volitional</li>
+<li>EPTrans — a factor that specifies the transitivity of the Effected Predicate with levels Intr (intransitive) and Tr (transitive).</li>
+<li>EPTrans1 — a factor with levels Intr and Tr. It is very similar to the previous one, except for a few observations.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dutch_caus &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://goo.gl/2yAR3T&quot;</span>)</code></pre></div>
+</div>
+</div>
+<div id="ca" class="section level3">
+<h3>2. CA</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(wodehouse) &lt;-<span class="st"> </span>wodehouse<span class="op">$</span>chapter
+ca &lt;-<span class="st"> </span><span class="kw">ca</span>(wodehouse[<span class="op">-</span><span class="dv">1</span>])
+ca</code></pre></div>
+<pre><code>## 
+##  Principal inertias (eigenvalues):
+##            1        2        3        4        5        6        7       
+## Value      0.269248 0.208594 0.063634 0.041687 0.034383 0.012929 0.008438
+## Percentage 42.07%   32.59%   9.94%    6.51%    5.37%    2.02%    1.32%   
+##            8      
+## Value      0.00111
+## Percentage 0.17%  
+## 
+## 
+##  Rows:
+##           Глава 1  Глава 10  Глава 11  Глава 12  Глава 13  Глава 14
+## Mass     0.042924  0.043595  0.087860  0.048960  0.047619  0.118042
+## ChiDist  0.657319  0.503827  0.480650  0.871805  0.584273  0.664054
+## Inertia  0.018546  0.011066  0.020298  0.037212  0.016256  0.052053
+## Dim. 1  -0.323423 -0.420878 -0.225240 -0.223638  0.791993  0.310647
+## Dim. 2  -0.829703  0.638712 -0.563479 -1.328967 -0.653949 -1.109652
+##           Глава 2   Глава 3  Глава 4   Глава 5   Глава 6   Глава 7
+## Mass     0.071764  0.085178 0.077800  0.095238  0.027498  0.113347
+## ChiDist  0.594474  1.048459 1.064355  0.412476  1.195103  0.778320
+## Inertia  0.025361  0.093633 0.088136  0.016203  0.039275  0.068663
+## Dim. 1  -0.135807 -1.654098 1.093472 -0.136037 -1.654453 -1.088398
+## Dim. 2  -1.034327  1.123948 1.807475 -0.718441  1.770157  0.450153
+##          Глава 8  Глава 9
+## Mass    0.103957 0.036217
+## ChiDist 0.966054 1.246820
+## Inertia 0.097019 0.056302
+## Dim. 1  1.587645 1.958257
+## Dim. 2  0.446586 1.232483
+## 
+## 
+##  Columns:
+##          гарольд     гасси     далия     дживс    мадлен     оутс
+## Mass    0.036217  0.116700  0.046948  0.205231  0.048960 0.039571
+## ChiDist 1.734289  0.641171  0.882726  0.429982  1.146279 1.162493
+## Inertia 0.108933  0.047976  0.036582  0.037944  0.064332 0.053476
+## Dim. 1  2.558838 -0.872498 -0.458448  0.091883 -1.191267 1.337131
+## Dim. 2  2.163571  0.681049 -1.147145 -0.787378  1.304640 0.046829
+##              спод   стиффи       сэр
+## Mass     0.135480 0.083836  0.287056
+## ChiDist  0.948004 1.145983  0.453071
+## Inertia  0.121757 0.110100  0.058925
+## Dim. 1  -1.422440 1.658337  0.247022
+## Dim. 2   0.985778 1.331784 -0.882475</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ca) <span class="co"># extended results</span></code></pre></div>
+<pre><code>## Warning in abbreviate(rnames.temp, 4): abbreviate used with non-ASCII chars
+
+## Warning in abbreviate(rnames.temp, 4): abbreviate used with non-ASCII chars
+
+## Warning in abbreviate(rnames.temp, 4): abbreviate used with non-ASCII chars</code></pre>
+<pre><code>## Warning in abbreviate(cnames.temp, 4): abbreviate used with non-ASCII chars</code></pre>
+<pre><code>## 
+## Principal inertias (eigenvalues):
+## 
+##  dim    value      %   cum%   scree plot               
+##  1      0.269248  42.1  42.1  ***********              
+##  2      0.208594  32.6  74.7  ********                 
+##  3      0.063634   9.9  84.6  **                       
+##  4      0.041687   6.5  91.1  **                       
+##  5      0.034383   5.4  96.5  *                        
+##  6      0.012929   2.0  98.5  *                        
+##  7      0.008438   1.3  99.8                           
+##  8      0.001110   0.2 100.0                           
+##         -------- -----                                 
+##  Total: 0.640025 100.0                                 
+## 
+## 
+## Rows:
+##         name   mass  qlt  inr    k=1 cor ctr    k=2 cor ctr  
+## 1  |  Глава1 |   43  398   29 | -168  65   4 | -379 332  30 |
+## 2  | Глава10 |   44  523   17 | -218 188   8 |  292 335  18 |
+## 3  | Глава11 |   88  346   32 | -117  59   4 | -257 287  28 |
+## 4  | Глава12 |   49  502   58 | -116  18   2 | -607 485  86 |
+## 5  | Глава13 |   48  756   25 |  411 495  30 | -299 261  20 |
+## 6  | Глава14 |  118  641   81 |  161  59  11 | -507 582 145 |
+## 7  |  Глава2 |   72  646   40 |  -70  14   1 | -472 631  77 |
+## 8  |  Глава3 |   85  910  146 | -858 670 233 |  513 240 108 |
+## 9  |  Глава4 |   78  886  138 |  567 284  93 |  826 602 254 |
+## 10 |  Глава5 |   95  662   25 |  -71  29   2 | -328 633  49 |
+## 11 |  Глава6 |   27  974   61 | -858 516  75 |  808 458  86 |
+## 12 |  Глава7 |  113  596  107 | -565 527 134 |  206  70  23 |
+## 13 |  Глава8 |  104  772  152 |  824 727 262 |  204  45  21 |
+## 14 |  Глава9 |   36  868   88 | 1016 664 139 |  563 204  55 |
+## 
+## Columns:
+##     name   mass  qlt  inr    k=1 cor ctr    k=2 cor ctr  
+## 1 | гаро |   36  911  170 | 1328 586 237 |  988 325 170 |
+## 2 | гасс |  117  734   75 | -453 499  89 |  311 235  54 |
+## 3 | дали |   47  425   57 | -238  73  10 | -524 352  62 |
+## 4 | джив |  205  712   59 |   48  12   2 | -360 699 127 |
+## 5 | мадл |   49  561  101 | -618 291  69 |  596 270  83 |
+## 6 | оутс |   40  357   84 |  694 356  71 |   21   0   0 |
+## 7 | спод |  135  832  190 | -738 606 274 |  450 226 132 |
+## 8 | стиф |   84  846  172 |  860 564 231 |  608 282 149 |
+## 9 |  сэр |  287  871   92 |  128  80  18 | -403 791 224 |</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wodehouse_col &lt;-<span class="st"> </span><span class="kw">data.frame</span>(ca<span class="op">$</span>colcoord)
+wodehouse_col<span class="op">$</span>rows &lt;-<span class="st"> </span><span class="kw">rownames</span>(ca<span class="op">$</span>colcoord)
+
+wodehouse_row &lt;-<span class="st"> </span><span class="kw">data.frame</span>(ca<span class="op">$</span>rowcoord)
+wodehouse_row<span class="op">$</span>rows &lt;-<span class="st"> </span><span class="kw">rownames</span>(ca<span class="op">$</span>rowcoord)
+
+wodehouse_col <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(Dim1, Dim2, <span class="dt">label =</span> rows))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> wodehouse_row, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Dim1 (42.1%)&quot;</span>,
+       <span class="dt">y =</span> <span class="st">&quot;Dim2 (32.6%)&quot;</span>)</code></pre></div>
+<p><img src="6_CA_MCA_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Сравните с соответствующими данными PCA:</p>
+<p><img src="6_CA_MCA_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="mca" class="section level3">
+<h3>3. MCA</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">MCA &lt;-<span class="st"> </span>MASS<span class="op">::</span><span class="kw">mca</span>(dutch_caus[,<span class="op">-</span><span class="dv">1</span>])
+MCA</code></pre></div>
+<pre><code>## Call:
+## MASS::mca(df = dutch_caus[, -1])
+## 
+## Multiple correspondence analysis of 500 cases of 7 factors
+## 
+## Correlations 0.577 0.458  cumulative % explained  9.62 17.25</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dutch_caus &lt;-<span class="st"> </span><span class="kw">cbind</span>(dutch_caus, MCA<span class="op">$</span>rs)
+variables &lt;-<span class="st"> </span><span class="kw">as_data_frame</span>(MCA<span class="op">$</span>cs)
+variables<span class="op">$</span>var_names &lt;-<span class="st"> </span><span class="kw">rownames</span>(MCA<span class="op">$</span>cs)
+dutch_caus <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="st">`</span><span class="dt">1</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2</span><span class="st">`</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Aux))<span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_ellipse</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Aux))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> variables, <span class="kw">aes</span>(<span class="st">`</span><span class="dt">1</span><span class="st">`</span>, <span class="st">`</span><span class="dt">2</span><span class="st">`</span>, <span class="dt">label =</span> var_names))<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="fl">0.015</span>, <span class="fl">0.02</span>))</code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_text).</code></pre>
+<p><img src="6_CA_MCA_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="dca" class="section level3">
+<h3>4. DCA</h3>
+<p>Комбинация CA и дискрименантного анализа называется Discriminant Correspondence Analysis.</p>
+</div>
+<div id="--5--26.02.2019" class="section level3">
+<h3>Домашнее задание 5 (до 26.02.2019)</h3>
+<p>Домашнее задание нужно выполнять в отдельном <code>rmarkdown</code> файле. Получившийся файл следует помещать в соответствующую папку в своем репозитории на гитхабе. Более подробные инструкции <a href="https://agricolamz.github.io/2019_data_analysis_for_linguists/index.html">см. на этой странице</a>.</p>
+</div>
+<div id="section" class="section level3">
+<h3>5.1</h3>
+<p>Скачайте датасет <code>chairs</code>, в котором собраны разные описания экземпляров из немецких он-лайн каталогов, отнесенным к категориям <em>Stuhl</em> ‘стул’ or <em>Sessel</em> ‘кресло’. В датасете 19 переменных:</p>
+<ul>
+<li><code>Shop</code> a factor that describes the online store with levels ikea.de, Moebel-Profi.de and roller.de.</li>
+<li><code>WordDE</code> a factor that describes the specific lexical category.</li>
+<li><code>Category</code> a factor that describes the more general lexical category (usually the last element of a composite noun), with levels Sessel and Stuhl.</li>
+<li><code>Function</code> a factor with levels Eat, NotSpec, Outdoor, Relax and Work.</li>
+<li><code>Age</code> a factor with levels Adult and Children.</li>
+<li><code>Back</code> a factor with levels Adjust, High, Low and Mid.</li>
+<li><code>Soft</code> a factor with levels No, Pad and Yes.</li>
+<li><code>Arms</code> a factor with levels No and Yes.</li>
+<li><code>Upholst</code> a factor with levels No and Yes.</li>
+<li><code>MaterialSeat</code> a factor with levels Fabric, Leather, Loom_natur, Metal, Paper, Plastic, Polyamide, Rattan, Steel and Wood.</li>
+<li><code>SeatHeight</code> a factor with levels Adjust, High and Norm.</li>
+<li><code>SeatDepth</code> a factor with levels Adjust, Deep and Norm.</li>
+<li><code>Swivel</code> a factor with levels No and Yes</li>
+<li><code>Roll</code> a factor with levels No and Yes.</li>
+<li><code>Rock</code> a factor with levels No and Rock.</li>
+<li><code>AddFunctions</code> a factor with levels Bed, No and Table.</li>
+<li><code>Recline</code> a factor with levels No and Yes.</li>
+<li><code>ReclineBack</code> a factor with levels No and Yes.</li>
+<li><code>SaveSpace</code> a factor with levels collapse, No and stack.</li>
+</ul>
+<p>Используйте все переменные кроме переменных <code>Shop</code>, <code>WordDE</code> и <code>Category</code>, чтобы построить MCA. Нарисуйте все наблюдения, раскрасьте их по переменной <code>Category</code> и добавьте доверительные эллипсы. Сверху нанесите переменные из получившейся модели MCA. Получившийся график <code>ggplot</code> запустите в консоль.</p>
+</div>
+<div id="section-1" class="section level3">
+<h3>5.2</h3>
+<p>Проанализируйте полученные результаты. Что Вы можете сказать на основе полученных результатов про категории <code>Stuhl</code> и <code>Sessel</code> в немецком? Что Вы можете сказать про переменные?</p>
+</div>
+<div id="section-2" class="section level3">
+<h3>5.3</h3>
+<p>Cкачайте данные, содержащие 11 базовых цветов в разных подкорпусах Corpus of Contemporary American English (Davies 2008 - ). Учитывались только адъективные употребления. Постройте CA и нарисуйте биплот с переменными из столбцов и строчек (без стрелочек). Получившийся график <code>ggplot</code> запустите в консоль.</p>
+</div>
+<div id="section-3" class="section level3">
+<h3>5.4</h3>
+<p>Проинтерпретируйте полученные результаты.</p>
+</div>
+
+<br><br><br>
+<p><center> &copy; Г. Мороз 2018 с помощью RMarkdown. Исходный код на 
+<a href="https://github.com/agricolamz/2019_data_analysis_for_linguists"> GitHub <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"  style="width:30px;height:30px;border:0"></a></center> </p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
