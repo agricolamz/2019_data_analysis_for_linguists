@@ -2,7 +2,7 @@
 title: "8. Ограничения на использования линейной регрессии и смешанные регрессионные модели"
 author: "Г. Мороз"
 editor_options: 
-  chunk_output_type: inline
+  chunk_output_type: console
 ---
 
 <style>
@@ -43,16 +43,16 @@ ldt <- read_csv("https://goo.gl/ToxfU6")
 ldt
 ```
 
-#### 0.3 LAPSyD
-In this dataset we have number of consonants and vowels in 402 languages collected from LAPSyD database (http://www.lapsyd.ddl.ish-lyon.cnrs.fr/lapsyd/). There is an variable of the area based on Glottolog (http://glottolog.org/). In this part we will try to make models that predict number of vowels by number of consonants.
+#### 0.3 UPSID
+In this dataset we have number of consonants and vowels in 402 languages collected from UPSID database (http://www.lapsyd.ddl.ish-lyon.cnrs.fr/lapsyd/). There is an variable of the area based on Glottolog (http://glottolog.org/). In this part we will try to make models that predict number of vowels by number of consonants.
 
 ```{r, warning= FALSE}
-lapsyd <- read.csv("https://goo.gl/eD4S5n")
-lapsyd
+upsid <- read.csv("https://raw.githubusercontent.com/agricolamz/2019_data_analysis_for_linguists/master/data/upsid.csv")
+upsid
 
-map.feature(lapsyd$name, 
-            features = lapsyd$area,
-            label = lapsyd$name,
+map.feature(upsid$language, 
+            features = upsid$area,
+            label = upsid$language,
             label.hide = TRUE)
 ```
 
@@ -203,8 +203,8 @@ ldt %>%
 Наблюдения должны быть независимы.
 
 ```{r}
-lapsyd %>% 
-  ggplot(aes(count_consonant, count_vowel))+
+upsid %>% 
+  ggplot(aes(consonants, vowels))+
   geom_point()+
   labs(x = "number of consonants",
        y = "number of vowels",
@@ -214,8 +214,8 @@ lapsyd %>%
 
 Обведем наблюдения по каждому спикеру:
 ```{r}
-lapsyd %>% 
-  ggplot(aes(count_consonant, count_vowel, color = area))+
+upsid %>% 
+  ggplot(aes(consonants, vowels, color = area))+
   geom_point()+
   labs(x = "number of consonants",
        y = "number of vowels",
@@ -226,75 +226,74 @@ lapsyd %>%
 
 Построим простую регрессию и добавим ее на график:
 ```{r}
-fit1 <- lm(count_vowel~count_consonant, data = lapsyd)
+fit1 <- lm(vowels~consonants, data = upsid)
 summary(fit1)
 
-
-lapsyd %>% 
-  ggplot(aes(count_consonant, count_vowel))+
+upsid %>% 
+  ggplot(aes(consonants, vowels))+
   geom_point()+
   labs(x = "number of consonants",
        y = "number of vowels",
        caption = "data from LAPSyD")+
   theme_bw()+
-  geom_line(data = fortify(fit1), aes(x = count_consonant, y = .fitted), color = "blue")
+  geom_line(data = fortify(fit1), aes(x = consonants, y = .fitted), color = "blue")
 
-fit2 <- lmer(count_vowel ~ count_consonant + (1|area), data = lapsyd)
+fit2 <- lmer(vowels ~ consonants + (1|area), data = upsid)
 summary(fit2)
 
-lapsyd %>% 
-  ggplot(aes(count_consonant, count_vowel))+
+upsid %>% 
+  ggplot(aes(consonants, vowels))+
   geom_point()+
   labs(x = "number of consonants",
        y = "number of vowels",
        caption = "data from LAPSyD")+
-  theme_bw()+
-  geom_line(data = fortify(fit2), aes(x = count_consonant, y = .fitted, color = area))
+  theme_bw() +
+  geom_line(data = fortify(fit2), aes(x = consonants, y = .fitted, color = area))
 ```
 
 Если мы предполагаем скоррелированность свободных эффектов:
 ```{r}
-fit3 <- lmer(count_vowel ~ count_consonant + (1+count_consonant|area), data = lapsyd)
+fit3 <- lmer(vowels ~ consonants + (1+consonants|area), data = upsid)
 summary(fit3)
 
-lapsyd %>% 
-  ggplot(aes(count_consonant, count_vowel))+
+upsid %>% 
+  ggplot(aes(consonants, vowels))+
   geom_point()+
   labs(x = "number of consonants",
        y = "number of vowels",
        caption = "data from LAPSyD")+
   theme_bw()+
-  geom_line(data = fortify(fit3), aes(x = count_consonant, y = .fitted, color = area))
+  geom_line(data = fortify(fit3), aes(x = consonants, y = .fitted, color = area))
 
-fit4 <- lmer(count_vowel ~ count_consonant + (0+count_consonant|area), data = lapsyd)
+fit4 <- lmer(vowels ~ consonants + (0+consonants|area), data = upsid)
 summary(fit4)
 
-lapsyd %>% 
-  ggplot(aes(count_consonant, count_vowel))+
+upsid %>% 
+  ggplot(aes(consonants, vowels))+
   geom_point()+
   labs(x = "number of consonants",
        y = "number of vowels",
        caption = "data from LAPSyD")+
   theme_bw()+
-  geom_line(data = fortify(fit4), aes(x = count_consonant, y = .fitted, color = area))
+  geom_line(data = fortify(fit4), aes(x = consonants, y = .fitted, color = area))
 ```
 
 
 Если мы не предполагаем скоррелированность свободных эффектов:
 ```{r}
-fit5 <- lmer(count_vowel ~ count_consonant + (1|area) + (0+count_consonant|area), data = lapsyd)
+fit5 <- lmer(vowels ~ consonants + (1|area) + (0+consonants|area), data = upsid)
 summary(fit5)
 
-lapsyd %>% 
-  ggplot(aes(count_consonant, count_vowel))+
+upsid %>% 
+  ggplot(aes(consonants, vowels))+
   geom_point()+
   labs(x = "number of consonants",
        y = "number of vowels",
        caption = "data from LAPSyD")+
   theme_bw()+
-  geom_line(data = fortify(fit5), aes(x = count_consonant, y = .fitted, color = area))
+  geom_line(data = fortify(fit5), aes(x = consonants, y = .fitted, color = area))
 
-fit0 <- lmer(count_vowel ~ 1 + (1|area) + (0+count_consonant|area), data = lapsyd)
+fit0 <- lmer(vowels ~ 1 + (1|area) + (0+consonants|area), data = upsid)
 summary(fit0)
 
 anova(fit5, fit4, fit3, fit2, fit1, fit0)
