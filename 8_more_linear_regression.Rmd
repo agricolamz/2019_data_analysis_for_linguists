@@ -1,0 +1,303 @@
+---
+title: "8. Ограничения на использования линейной регрессии и смешанные регрессионные модели"
+author: "Г. Мороз"
+editor_options: 
+  chunk_output_type: inline
+---
+
+<style>
+.parallax {
+    /* The image used */
+    background-image: url("8_regression_problems.png");
+
+    /* Set a specific height */
+    min-height: 300px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+</style>
+
+<div class="parallax"></div>
+
+
+### 0. Введение
+Некоторые думают, что линейная регрессия решит все их проблемы (по крайней мере те из них, которые связаны с предсказанием какой-то числовой переменной). Это так. Но нужно быть осторожным --- у регрессии есть свои ограничения на применение.
+
+#### 0.1 Библиотеки
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(lme4)
+library(lmerTest)
+library(lingtypology) # only for linguistic mapping
+```
+
+#### 0.2 Lexical Decision Task data
+Dataset and description from [Rling package by Natalia Levshina](https://benjamins.com/sites/z.195/content/package.html). This data set contains 100 randomly selected words from the English Lexicon Project data (Balota et al. 2007), their lengths, mean reaction times and corpus frequencies.
+
+```{r, message=FALSE, warning=FALSE}
+ldt <- read_csv("https://goo.gl/ToxfU6")
+ldt
+```
+
+#### 0.3 LAPSyD
+In this dataset we have number of consonants and vowels in 402 languages collected from LAPSyD database (http://www.lapsyd.ddl.ish-lyon.cnrs.fr/lapsyd/). There is an variable of the area based on Glottolog (http://glottolog.org/). In this part we will try to make models that predict number of vowels by number of consonants.
+
+```{r, warning= FALSE}
+lapsyd <- read.csv("https://goo.gl/eD4S5n")
+lapsyd
+
+map.feature(lapsyd$name, 
+            features = lapsyd$area,
+            label = lapsyd$name,
+            label.hide = TRUE)
+```
+
+### 1. Нелинейность взаимосвязи
+Давайте посмотрим на простой график:
+
+```{r}
+ldt %>% 
+  ggplot(aes(Mean_RT, Freq))+
+  geom_point()+
+  theme_bw()
+```
+
+Регрессия на таких данных будет супер неиформативна:
+
+```{r}
+ldt %>% 
+  ggplot(aes(Mean_RT, Freq))+
+  geom_point()+
+  geom_smooth(method = "lm")+
+  theme_bw()
+
+m1 <- summary(lm(Mean_RT~Freq, data = ldt))
+m1
+```
+
+#### 1.1 Логарифмирование
+
+```{r}
+ldt %>% 
+  ggplot(aes(Mean_RT, log(Freq)))+
+  geom_point()+
+  geom_smooth(method = "lm")+
+  theme_bw()
+
+ldt %>% 
+  ggplot(aes(Mean_RT, log(Freq+1)))+
+  geom_point()+
+  geom_smooth(method = "lm")+
+  theme_bw()
+
+m2 <- summary(lm(Mean_RT~log(Freq+1), data = ldt))
+m2
+m1$adj.r.squared
+m2$adj.r.squared
+```
+
+Отлогорифмировать можно и другую переменную.
+```{r}
+ldt %>% 
+  ggplot(aes(log(Mean_RT), log(Freq  + 1)))+
+  geom_point()+
+  geom_smooth(method = "lm")+
+  theme_bw()
+
+m3 <- summary(lm(log(Mean_RT)~log(Freq+1), data = ldt))
+m1$adj.r.squared
+m2$adj.r.squared
+m3$adj.r.squared
+```
+
+Как интерпретировать полученную регрессию с двумя отлогорифмированными значениями?
+
+В обычной линейной регресии мы узнаем отношения между $x$ и  $y$:
+$$y_i = \beta_0+\beta_1\times x_i$$
+
+Как изменится $y_j$, если мы увеличем $x_i + 1 = x_j$?
+$$y_j = \beta_0+\beta_1\times x_j$$
+
+$$y_j - y_i = \beta_0+\beta_1\times x_j - (\beta_0+\beta_1\times x_i)  = \beta_1(x_j - x_i)$$
+
+Т. е. $y$ увеличится на $\beta_1$ , если $x$ увеличится на 1. Что же будет с логарифмированными переменными? Как изменится $y_j$, если мы увеличем $x_i + 1 = x_j$?
+
+$$\log(y_j) - \log(y_i) = \beta_1\times (\log(x_j) - \log(x_i))$$
+
+$$\log\left(\frac{y_j}{y_i}\right) = \beta_1\times \log\left(\frac{x_j}{x_i}\right) = \log\left(\frac{x_j}{x_i}\right) ^ {\beta_1}$$
+
+$$\frac{y_j}{y_i}= \left(\frac{x_j}{x_i}\right) ^ {\beta_1}$$
+
+Т. е. $y$ увеличится на $\beta_1$ процентов, если $x$ увеличится на 1 процент.
+
+Логарифмирование --- не единственный вид траснформации:
+
+* трансформация Тьюки
+```{r, eval = FALSE}
+shiny::runGitHub("agricolamz/tukey_transform")
+```
+
+```{r, echo= FALSE}
+data.frame(cors = c(sapply(seq(-5, -0.01, 0.01), function(i){
+  abs(cor(ldt$Mean_RT, -(ldt$Freq+1)^i))
+}),
+abs(cor(ldt$Mean_RT, log(ldt$Freq+1))),
+sapply(seq(0.01, 5, 0.01), function(i){
+  abs(cor(ldt$Mean_RT, (ldt$Freq+1)^i))
+})),
+bandwidth = seq(-5, 5, 0.01)) %>%
+  ggplot(aes(bandwidth, cors))+
+  geom_line()+
+  theme_bw()+
+  geom_vline(xintercept = 0.1, linetype = 2)+
+  labs(y = "correlation",
+       title = "average reaction time ~ Tukey transformed word frequencies")
+```
+
+* трансформация Бокса — Кокса
+* ...
+
+<div class="parallax"></div>
+
+### 2. Нормальность распределение остатков
+
+Линейная регрессия предполагает нормальность распределения остатков. Когда связь не линейна, то остатки тоже будут распределены не нормально.
+
+```{r}
+qqnorm(m1$residuals)
+qqline(m1$residuals)
+qqnorm(m2$residuals)
+qqline(m2$residuals)
+qqnorm(m3$residuals)
+qqline(m3$residuals)
+```
+
+<div class="parallax"></div>
+
+### 3. Гетероскидастичность
+Распределение остатков непостоянно (т. е. не гомоскидастичны):
+```{r}
+ldt %>% 
+  ggplot(aes(Mean_RT, Freq))+
+  geom_point()+
+  theme_bw()
+```
+
+Тоже решается преобазованием данных.
+
+<div class="parallax"></div>
+
+### 4. Мультиколлинеарность
+Линейная связь между некоторыми предикторами в модели.
+
+* корреляционная матрица
+* VIF (Variance inflation factor), `car::vif()`
+
+<div class="parallax"></div>
+
+### 5. Независимость наблюдений
+Наблюдения должны быть независимы.
+
+```{r}
+lapsyd %>% 
+  ggplot(aes(count_consonant, count_vowel))+
+  geom_point()+
+  labs(x = "number of consonants",
+       y = "number of vowels",
+       caption = "data from LAPSyD")+
+  theme_bw()
+```
+
+Обведем наблюдения по каждому спикеру:
+```{r}
+lapsyd %>% 
+  ggplot(aes(count_consonant, count_vowel, color = area))+
+  geom_point()+
+  labs(x = "number of consonants",
+       y = "number of vowels",
+       caption = "data from LAPSyD")+
+  theme_bw()+
+  stat_ellipse()
+```
+
+Построим простую регрессию и добавим ее на график:
+```{r}
+fit1 <- lm(count_vowel~count_consonant, data = lapsyd)
+summary(fit1)
+
+
+lapsyd %>% 
+  ggplot(aes(count_consonant, count_vowel))+
+  geom_point()+
+  labs(x = "number of consonants",
+       y = "number of vowels",
+       caption = "data from LAPSyD")+
+  theme_bw()+
+  geom_line(data = fortify(fit1), aes(x = count_consonant, y = .fitted), color = "blue")
+
+fit2 <- lmer(count_vowel ~ count_consonant + (1|area), data = lapsyd)
+summary(fit2)
+
+lapsyd %>% 
+  ggplot(aes(count_consonant, count_vowel))+
+  geom_point()+
+  labs(x = "number of consonants",
+       y = "number of vowels",
+       caption = "data from LAPSyD")+
+  theme_bw()+
+  geom_line(data = fortify(fit2), aes(x = count_consonant, y = .fitted, color = area))
+```
+
+Если мы предполагаем скоррелированность свободных эффектов:
+```{r}
+fit3 <- lmer(count_vowel ~ count_consonant + (1+count_consonant|area), data = lapsyd)
+summary(fit3)
+
+lapsyd %>% 
+  ggplot(aes(count_consonant, count_vowel))+
+  geom_point()+
+  labs(x = "number of consonants",
+       y = "number of vowels",
+       caption = "data from LAPSyD")+
+  theme_bw()+
+  geom_line(data = fortify(fit3), aes(x = count_consonant, y = .fitted, color = area))
+
+fit4 <- lmer(count_vowel ~ count_consonant + (0+count_consonant|area), data = lapsyd)
+summary(fit4)
+
+lapsyd %>% 
+  ggplot(aes(count_consonant, count_vowel))+
+  geom_point()+
+  labs(x = "number of consonants",
+       y = "number of vowels",
+       caption = "data from LAPSyD")+
+  theme_bw()+
+  geom_line(data = fortify(fit4), aes(x = count_consonant, y = .fitted, color = area))
+```
+
+
+Если мы не предполагаем скоррелированность свободных эффектов:
+```{r}
+fit5 <- lmer(count_vowel ~ count_consonant + (1|area) + (0+count_consonant|area), data = lapsyd)
+summary(fit5)
+
+lapsyd %>% 
+  ggplot(aes(count_consonant, count_vowel))+
+  geom_point()+
+  labs(x = "number of consonants",
+       y = "number of vowels",
+       caption = "data from LAPSyD")+
+  theme_bw()+
+  geom_line(data = fortify(fit5), aes(x = count_consonant, y = .fitted, color = area))
+
+fit0 <- lmer(count_vowel ~ 1 + (1|area) + (0+count_consonant|area), data = lapsyd)
+summary(fit0)
+
+anova(fit5, fit4, fit3, fit2, fit1, fit0)
+```
+
+<div class="parallax"></div>
