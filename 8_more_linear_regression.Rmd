@@ -167,6 +167,10 @@ bandwidth = seq(-5, 5, 0.01)) %>%
 
 Линейная регрессия предполагает нормальность распределения остатков. Когда связь не линейна, то остатки тоже будут распределены не нормально.
 
+Можно смотреть на певрый график используя функцию `plot(m1)` --- график остатков. Интерпретаций этого графика достаточно много (см. [статью про это](http://docs.statwing.com/interpreting-residual-plots-to-improve-your-regression/)).
+
+Можно смотреть на qqplot:
+
 ```{r}
 qqnorm(m1$residuals)
 qqline(m1$residuals)
@@ -175,6 +179,8 @@ qqline(m2$residuals)
 qqnorm(m3$residuals)
 qqline(m3$residuals)
 ```
+
+
 
 <div class="parallax"></div>
 

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Г. Мороз" />
+
+
+<title></title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 52px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h2 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h3 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h4 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h5 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.section h6 {
+  padding-top: 57px;
+  margin-top: -57px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    введение в байесовскую статистику
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="1_distributions.html">1. Распределения</a>
+    </li>
+    <li>
+      <a href="2_Bayesian_inference.html">2. Байесовский вывод</a>
+    </li>
+    <li>
+      <a href="3_bayesian_inference_again.html">3. Опять байесовский вывод</a>
+    </li>
+    <li>
+      <a href="4_Advanced_Bayesian.html">4. Продвинутая байесовская статистика</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    уменьшение размерности
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="5_PCA.html">5. PCA, LDA</a>
+    </li>
+    <li>
+      <a href="6_CA_MCA.html">6. CA, DCA, MCA</a>
+    </li>
+    <li>
+      <a href="7_Clustering.pdf">7. Кластеризация</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    регрессия
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="8_more_linear_regression.html">8. Еще о регрессионных моделях</a>
+    </li>
+    <li>
+      <a href="9_logit_multinom.html">9. Логистическая и мультиномиальная регрессии</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<style>
+.main-container {
+  margin-left: 0;
+  margin-right: 0;
+}
+</style>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore"><ol start="9" style="list-style-type: decimal">
+<li>Логистическая и мультиномиальная регрессия</li>
+</ol></h1>
+<h4 class="author">Г. Мороз</h4>
+
+</div>
+
+
+<div class="section level3">
+<h3>0. Введение</h3>
+<p>Логистическая (logit, logistic) и мультиномиальная (multinomial) регрессия применяются в случаях, когда зависимая переменная является категориальной:</p>
+<ul>
+<li>с двумя значениями (логистическая регрессия)</li>
+<li>с более чем двумя значениями (мультиномиальная регрессия)</li>
+</ul>
+<div class="section level4">
+<h4>0.1 Библиотеки</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(pscl)
+<span class="kw">library</span>(nnet)</code></pre></div>
+</div>
+<div id="----" class="section level4">
+<h4>0.2 Количество согласных и абруптивные звуки</h4>
+<p>В датасет собрано 19 языков, со следующими переменными:</p>
+<ul>
+<li>language — переменная, содержащая язык</li>
+<li>ejectives — бинарная переменная, обозначающая наличие абруптивных (“yes”/“no”)</li>
+<li>consonants — переменная, содержащая информацию о количестве согласных</li>
+<li>vowels — переменная, содержащая информацию о количестве гласных</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ej_n_cons &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://goo.gl/DsRMve&quot;</span>)
+ej_n_cons <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(ejectives, consonants, <span class="dt">fill =</span> ejectives, <span class="dt">label =</span> language))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>() -&gt;
+<span class="st">  </span>ej_n_cons_plot
+plotly<span class="op">::</span><span class="kw">ggplotly</span>(ej_n_cons_plot, <span class="dt">tooltip =</span> <span class="kw">c</span>(<span class="st">&quot;label&quot;</span>))</code></pre></div>
+<div id="htmlwidget-9931224d57be98e83dab" style="width:864px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9931224d57be98e83dab">{"x":{"data":[{"x":[1,1,1,1,1,1,1,1,1,1,1,1,1],"y":[25,21,22,22,24,20,22,24,15,18,17,8,26],"hoverinfo":"y","type":"box","fillcolor":"rgba(248,118,109,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(51,51,51,1)","width":1.88976377952756},"name":"no","legendgroup":"no","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[2,2,2,2,2,2],"y":[28,30,47,43,28,20],"hoverinfo":"y","type":"box","fillcolor":"rgba(0,191,196,1)","marker":{"opacity":null,"outliercolor":"rgba(0,0,0,1)","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"},"size":5.66929133858268},"line":{"color":"rgba(51,51,51,1)","width":1.88976377952756},"name":"yes","legendgroup":"yes","showlegend":true,"xaxis":"x","yaxis":"y","frame":null},{"x":[1.15492678787559,0.722582530602813,1.31520762164146,1.10867257677019,0.893290974386036,0.848244090750814,0.932129634916782,0.855619113892317,1.03163779973984,0.870571733079851,0.946190883219242,0.666155387088656,1.23494943920523],"y":[24.6905515402555,20.7895645637065,21.8102331390604,22.1248049587011,24.1848099369556,20.2609998600557,22.2373577538878,23.9060272051021,14.9834138505161,18.2707953650504,16.7221274722368,8.01354608573019,25.6755562862381],"text":["language: Turkish","language: Korean","language: Tiwi","language: Liberia Kpelle","language: Tulu","language: Mapudungun","language: Kiowa","language: Paraguayan Guarani","language: Japanese","language: Yoruba","language: Finnish","language: Hawaiian","language: Hungarian"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","name":"no","legendgroup":"no","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.94001798927784,1.8186678564176,2.3995591994375,1.61796430703253,2.02294016294181,1.80776370093226],"y":[27.6203265918419,30.2662200367078,46.8893812691793,42.9535635927692,28.1405122365803,20.0027887968346],"text":["language: Georgian","language: Amharic","language: Sandawe","language: Tlingit","language: Lakota","language: Yucatec Maya"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","name":"yes","legendgroup":"yes","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":29.1506849315068,"r":7.30593607305936,"b":43.1050228310502,"l":37.2602739726027},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,2.6],"tickmode":"array","ticktext":["no","yes"],"tickvals":[1,2],"categoryorder":"array","categoryarray":["no","yes"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"ejectives","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[6.05,48.95],"tickmode":"array","ticktext":["10","20","30","40"],"tickvals":[10,20,30,40],"categoryorder":"array","categoryarray":["10","20","30","40"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"consonants","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.96751968503937},"annotations":[{"text":"ejectives","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"source":"A","attrs":{"4f0a5741e893":{"x":{},"y":{},"fill":{},"label":{},"type":"box"},"4f0a77f0003c":{"x":{},"y":{},"fill":{},"label":{}}},"cur_data":"4f0a5741e893","visdat":{"4f0a5741e893":["function (y) ","x"],"4f0a77f0003c":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":[]}</script>
+</div>
+<div id="----" class="section level4">
+<h4>0.3 Данные: исследование маргинальных русских глаголов</h4>
+<p>Данные взяты из <a href="https://goo.gl/GC4RjQ">исследования [Endresen, Janda 2015]</a>, посвященное исследованию маргинальных глаголов изменения состояния в русском языке. Испытуемые (70 школьников, 51 взрослый) оценивали по <a href="https://goo.gl/R4gHiq">шкале Ликерта (1…5)</a> приемлемость глаголов с приставками <em>о-</em> и <em>у-</em>:</p>
+<ul>
+<li>широко используемуе в СРЛЯ (<em>освежить</em>, <em>уточнить</em>)</li>
+<li>встретившие всего несколько раз в корпусе (<em>оржавить</em>, <em>увкуснить</em>)</li>
+<li>искусственные слова (<em>ономить</em>, <em>укампить</em>)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">marginal_verbs &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://goo.gl/6Phok3&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Gender = col_character(),
+##   Age = col_double(),
+##   AgeGroup = col_character(),
+##   Education = col_character(),
+##   City = col_character(),
+##   SubjectCode = col_character(),
+##   Score = col_character(),
+##   GivenScore = col_double(),
+##   Stimulus = col_character(),
+##   Prefix = col_character(),
+##   WordType = col_character(),
+##   CorpusFrequency = col_double()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(marginal_verbs)</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Gender"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Age"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["AgeGroup"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Education"],"name":[4],"type":["chr"],"align":["left"]},{"label":["City"],"name":[5],"type":["chr"],"align":["left"]},{"label":["SubjectCode"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Score"],"name":[7],"type":["chr"],"align":["left"]},{"label":["GivenScore"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["Stimulus"],"name":[9],"type":["chr"],"align":["left"]},{"label":["Prefix"],"name":[10],"type":["chr"],"align":["left"]},{"label":["WordType"],"name":[11],"type":["chr"],"align":["left"]},{"label":["CorpusFrequency"],"name":[12],"type":["dbl"],"align":["right"]}],"data":[{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"A","8":"5","9":"utochnit","10":"u","11":"standard","12":"2860"},{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"A","8":"5","9":"ozhestochit","10":"o","11":"standard","12":"686"},{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"E","8":"1","9":"ovneshnit","10":"o","11":"marginal","12":"4"},{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"E","8":"1","9":"oblusit","10":"o","11":"nonce","12":"0"},{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"A","8":"5","9":"osvezhit","10":"o","11":"standard","12":"280"},{"1":"female","2":"16","3":"child","4":"school","5":"Izhevsk","6":"AA","7":"A","8":"5","9":"oschastlivit","10":"o","11":"standard","12":"343"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Переменные в датасете:</p>
+<ul>
+<li>Gender</li>
+<li>Age</li>
+<li>AgeGroup — взрослые или школьники</li>
+<li>Education</li>
+<li>City</li>
+<li>SubjectCode — код испытуемого</li>
+<li>Score — оценка, поставленная испытуемым (A — самая высокая, E — самая низкая)</li>
+<li>GivenScore — оценка, поставленная испытуемым (5 — самая высокая, 1 — самая низкая)</li>
+<li>Stimulus</li>
+<li>Prefix</li>
+<li>WordType — тип слова: частотное, редкое, искусственное</li>
+<li>CorpusFrequency — частотность в корпусе</li>
+</ul>
+</div>
+<div id="-" class="section level4">
+<h4>0.4 Нанайские данные</h4>
+<p>В этом датасете представлены три нанайских гласных i, ɪ и e, произнесенные нанайским носителем мужского пола из селения Джуен. Каждая строчка — отдельное произнесение. Переменные:</p>
+<ul>
+<li>f1 — первая форманта</li>
+<li>f2 — вторая форманта</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nanai &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://goo.gl/9uGBoQ&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   sound = col_character(),
+##   f1 = col_double(),
+##   f2 = col_double()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nanai <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(f2, f1, <span class="dt">label =</span> sound, <span class="dt">color =</span> sound))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_rug</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_reverse</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_reverse</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_ellipse</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Нанайские гласные в произнесении мужчины из селения Джуен&quot;</span>)</code></pre></div>
+<p><img src="9_logit_multinom_files/figure-html/unnamed-chunk-4-1.png" width="864" /></p>
+</div>
+</div>
+<div id="-" class="section level3">
+<h3>1. Логистическая регрессия</h3>
+<p>Мы хотим чего-то такого: <span class="math display">\[\underbrace{y}_{[-\infty, +\infty]}=\underbrace{\mbox{β}_0+\mbox{β}_1\cdot x_1+\mbox{β}_2\cdot x_2 + \dots +\mbox{β}_k\cdot x_k +\mbox{ε}_i}_{[-\infty, +\infty]}\]</span> Вероятность — (в классической статистике) отношение количества успехов к общему числу событий: <span class="math display">\[p = \frac{\mbox{# успехов}}{\mbox{# неудач} + \mbox{# успехов}}, \mbox{область значений: }[0, 1]\]</span> Шансы — отношение количества успехов к количеству неудач: <span class="math display">\[odds = \frac{p}{1-p} = \frac{p\mbox{(успеха)}}{p\mbox{(неудачи)}}, \mbox{область значений: }[0, +\infty]\]</span> Натуральный логарифм шансов: <span class="math display">\[\log(odds), \mbox{область значений: }[-\infty, +\infty]\]</span></p>
+<p>Но, что нам говорит логарифм шансов? Как нам его интерпретировать?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data_frame</span>(<span class="dt">n =</span> <span class="dv">10</span>,
+           <span class="dt">success =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>,
+           <span class="dt">failure =</span> n <span class="op">-</span><span class="st"> </span>success,
+           <span class="dt">prob.1 =</span> success<span class="op">/</span>(success<span class="op">+</span>failure),
+           <span class="dt">odds =</span> success<span class="op">/</span>failure,
+           <span class="dt">log_odds =</span> <span class="kw">log</span>(odds),
+           <span class="dt">prob.2 =</span> <span class="kw">exp</span>(log_odds)<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(log_odds)))</code></pre></div>
+<pre><code>## Warning: `data_frame()` is deprecated, use `tibble()`.
+## This warning is displayed once per session.</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["n"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["success"],"name":[2],"type":["int"],"align":["right"]},{"label":["failure"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["prob.1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["odds"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["log_odds"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["prob.2"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"10","2":"1","3":"9","4":"0.1","5":"0.1111111","6":"-2.1972246","7":"0.1"},{"1":"10","2":"2","3":"8","4":"0.2","5":"0.2500000","6":"-1.3862944","7":"0.2"},{"1":"10","2":"3","3":"7","4":"0.3","5":"0.4285714","6":"-0.8472979","7":"0.3"},{"1":"10","2":"4","3":"6","4":"0.4","5":"0.6666667","6":"-0.4054651","7":"0.4"},{"1":"10","2":"5","3":"5","4":"0.5","5":"1.0000000","6":"0.0000000","7":"0.5"},{"1":"10","2":"6","3":"4","4":"0.6","5":"1.5000000","6":"0.4054651","7":"0.6"},{"1":"10","2":"7","3":"3","4":"0.7","5":"2.3333333","6":"0.8472979","7":"0.7"},{"1":"10","2":"8","3":"2","4":"0.8","5":"4.0000000","6":"1.3862944","7":"0.8"},{"1":"10","2":"9","3":"1","4":"0.9","5":"9.0000000","6":"2.1972246","7":"0.9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Как связаны вероятность и логарифм шансов: <span class="math display">\[\log(odds) = \log\left(\frac{p}{1-p}\right)\]</span> <span class="math display">\[p = \frac{\exp(\log(odds))}{1+\exp(\log(odds))}\]</span></p>
+<p>Как связаны вероятность и логарифм шансов:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data_frame</span>(<span class="dt">p =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.001</span>),
+           <span class="dt">log_odds =</span> <span class="kw">log</span>(p<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>p))) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(log_odds, p))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> latex2exp<span class="op">::</span><span class="kw">TeX</span>(<span class="st">&quot;$log</span><span class="ch">\\</span><span class="st">left(</span><span class="ch">\\</span><span class="st">frac{p}{1-p}</span><span class="ch">\\</span><span class="st">right)$&quot;</span>))<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
+<p><img src="9_logit_multinom_files/figure-html/unnamed-chunk-6-1.png" width="864" /></p>
+</div>
+<div id="---" class="section level3">
+<h3>1.1 Почему не линейную регрессию?</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">as.integer</span>(ejectives)<span class="op">~</span><span class="dv">1</span>, <span class="dt">data =</span> ej_n_cons)
+lm_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="kw">as.integer</span>(ejectives)<span class="op">~</span>consonants, <span class="dt">data =</span> ej_n_cons)
+lm_<span class="dv">0</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = as.integer(ejectives) ~ 1, data = ej_n_cons)
+## 
+## Coefficients:
+## (Intercept)  
+##       1.316</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_<span class="dv">1</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = as.integer(ejectives) ~ consonants, data = ej_n_cons)
+## 
+## Coefficients:
+## (Intercept)   consonants  
+##      0.4611       0.0353</code></pre>
+<p>Первая модель: <span class="math display">\[ejectives = 1.316 \times consonants\]</span> Вторая модель: <span class="math display">\[ejectives = 0.4611 + 0.0353 \times consonants\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ej_n_cons <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(consonants, <span class="kw">as.integer</span>(ejectives)))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;ejectives (yes = 2, no = 1)&quot;</span>)</code></pre></div>
+<p><img src="9_logit_multinom_files/figure-html/unnamed-chunk-8-1.png" width="864" /></p>
+</div>
+<div id="---" class="section level3">
+<h3>1.2 Логит: модель без предиктора</h3>
+<p>Будьте осторожны, <code>glm</code> не работает с тибблом.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logit_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(ejectives<span class="op">~</span><span class="dv">1</span>, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">data =</span> ej_n_cons)
+<span class="kw">summary</span>(logit_<span class="dv">0</span>)</code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = ejectives ~ 1, family = &quot;binomial&quot;, data = ej_n_cons)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -0.8712  -0.8712  -0.8712   1.5183   1.5183  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)  -0.7732     0.4935  -1.567    0.117
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 23.699  on 18  degrees of freedom
+## Residual deviance: 23.699  on 18  degrees of freedom
+## AIC: 25.699
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logit_<span class="dv">0</span><span class="op">$</span>coefficients</code></pre></div>
+<pre><code>## (Intercept) 
+##  -0.7731899</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(ej_n_cons<span class="op">$</span>ejectives)</code></pre></div>
+<pre><code>## 
+##  no yes 
+##  13   6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">6</span><span class="op">/</span><span class="dv">13</span>) <span class="co"># β0</span></code></pre></div>
+<pre><code>## [1] -0.7731899</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">6</span><span class="op">/</span>(<span class="dv">13</span><span class="op">+</span><span class="dv">6</span>) <span class="co"># p</span></code></pre></div>
+<pre><code>## [1] 0.3157895</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(<span class="kw">log</span>(<span class="dv">6</span><span class="op">/</span><span class="dv">13</span>))<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="kw">exp</span>(<span class="kw">log</span>(<span class="dv">6</span><span class="op">/</span><span class="dv">13</span>))) <span class="co"># p</span></code></pre></div>
+<pre><code>## [1] 0.3157895</code></pre>
+</div>
+<div id="--c---" class="section level3">
+<h3>1.3 Логит: модель c одним числовым предиктором</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logit_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(ejectives<span class="op">~</span>consonants, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">data =</span> ej_n_cons)
+<span class="kw">summary</span>(logit_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = ejectives ~ consonants, family = &quot;binomial&quot;, data = ej_n_cons)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -1.08779  -0.49331  -0.20265   0.02254   2.45384  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)  
+## (Intercept) -12.1123     6.1266  -1.977   0.0480 *
+## consonants    0.4576     0.2436   1.878   0.0603 .
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 23.699  on 18  degrees of freedom
+## Residual deviance: 12.192  on 17  degrees of freedom
+## AIC: 16.192
+## 
+## Number of Fisher Scoring iterations: 6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logit_<span class="dv">1</span><span class="op">$</span>coefficients</code></pre></div>
+<pre><code>## (Intercept)  consonants 
+## -12.1123347   0.4576095</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ej_n_cons <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">ejectives =</span> <span class="kw">as.integer</span>(ejectives)<span class="op">-</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(consonants, ejectives)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;glm&quot;</span>, 
+              <span class="dt">method.args =</span> <span class="kw">list</span>(<span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>),
+              <span class="dt">se =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="9_logit_multinom_files/figure-html/unnamed-chunk-10-1.png" width="864" /></p>
+<p>Какова вероятность, что в языке с 29 согласными есть абруптивные?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logit_<span class="dv">1</span><span class="op">$</span>coefficients</code></pre></div>
+<pre><code>## (Intercept)  consonants 
+## -12.1123347   0.4576095</code></pre>
+<p><span class="math display">\[\log\left({\frac{p}{1-p}}\right)_i=\beta_0+\beta_1\times consinants_i + \epsilon_i\]</span> <span class="math display">\[\log\left({\frac{p}{1-p}}\right)=-12.1123347 + 0.4576095 \times 29 = 1.158341\]</span> <span class="math display">\[p = \frac{e^{1.158341}}{1+e^{1.158341}} = 0.7610311\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># log(odds)</span>
+<span class="kw">predict</span>(logit_<span class="dv">1</span>, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">consonants =</span> <span class="dv">29</span>))</code></pre></div>
+<pre><code>##        1 
+## 1.158341</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># p</span>
+<span class="kw">predict</span>(logit_<span class="dv">1</span>, <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">consonants =</span> <span class="dv">29</span>), <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</code></pre></div>
+<pre><code>##         1 
+## 0.7610312</code></pre>
+</div>
+<div id="--c---" class="section level3">
+<h3>1.4 Логит: модель c одним категориальным предиктором</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logit_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(ejectives<span class="op">~</span>area, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">data =</span> ej_n_cons)
+<span class="kw">summary</span>(logit_<span class="dv">2</span>)</code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = ejectives ~ area, family = &quot;binomial&quot;, data = ej_n_cons)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -1.66511  -0.55525  -0.00013   0.75853   1.97277  
+## 
+## Coefficients:
+##                     Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)        1.319e-17  1.000e+00   0.000    1.000
+## areaAustralia     -1.857e+01  6.523e+03  -0.003    0.998
+## areaEurasia       -1.792e+00  1.472e+00  -1.217    0.224
+## areaNorth America  1.099e+00  1.528e+00   0.719    0.472
+## areaPapua         -1.857e+01  6.523e+03  -0.003    0.998
+## areaSouth America -1.857e+01  4.612e+03  -0.004    0.997
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 23.699  on 18  degrees of freedom
+## Residual deviance: 15.785  on 13  degrees of freedom
+## AIC: 27.785
+## 
+## Number of Fisher Scoring iterations: 17</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logit_<span class="dv">2</span><span class="op">$</span>coefficients</code></pre></div>
+<pre><code>##       (Intercept)     areaAustralia       areaEurasia areaNorth America 
+##      1.318587e-17     -1.856607e+01     -1.791759e+00      1.098612e+00 
+##         areaPapua areaSouth America 
+##     -1.856607e+01     -1.856607e+01</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(ej_n_cons<span class="op">$</span>ejectives, ej_n_cons<span class="op">$</span>area)</code></pre></div>
+<pre><code>##      
+##       Africa Australia Eurasia North America Papua South America
+##   no       2         1       6             1     1             2
+##   yes      2         0       1             3     0             0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">6</span>) <span class="co"># Eurasia</span></code></pre></div>
+<pre><code>## [1] -1.791759</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dv">3</span><span class="op">/</span><span class="dv">1</span>) <span class="co"># North America</span></code></pre></div>
+<pre><code>## [1] 1.098612</code></pre>
+</div>
+<div id="--" class="section level3">
+<h3>1.5 Логит: множественная регрессия</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logit_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(ejectives<span class="op">~</span>consonants<span class="op">+</span>area, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>, <span class="dt">data =</span> ej_n_cons)
+<span class="kw">summary</span>(logit_<span class="dv">3</span>)</code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = ejectives ~ consonants + area, family = &quot;binomial&quot;, 
+##     data = ej_n_cons)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -1.54011  -0.18623  -0.00012   0.00023   1.53307  
+## 
+## Coefficients:
+##                     Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept)         -21.1760    15.1089  -1.402    0.161
+## consonants            0.8137     0.5653   1.439    0.150
+## areaAustralia       -16.2910 10754.0138  -0.002    0.999
+## areaEurasia          -1.2069     3.9399  -0.306    0.759
+## areaNorth America     4.0966     4.8563   0.844    0.399
+## areaPapua            -4.8995 10754.0184   0.000    1.000
+## areaSouth America   -17.1162  7065.6839  -0.002    0.998
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 23.6989  on 18  degrees of freedom
+## Residual deviance:  6.7901  on 12  degrees of freedom
+## AIC: 20.79
+## 
+## Number of Fisher Scoring iterations: 18</code></pre>
+</div>
+<div id="--" class="section level3">
+<h3>1.6 Логит: сравнение моделей</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(logit_<span class="dv">0</span>)</code></pre></div>
+<pre><code>## [1] 25.69888</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(logit_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 16.19167</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(logit_<span class="dv">2</span>)</code></pre></div>
+<pre><code>## [1] 27.78549</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">AIC</span>(logit_<span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 20.79005</code></pre>
+<p>Для того, чтобы интерпретировать коэффициенты нужно проделать трансформацю:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="kw">exp</span>(logit_<span class="dv">1</span><span class="op">$</span>coefficients)<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="dv">100</span></code></pre></div>
+<pre><code>## (Intercept)  consonants 
+##   -99.99945    58.02918</code></pre>
+<p>Перед нами процентное изменние шансов при увеличении независимой переменной на 1.</p>
+<p>Было предложено много аналогов R<span class="math inline">\(^2\)</span>, например, McFadden’s R squared:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pscl<span class="op">::</span><span class="kw">pR2</span>(logit_<span class="dv">1</span>)</code></pre></div>
+<pre><code>##         llh     llhNull          G2    McFadden        r2ML        r2CU 
+##  -6.0958355 -11.8494421  11.5072132   0.4855593   0.4542765   0.6373812</code></pre>
+</div>
+<div id="--" class="section level3">
+<h3>2. Порядковая логистическая регрессия</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">marginal_verbs<span class="op">$</span>Score &lt;-<span class="st"> </span><span class="kw">factor</span>(marginal_verbs<span class="op">$</span>Score)
+<span class="kw">levels</span>(marginal_verbs<span class="op">$</span>Score)</code></pre></div>
+<pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ordinal &lt;-<span class="st"> </span>MASS<span class="op">::</span><span class="kw">polr</span>(Score<span class="op">~</span>Prefix<span class="op">+</span>WordType<span class="op">+</span>CorpusFrequency, <span class="dt">data =</span> marginal_verbs)
+<span class="kw">summary</span>(ordinal)</code></pre></div>
+<pre><code>## 
+## Re-fitting to get Hessian</code></pre>
+<pre><code>## Call:
+## MASS::polr(formula = Score ~ Prefix + WordType + CorpusFrequency, 
+##     data = marginal_verbs)
+## 
+## Coefficients:
+##                      Value Std. Error t value
+## Prefixu           0.136619  5.286e-02   2.584
+## WordTypenonce     1.340603  5.693e-02  23.549
+## WordTypestandard -4.655327  1.251e-01 -37.211
+## CorpusFrequency  -0.001015  7.879e-05 -12.876
+## 
+## Intercepts:
+##     Value    Std. Error t value 
+## A|B  -2.6275   0.0753   -34.8784
+## B|C  -1.4531   0.0552   -26.3246
+## C|D  -0.2340   0.0479    -4.8853
+## D|E   0.7324   0.0492    14.8986
+## 
+## Residual Deviance: 13138.47 
+## AIC: 13154.47</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ordinal<span class="op">$</span>coefficients</code></pre></div>
+<pre><code>##          Prefixu    WordTypenonce WordTypestandard  CorpusFrequency 
+##      0.136619412      1.340602696     -4.655327418     -0.001014583</code></pre>
+<p>Как и раньше, можно преобразовать коэффициенты:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="kw">exp</span>(ordinal<span class="op">$</span>coefficients)<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span><span class="dv">100</span></code></pre></div>
+<pre><code>##          Prefixu    WordTypenonce WordTypestandard  CorpusFrequency 
+##       14.6391763      282.1345921      -99.0489201       -0.1014068</code></pre>
+<p><span class="math display">\[\log(\frac{p(A)}{p(B|C|D|E)}) = -2.6275 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce -\]</span><br />
+<span class="math display">\[-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency\]</span> <span class="math display">\[\log(\frac{p(A|B)}{p(C|D|E)}) = -1.4531 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce\]</span> <span class="math display">\[-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency\]</span> <span class="math display">\[\log(\frac{p(A|B|C)}{p(D|E)}) = -0.2340 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce\]</span> <span class="math display">\[-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency\]</span> <span class="math display">\[\log(\frac{p(A|B|C|D)}{p(E)}) = 0.7324 + 0.136619412 \times Prefixu + 1.340602696 \times WordTypenonce\]</span> <span class="math display">\[-4.655327418 \times WordTypestandard -0.001014583\times CorpusFrequency\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">predict</span>(ordinal))</code></pre></div>
+<pre><code>## [1] A A E E A A
+## Levels: A B C D E</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">predict</span>(ordinal, <span class="dt">type =</span> <span class="st">&quot;probs&quot;</span>))</code></pre></div>
+<pre><code>##            A           B           C            D            E
+## 1 0.99178000 0.005665533 0.001798242 0.0004683707 0.0002878525
+## 2 0.93841926 0.041706786 0.013917668 0.0036817261 0.0022745617
+## 3 0.06764594 0.122509282 0.252611927 0.2334448870 0.3237879649
+## 4 0.01855865 0.039108932 0.113894002 0.1808984667 0.6475399508
+## 5 0.90986002 0.060436871 0.020738032 0.0055351143 0.0034299624
+## 6 0.91496678 0.057117954 0.019500629 0.0051963745 0.0032182669</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">marginal_verbs &lt;-<span class="st"> </span><span class="kw">cbind</span>(marginal_verbs, <span class="kw">predict</span>(ordinal, <span class="dt">type =</span> <span class="st">&quot;probs&quot;</span>))
+marginal_verbs <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(score, predictions, A<span class="op">:</span>E) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> score, <span class="dt">y =</span> predictions, <span class="dt">fill =</span> score)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(Prefix<span class="op">~</span>WordType)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()</code></pre></div>
+<p><img src="9_logit_multinom_files/figure-html/unnamed-chunk-20-1.png" width="864" /></p>
+</div>
+<div id="-" class="section level3">
+<h3>3. Мультиномиальная регрессия</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mult &lt;-<span class="st"> </span>nnet<span class="op">::</span><span class="kw">multinom</span>(sound<span class="op">~</span>f1<span class="op">+</span>f2, <span class="dt">data =</span> nanai)</code></pre></div>
+<pre><code>## # weights:  12 (6 variable)
+## initial  value 462.515774 
+## iter  10 value 51.522626
+## iter  20 value 46.817442
+## iter  30 value 44.829080
+## iter  40 value 44.807654
+## iter  40 value 44.807654
+## final  value 44.807654 
+## converged</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mult</code></pre></div>
+<pre><code>## Call:
+## nnet::multinom(formula = sound ~ f1 + f2, data = nanai)
+## 
+## Coefficients:
+##   (Intercept)          f1         f2
+## i   -22.85202 -0.04263175 0.02315226
+## ɪ   -41.46147  0.02360077 0.01937067
+## 
+## Residual Deviance: 89.61531 
+## AIC: 101.6153</code></pre>
+<p><span class="math display">\[\log(\frac{p(e)}{p(ɪ)}) = 40.88718 -0.02298543\times f1 -0.019176619\times f2\]</span> <span class="math display">\[\log(\frac{p(i)}{p(ɪ)}) = 18.15078 -0.06593461\times f1 +  0.003949284\times f2\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nanai <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">prediction =</span> <span class="kw">predict</span>(mult),
+         <span class="dt">correctness =</span> sound <span class="op">==</span><span class="st"> </span>prediction) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(f1, f2, <span class="dt">label =</span> sound, <span class="dt">color =</span> correctness))<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">size =</span> <span class="op">!</span>correctness), <span class="dt">show.legend =</span> <span class="ot">FALSE</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_reverse</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_reverse</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Нанайские гласные в произнесении мужчины из селения Джуен&quot;</span>,
+       <span class="dt">subtitle =</span> <span class="st">&quot;мультиномиальная регрессия&quot;</span>)</code></pre></div>
+<pre><code>## Warning: Using size for a discrete variable is not advised.</code></pre>
+<p><img src="9_logit_multinom_files/figure-html/unnamed-chunk-22-1.png" width="864" /></p>
+</div>
+
+<br><br><br>
+<p><center> &copy; Г. Мороз 2018 с помощью RMarkdown. Исходный код на 
+<a href="https://github.com/agricolamz/2019_data_analysis_for_linguists"> GitHub <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png"  style="width:30px;height:30px;border:0"></a></center> </p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
